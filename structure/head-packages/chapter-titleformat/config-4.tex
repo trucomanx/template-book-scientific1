@@ -1,0 +1,63 @@
+
+\usepackage{tikzpagenodes}
+\titleformat{\chapter}[display]
+  {\normalfont\huge}
+  {}
+  {20pt}
+  {%
+  \begin{tikzpicture}[remember picture,overlay]
+\fill[top color=colorsystemdefault, bottom color=black] 
+(16,-23) rectangle (18.5,7);
+\node[
+    anchor= east,
+    xshift=-3.5cm,%% Inicio de texto
+    text width=\textwidth] 
+    at ([yshift=5pt]titlerect.east) {\fontsize{30}{36}\sffamily\selectfont#1};
+\node[
+    anchor= east,
+    inner xsep=3cm,
+    outer sep=0pt,
+    font=\color{black}]%,
+    at ([yshift=.5cm]current page.east|-titlerect.east)
+     {\fontsize{80}{86}\bfseries\thechapter};
+\node[
+    anchor= east,
+    xshift=11.5cm,
+        yshift=-11cm,
+    text width=\textwidth] 
+    at ([yshift=5pt]titlerect.east) {\fontsize{30}{36}\scshape\selectfont\rotatebox{90}{\color{white}#1}};
+  \end{tikzpicture}%
+}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\huge}
+  {}
+  {20pt}
+  {%
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[top color=colorsystemdefault, bottom color=black] 
+    (16,-25) rectangle (18.5,7);
+  \node[
+   anchor=west,
+    rectangle,
+    minimum height=4cm,
+    text width=\paperwidth,
+    xshift=-\the\dimexpr\oddsidemargin+1in\relax,
+    outer sep=0pt] (titlerect) {};
+  \node[
+    anchor=south west,
+    xshift=2cm,%% Inicio de texto
+        yshift=2cm,
+    text width=\textwidth] 
+   at (titlerect.south west) {\sffamily\Huge#1};
+    \node[
+    anchor= east,
+    xshift=11.5cm,
+        yshift=-11cm,
+    text width=\textwidth] 
+    at ([yshift=5pt]titlerect.east) {\fontsize{30}{36}\scshape\selectfont\rotatebox{90}{\color{white}#1}};
+  \end{tikzpicture}%
+  }[]
+\titlespacing*{\chapter}
+  {0pt}{-20pt}{60pt}
+
+

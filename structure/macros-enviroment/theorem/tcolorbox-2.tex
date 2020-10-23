@@ -1,0 +1,50 @@
+%----------------------------------------------------------------------------------------
+% THEOREM THEOREMS
+%----------------------------------------------------------------------------------------
+% \begin{theorem}[Título]
+%   text
+% \end{theorem}
+%----------------------------------------------------------------------------------------
+%% Create a new counter that will follow tcolorbox's numbering
+\newcounter{theorem}[section]
+\renewcommand*{\thetheorem}{\noexpand\thesection.\noexpand\arabic{theorem}}
+
+\newtcolorbox[list inside=MisTheorem,list type=MisTheorem,auto counter,number within=section]{theorem}[1][]{
+  enhanced jigsaw,
+  colback=white,
+  colframe=colorsystemdefault,
+  coltitle=colorsystemdefault,
+  fonttitle=\bfseries\sffamily,
+  sharp corners,
+  detach title,
+  leftrule=24mm,
+  underlay unbroken and first={\node[below,text=white,font=\sffamily\bfseries,align=center]
+    at ([xshift=-12mm,yshift=-1mm]interior.north west) {TEOREMA\\\thetcbcounter};},
+  breakable,pad at break=1mm,
+  title={#1},
+  code={
+  \ifdefempty{\tcbtitletext}
+    {
+    \tcbset{before upper={\addtocounter{theorem}{-1}\refstepcounter{theorem} \refstepcounter{theorem}}}
+    }
+    {
+    \tcbset{before upper={\addtocounter{theorem}{-1}\refstepcounter{theorem} \tcbtitle\par\medskip\refstepcounter{theorem}}}
+    }
+  },
+}
+
+
+
+%% List of type %% para:  \tcblistof[\section*]{MisTheorem}{Lista de frases}
+\titlecontents{MisTheorem}[2.00cm] %% Indentation %% left
+{\TocEntryEnvTextFormat} %% Spacing and font options for sections %% above code
+{\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+{} %% numberless-entry-format
+{\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format {\hfill\color{black}\thecontentspage} 
+[] %% separator
+
+\makeatletter
+\newcommand{\ttll@MisTheorem}{-1000}
+\makeatother
+
+

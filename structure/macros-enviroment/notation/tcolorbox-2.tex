@@ -1,0 +1,78 @@
+%----------------------------------------------------------------------------------------
+% NOTACAO THEOREMS
+%----------------------------------------------------------------------------------------
+% \begin{notation}[Título]
+%   text
+% \end{notation}
+%----------------------------------------------------------------------------------------
+%% Create a new counter that will follow tcolorbox's numbering
+\newcounter{notation}[section]
+\renewcommand*{\thenotation}{\noexpand\thesection.\noexpand\arabic{notation}}
+
+\begin{comment}
+\newtcolorbox[list inside=MisNotation,list type=MisNotation,auto counter,number within=section]{notation}[1][]{
+  title={#1},
+  detach title,
+  coltitle=black,
+  before upper={\addtocounter{notation}{-1}\refstepcounter{notation}\textbf{Nota\c{c}\~{a}o~\thetcbcounter\refstepcounter{notation}\ifdefstring{\tcbtitletext}{}{:}{~---~\tcbtitle:}}},
+  % %fonttitle=\bfseries,
+  breakable,
+  enhanced,
+  arc      =0mm,
+  top=0mm,
+  bottom=0mm,
+  colback  =black!3,
+  colframe =colorsystemdefault,
+  leftrule =4pt,%
+  rightrule=0mm,
+  toprule=0mm,
+  bottomrule=0mm,
+  %drop fuzzy shadow=black
+}
+\end{comment}
+
+\newcommand{\titlepath}{
+  \fill[colorsystemdefault]
+  (title.south east)
+  --(title.east)coordinate(A)
+  to[curve to,out=90,in=0]($(A)+(-5mm,5mm)$)
+      --($(title.north west)+(5mm,0mm)$)coordinate(B)
+to[curve to,out=180,in=90]($(B)+(-5mm,-5mm)$)coordinate(C)
+      --($(C)+(0mm,-5mm)$)
+      to[curve to,out=90,in=180]($(title.south west)+(+5mm,0mm)$)coordinate(F)
+      --cycle;
+      \draw[colorsystemdefault,ultra thick]
+      ([yshift=.5\pgflinewidth]title.south east)--
+      ([yshift=.5\pgflinewidth]title.south-|interior.east);
+    }
+
+
+\newtcolorbox[list inside=MisNotation,list type=MisNotation,auto counter,number within=section]{notation}[1][]{
+  enhanced,
+  %frame empty,
+  detach title,
+  fonttitle=\bfseries,
+  title={#1},
+  before upper={\addtocounter{notation}{-1}\refstepcounter{notation}\textbf{Nota\c{c}\~{a}o~\thetcbcounter\refstepcounter{notation}:}},
+  breakable,
+  colback=colorsystemdefault!4,
+  coltitle=white,
+  attach boxed title to top left={xshift=-0mm},
+  boxed title style={empty},
+  underlay boxed title=\titlepath
+
+}
+
+
+%% List of type %% para:  \tcblistof[\section*]{MisNotation}{Lista de frases}
+\titlecontents{MisNotation}[2.00cm] %% Indentation %% left
+{\TocEntryEnvTextFormat} %% Spacing and font options for sections %% above code
+{\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+{} %% numberless-entry-format
+{\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format {\hfill\color{black}\thecontentspage} 
+[] %% separator
+
+\makeatletter
+\newcommand{\ttll@MisNotation}{-1000}
+\makeatother
+

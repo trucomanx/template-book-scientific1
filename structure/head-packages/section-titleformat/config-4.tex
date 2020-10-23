@@ -1,0 +1,25 @@
+
+\usetikzlibrary{shapes,shadows,calc}
+\usetikzlibrary{positioning,calc}
+
+
+
+\newcommand\SecTitle[5]{%
+\begin{tikzpicture}
+
+    \node (A) [rectangle,minimum width=\textwidth, minimum height=1cm,color=white,fill=colorsystemdefault, text width=\textwidth-3cm,align=left] {\hspace{1.5cm}\parbox{\textwidth}{\huge\textbf{\textsf{#4}}}};
+    \fill[fill=colorsystemdefault!80] (A.north west) -- ($(A.north west)+(1.5cm,0)$) -- ($0.5*(A.north west)-0.5*(A.north west)-(0.5*\textwidth-2.5cm,0)$)--($(A.south west)+(1.5cm,0)$)--(A.south west);
+    \node [color=white](A.north west) at ($0.5*(A.north west)-0.5*(A.north west)-(0.5*\textwidth-1cm,0)$) {\Huge\textbf{\textsf{#5}}};
+
+\end{tikzpicture}
+
+}
+
+\titleformat{\section}
+{\normalfont}{}{0em}
+{\SecTitle{east}{west}{0\paperwidth}{#1}{\thesection}}
+
+\titleformat{name=\section,numberless}
+{\normalfont}{}{0em}
+{\SecTitle{east}{west}{0\paperwidth}{#1}{~}}
+

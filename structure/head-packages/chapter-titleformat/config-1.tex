@@ -1,0 +1,33 @@
+% \usepackage{titlesec}% The titlesec package was used to easily change the formatting for chapter headings.
+% \usepackage{microtype}% The microtype package was used to use \textls to space out the letters in "Chapter".
+% \usepackage{lmodern}% The lmodern package was used just to have access to a 80pt font size.
+% \usepackage{TikZ}% I used TikZ in the first solution to quickly place some of the elements; the second option is a TikZ-free solution.
+
+
+
+%\begin{comment}
+\titleformat{\chapter}[display]%tipo
+  {\normalfont\bfseries\color{colorsystemdefault}}%formato
+  {\filleft%
+    \begin{tikzpicture}
+    \node[
+      outer sep=0pt,
+      text width=2.5cm,
+      minimum height=3cm,
+      fill=colorsystemdefault,
+      font=\color{white}\fontsize{80}{90}\selectfont,
+      align=center
+      ] (num) {\thechapter};
+    \node[
+      rotate=90,
+      anchor=south,
+      font=\color{black}\Large\normalfont
+      ] at ([xshift=-5pt]num.west) {\textls[180]{\textsc{\chaptertitlename}}};  
+    \end{tikzpicture}%
+  }% Etiqueta %numero do cap
+  {10pt}% Separacion
+  {\titlerule[2.5pt]\vskip3pt\titlerule\vskip4pt\LARGE\sffamily#1}%Codigo anterior al texto
+  %[]%Codigo posterior al texto
+
+%\end{comment}
+

@@ -1,0 +1,38 @@
+
+%----------------------------------------------------------------------------------------
+% ELABORACION MESSAGE BOX
+%----------------------------------------------------------------------------------------
+% \begin{elaborationbox}{título}
+%   texto
+% \end{elaborationbox}
+%\newcounter{countelab}%[chapter] ,use counter=countelab
+\newtcolorbox[list inside=MisElaboraciones,list type=MisElaboraciones,auto counter,number within=chapter]{elaborationbox}[1]{
+    tile,
+    colback=colorsystemdefault!5,
+    coltitle=colorsystemdefaultdkred,
+    colbacktitle=colorsystemdefaultdkred!10,
+    center title,
+    toprule=1.25mm,
+    bottomrule=1.25mm,
+    extras unbroken and first={borderline north={0.5mm}{0.5mm}{colorsystemdefaultdkred,decoration={zigzag,amplitude=0.5mm},decorate}},
+    extras unbroken and last={borderline south={0.5mm}{0.5mm}{colorsystemdefaultdkred,decoration={zigzag,amplitude=0.5mm},decorate}},
+    title={#1}, 
+    width=\linewidth
+}
+
+
+
+%% List of type %% para:  \tcblistof[\section*]{MisXElaboraciones}{Lista de frases}
+\titlecontents{MisElaboraciones}[2.00cm] %% Indentation %% left
+{\TocEntryEnvTextFormat} %% Spacing and font options for sections %% above code
+{\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+{} %% numberless-entry-format
+{\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format {\hfill\color{black}\thecontentspage} 
+[] %% separator
+
+\makeatletter
+\newcommand{\ttll@MisElaboraciones}{-1000}
+\makeatother
+
+
+

@@ -1,0 +1,254 @@
+
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+\usepackage{comment} %
+\usepackage{lipsum} % Inserts dummy text
+\usepackage{calc} % For simpler calculation - used for spacing the index letter headings correctly
+\usepackage{morewrites}%%! No room for a new \write.
+\usepackage{booktabs} % Required for nicer horizontal rules in tables \toprule \midrule \bottomrule
+\usepackage{etoolbox}%% necesario para ifdefstring
+\usepackage{fancyvrb}
+\usepackage{lmodern}% The lmodern package was used just to have access to a 80pt font size.
+
+%----------------------------------------------------------------------------------------
+%	ACENTOS
+%----------------------------------------------------------------------------------------
+\usepackage[utf8]{inputenc} % Required for including letters with accents
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+
+\usepackage[brazil]{babel}
+%\usepackage[english]{babel} % English language/hyphenation
+
+%----------------------------------------------------------------------------------------
+%	FONTS
+%----------------------------------------------------------------------------------------
+\usepackage{avant} % Use the Avantgarde font for headings
+%\usepackage{times} % Use the Times font for headings
+\usepackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Sym­bol, Chancery and Com­puter Modern fonts
+\usepackage{microtype}% The microtype package was used to use \textls to space out the letters in "Chapter". % Slightly tweak font spacing for aesthetics
+%----------------------------------------------------------------------------------------
+%	PAGE HEADERS
+%----------------------------------------------------------------------------------------
+
+\usepackage{fancyhdr} % Required for header and footer configuration
+\pagestyle{fancy}
+
+
+%----------------------------------------------------------------------------------------
+% Para 
+% \begin{inparaenum}
+% \item
+% \end{inparaenum}
+% parecido a timeze pero horizontal 
+%----------------------------------------------------------------------------------------
+\usepackage{paralist}
+\usepackage{enumitem} % Customize lists % en ese orden primero paralist
+\setlist{nolistsep} % Reduce spacing between bullet points and numbered lists
+
+
+%----------------------------------------------------------------------------------------
+%	VARIOUS REQUIRED PACKAGES AND CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\usepackage[top=2.5cm,bottom=2.5cm,left=3.0cm,right=2.5cm,headsep=10pt,a4paper]{geometry} % Page margins
+
+%----------------------------------------------------------------------------------------
+% Graficos
+%----------------------------------------------------------------------------------------
+\usepackage{graphicx} % Required for including pictures
+\usepackage{float}% para ter [H]
+\graphicspath{{Pictures/}} % Specifies the directory where pictures are stored
+\ifdefined \EnableGrayScale
+    \usepackage[GRAY]{epspdfconversion}
+\fi
+
+
+%----------------------------------------------------------------------------------------
+% Par diferentes modelos de caption.
+%----------------------------------------------------------------------------------------
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+
+%----------------------------------------------------------------------------------------
+% ROTATION FIGURE
+%----------------------------------------------------------------------------------------
+% For rotating figures, tables, etc.
+%  including their captions
+% \begin{sidewaysfigure}[ht]
+% \end{sidewaysfigure}
+\usepackage[figuresleft]{rotating}
+
+
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS IN THE DOCUMENTS
+%----------------------------------------------------------------------------------------
+\usepackage{hyperref}
+%% \usepackage{hyperxmp} %% da erro nao ativar- pdfcontactemail
+\hypersetup{
+	hidelinks,
+	backref=true,
+	pagebackref=true,
+	hyperindex=true,
+	colorlinks=true,
+    citecolor=colormylink,    % color of citations
+	linkcolor=black,          % color of internal links (change box color with linkbordercolor)
+	%pdftoolbar=true,         % show Acrobat’s toolbar?
+	%pdfmenubar=true,         % show Acrobat’s menu?
+	%pdffitwindow=false,      % window fit to page when opened
+	%pdfstartview={FitH},     % fits the width of the page to the window
+	breaklinks=true,
+	urlcolor= colormylink,
+	bookmarks=true,
+	bookmarksopen=false,
+	pdftitle={\mytitle - \mysubtitle},
+	pdfauthor={\myauthor},
+	pdfsubject={Livro sobre métodos numéricos abordando problemas inversos para funciones vectoriais de domínio vetorial.},
+	pdfkeywords={Cálculo numérico, problemas inversos, não lineares},
+	%pdfcontactemail={\ImprimirRawEmail},
+	%pdfcopyright={Creative Commons Atribuição - Não Comercial - Sem Derivações 4.0 Internacional},
+	%baseurl={\ImprimirLinkHomePageLivro}
+}
+
+
+\usepackage{bookmark}%% precisa usepackage hyperref
+\bookmarksetup{
+open,
+numbered,
+addtohook={%
+\ifnum\bookmarkget{level}=0 % chapter
+\bookmarksetup{bold}%
+\fi
+\ifnum\bookmarkget{level}=-1 % part
+\bookmarksetup{color=colormylink,bold}%
+\fi
+}
+}
+
+%----------------------------------------------------------------------------------------
+%	Footnote
+%----------------------------------------------------------------------------------------
+\usepackage{scrextend} %multiple reference
+
+%----------------------------------------------------------------------------------------
+%  footnote font size
+%----------------------------------------------------------------------------------------
+\renewcommand{\footnotesize}{\small}
+
+%----------------------------------------------------------------------------------------
+% Page counter
+%----------------------------------------------------------------------------------------
+\usepackage{lastpage}
+
+%----------------------------------------------------------------------------------------
+% GLOSSARIO
+%----------------------------------------------------------------------------------------
+\usepackage{nomencl}
+
+%----------------------------------------------------------------------------------------
+% Para \singlespacing 
+%----------------------------------------------------------------------------------------
+\usepackage{setspace}
+
+%----------------------------------------------------------------------------------------
+% MUSICAL NOTATION
+%----------------------------------------------------------------------------------------
+\usepackage[generate,ps2eps]{abc}%%sudo apt-get install abcm2ps
+\usepackage[nointegrals]{wasysym}
+\usepackage{harmony} % http://linorg.usp.br/CTAN/macros/latex/contrib/harmony/harmony.pdf
+\usepackage{leadsheets}%%https://ctan.math.illinois.edu/macros/latex/contrib/leadsheets/leadsheets_en.pdf
+
+
+%----------------------------------------------------------------------------------------
+% QR CODE
+%----------------------------------------------------------------------------------------
+%\usepackage{qrcode}
+
+%----------------------------------------------------------------------------------------
+%	DEFINITION OF THEOREM BOXES
+%----------------------------------------------------------------------------------------
+\usepackage{amsmath,amsfonts,amssymb,amsthm} % For math equations, theorems, symbols, etc
+
+%----------------------------------------------------------------------------------------
+% TIKZ
+%----------------------------------------------------------------------------------------
+\usepackage{tikz} % Required for drawing custom shapes
+\usetikzlibrary{decorations.pathmorphing}
+
+%----------------------------------------------------------------------------------------
+% BOX - TCOLORBOX
+%----------------------------------------------------------------------------------------
+\usepackage[most,many]{tcolorbox}
+\tcbuselibrary{skins}
+
+%----------------------------------------------------------------------------------------
+% Grafico circulo satelites
+%----------------------------------------------------------------------------------------
+\usepackage{smartdiagram}
+
+%----------------------------------------------------------------------------------------
+% Hacer indices
+%----------------------------------------------------------------------------------------
+\usepackage{makeidx} % Required to make an index
+\makeindex % Tells LaTeX to create the files required for indexing
+
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY AND INDEX
+%----------------------------------------------------------------------------------------
+\usepackage[ style=alphabetic,
+             citestyle=alphabetic,
+             sorting=none,
+             sortcites=true,
+             autopunct=true,
+             babel=hyphen,
+             hyperref=true,
+             abbreviate=false,
+             backref=true,
+             backend=biber]{biblatex}
+\addbibresource{bibliography/bibliography.bib} % BibTeX bibliography file
+\defbibheading{bibempty}{}
+%\renewcommand*{\bibfont}{\footnotesize}%%fontsize 
+
+%----------------------------------------------------------------------------------------
+%  BIBLIGRAHY font size
+%----------------------------------------------------------------------------------------
+\renewcommand*{\bibfont}{\footnotesize}
+
+%----------------------------------------------------------------------------------------
+% SIMILAR A ITEMIZE OU ENUMERATE
+%----------------------------------------------------------------------------------------
+\usepackage{tasks}
+
+\settasks{
+style=itemize, 
+column-sep=5mm,
+%label-format={\color{green!70!black}\large\bfseries},  
+label-align=left, 
+%label-offset={1mm}, 
+%label-width={3mm}, 
+%item-indent={1mm},
+%item-format={\scshape\small}, 
+%after-item-skip=1mm, 
+%after-skip={10mm}
+}
+
+
+%----------------------------------------------------------------------------------------
+% TABLE BREAKING
+%----------------------------------------------------------------------------------------
+\usepackage{longtable}
+
+%----------------------------------------------------------------------------------------
+% TABLE MULTIROW
+%----------------------------------------------------------------------------------------
+\usepackage{multirow}
+
+
+%----------------------------------------------------------------------------------------
+%	Section
+%----------------------------------------------------------------------------------------
+\usepackage[explicit]{titlesec} % necesario para titleformat
+
+
+

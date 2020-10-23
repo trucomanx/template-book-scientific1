@@ -1,0 +1,25 @@
+
+
+\newsavebox\mymybox
+\newlength\secnumwd
+
+\titleformat{\section}
+  {\normalfont\Large\sffamily\color{colorsystemdefault}}
+  {}
+  {-0em}
+  {%
+    \savebox\mymybox{\normalfont\Large\sffamily\color{colorsystemdefault}\bfseries\thesection}%
+    \settowidth\secnumwd{\usebox\mymybox}%    
+    \parbox[t]{\secnumwd}{{\bfseries\thesection}}\hspace{1em}%
+    \parbox[t]{\dimexpr\textwidth+0em-\secnumwd-1em\relax}{#1}%
+  }
+  [\vskip-1.0ex\hskip-0em{\color{colorsystemdefault}\titlerule[4pt]}]
+
+\titleformat{name=\section,numberless}
+  {\normalfont\Large\sffamily\color{colorsystemdefault}}
+  {}
+  {-0em}
+  {#1}
+  [\vskip-1.0ex\hskip-0em{\color{colorsystemdefault}\titlerule[4pt]}]
+
+

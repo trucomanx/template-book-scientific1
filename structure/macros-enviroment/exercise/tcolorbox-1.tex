@@ -1,0 +1,43 @@
+%----------------------------------------------------------------------------------------
+% NOTACAO THEOREMS
+%----------------------------------------------------------------------------------------
+% \begin{exercise}[Título]
+%   text
+% \end{exercise}
+%----------------------------------------------------------------------------------------
+%% Create a new counter that will follow tcolorbox's numbering
+\newcounter{exercise}[section]
+\renewcommand*{\theexercise}{\noexpand\thesection.\noexpand\arabic{exercise}}
+
+\newtcolorbox[list inside=MisExercise,list type=MisExercise,auto counter,number within=section]{exercise}[1][]{
+  title={#1},
+  detach title,
+  coltitle=black,
+  before upper={\addtocounter{exercise}{-1}\refstepcounter{exercise}\textbf{Exerc\'icio~\thetcbcounter\refstepcounter{exercise}\ifdefstring{\tcbtitletext}{}{:}{~---~\tcbtitle:}}},
+  % %fonttitle=\bfseries,
+  breakable,
+  enhanced,
+  arc      =0mm,
+  top=0mm,
+  bottom=0mm,
+  colback  =colorsystemdefault!4,
+  colframe =colorsystemdefault,
+  leftrule =4pt,%
+  rightrule=0mm,
+  toprule=0mm,
+  bottomrule=0mm,
+  %drop fuzzy shadow=black
+}
+
+%% List of type %% para:  \tcblistof[\section*]{MisExercise}{Lista de frases}
+\titlecontents{MisExercise}[2.00cm] %% Indentation %% left
+{\TocEntryEnvTextFormat} %% Spacing and font options for sections %% above code
+{\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+{} %% numberless-entry-format
+{\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format {\hfill\color{black}\thecontentspage} 
+[] %% separator
+
+\makeatletter
+\newcommand{\ttll@MisExercise}{-1000}
+\makeatother
+
