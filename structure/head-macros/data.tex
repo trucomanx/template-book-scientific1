@@ -2,9 +2,10 @@
 %----------------------------------------------------------------------------------------
 %	DATOS PRINCIPALES DEL LIBRO
 %----------------------------------------------------------------------------------------
-\newcommand{\mytitle}[0]{Samba de gafieira}
-\newcommand{\mysubtitle}[0]{Hist{\'{o}}ria, dan{\c{c}}a, teoria e pr{\'{a}}tica}
+\newcommand{\mytitle}[0]{T\'itulo do livro}
+\newcommand{\mysubtitle}[0]{Subt\'itulo do livro}
 \newcommand{\myauthor}[0]{Fernando Pujaico Rivera}
+\newcommand{\ImprimirEdition}[0]{Primeira edi\c{c}\~{a}o}
 %----------------------------------------------------------------------------------------
 
 
@@ -19,21 +20,34 @@
 %----------------------------------------------------------------------------------------
 \newcommand{\ImprimirEmail}[0]{\href{mailto:fernando.pujaico.rivera@gmail.com}{fernando.pujaico.rivera@gmail.com}}
 
+\def \PaperSizeToGeometry{a4paper}
+% a0paper, a1paper, a2paper, a3paper, a4paper, a5paper,
+% b0paper, b1paper, b2paper, b3paper, b4paper, b5paper, 
+% c0paper, c1paper, c2paper, c3paper, c4paper, c5paper, 
+% b0j, b1j, b2j, b3j, b4j, b5j, 
+% ansiapaper, ansibpaper, ansicpaper, ansidpaper, ansiepaper, 
+% letterpaper, executivepaper, legalpaper 
+\def \MarginShortGeometry{2.0cm}
+\def \MarginLongGeometry{2.5cm}
+\newcommand{\imprimirpagewidthcm}{21.0}  %% A4 
+\newcommand{\imprimirpageheightcm}{29.7} %% A4
+
+
 %----------------------------------------------------------------------------------------
 %   DADOS ficha catalográfica
 %----------------------------------------------------------------------------------------
 \def \myauthorname{Fernando}
-\def \myauthorlastname{Pujaico Rivera}
-\def \myauthorborn{1982}
-\def \imprimirlocal{Lavras}%cidade obrigatorio
-\def \imprimiryear{2020}
+\def \myauthorlastname{Pujaico Rivera}%nome do autor
+\def \myauthorborn{1982}% data de nascimento
+\def \imprimirlocal{Lavras/MG}%cidade obrigatorio
+\def \imprimiryear{2020}%ano da edição do livro
 \newcommand{\imprimirdata}[0]{\textcolor{red}{XXXXXXXXXXX} \imprimiryear}
 \def \imprimirtipotrabalho{Inclui Bibliografia}
 \def \imprimircuttersanborn{P979m} %% https://www.cuttersonline.com/app/generator/?q=Pujaico&ref=sanborn&add=
-\newcommand{\imprimirpapersize}[0]{\textcolor{red}{XXXxXXXcm}} %21x30cm}
+\newcommand{\imprimirpapersize}[0]{\imprimirpagewidthcm{x}\imprimirpageheightcm} %21x30cm}
 \def \imprimirCDD{792.62}   %% http://www.isbn.bn.br/website/tabela-de-assuntos
 \def \imprimirCDU{793.3} %% Dança %% https://www.ipleiria.pt/sdoc/wp-content/uploads/sites/10/2016/05/cdu-atualizada.pdf 
-\newcommand{\imprimirisbn}[0]{\textcolor{red}{XXXXXXXXXXX}}
+\newcommand{\imprimirisbn}[0]{\textcolor{red}{XXXXXXXXXXX}}%%numero de ISBN
 \def \imprimireditora{Edi\c{c}\~{a}o Independente}
 \def \palavraschavea{Dan\c{c}a}
 \def \palavraschaveb{Samba}
@@ -43,6 +57,6 @@
 \def \palavraschavesInglesc{Samba de gafieira}
 %----------------------------------------------------------------------------------------
 
-\newcommand{\AnoLivro}[0]{2020}%% Ano da primeira edição, usado para ser trocado por: ATUALMENTE
+\newcommand{\AnoLivro}[0]{\imprimiryear}%% Ano da primeira edição, usado para ser trocado por: ATUALMENTE
 
 

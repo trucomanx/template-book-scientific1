@@ -26,6 +26,9 @@
 %\usepackage{times} % Use the Times font for headings
 \usepackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Sym­bol, Chancery and Com­puter Modern fonts
 \usepackage{microtype}% The microtype package was used to use \textls to space out the letters in "Chapter". % Slightly tweak font spacing for aesthetics
+
+
+
 %----------------------------------------------------------------------------------------
 %	PAGE HEADERS
 %----------------------------------------------------------------------------------------
@@ -50,18 +53,26 @@
 %	VARIOUS REQUIRED PACKAGES AND CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\usepackage[top=2.5cm,bottom=2.5cm,left=3.0cm,right=2.5cm,headsep=10pt,a4paper]{geometry} % Page margins
+\usepackage[%
+top=\MarginShortGeometry,%
+bottom=\MarginShortGeometry,%
+left=\MarginLongGeometry,%
+right=\MarginShortGeometry,%
+headsep=10pt,%
+\PaperSizeToGeometry]{geometry} % Page margins
 
 %----------------------------------------------------------------------------------------
 % Graficos
 %----------------------------------------------------------------------------------------
 \usepackage{graphicx} % Required for including pictures
 \usepackage{float}% para ter [H]
-\graphicspath{{Pictures/}} % Specifies the directory where pictures are stored
+\graphicspath{{pictures/}} % Specifies the directory where pictures are stored
+%\graphicspath{{pictures/}{pictures/social-network/}{pictures/chapter_head/}{pictures/rule-separator/}}
 \ifdefined \EnableGrayScale
     \usepackage[GRAY]{epspdfconversion}
 \fi
 
+\usepackage{eso-pic}%%This package makes it easy to add some picture commands (background) to every page at ab-solute positions
 
 %----------------------------------------------------------------------------------------
 % Par diferentes modelos de caption.
@@ -79,51 +90,6 @@
 % \end{sidewaysfigure}
 \usepackage[figuresleft]{rotating}
 
-
-%----------------------------------------------------------------------------------------
-%	HYPERLINKS IN THE DOCUMENTS
-%----------------------------------------------------------------------------------------
-\usepackage{hyperref}
-%% \usepackage{hyperxmp} %% da erro nao ativar- pdfcontactemail
-\hypersetup{
-	hidelinks,
-	backref=true,
-	pagebackref=true,
-	hyperindex=true,
-	colorlinks=true,
-    citecolor=colormylink,    % color of citations
-	linkcolor=black,          % color of internal links (change box color with linkbordercolor)
-	%pdftoolbar=true,         % show Acrobat’s toolbar?
-	%pdfmenubar=true,         % show Acrobat’s menu?
-	%pdffitwindow=false,      % window fit to page when opened
-	%pdfstartview={FitH},     % fits the width of the page to the window
-	breaklinks=true,
-	urlcolor= colormylink,
-	bookmarks=true,
-	bookmarksopen=false,
-	pdftitle={\mytitle - \mysubtitle},
-	pdfauthor={\myauthor},
-	pdfsubject={Livro sobre métodos numéricos abordando problemas inversos para funciones vectoriais de domínio vetorial.},
-	pdfkeywords={Cálculo numérico, problemas inversos, não lineares},
-	%pdfcontactemail={\ImprimirRawEmail},
-	%pdfcopyright={Creative Commons Atribuição - Não Comercial - Sem Derivações 4.0 Internacional},
-	%baseurl={\ImprimirLinkHomePageLivro}
-}
-
-
-\usepackage{bookmark}%% precisa usepackage hyperref
-\bookmarksetup{
-open,
-numbered,
-addtohook={%
-\ifnum\bookmarkget{level}=0 % chapter
-\bookmarksetup{bold}%
-\fi
-\ifnum\bookmarkget{level}=-1 % part
-\bookmarksetup{color=colormylink,bold}%
-\fi
-}
-}
 
 %----------------------------------------------------------------------------------------
 %	Footnote
@@ -246,9 +212,59 @@ label-align=left,
 
 
 %----------------------------------------------------------------------------------------
-%	Section
+%	CONTROL PART, CHAPTER AND SECTION TITLE
 %----------------------------------------------------------------------------------------
 \usepackage[explicit]{titlesec} % necesario para titleformat
 
+%----------------------------------------------------------------------------------------
+%	MAIN TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+\usepackage{titletoc} % Required for manipulating the table of contents
 
+%----------------------------------------------------------------------------------------
+%% OBLIGATORIAMENTE DEBE IR DESPUES DE TITLESEC Y TITLETOC
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS IN THE DOCUMENTS 
+%----------------------------------------------------------------------------------------
+\usepackage{hyperref}
+%% \usepackage{hyperxmp} %% da erro nao ativar- pdfcontactemail
+\hypersetup{
+	hidelinks,
+	backref=true,
+	pagebackref=true,
+	hyperindex=true,
+	colorlinks=true,
+    citecolor=colormylink,    % color of citations
+	linkcolor=black,          % color of internal links (change box color with linkbordercolor)
+	%pdftoolbar=true,         % show Acrobat’s toolbar?
+	%pdfmenubar=true,         % show Acrobat’s menu?
+	%pdffitwindow=false,      % window fit to page when opened
+	%pdfstartview={FitH},     % fits the width of the page to the window
+	breaklinks=true,
+	urlcolor= colormylink,
+	bookmarks=true,
+	bookmarksopen=false,
+	pdftitle={\mytitle - \mysubtitle},
+	pdfauthor={\myauthor},
+	pdfsubject={\mytitle - \mysubtitle},
+	pdfkeywords={\palavraschavea, \palavraschaveb, \palavraschavec},
+	%pdfcontactemail={\ImprimirRawEmail},
+	%pdfcopyright={Creative Commons Atribuição - Não Comercial - Sem Derivações 4.0 Internacional},
+	%baseurl={\ImprimirLinkHomePageLivro}
+}
+
+
+\usepackage{bookmark}%% precisa usepackage hyperref
+\bookmarksetup{
+open,
+numbered,
+addtohook={%
+\ifnum\bookmarkget{level}=0 % chapter
+\bookmarksetup{bold}%
+\fi
+\ifnum\bookmarkget{level}=-1 % part
+\bookmarksetup{color=colormylink,bold}%
+\fi
+}
+}
 

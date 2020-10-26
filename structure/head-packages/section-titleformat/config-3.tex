@@ -1,5 +1,6 @@
 
 \usetikzlibrary{shapes.misc}
+
 \newcommand\titlebar{%
 \tikz[baseline,trim left=3.1cm,trim right=3cm] {
     \fill [colorsystemdefault!25] (2.5cm,-1ex) rectangle (\textwidth+3.1cm,2.5ex);
@@ -12,6 +13,7 @@
     };
 }%
 }
+
 \titleformat{\section}{\Large\bfseries\sffamily}{\titlebar}{0.1cm}{#1}
 \renewcommand*{\thesection}{\arabic{section}}
 

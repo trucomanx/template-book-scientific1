@@ -2,7 +2,6 @@
 %----------------------------------------------------------------------------------------
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
-
 \documentclass[12pt]{extbook} % Default font size and left-justified equations
 
 
@@ -12,7 +11,7 @@
 %\def\EnableGrayScale{1}
 
 %----------------------------------------------------------------------------------------
-%% Viuvas e orfas
+%%  Linhas viuvas e orfas
 %----------------------------------------------------------------------------------------
 \clubpenalty=1000
 \widowpenalty=1000 
@@ -36,20 +35,23 @@
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 \input{\SourceRootPath/structure/head-packages} % paquetes usados con macros para la escrita
-\input{\SourceRootPath/structure/head-packages-titletoc} % paquetes usados con macros para la escrita
+
 %----------------------------------------------------------------------------------------
 %-- Macros usadas en el documento -------------------------------------------------------
 \input{\SourceRootPath/structure/head-macros/generic}
 %----------------------------------------------------------------------------------------
 %-- Configura el paquete titlesec -------------------------------------------------------
-\input{\SourceRootPath/structure/head-packages/part-titleformat/config-2}    % titleformat de part
+\input{\SourceRootPath/structure/head-packages/part-titleformat/config-4}    % titleformat de part
 \input{\SourceRootPath/structure/head-packages/chapter-titleformat/config-5} % titleformat de chapter
 \input{\SourceRootPath/structure/head-packages/section-titleformat/config-4} % titleformat de section
 %----------------------------------------------------------------------------------------
+%-- Configura header and footer ---------------------------------------------------------
+\input{\SourceRootPath/structure/head-packages/header-footer/config-1}    % titleformat de part
+%----------------------------------------------------------------------------------------
 %-- Box enviroments ---------------------------------------------------------------------
 \input{\SourceRootPath/structure/macros-enviroment/informationbox/tcolorbox-1} % las macros compuestas usadas para la escrita
-\input{\SourceRootPath/structure/macros-enviroment/attentionbox/tcolorbox-1}
-\input{\SourceRootPath/structure/macros-enviroment/elaborationbox/tcolorbox-2}
+\input{\SourceRootPath/structure/macros-enviroment/attentionbox/tcolorbox-2}
+\input{\SourceRootPath/structure/macros-enviroment/elaborationbox/tcolorbox-3}
 %----------------------------------------------------------------------------------------
 %-- Theorems enviroments ----------------------------------------------------------------
 \input{\SourceRootPath/structure/macros-enviroment/definition/tcolorbox-1}
@@ -67,8 +69,8 @@
 \input{\SourceRootPath/structure/macros-enviroment/catalografica/tcolorbox-1}
 
 %-----------------------------------------------------------------------------------------
+%-- Deletrear palavras
 %-----------------------------------------------------------------------------------------
-
 \hyphenation{sam-ba}
 \hyphenation{Har-wood}
 \hyphenation{mo-vi-men-tar}
@@ -83,31 +85,35 @@
 
 \begin{document}
 
-
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
-\input{\SourceRootPath/preliminares/titlepage}
+\input{\SourceRootPath/pages/titlepage/model3}
 
 %----------------------------------------------------------------------------------------
 %	COPYRIGHT PAGE
 %----------------------------------------------------------------------------------------
-\input{\SourceRootPath/preliminares/copyright}
+\input{\SourceRootPath/pages/copyright}
 
 %----------------------------------------------------------------------------------------
 %	DEDICATORIA
 %----------------------------------------------------------------------------------------
-\input{\SourceRootPath/preliminares/dedicatoria} 
+\input{\SourceRootPath/pages/dedicatoria} 
 
 %----------------------------------------------------------------------------------------
 %	Acknowledgements
 %----------------------------------------------------------------------------------------
-\input{\SourceRootPath/preliminares/acknowledgements} 
+\input{\SourceRootPath/pages/acknowledgements} 
 
 %----------------------------------------------------------------------------------------
 %	PATROCINIO PAGE
 %----------------------------------------------------------------------------------------
-\input{\SourceRootPath/preliminares/patrocinio}
+\input{\SourceRootPath/pages/patrocinio}
+
+%----------------------------------------------------------------------------------------
+%	PATROCINIO PAGE
+%----------------------------------------------------------------------------------------
+\input{\SourceRootPath/pages/prologo}
 
 
 %----------------------------------------------------------------------------------------
@@ -121,58 +127,51 @@
 %----------------------------------------------------------------------------------------
 %	TABLE OF DATAS
 %----------------------------------------------------------------------------------------
-\input{\SourceRootPath/preliminares/tableofdatas}
+\input{\SourceRootPath/pages/tableofdatas}
+
 
 %----------------------------------------------------------------------------------------
 \cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
 \pagestyle{fancy} % Print headers again
 
+
 %----------------------------------------------------------------------------------------
 %	PART
 %----------------------------------------------------------------------------------------
 \part{História}
+
 \input{chapters/cap1/cap1}
 \input{chapters/cap2/cap2}
-
 
 %----------------------------------------------------------------------------------------
 %	PART
 %----------------------------------------------------------------------------------------
 \part{Musicalização para a dança}
-
 \input{chapters/cap3/cap3}
 
-%----------------------------------------------------------------------------------------
-%----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 %	Apendice
 %----------------------------------------------------------------------------------------
 %\part{Apendice}
 
 
-%----------------------------------------------------------------------------------------
-%	BIBLIOGRAPHY
-%----------------------------------------------------------------------------------------
-%----------------------------------------------------------------------------------------
-%----------------------------------------------------------------------------------------
+
 %----------------------------------------------------------------------------------------
 %	PART
 %----------------------------------------------------------------------------------------
-\part{Referências}
+\part{Referencias}
 
-
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
 %\chapterimage{chapter_livro.pdf}
-
 \chapter*{Bibliografia}
 \addcontentsline{toc}{chapter}{Bibliografia} %% Sale en la pagina part
 \printbibliography[heading=bibempty]
 
-
-
 %----------------------------------------------------------------------------------------
 %	INDEX
 %----------------------------------------------------------------------------------------
-
 \cleardoublepage
 \phantomsection
 \setlength{\columnsep}{0.75cm}
@@ -184,6 +183,7 @@
 %----------------------------------------------------------------------------------------
 %	COLOFÃO
 %----------------------------------------------------------------------------------------
-\input{\SourceRootPath/preliminares/colofao}
+\input{\SourceRootPath/pages/colofao}
+
 
 \end{document}

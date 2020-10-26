@@ -10,6 +10,9 @@
 \newcounter{frasebox}[chapter]
 \renewcommand*{\thefrasebox}{\noexpand\thechapter.\noexpand\arabic{frasebox}}
 
+\def \MyLengthFrase{0.4\textwidth}
+\def \MyHalfLengthFrase{0.2\textwidth}
+
 \newtcolorbox[list inside=MisFrases,list type=MisFrases,auto counter,number within=chapter]{frasebox}[2]{
 freelance,
 colback=white,
@@ -19,8 +22,8 @@ interior titled code={
     (title.south west) --
     (title.south) -- 
     ([yshift=15pt]title.south) --
-    ([yshift=15pt,xshift=7cm]title.south) --
-    ([xshift=7cm]title.south) --
+    ([yshift=15pt,xshift=\MyLengthFrase]title.south) --
+    ([xshift=\MyLengthFrase]title.south) --
     (title.south east) {[sharp corners] --
     ([yshift=-6pt]title.south east) -- 
     ([yshift=-6pt]title.south west) } -- cycle;
@@ -29,12 +32,12 @@ interior titled code={
     (title.south west) --
     (title.south) -- 
     ([yshift=15pt]title.south) --
-    ([yshift=15pt,xshift=7cm]title.south) --
-    ([xshift=7cm]title.south) --
+    ([yshift=15pt,xshift=\MyLengthFrase]title.south) --
+    ([xshift=\MyLengthFrase]title.south) --
     (title.south east) --
     (title.east|-frame.south east) --
     cycle;
-  \node at ([xshift=3.5cm,yshift=4pt,anchor=south]title.south) 
+  \node at ([xshift=\MyHalfLengthFrase,yshift=4pt,anchor=south]title.south) 
     { \bfseries  Frase~\thetcbcounter\refstepcounter{frasebox}: #1};  
   },
 title={#1},

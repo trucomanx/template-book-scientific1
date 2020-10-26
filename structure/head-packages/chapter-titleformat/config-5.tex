@@ -1,3 +1,7 @@
+
+
+%\begin{comment}
+
 \titleformat{\chapter}[display]
   {\normalfont\huge\bfseries}
   {}
@@ -5,35 +9,40 @@
   {%
     \begin{tcolorbox}[
       enhanced,
-      rounded corners,
-      shadow={1mm}{-1mm}{-2.2mm}{black!20!white},
-      colback=white,
-      boxrule=0mm,
-      arc=3mm,
+      colback=colorsystemdefault,
+      boxrule=0.25cm,
+      colframe=colorsystemdefault!3,
+      arc=0pt,
+      outer arc=0pt,
       leftrule=0pt,
       rightrule=0pt,
-      fontupper=\color{colorsystemdefault}\sffamily\bfseries\huge,
-      width=\textwidth-3.2mm,  % account for shadow width.
+      fontupper=\color{white}\sffamily\bfseries\huge,
+      enlarge left by=-1in-\hoffset-\oddsidemargin, 
+      enlarge right by=-\paperwidth+1in+\hoffset+\oddsidemargin+\textwidth,
+      width=\paperwidth, 
+      left=1in+\hoffset+\oddsidemargin, 
+      right=\paperwidth-1in-\hoffset-\oddsidemargin-\textwidth,
       top=0.6cm, 
       bottom=0.6cm,
       overlay={
         \node[
           fill=colorsystemdefault,
-          line width=0cm,
+          draw=colorsystemdefault!3,
+          line width=0.15cm,
           inner sep=0pt,
-          text width=13mm,
-          minimum height=16mm,
+          text width=1.7cm,
+          minimum height=1.7cm,
           align=center,
-          anchor=south east,
-          xshift=2.2mm, yshift=9mm,
           font=\color{white}\sffamily\bfseries\fontsize{30}{36}\selectfont
         ] 
-        (chapname) at (frame.north east) {\thechapter};%el numero
-        \node[color=gray,font=\large,anchor=base east,inner sep=1mm] at (chapname.base west)
-        {\chaptertitlename};%% El texto capitulo  
-      }
+        (chapname)
+        at ([xshift=-4cm]frame.north east)
+        {\thechapter};
+        \node[font=\small,anchor=south,inner sep=2pt] at (chapname.north)
+        {\MakeUppercase\chaptertitlename};  % if using amsbook, this should be \chaptername
+      } 
     ]
-    \MakeUppercase{#1}
+    #1
     \end{tcolorbox}%
   }
   
@@ -44,19 +53,29 @@
   {%
     \begin{tcolorbox}[
       enhanced,
-      rounded corners,
-      shadow={1mm}{-1mm}{-2.2mm}{black!20!white},
-      colback=white,
-      boxrule=0mm,
-      arc=3mm,
+      colback=colorsystemdefault,
+      boxrule=0.25cm,
+      colframe=colorsystemdefault!3,
+      arc=0pt,
+      outer arc=0pt,
+      remember as=title,
       leftrule=0pt,
       rightrule=0pt,
-      fontupper=\color{colorsystemdefault}\sffamily\bfseries\huge,
-      width=\textwidth-3.2mm,  % account for shadow width.
+      fontupper=\color{white}\sffamily\bfseries\huge,
+      enlarge left by=-1in-\hoffset-\oddsidemargin, 
+      enlarge right by=-\paperwidth+1in+\hoffset+\oddsidemargin+\textwidth,
+      width=\paperwidth, 
+      left=1in+\hoffset+\oddsidemargin, 
+      right=\paperwidth-1in-\hoffset-\oddsidemargin-\textwidth,
       top=0.6cm, 
-      bottom=0.6cm
+      bottom=0.6cm, 
     ]
-    \MakeUppercase{#1}
+    #1
     \end{tcolorbox}%
   }
   
+  
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}%left|?|bottom
+
+%\end{comment}
+

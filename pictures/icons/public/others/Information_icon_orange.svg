@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="svg0" xmlns:svg="http://www.w3.org/2000/svg" xmlns:cc="http://web.resource.org/cc/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" inkscape:output_extension="org.inkscape.output.svg.inkscape" sodipodi:docname="Information_icon3.svg" inkscape:version="0.45.1" sodipodi:version="0.32" sodipodi:docbase="C:\Documents and Settings\KevinDuke\Desktop" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="620px" height="620px" viewBox="0 0 620 620" enable-background="new 0 0 620 620" xml:space="preserve">
+<radialGradient id="shadow_1_" cx="12.9778" cy="729.8026" r="0.5" gradientTransform="matrix(564.344 0 0 -564.3557 -6998.8677 412193.1563)" gradientUnits="userSpaceOnUse">
+	<stop offset="0" style="stop-color:#C0C0C0"/>
+	<stop offset="0.88" style="stop-color:#C0C0C0"/>
+	<stop offset="1" style="stop-color:#C0C0C0;stop-opacity:0"/>
+</radialGradient>
+<ellipse id="shadow" fill="url(#shadow_1_)" cx="325.06" cy="324.986" rx="282.172" ry="282.178"/>
+<linearGradient id="field_2_" gradientUnits="userSpaceOnUse" x1="602.6762" y1="414.8853" x2="308.8356" y2="-199.5969" gradientTransform="matrix(0.6756 0 0 -0.6756 2.9571 380.9155)">
+	<stop offset="0" style="stop-color:#FFC9A1"/>
+	<stop offset="0.5" style="stop-color:#FDA557"/>
+	<stop offset="1" style="stop-color:#F88C2C"/>
+</linearGradient>
+<linearGradient id="field_3_" gradientUnits="userSpaceOnUse" x1="797.0449" y1="-92.8154" x2="125.8326" y2="294.709" gradientTransform="matrix(0.6756 0 0 -0.6756 2.9571 380.9155)">
+	<stop offset="0" style="stop-color:#B74E08"/>
+	<stop offset="1" style="stop-color:#D87B3F"/>
+</linearGradient>
+<circle id="field_1_" fill="url(#field_2_)" stroke="url(#field_3_)" stroke-width="20" cx="310" cy="310" r="257.974"/>
+<polygon id="polygon26" fill="#FFFFFF" points="230,250 350,250 350,440 390,440 390,480 230,480 230,440 270,440 270,280 230,280   "/>
+<circle id="circle28" fill="#FFFFFF" cx="310" cy="170" r="40"/>
+<path id="path3146" sodipodi:cx="30.370558" sodipodi:ry="24.705584" sodipodi:open="true" sodipodi:cy="30.527918" sodipodi:type="arc" sodipodi:start="0.3836133" sodipodi:rx="24.705584" sodipodi:end="6.6467418" opacity="0.08" fill="#FFFFFF" enable-background="new    " d="  M540.342,402.438c-51.269,127.03-195.809,188.445-322.838,137.176S29.059,343.804,80.329,216.774S276.137,28.329,403.167,79.598  c125.231,50.544,187.013,191.987,138.991,318.208"/>
+</svg>

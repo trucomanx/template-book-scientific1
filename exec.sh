@@ -14,7 +14,7 @@
 	pdflatex -shell-escape main x 2
 #done
 
-#mv -f main.pdf samba-gafieira.pdf
+#mv -f main.pdf nome-do-livro.pdf
 
  play -n synth 1 sine 880 vol 0.5 #printf '\a' #tput bel
 ./clean.sh

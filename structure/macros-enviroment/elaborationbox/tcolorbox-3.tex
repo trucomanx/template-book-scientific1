@@ -1,0 +1,46 @@
+
+%----------------------------------------------------------------------------------------
+% ELABORACION MESSAGE BOX
+%----------------------------------------------------------------------------------------
+% \begin{elaborationbox}{título}
+%   texto
+% \end{elaborationbox}
+%\newcounter{countelab}%[chapter] ,use counter=countelab
+
+\newtcolorbox[list inside=MisElaboraciones,list type=MisElaboraciones,auto counter,number within=chapter]{elaborationbox}[1]
+{
+    detach title,
+    coltitle=black,
+    before upper={\begin{center}\textbf{\tcbtitle}\end{center}},
+    enhanced,
+    colframe=gray!70,
+    colback=colorsystemdefaultdkred!4,
+    boxrule=1pt,
+    top=7mm,
+    sharp corners=north,
+    enlarge top initially by= 5mm,
+    underlay={\begin{tcbclipinterior}\draw[help lines, step=5mm, gray!15, shift={(interior.north west)}] (interior.south west) grid (interior.north east);\end{tcbclipinterior}},
+    overlay={
+        \foreach \i in {1,2,...,10}{
+            \draw[draw=black, left color = black!60, right color = black!50, middle color = gray!20] ([yshift=-5 mm, xshift=5mm+(\i-1)*0.1\textwidth]frame.north west) rectangle ++(10pt,10pt);
+            \draw[double=gray!80, double distance=1pt] ([xshift=6.5mm+(\i-1)*0.1\textwidth]frame.north west) arc (30:360:2pt and 8pt);
+            \draw[double=gray!80, double distance=1pt] ([xshift=8mm+(\i-1)*0.1\textwidth]frame.north west) arc (30:360:2pt and 8pt);
+            }
+    },
+    title={#1}
+    }
+
+%% List of type %% para:  \tcblistof[\section*]{MisXElaboraciones}{Lista de frases}
+\titlecontents{MisElaboraciones}[2.00cm] %% Indentation %% left
+{\TocEntryEnvTextFormat} %% Spacing and font options for sections %% above code
+{\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+{} %% numberless-entry-format
+{\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format {\hfill\color{black}\thecontentspage} 
+[] %% separator
+
+\makeatletter
+\newcommand{\ttll@MisElaboraciones}{-1000}
+\makeatother
+
+
+

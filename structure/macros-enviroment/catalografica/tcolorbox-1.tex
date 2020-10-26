@@ -6,12 +6,17 @@
 %   texto
 % \end{catalografica}
 
+\ifdim 12.5cm<\textwidth
+\def \WidthOfCatalografica{12.5cm}
+\else
+\def \WidthOfCatalografica{\textwidth}
+\fi
 \newtcolorbox{catalografica}
 {
   breakable,
   enhanced,
   arc=0mm,
-  width=12.5cm,
+  width=\WidthOfCatalografica,
   colback  = white,
   colframe = black
 }
