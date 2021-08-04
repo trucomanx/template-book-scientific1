@@ -36,10 +36,10 @@
           font=\color{white}\sffamily\bfseries\fontsize{30}{36}\selectfont
         ] 
         (chapname)
-        at ([xshift=-4cm]frame.north east)
+        at ([xshift=-4cm,yshift=+0.20cm]frame.north east)
         {\thechapter};
         \node[font=\small,anchor=south,inner sep=2pt] at (chapname.north)
-        {\MakeUppercase\chaptertitlename};  % if using amsbook, this should be \chaptername
+        {\MakeUppercase\chaptertitlename}; %%\chaptertitlename=CAPÍTULO % if using amsbook, this should be \chaptername
       } 
     ]
     #1

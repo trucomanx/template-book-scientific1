@@ -7,25 +7,25 @@
   {%
   \begin{tikzpicture}[remember picture,overlay]
 \fill[top color=colorsystemdefault, bottom color=black] 
-(16,-23) rectangle (18.5,7);
+(17,-25) rectangle (19.0,7);%% (corner init) rec (corner opost) % rect verde
 \node[
     anchor= east,
-    xshift=-3.5cm,%% Inicio de texto
-    text width=\textwidth] 
-    at ([yshift=5pt]titlerect.east) {\fontsize{30}{36}\sffamily\selectfont#1};
+    xshift=-4.0cm,%% Inicio de texto
+    text width=0.9\textwidth] 
+    at ([yshift=5pt]titlerect.east) {\fontsize{30}{36}\sffamily\selectfont#1};%% title horizontal
 \node[
     anchor= east,
     inner xsep=3cm,
     outer sep=0pt,
     font=\color{black}]%,
-    at ([yshift=.5cm]current page.east|-titlerect.east)
-     {\fontsize{80}{86}\bfseries\thechapter};
+    at ([xshift=0.0cm,yshift=.5cm]current page.east|-titlerect.east)
+     {\fontsize{80}{86}\bfseries\thechapter};%% chapter number
 \node[
     anchor= east,
-    xshift=11.5cm,
-        yshift=-11cm,
+    xshift=15.0cm,
+    yshift=-11cm,
     text width=\textwidth] 
-    at ([yshift=5pt]titlerect.east) {\fontsize{30}{36}\scshape\selectfont\rotatebox{90}{\color{white}#1}};
+    at ([yshift=5pt]titlerect.east) {\fontsize{30}{36}\scshape\selectfont\rotatebox{90}{\color{white}#1}};%% title vert
   \end{tikzpicture}%
 }
 \titleformat{name=\chapter,numberless}[display]
@@ -35,7 +35,7 @@
   {%
   \begin{tikzpicture}[remember picture,overlay]
     \fill[top color=colorsystemdefault, bottom color=black] 
-    (16,-25) rectangle (18.5,7);
+    (17,-25) rectangle (19.0,7);
   \node[
    anchor=west,
     rectangle,
@@ -48,11 +48,11 @@
     xshift=2cm,%% Inicio de texto
         yshift=2cm,
     text width=\textwidth] 
-   at (titlerect.south west) {\sffamily\Huge#1};
+   at (titlerect.south west) {\sffamily\Huge#1};%% texto
     \node[
     anchor= east,
-    xshift=11.5cm,
-        yshift=-11cm,
+    xshift=15.0cm,
+    yshift=-11cm,
     text width=\textwidth] 
     at ([yshift=5pt]titlerect.east) {\fontsize{30}{36}\scshape\selectfont\rotatebox{90}{\color{white}#1}};
   \end{tikzpicture}%
