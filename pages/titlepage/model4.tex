@@ -1,0 +1,34 @@
+\newpage
+
+\def \TextAtTopOfPage{\ImprimirEdition}
+\def \TextAtBottomOfPage{\imprimiryear}%% {Gerado no dia \today}
+
+\begingroup
+\begin{titlepage}
+%
+\newgeometry{left=0.1\textwidth,right=0.1\textwidth,top=0.0cm,bottom=0.0cm}
+\AddToShipoutPicture*{\put(50,20){\includegraphics[width=1.0\textwidth]{logos/greenethnicnatureframe}}} % Image background
+%\AddToShipoutPicture*{\put(0,0){\includegraphics[width=0.49\textwidth]{logos/logo-bw-1}}} % Image background
+%\AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{golden-ratio-3}}
+%
+\noindent\begin{minipage}{\textwidth}
+\centering\fontsize{0.032\textheight}{0pt}\selectfont%
+\vspace*{0.18\textheight}%
+\TextAtTopOfPage%
+\vspace*{0.18\textheight}%
+\end{minipage}
+%
+\noindent\begin{minipage}{\textwidth}
+\centering%
+{\fontsize{0.06\textheight}{0}\selectfont \mytitle\\[0.02\textheight]}%
+{\fontsize{0.05\textheight}{0}\selectfont \mysubtitle}%
+\end{minipage}
+\vspace{0.14\textheight}
+\begin{center}
+    {\fontsize{0.032\textheight}{0pt}\selectfont \myauthor}\\[1\baselineskip]
+    {\fontsize{0.032\textheight}{0pt}\selectfont \imprimirlocal}\\[1\baselineskip]
+    {\fontsize{0.032\textheight}{0pt}\selectfont \TextAtBottomOfPage}
+\end{center}
+%
+\end{titlepage}
+\endgroup
