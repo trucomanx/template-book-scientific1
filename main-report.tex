@@ -1,0 +1,165 @@
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass[12pt]{extbook} % Default font size and left-justified equations
+
+
+%----------------------------------------------------------------------------------------
+%	GRAYSCALE EM TODAS AS FIGURAS
+%----------------------------------------------------------------------------------------
+%\def\EnableGrayScale{1}
+
+%----------------------------------------------------------------------------------------
+%%  Linhas viuvas e orfas
+%----------------------------------------------------------------------------------------
+\clubpenalty=1000
+\widowpenalty=1000 
+
+%----------------------------------------------------------------------------------------
+%	ROOT PATH
+%----------------------------------------------------------------------------------------
+\def \SourceRootPath{.}
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	DATOS DEL LIBRO
+%----------------------------------------------------------------------------------------
+\input{\SourceRootPath/structure/head-macros/data}
+
+%----------------------------------------------------------------------------------------
+%	COLORES DEL LIBRO
+%----------------------------------------------------------------------------------------
+\input{\SourceRootPath/structure/head-macros/colors}
+
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+\input{\SourceRootPath/structure/head-packages} % paquetes usados con macros para la escrita
+
+%----------------------------------------------------------------------------------------
+%-- Macros usadas en el documento -------------------------------------------------------
+\input{\SourceRootPath/structure/head-macros/generic}
+%----------------------------------------------------------------------------------------
+%-- Configura el paquete titlesec -------------------------------------------------------
+\input{\SourceRootPath/structure/head-packages/part-titleformat/config-4}    % titleformat de part
+\input{\SourceRootPath/structure/head-packages/chapter-titleformat/config-5} % titleformat de chapter
+\input{\SourceRootPath/structure/head-packages/section-titleformat/config-4} % titleformat de section
+%----------------------------------------------------------------------------------------
+%-- Configura header and footer ---------------------------------------------------------
+\input{\SourceRootPath/structure/head-packages/header-footer/config-1}    % titleformat de part
+%----------------------------------------------------------------------------------------
+%-- Box enviroments ---------------------------------------------------------------------
+\input{\SourceRootPath/structure/macros-enviroment/informationbox/tcolorbox-1} % las macros compuestas usadas para la escrita
+\input{\SourceRootPath/structure/macros-enviroment/attentionbox/tcolorbox-2}
+\input{\SourceRootPath/structure/macros-enviroment/elaborationbox/tcolorbox-3}
+%----------------------------------------------------------------------------------------
+%-- Theorems enviroments ----------------------------------------------------------------
+\input{\SourceRootPath/structure/macros-enviroment/definition/tcolorbox-1}
+\input{\SourceRootPath/structure/macros-enviroment/theorem/tcolorbox-2}
+\input{\SourceRootPath/structure/macros-enviroment/notation/tcolorbox-2}
+\input{\SourceRootPath/structure/macros-enviroment/example/tcolorbox-1}
+\input{\SourceRootPath/structure/macros-enviroment/exercise/tcolorbox-2}
+\input{\SourceRootPath/structure/macros-enviroment/proofraw/newtheorem-1}
+%----------------------------------------------------------------------------------------
+%-- Others enviroments ------------------------------------------------------------------
+\input{\SourceRootPath/structure/macros-enviroment/frasebox/tcolorbox-1}
+\input{\SourceRootPath/structure/macros-enviroment/boxequation/tcolorbox-1}
+%----------------------------------------------------------------------------------------
+%-- One use enviroments -----------------------------------------------------------------
+\input{\SourceRootPath/structure/macros-enviroment/citando/tcolorbox-1}
+\input{\SourceRootPath/structure/macros-enviroment/patrocinio/tcolorbox-1}
+\input{\SourceRootPath/structure/macros-enviroment/catalografica/tcolorbox-1}
+
+%-----------------------------------------------------------------------------------------
+%-- Deletrear palavras
+%-----------------------------------------------------------------------------------------
+\hyphenation{sam-ba}
+\hyphenation{Har-wood}
+\hyphenation{mo-vi-men-tar}
+\hyphenation{mo-vi-men-tar-nos}
+\hyphenation{mo-vi-men-tan-do}
+
+%----------------------------------------------------------------------------------------
+% Para a criação do Glossário
+%----------------------------------------------------------------------------------------
+\makenomenclature
+
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+\input{\SourceRootPath/pages/titlepage/model4}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+\clearpage
+%\chapterimage{chapter_letras.pdf} % Table of contents heading image
+\pagestyle{fancy} %\pagestyle{empty} % No headers %\pagestyle{fancy} % Print headers again
+\tableofcontents % Print the table of contents itself
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF DATAS
+%----------------------------------------------------------------------------------------
+\input{\SourceRootPath/pages/tableofdatas-short}
+
+
+%----------------------------------------------------------------------------------------
+\cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
+\pagestyle{fancy} % Print headers again
+
+
+%----------------------------------------------------------------------------------------
+%	PART
+%----------------------------------------------------------------------------------------
+\part{História}
+
+\input{chapters/cap1/cap1}
+\input{chapters/cap2/cap2}
+
+%----------------------------------------------------------------------------------------
+%	PART
+%----------------------------------------------------------------------------------------
+\part{Musicalização para a dança}
+\input{chapters/cap3/cap3}
+
+%----------------------------------------------------------------------------------------
+%	Apendice
+%----------------------------------------------------------------------------------------
+%\part{Apendice}
+
+
+
+%----------------------------------------------------------------------------------------
+%	PART
+%----------------------------------------------------------------------------------------
+\part{Referencias}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+%\chapterimage{chapter_livro.pdf}
+\chapter*{Bibliografia}
+\addcontentsline{toc}{chapter}{Bibliografia} %% Sale en la pagina part
+\printbibliography[heading=bibempty]
+
+%----------------------------------------------------------------------------------------
+%	INDEX
+%----------------------------------------------------------------------------------------
+\cleardoublepage
+\phantomsection
+\setlength{\columnsep}{0.75cm}
+\addcontentsline{toc}{chapter}{Índice} %% Sale en la pagina part
+\printindex
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	COLOFÃO
+%----------------------------------------------------------------------------------------
+\input{\SourceRootPath/pages/colofao}
+
+
+\end{document}

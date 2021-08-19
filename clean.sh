@@ -1,6 +1,6 @@
 #!/bin/bash
 
-filename=main
+filename=$1
 
 rm -rf $filename
 
@@ -37,13 +37,13 @@ rm -f *.ilg
 rm -f *.backup
 
 #rm -f main.loe
-rm -f main.MisDefinicoes
-rm -f main.MisExample
-rm -f main.MisExercise
-rm -f main.MisTheorem
-rm -f main.MisNotation
-rm -f main.MisElaboraciones
-rm -f main.MisFrases
-rm -f main.MisInformacoes
-rm -f main.mw
+rm -f $filename.MisDefinicoes
+rm -f $filename.MisExample
+rm -f $filename.MisExercise
+rm -f $filename.MisTheorem
+rm -f $filename.MisNotation
+rm -f $filename.MisElaboraciones
+rm -f $filename.MisFrases
+rm -f $filename.MisInformacoes
+rm -f $filename.mw
 
