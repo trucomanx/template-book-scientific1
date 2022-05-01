@@ -8,14 +8,14 @@
 %\newcounter{countelab}%[chapter] ,use counter=countelab
 \newtcolorbox[list inside=MisElaboraciones,list type=MisElaboraciones,auto counter,number within=chapter]{elaborationbox}[1]{
     tile,
-    colback=colorsystemdefault!5,
-    coltitle=colorsystemdefaultdkred,
-    colbacktitle=colorsystemdefaultdkred!10,
+    colback=colorElaborationFrame!5,
+    coltitle=colorElaboration,
+    colbacktitle=colorElaboration!10,
     center title,
     toprule=1.25mm,
     bottomrule=1.25mm,
-    extras unbroken and first={borderline north={0.5mm}{0.5mm}{colorsystemdefaultdkred,decoration={zigzag,amplitude=0.5mm},decorate}},
-    extras unbroken and last={borderline south={0.5mm}{0.5mm}{colorsystemdefaultdkred,decoration={zigzag,amplitude=0.5mm},decorate}},
+    extras unbroken and first={borderline north={0.5mm}{0.5mm}{colorElaboration,decoration={zigzag,amplitude=0.5mm},decorate}},
+    extras unbroken and last={borderline south={0.5mm}{0.5mm}{colorElaboration,decoration={zigzag,amplitude=0.5mm},decorate}},
     title={#1}, 
     width=\linewidth
 }

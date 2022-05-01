@@ -1,31 +1,14 @@
 
-\usetikzlibrary{shapes,shadows,calc}
-\usetikzlibrary{positioning,calc}
 
-%\setlength{\AnchoPonta}{2\textheight}
-\def \AnchoPonta{0.15\textwidth}%{0.15\textwidth}%2.5
-\def \AnchoNoPonta{0.1\textwidth}
-
-
-\newcommand\SecTitle[2]{%
-\begin{tikzpicture}
-\node (A) [rectangle,minimum width=\textwidth, minimum height=1cm,color=white,fill=colorsystemdefault, text width=\textwidth,align=left] {\hspace{\AnchoPonta}\parbox{\textwidth-\AnchoPonta}{\huge\textbf{\textsf{#1}}}};
+\titleformat{\section}[hang]{\Large\bfseries\sffamily}%
+{\rlap{\color{colorSection}\rule[-6pt]{\textwidth}{1.2pt}}\colorbox{colorSection}{%
+           \raisebox{0pt}[13pt][3pt]{ \makebox[60pt]{% height, width
+                \fontfamily{phv}\selectfont\color{white}{\thesection}}
+            }}}%
+{15pt}%
+{ \color{colorSection}#1
 %
-% El rombo atras del numero
-\fill[fill=colorsystemdefault!80] (A.north west) -- ($(A.north west)+(\AnchoNoPonta,0)$) -- ($0.5*(A.north west)-0.5*(A.north west)-(0.5*\textwidth-\AnchoPonta,0)$)--($(A.south west)+(\AnchoNoPonta,0)$)--(A.south west);
-%
-% Solo el numero
-\node [color=white](A.north west) at ($0.5*(A.north west)-0.5*(A.north west)-(0.5*\textwidth-0.05\textwidth,0)$) {\Huge\textbf{\textsf{#2}}};
-
-\end{tikzpicture}
-
 }
+\titlespacing*{\section}{0pt}{3mm}{5mm}
 
-\titleformat{\section}
-{\normalfont}{}{0em}
-{\SecTitle{#1}{\thesection}}
-
-\titleformat{name=\section,numberless}
-{\normalfont}{}{0em}
-{\SecTitle{#1}{~}}
 

@@ -12,8 +12,8 @@
   colframe=colorAttention!20!black,
   sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
   underlay={%
-    \path[fill=colorsystemdefault!20!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
-    \path[draw=colorsystemdefault,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+    \path[fill=colorAttentionFrame!20!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+    \path[draw=colorAttentionFrame,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
     \path[fill=colorAttention!50,draw=none] (interior.south west) rectangle node[white]{\includegraphics[width=8mm]{icons/attention1.eps}} ([xshift=14mm]interior.north west);
     },
   drop fuzzy shadow,#1}

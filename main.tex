@@ -30,8 +30,11 @@
 %----------------------------------------------------------------------------------------
 %	COLORES DEL LIBRO
 %----------------------------------------------------------------------------------------
-\input{\SourceRootPath/structure/head-macros/colors}
-
+\ifx\EnableGrayScale\undefined
+    \input{\SourceRootPath/structure/head-macros/color-scheme-type1}
+\else
+    \input{\SourceRootPath/structure/head-macros/color-scheme-gray1}
+\fi
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 \input{\SourceRootPath/structure/head-packages} % paquetes usados con macros para la escrita
@@ -41,12 +44,12 @@
 \input{\SourceRootPath/structure/head-macros/generic}
 %----------------------------------------------------------------------------------------
 %-- Configura el paquete titlesec -------------------------------------------------------
-\input{\SourceRootPath/structure/head-packages/part-titleformat/config-4}    % titleformat de part
-\input{\SourceRootPath/structure/head-packages/chapter-titleformat/config-5} % titleformat de chapter
-\input{\SourceRootPath/structure/head-packages/section-titleformat/config-4} % titleformat de section
+\input{\SourceRootPath/structure/head-packages/part-titleformat/config-4}    % titleformat de part [config-1 ..config-4]
+\input{\SourceRootPath/structure/head-packages/chapter-titleformat/config-5} % titleformat de chapter [config-1 ..config-5]
+\input{\SourceRootPath/structure/head-packages/section-titleformat/config-4} % titleformat de section [config-1 ..config-4]
 %----------------------------------------------------------------------------------------
 %-- Configura header and footer ---------------------------------------------------------
-\input{\SourceRootPath/structure/head-packages/header-footer/config-1}    % titleformat de part
+\input{\SourceRootPath/structure/head-packages/header-footer/config-1} % header-footer format [config-1]
 %----------------------------------------------------------------------------------------
 %-- Box enviroments ---------------------------------------------------------------------
 \input{\SourceRootPath/structure/macros-enviroment/informationbox/tcolorbox-1} % las macros compuestas usadas para la escrita

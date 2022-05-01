@@ -22,7 +22,7 @@
   top=0mm,
   bottom=0mm,
   colback  =black!3,
-  colframe =colorsystemdefault,
+  colframe =colorNotation,
   leftrule =4pt,%
   rightrule=0mm,
   toprule=0mm,
@@ -32,7 +32,7 @@
 \end{comment}
 
 \newcommand{\titlepath}{
-  \fill[colorsystemdefault]
+  \fill[colorNotation]
   (title.south east)
   --(title.east)coordinate(A)
   to[curve to,out=90,in=0]($(A)+(-5mm,5mm)$)
@@ -41,7 +41,7 @@ to[curve to,out=180,in=90]($(B)+(-5mm,-5mm)$)coordinate(C)
       --($(C)+(0mm,-5mm)$)
       to[curve to,out=90,in=180]($(title.south west)+(+5mm,0mm)$)coordinate(F)
       --cycle;
-      \draw[colorsystemdefault,ultra thick]
+      \draw[colorNotation,ultra thick]
       ([yshift=.5\pgflinewidth]title.south east)--
       ([yshift=.5\pgflinewidth]title.south-|interior.east);
     }
@@ -55,7 +55,7 @@ to[curve to,out=180,in=90]($(B)+(-5mm,-5mm)$)coordinate(C)
   title={#1},
   before upper={\addtocounter{notation}{-1}\refstepcounter{notation}\textbf{Nota\c{c}\~{a}o~\thetcbcounter\refstepcounter{notation}:}},
   breakable,
-  colback=colorsystemdefault!4,
+  colback=colorNotation!4,
   coltitle=white,
   attach boxed title to top left={xshift=-0mm},
   boxed title style={empty},
