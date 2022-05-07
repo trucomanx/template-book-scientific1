@@ -5,17 +5,19 @@
 %   text
 % \end{attentionbox}
 
-\newtcolorbox{attentionbox}[1][]{enhanced,
-  before skip=2mm,after skip=3mm,
-  boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
-  colback=colorAttention!50,
-  colframe=colorAttention!20!black,
-  sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
-  underlay={%
-    \path[fill=colorAttentionFrame!20!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
-    \path[draw=colorAttentionFrame,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
-    \path[fill=colorAttention!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+\newtcolorbox{attentionbox}[1][]{%
+    enhanced,
+    before skip=4pt,after skip=4pt,%% Espacion antes y despues del box
+    boxrule=0pt,left=14mm,right=10pt,top=10pt,bottom=10pt,%% espacio interno. Padding.
+    colback=colorAttention,
+    colframe=colorAttention,
+    rounded corners,arc=10pt,
+    underlay={%
+        \path[] (interior.south west) rectangle node[white]%
+        {\includegraphics[width=9mm]{icons/important1.eps}} ([xshift=16mm]interior.north west);
     },
-  drop fuzzy shadow,#1}
+    drop fuzzy shadow,
+    #1%
+}
 
 

@@ -6,18 +6,28 @@
 %   texto
 % \end{elaborationbox}
 %\newcounter{countelab}%[chapter] ,use counter=countelab
-\newtcolorbox[list inside=MisElaboraciones,list type=MisElaboraciones,auto counter,number within=chapter]{elaborationbox}[1]{
-    tile,
-    colback=colorElaborationFrame!5,
-    coltitle=colorElaboration,
-    colbacktitle=colorElaboration!10,
-    center title,
-    toprule=1.25mm,
-    bottomrule=1.25mm,
-    extras unbroken and first={borderline north={0.5mm}{0.5mm}{colorElaboration,decoration={zigzag,amplitude=0.5mm},decorate}},
-    extras unbroken and last={borderline south={0.5mm}{0.5mm}{colorElaboration,decoration={zigzag,amplitude=0.5mm},decorate}},
-    title={#1}, 
-    width=\linewidth
+\newtcolorbox[list inside=MisElaboraciones,list type=MisElaboraciones,auto counter,number within=chapter]%
+{elaborationbox}[1]%
+{
+  title=#1,
+  breakable,
+  enhanced standard,
+  boxrule=0.4pt,titlerule=-0.2pt,drop fuzzy shadow,
+  width=\linewidth,
+  title style={top color=colorElaborationFrame!30,bottom color=colorElaborationFrame!0.5},
+  overlay unbroken and first={
+    \path[fill=colorElaborationFrame]
+    ([xshift=5pt,yshift=-\pgflinewidth]frame.north west) to[out=0,in=180] ([xshift=20pt,yshift=-5pt]title.south west) -- ([xshift=-20pt,yshift=-5pt]title.south east) to[out=0,in=180] ([xshift=-5pt,yshift=-\pgflinewidth]frame.north east) -- cycle;
+  },
+  fonttitle=\large\bfseries,
+  %fontupper=\sffamily,
+  %fontlower=\sffamily,
+  before=\par\medskip\noindent,
+  after=\par\medskip,
+  center title,
+  toptitle=3pt,
+  top=11pt,topsep at break=-5pt,
+  colback=white
 }
 
 

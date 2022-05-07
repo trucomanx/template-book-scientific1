@@ -1,0 +1,69 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Macros 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Function of
+%% \FuncOf{f}{x} %% f(x)
+\newcommand{\FuncOf}[2]{#1\left(#2\right)\;}
+
+%% Min of function
+%% \MinOf{x}{f(x)} %% min_x f(x)
+\newcommand{\MinOf}[2]{{\operatorname*{min}_{#1} #2}\;}
+
+%% Argumento of min
+%% \ArgMin{x}{f(x)} %% arg_x_min f(x)
+\newcommand{\ArgMin}[2]{{\operatorname{arg}_{#1}\operatorname{min} #2}\;}
+
+%% Definition of argumento of min
+%% \ArgMinDef{x}{f} % 
+\newcommand{\ArgMinDef}[2]{{ \ArgMin{#1}{\FuncOf{#2}{#1}} = \left\{#1 | \FuncOf{#2}{#1} = \MinOf{#1'}{\FuncOf{#2}{#1'}}\right\} }\;}
+
+%% Inner product
+%% \EigenSet{A}{v}{a}
+\newcommand{\EigenSet}[3]{{\left\{#2,#3| {#1}{#2}={#3}{#2} \right\}}\;}
+
+%% Inner product
+%% \InnerProd{x}{y}
+\newcommand{\InnerProd}[2]{\langle #1, #2 \rangle }
+
+%% Norm
+%% \Norm{x} %% ||x||
+\newcommand{\Norm}[1]{{\|#1\|}\;}
+
+%% Cardinality
+%% \Cardinality{x}
+\newcommand{\Cardinality}[1]{{\operatorname{card}\left({#1}\right)}\;}
+
+%% Diagonal function
+%% \DiagFunc{x} %% diag(x)
+\newcommand{\DiagFunc}[1]{{\operatorname{diag}\left({#1}\right)}\;}
+
+%% Vector
+%% |Vector{x} %% x
+\newcommand{\Vector}[1]{\mathbf{\lowercase{#1}}}
+%\newcommand{\VECTOR}{\Vector}
+
+%% Matrix
+%% \Matrix{x} %% X
+\newcommand{\Matrix}[1]{\mathbf{\uppercase{#1}}}
+%\newcommand{\MATRIX}{\Matrix}
+
+%% Derivada punto
+%% \DtVector{x} %% X
+\newcommand{\DtVector}[1]{\mathbf{\dot{\lowercase{#1}}}}
+\newcommand{\DDtVector}[1]{\mathbf{\ddot{\lowercase{#1}}}}
+%\newcommand{\DDDtVector}[1]{\mathbf{\dddot{\lowercase{#1}}}}
+
+%% Derivada punto
+%% \DtMatrix{x} %% X
+\newcommand{\DtMatrix}[1]{\mathbf{\dot{\uppercase{#1}}}}
+\newcommand{\DDtMatrix}[1]{\mathbf{\ddot{\uppercase{#1}}}}
+%\newcommand{\DDDtMatrix}[1]{\mathbf{\dddot{\uppercase{#1}}}}
+
+%% \DerPart{y}{x} %% 
+\newcommand{\DPartial}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\DDPartial}[2]{\frac{\partial^{2} #1}{\partial {#2}^{2}}}
+\newcommand{\DDPartialXY}[3]{\frac{\partial^{2} #1}{\partial {#2}\partial {#3}}}
+
+

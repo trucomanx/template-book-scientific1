@@ -1,0 +1,41 @@
+\RequirePackage[most]{tcolorbox}
+\newcounter{TcbItemizeFancyCount}
+\usetikzlibrary{shapes.geometric}
+
+\newenvironment{tcbenumeratetext}[1][colorDefault]{%
+\setcounter{TcbItemizeFancyCount}{0}
+\begin{tcbitemize}[%
+    raster columns=1,    
+    nofloat,
+    enhanced,
+    raster left skip=24pt,%indent
+    sharp corners=all,
+    colback=white,
+    colframe=white,%orange,
+    toprule=0pt,
+    bottomrule=0pt,
+    leftrule=0pt,%4pt,
+    rightrule=0pt,
+    boxsep=0pt,
+    left=3pt, right=3pt, %top=5pt,bottom=5pt,
+    valign=center,
+    overlay={% numero en rectangulo redondeado
+        \coordinate (X) at ([xshift=-5.0mm,yshift=-4.0mm]frame.north west);
+        \node[%
+            draw,
+            %ellipse,
+            rounded corners=8pt,
+            rotate=0,
+            minimum width=24pt,
+            minimum height=16pt,
+            inner sep=0pt,
+            color=#1,
+            fill=#1,
+            text=white,
+            font=\itshape\bfseries
+        ] at (X) 
+        {\refstepcounter{TcbItemizeFancyCount}\normalsize\arabic{TcbItemizeFancyCount}};}
+    ]%
+}%
+{\end{tcbitemize}}
+

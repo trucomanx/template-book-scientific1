@@ -1,0 +1,23 @@
+%----------------------------------------------------------------------------------------
+% ATTENTION MESSAGE BOX
+%----------------------------------------------------------------------------------------
+% \begin{notebox}
+%   text
+% \end{notebox}
+
+\newtcolorbox{notebox}[1][]{%
+    enhanced,
+    before skip=4pt,after skip=4pt,%% Espacion antes y despues del box
+    boxrule=0pt,left=14mm,right=10pt,top=10pt,bottom=10pt,%% espacio interno. Padding.
+    colback=colorNote,
+    colframe=colorNote,
+    rounded corners,arc=10pt,
+    underlay={%
+        \path[] (interior.south west) rectangle node[colorNote]%
+        {\includegraphics[width=9mm]{icons/note1.png}} ([xshift=16mm]interior.north west);
+    },
+    drop fuzzy shadow,
+    #1%
+}
+
+

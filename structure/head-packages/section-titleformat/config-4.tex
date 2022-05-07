@@ -1,14 +1,15 @@
 
 
-\titleformat{\section}[hang]{\Large\bfseries\sffamily}%
+\titleformat
+{\section}% command
+[hang]%shape
+{\large\bfseries\sffamily}% format
 {\rlap{\color{colorSection}\rule[-6pt]{\textwidth}{1.2pt}}\colorbox{colorSection}{%
            \raisebox{0pt}[13pt][3pt]{ \makebox[60pt]{% height, width
                 \fontfamily{phv}\selectfont\color{white}{\thesection}}
-            }}}%
-{15pt}%
-{ \color{colorSectionFont}#1
-%
-}
+            }}}% label
+{15pt}% sep
+{ \color{colorSectionFont}#1 }
 \titlespacing*{\section}{0pt}{3mm}{5mm}
 
 
