@@ -2,23 +2,23 @@
 %----------------------------------------------------------------------------------------
 % FRASES E DITADOS
 %----------------------------------------------------------------------------------------
-% \begin{frasebox}{Frase title}{2}
+% \begin{phrasebox}{Frase title}{2}
 % meu texto
-% \end{frasebox}
+% \end{phrasebox}
 
 %% Create a new counter that will follow tcolorbox's numbering
-\newcounter{frasebox}[chapter]
-\renewcommand*{\thefrasebox}{\noexpand\thechapter.\noexpand\arabic{frasebox}}
+\newcounter{phrasebox}[chapter]
+\renewcommand*{\thephrasebox}{\noexpand\thechapter.\noexpand\arabic{phrasebox}}
 
 \def \MyLengthFrase{0.4\textwidth}
 \def \MyHalfLengthFrase{0.2\textwidth}
 
-\newtcolorbox[list inside=MisFrases,list type=MisFrases,auto counter,number within=chapter]{frasebox}[2]{
+\newtcolorbox[list inside=MisFrases,list type=MisFrases,auto counter,number within=chapter]{phrasebox}[2]{
 freelance,
 colback=white,
 frame code={},
 interior titled code={
-  \fill[rounded corners=8pt,colorFraseBox!50]
+  \fill[rounded corners=8pt,colorPhraseBox!50]
     (title.south west) --
     (title.south) -- 
     ([yshift=15pt]title.south) --
@@ -27,7 +27,7 @@ interior titled code={
     (title.south east) {[sharp corners] --
     ([yshift=-6pt]title.south east) -- 
     ([yshift=-6pt]title.south west) } -- cycle;
-  \draw[rounded corners=8pt,colorFraseBox,line width=1pt]
+  \draw[rounded corners=8pt,colorPhraseBox,line width=1pt]
     (title.west|-frame.south west) --
     (title.south west) --
     (title.south) -- 
@@ -38,13 +38,13 @@ interior titled code={
     (title.east|-frame.south east) --
     cycle;
   \node at ([xshift=\MyHalfLengthFrase,yshift=4pt,anchor=south]title.south) 
-    { \bfseries  Frase~\thetcbcounter\refstepcounter{frasebox}: #1};  
+    { \bfseries  Frase~\thetcbcounter\refstepcounter{phrasebox}: #1};  
   },
 title={#1},
 top=12pt,
 %fontupper=\sffamily\Large,
 %oversize=0.0cm,
-before upper={\addtocounter{frasebox}{-1}\refstepcounter{frasebox}},
+before upper={\addtocounter{phrasebox}{-1}\refstepcounter{phrasebox}},
 after upper={\\{  \mbox{} \hfill #2}\index{Frases e Ditados!#1}},
 before={\vskip 24pt\par\noindent},
 after={\par\vskip 12pt}
