@@ -1,0 +1,46 @@
+%% source:
+%% https://github.com/trucomanx/separator-rule
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{separator-rule}[2022/05/21 Package with macros to the math enviroment]
+
+%\RequirePackage{amsmath}
+\RequirePackage{amssymb} %% needed for \blacktriangleleft
+
+\RequirePackage{graphicx} %% needed for \resizebox
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{separator-rule}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Macros 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------------------------------------------------------------------
+%	Horizontal separator line
+%-------------------------------------------------------------------------------
+%   \HRule{2pt}
+%-------------------------------------------------------------------------------
+\newcommand{\HRule}[1]{\noindent\rule{\linewidth}{#1}} % 
+
+
+
+%-------------------------------------------------------------------------------
+%	Horizontal separator line with text
+%-------------------------------------------------------------------------------
+%   \HTextRule{Text}
+%-------------------------------------------------------------------------------
+\newlength{\HTRLength}
+\newcommand*\HTextRule[1]{%
+\settowidth{\HTRLength}{#1}\advance\HTRLength by -\textwidth\divide\HTRLength by -2%
+\noindent\makebox[\the\HTRLength]{\resizebox{\the\HTRLength}{1pt}{$\blacktriangleleft$}}%
+\raisebox{-.5ex}{\textbf{#1}}%
+\makebox[\the\HTRLength]{\resizebox{\the\HTRLength}{1pt}{$\blacktriangleright$}}%
+\smallskip
+}
+
+
+

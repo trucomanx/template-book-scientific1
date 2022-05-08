@@ -1,0 +1,124 @@
+%% source:
+%% https://github.com/trucomanx/catalographic-card 
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{catalographic-card }[2022/05/21 Package with macros to the math enviroment]
+
+%\RequirePackage{amsmath}
+\RequirePackage{lipsum} %% needed for 
+
+\RequirePackage{xcolor} %% colorbox
+
+\RequirePackage{lastpage} %% LastPage
+
+\RequirePackage{paralist} %%inparaenum
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{catalographic-card }{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\ifdim 12.5cm<\textwidth
+%\def \WidthOfCatalografica{12.5cm}
+%\else
+%\def \WidthOfCatalografica{\textwidth}
+%\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\CatalogCardColorFrame}{gray!8}%
+\newcommand{\SetCardColorFrame}[1]{\renewcommand{\CatalogCardColorFrame}{#1}}%
+
+\newcommand{\CatalogBookAuthorLastName}{\textcolor{red}{\textbf{Doe}}}%
+\newcommand{\SetBookAuthorLastName}[1]{\renewcommand{\CatalogBookAuthorLastName}{#1}}%
+
+\newcommand{\CatalogBookAuthorName}{\textcolor{red}{\textbf{John}}}%
+\newcommand{\SetBookAuthorName}[1]{\renewcommand{\CatalogBookAuthorName}{#1}}%
+
+\newcommand{\CatalogBookAuthorYearBorn}{\textcolor{red}{\textbf{1954}}}%
+\newcommand{\SetBookAuthorYearBorn}[1]{\renewcommand{\CatalogBookAuthorYearBorn}{#1}}%
+
+\newcommand{\CatalogBookTitle}{\textcolor{red}{\textbf{Simple title}}}%
+\newcommand{\SetBookTitle}[1]{\renewcommand{\CatalogBookTitle}{#1}}%
+
+\newcommand{\CatalogBookSubTitle}{\textcolor{red}{\textbf{Simple subtitle}}}%
+\newcommand{\SetBookSubTitle}[1]{\renewcommand{\CatalogBookSubTitle}{#1}}%
+
+\newcommand{\CatalogBookPublishingPlace}{\textcolor{red}{\textbf{Brazil}}}%
+\newcommand{\SetBookPublishingPlace}[1]{\renewcommand{\CatalogBookPublishingPlace}{#1}}%
+
+\newcommand{\CatalogBookPublishingEditor}{\textcolor{red}{\textbf{Publishing editor name}}}%
+\newcommand{\SetBookPublishingEditor}[1]{\renewcommand{\CatalogBookPublishingEditor}{#1}}%
+
+\newcommand{\CatalogBookPublishingYear}{\textcolor{red}{\textbf{2022}}}%
+\newcommand{\SetBookPublishingYear}[1]{\renewcommand{\CatalogBookPublishingYear}{#1}}%
+
+\newcommand{\CatalogBookPaperSize}{\textcolor{red}{\textbf{21x30cm}}}%
+\newcommand{\SetBookPaperSize}[1]{\renewcommand{\CatalogBookPaperSize}{#1}}%
+
+\newcommand{\CatalogBookHasBibliography}{\textcolor{red}{\textbf{Don't Have bibliography}}}%
+\newcommand{\SetBookHasBibliography}[1]{\renewcommand{\CatalogBookHasBibliography}{#1}}%
+
+\newcommand{\CatalogBookISBN}{\textcolor{red}{\textbf{XXXXXXXXXXX}}}%
+\newcommand{\SetBookISBN}[1]{\renewcommand{\CatalogBookISBN}{#1}}%
+
+\newcommand{\CatalogBookKeyWordA}{\textcolor{red}{\textbf{KeyWordA}}}%
+\newcommand{\SetBookKeyWordA}[1]{\renewcommand{\CatalogBookKeyWordA}{#1}}%
+
+\newcommand{\CatalogBookKeyWordB}{\textcolor{red}{\textbf{KeyWordB}}}%
+\newcommand{\SetBookKeyWordB}[1]{\renewcommand{\CatalogBookKeyWordB}{#1}}%
+
+\newcommand{\CatalogBookKeyWordC}{\textcolor{red}{\textbf{KeyWordC}}}%
+\newcommand{\SetBookKeyWordC}[1]{\renewcommand{\CatalogBookKeyWordC}{#1}}%
+
+\newcommand{\CatalogBookSearchBy}{\textcolor{red}{\textbf{Title}}}%
+\newcommand{\SetBookSearchBy}[1]{\renewcommand{\CatalogBookSearchBy}{#1}}%
+
+\newcommand{\CatalogBookCDD}{\textcolor{red}{\textbf{XXX.XX}}}%
+\newcommand{\SetBookCDD}[1]{\renewcommand{\CatalogBookCDD}{#1}}%
+
+\newcommand{\CatalogBookCDU}{\textcolor{red}{\textbf{XXX.XX}}}%
+\newcommand{\SetBookCDU}[1]{\renewcommand{\CatalogBookCDU}{#1}}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\CatalogSpaceOfThreeLetters}{3.2ex}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\CatalographicCard}[1]%
+{%
+\vskip\baselineskip%
+\par\noindent\colorbox{\CatalogCardColorFrame}%
+{%
+\framebox{
+\begin{minipage}{#1}
+\CatalogBookAuthorLastName, \CatalogBookAuthorName, \CatalogBookAuthorYearBorn.\\%Sobrenome, Nome do autor
+
+\hspace{ \CatalogSpaceOfThreeLetters}%
+\CatalogBookTitle: \CatalogBookSubTitle~/ \CatalogBookAuthorName~\CatalogBookAuthorLastName. -- %\mytitle inicia na quarta letra do sobrenome
+\CatalogBookPublishingPlace, \CatalogBookPublishingEditor, \CatalogBookPublishingYear.
+	
+\hspace{\CatalogSpaceOfThreeLetters}%
+\pageref{LastPage} p.: \CatalogBookPaperSize.\\ %: il. (algumas color.) ; \imprimirpapersize.
+	
+\hspace{\CatalogSpaceOfThreeLetters}%
+\parbox[t]{\textwidth}{\CatalogBookHasBibliography}%~--~\imprimireditora,~\imprimirdata.}\\
+	
+\hspace{\CatalogSpaceOfThreeLetters}%
+\parbox[t]{\textwidth}{ISBN:\CatalogBookISBN}\\
+	
+\hspace{\CatalogSpaceOfThreeLetters}%
+\begin{inparaenum}[1.]
+    \item \CatalogBookKeyWordA.
+    \item \CatalogBookKeyWordB.
+    \item \CatalogBookKeyWordC.
+\end{inparaenum}
+\begin{inparaenum}[I.]
+    \item \CatalogBookSearchBy.% O livro deve ser encontrado pelo titulo
+\end{inparaenum}
+	
+\begin{flushright}
+CDD: \CatalogBookCDD\hspace{20pt}CDU: \CatalogBookCDU
+\end{flushright}
+\end{minipage}%
+}%
+}%
+\vskip\baselineskip%
+}

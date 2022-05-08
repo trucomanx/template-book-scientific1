@@ -37,37 +37,28 @@ porém sem nenhuma garantia expressa ou implícita em relação à exatidão ou 
 
 %\textbf{Ficha catalográfica}
 
-{\centering
-\begin{catalografica}%%
-	\myauthorlastname, \myauthorname, \myauthorborn.%Sobrenome, Nome do autor
 
-	\hspace{0.5cm} \mytitle: \mysubtitle~/ \myauthor. -- %\mytitle inicia na quarta letra do sobrenome
-	\imprimirlocal, \imprimireditora, \imprimiryear.
-	
-	\hspace{0.5cm} \pageref{LastPage} p.: \imprimirpapersize.\\ %: il. (algumas color.) ; \imprimirpapersize.
-	
-	\hspace{0.5cm}
-	\parbox[t]{\textwidth}{\imprimirtipotrabalho}%~--~\imprimireditora,~\imprimirdata.}\\
-
-	\hspace{0.5cm}
-	\parbox[t]{\textwidth}{ISBN:\imprimirisbn}\\
-
-
-	\hspace{0.5cm}
-	\begin{inparaenum}[1.]
-		\item \palavraschavea.
-		\item \palavraschaveb.
-		\item \palavraschavec.
-	\end{inparaenum}
-	\begin{inparaenum}[I.]
-		\item Título.% O livro deve ser encontrado pelo titulo
-	\end{inparaenum}
-
-    \begin{flushright}
-    CDD: \imprimirCDD\hspace{20pt}CDU: \imprimirCDU
-    \end{flushright}
-\end{catalografica}%%
-}
+\SetCardColorFrame{colorDefault!10}
+\SetBookAuthorLastName{\myauthorlastname}
+\SetBookAuthorName{\myauthorname}
+\SetBookAuthorYearBorn{\myauthorborn}
+\SetBookTitle{\mytitle}
+\SetBookSubTitle{\mysubtitle}
+\SetBookPublishingPlace{\imprimirlocal}
+\SetBookPublishingEditor{\imprimireditora}
+\SetBookPublishingYear{\imprimiryear}
+\SetBookPaperSize{\imprimirpapersize}
+\SetBookHasBibliography{\imprimirtipotrabalho}
+\SetBookISBN{\imprimirisbn}
+\SetBookKeyWordA{\palavraschavea}
+\SetBookKeyWordB{\palavraschaveb}
+\SetBookKeyWordC{\palavraschavec}
+\SetBookSearchBy{Título}
+\SetBookCDD{\imprimirCDD}
+\SetBookCDU{\imprimirCDU}
+\begin{center}
+\CatalographicCard{12.5cm}
+\end{center}
 \vfill
 
 

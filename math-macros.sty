@@ -1,3 +1,19 @@
+%% source:
+%% https://github.com/trucomanx/math-macros
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{math-macros}[2022/05/21 Package with macros to the math enviroment]
+
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{math-macros}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Macros 
@@ -65,5 +81,3 @@
 \newcommand{\DPartial}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\DDPartial}[2]{\frac{\partial^{2} #1}{\partial {#2}^{2}}}
 \newcommand{\DDPartialXY}[3]{\frac{\partial^{2} #1}{\partial {#2}\partial {#3}}}
-
-

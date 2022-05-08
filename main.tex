@@ -45,27 +45,33 @@
 \input{\SourceRootPath/structure/head-packages} %
 
 %-------------------------------------------------------------------------------
-%   Generic macros: \HRule{2pt}, \PRLsep{Text}, \fprshowfont, etc.
+%   Generic macros: \HRule{2pt}, \HTextRule{Text}
+%-------------------------------------------------------------------------------
+\usepackage{separator-rule} %
+
+%-------------------------------------------------------------------------------
+%   Generic macros: \fprshowfont, etc.
 %-------------------------------------------------------------------------------
 \input{\SourceRootPath/structure/head-macros/generic-macros} %
+
 
 %-------------------------------------------------------------------------------
 %   Math Macros: \FuncOf{f}{x}, \MinOf{x}{f(x)}, \ArgMin{x}{f(x)}, etc.
 %-------------------------------------------------------------------------------
-\input{\SourceRootPath/structure/head-macros/math-macros} %
+\usepackage{math-macros} %
 
 %-------------------------------------------------------------------------------
 %   Configura el paquete titlesec 
 %-------------------------------------------------------------------------------
-\input{\SourceRootPath/structure/head-packages/part-titleformat/config-4}    % titleformat de part [config-1 ..config-4]
-\input{\SourceRootPath/structure/head-packages/chapter-titleformat/config-5} % titleformat de chapter [config-1 ..config-5]
-\input{\SourceRootPath/structure/head-packages/section-titleformat/config-1} % titleformat de section [config-1 ..config-4]
-\input{\SourceRootPath/structure/head-packages/subsection-titleformat/config-1} % titleformat de subsection [config-1]
+\input{\SourceRootPath/structure/head-titleformat/part/config-4}    % titleformat de part [config-1 ..config-4]
+\input{\SourceRootPath/structure/head-titleformat/chapter/config-5} % titleformat de chapter [config-1 ..config-5]
+\input{\SourceRootPath/structure/head-titleformat/section/config-1} % titleformat de section [config-1 ..config-4]
+\input{\SourceRootPath/structure/head-titleformat/subsection/config-1} % titleformat de subsection [config-1]
 
 %-------------------------------------------------------------------------------
 %   Configura header and footer 
 %-------------------------------------------------------------------------------
-\input{\SourceRootPath/structure/head-packages/header-footer/config-1} % format [config-1]
+\input{\SourceRootPath/structure/head-titleformat/header-footer/config-1} % format [config-1]
 
 %-------------------------------------------------------------------------------
 %   Box enviroments
@@ -90,14 +96,14 @@
 %-------------------------------------------------------------------------------
 \input{\SourceRootPath/structure/macros-enviroment/tcbenumeratetext/tcolorbox-1}
 \input{\SourceRootPath/structure/macros-enviroment/frasebox/tcolorbox-1}
-\input{\SourceRootPath/structure/macros-enviroment/boxequation/tcolorbox-1}
+\input{\SourceRootPath/structure/macros-enviroment/equationbox/tcolorbox-1}
 
 %-------------------------------------------------------------------------------
 %   One use enviroments 
 %-------------------------------------------------------------------------------
 \input{\SourceRootPath/structure/macros-enviroment/citando/tcolorbox-1}
 \input{\SourceRootPath/structure/macros-enviroment/patrocinio/tcolorbox-1}
-\input{\SourceRootPath/structure/macros-enviroment/catalografica/tcolorbox-1}
+\usepackage{catalographic-card} % \CatalographicCard 
 
 %--------------------------------------------------------------------------------
 %   Deletrear palavras
