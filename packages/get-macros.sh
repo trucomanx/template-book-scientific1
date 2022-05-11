@@ -8,3 +8,4 @@ curl -O https://raw.githubusercontent.com/trucomanx/env-theorem-pictbox/main/env
 curl -O https://raw.githubusercontent.com/trucomanx/env-theorem-simple/main/env-theorem-simple.sty
 curl -O https://raw.githubusercontent.com/trucomanx/env-theorem-pictlin/main/env-theorem-pictlin.sty
 curl -O https://raw.githubusercontent.com/trucomanx/env-citationbox-simple/main/env-citationbox-simple.sty
+curl -O https://raw.githubusercontent.com/trucomanx/env-equationbox-simple/main/env-equationbox-simple.sty

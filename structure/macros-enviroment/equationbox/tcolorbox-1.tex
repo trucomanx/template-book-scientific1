@@ -4,6 +4,19 @@
 % \begin{equationbox}
 %   texto
 % \end{equationbox}
+
+\usepackage{packages/env-equationbox-simple}
+
+\SetEnvEquationBoxSimpleThickness{1.5pt}
+\SetEnvEquationBoxSimpleFrameColor{colorEquationBox!10}
+\SetEnvEquationBoxSimpleBackColor{colorEquationBox}
+\SetEnvEquationBoxSimpleBoxArc{3mm}
+\SetEnvEquationBoxSimpleWidth{\linewidth}
+\SetEnvEquationBoxSimpleBeforeSpace{2pt}
+\SetEnvEquationBoxSimpleAfterSpace{2pt}
+
+
+\begin{comment}
 \newtcolorbox{equationbox}
 {
   breakable,
@@ -14,6 +27,6 @@
   %left skip= 0.10 \linewidth,
   width    = 1.0 \linewidth
 }
-
+\end{comment}
 
 
