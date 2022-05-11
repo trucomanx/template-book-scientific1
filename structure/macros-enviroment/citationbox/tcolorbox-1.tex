@@ -4,6 +4,18 @@
 % \begin{citationbox}
 %   texto
 % \end{citationbox}
+
+\usepackage{packages/env-citationbox-simple}
+
+\SetEnvCitationBoxSimpleThickness{1.5pt}
+\SetEnvCitationBoxSimpleFrameColor{colorCitationBox!50}
+\SetEnvCitationBoxSimpleBackColor{colorCitationBox}
+\SetEnvCitationBoxSimpleBoxArc{3mm}
+\SetEnvCitationBoxSimpleWidth{0.9\linewidth}
+\SetEnvCitationBoxSimpleBeforeSpace{3pt}
+\SetEnvCitationBoxSimpleAfterSpace{3pt}
+
+\begin{comment}
 \newtcolorbox{citationbox}
 {
   breakable,
@@ -14,6 +26,6 @@
   left skip= 0.10 \linewidth,
   width    = 0.90 \linewidth
 }
-
+\end{comment}
 
 

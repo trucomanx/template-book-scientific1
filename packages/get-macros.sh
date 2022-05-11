@@ -7,3 +7,4 @@ curl -O https://raw.githubusercontent.com/trucomanx/math-macros/main/math-macros
 curl -O https://raw.githubusercontent.com/trucomanx/env-theorem-pictbox/main/env-theorem-pictbox.sty
 curl -O https://raw.githubusercontent.com/trucomanx/env-theorem-simple/main/env-theorem-simple.sty
 curl -O https://raw.githubusercontent.com/trucomanx/env-theorem-pictlin/main/env-theorem-pictlin.sty
+curl -O https://raw.githubusercontent.com/trucomanx/env-citationbox-simple/main/env-citationbox-simple.sty
