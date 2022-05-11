@@ -5,6 +5,21 @@
 %   text
 % \end{theorem}
 %----------------------------------------------------------------------------------------
+
+\usepackage{packages/env-theorem-pictbox}
+
+\SetEnvTheoremPictBoxPreTitle{Teorema}
+\SetEnvTheoremPictBoxFrameColor{colorTheorem}
+\SetEnvTheoremPictBoxBackColor{white}
+\SetEnvTheoremPictBoxTitleColor{colorTheorem}
+\SetEnvTheoremPictBoxTitleFont{\bfseries\sffamily}
+
+\newcommand{\EnvTheoremListingExt}{\EnvTheoremPictBoxListingExt}
+
+%\SetEnvTheoremPictBoxImage{\includegraphics[width=0.5\textwidth]{pencil.png}}
+
+
+\begin{comment}
 %% Create a new counter that will follow tcolorbox's numbering
 \newcounter{theorem}[section]
 \renewcommand*{\thetheorem}{\noexpand\thesection.\noexpand\arabic{theorem}}
@@ -48,5 +63,5 @@
 \makeatletter
 \newcommand{\ttll@MisTheorem}{-1000}
 \makeatother
-
+\end{comment}
 

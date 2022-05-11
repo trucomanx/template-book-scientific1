@@ -5,6 +5,22 @@
 %   text
 % \end{theorem}
 %----------------------------------------------------------------------------------------
+
+
+\usepackage{packages/env-theorem-simple}
+
+\SetEnvTheoremSimplePreTitle{Teorema}
+\SetEnvTheoremSimpleFrameColor{colorTheorem}
+\SetEnvTheoremSimpleBackColor{black!3}
+\SetEnvTheoremSimpleTitleColor{black}
+\SetEnvTheoremSimpleTitleFont{\bfseries}
+
+\newcommand{\EnvTheoremListingExt}{\EnvTheoremSimpleListingExt}
+
+%\SetEnvTheoremSimpleImage{\includegraphics[width=0.9\textwidth]{pencil.png}}
+
+
+\begin{comment}
 %% Create a new counter that will follow tcolorbox's numbering
 \newcounter{theorem}[section]
 \renewcommand*{\thetheorem}{\noexpand\thesection.\noexpand\arabic{theorem}}
@@ -45,4 +61,6 @@
 \newcommand{\ttll@MisTheorem}{-1000}
 \makeatother
 
+
+\end{comment}
 

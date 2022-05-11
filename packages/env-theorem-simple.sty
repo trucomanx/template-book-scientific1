@@ -1,0 +1,152 @@
+%% source:
+%% https://github.com/trucomanx/env-theorem-simple
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{env-theorem-simple}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+\RequirePackage[explicit]{titlesec} %% sections
+\RequirePackage{titletoc} %% TOC
+\RequirePackage{xparse} %%\ExplSyntaxOn
+
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{env-theorem-simple}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Macros 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% defining variable
+\newlength{\EnvTheoremSimpleLength}
+\setlength{\EnvTheoremSimpleLength}{4pt}
+%
+\newcommand{\EnvTheoremSimpleThickness}{\EnvTheoremSimpleLength}
+
+%% Define before space
+\newcommand{\EnvTheoremSimpleBeforeSpace}{\EnvTheoremSimpleLength}
+\newcommand{\SetEnvTheoremSimpleBeforeSpace}[1]{\renewcommand{\EnvTheoremSimpleBeforeSpace}{#1}}%
+
+%% Define after space
+\newcommand{\EnvTheoremSimpleAfterSpace}{0pt}
+\newcommand{\SetEnvTheoremSimpleAfterSpace}[1]{\renewcommand{\EnvTheoremSimpleAfterSpace}{#1}}%
+
+%% Define showed name of enviroment
+\newcommand{\EnvTheoremSimplePreTitle}{THEOREM}
+\newcommand{\SetEnvTheoremSimplePreTitle}[1]{\renewcommand{\EnvTheoremSimplePreTitle}{#1}}%
+
+%% Define the frame color of enviroment
+\newcommand{\EnvTheoremSimpleFrameColor}{red!50!black}
+\newcommand{\SetEnvTheoremSimpleFrameColor}[1]{\renewcommand{\EnvTheoremSimpleFrameColor}{#1}}%
+
+%% Define the backaground body text color
+\newcommand{\EnvTheoremSimpleBackColor}{gray!10}
+\newcommand{\SetEnvTheoremSimpleBackColor}[1]{\renewcommand{\EnvTheoremSimpleBackColor}{#1}}%
+
+%% Define The title body color 
+\newcommand{\EnvTheoremSimpleTitleColor}{blue}
+\newcommand{\SetEnvTheoremSimpleTitleColor}[1]{\renewcommand{\EnvTheoremSimpleTitleColor}{#1}}%
+
+%% Define the tile font 
+\newcommand{\EnvTheoremSimpleTitleFont}{\bfseries\sffamily}
+\newcommand{\SetEnvTheoremSimpleTitleFont}[1]{\renewcommand{\EnvTheoremSimpleTitleFont}{#1}}%
+
+%% Define the image of pretitle
+\newcommand{\EnvTheoremSimpleImage}{}
+\newcommand{\SetEnvTheoremSimpleImage}[1]{\renewcommand{\EnvTheoremSimpleImage}{#1}}%
+
+
+%% Warning: These variables dont have \Set... method
+\newcommand{\EnvTheoremSimpleListingExt}{EnvTheoremSimpleListingExt}
+\newcommand{\EnvTheoremSimpleTocEntryFormat}{}
+
+
+%
+\newcommand{\EnvTheoremSimpleLeftRule}{\EnvTheoremSimpleThickness}
+\newcommand{\EnvTheoremSimplePicWidth}{4ex}
+\newcommand{\EnvTheoremSimplePostPic}{\hspace{0pt}}
+
+%% Crea una macro que capitaliza la primera letra
+\ExplSyntaxOn
+\NewExpandableDocumentCommand \FirstLetterUppercase { O{} m }
+  { \text_titlecase:nn {#1} {#2} }
+\ExplSyntaxOff
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Create a new counter that will follow tcolorbox's numbering
+%% Create a new counter that will follow tcolorbox's numbering
+\newcounter{theoremCounter}[section]
+\renewcommand*{\thetheoremCounter}{\noexpand\thesection.\noexpand\arabic{theoremCounter}}
+
+\newtcolorbox[list inside=\EnvTheoremSimpleListingExt,list type=\EnvTheoremSimpleListingExt,auto counter,number within=section]%
+{theorem}%
+[1][]%
+{
+  title={#1},
+  detach title,
+  colback=\EnvTheoremSimpleBackColor,
+  colframe=\EnvTheoremSimpleFrameColor,
+  coltitle=\EnvTheoremSimpleTitleColor,
+  fonttitle=\EnvTheoremSimpleTitleFont,
+  leftrule=\EnvTheoremSimpleLeftRule,
+  toprule=-0.05pt, rightrule=-0.05pt, bottomrule=-0.05pt,
+  breakable,
+  enhanced,
+  arc=0mm,
+  before={\vspace{\EnvTheoremSimpleBeforeSpace}},
+  after={\vspace{\EnvTheoremSimpleAfterSpace}},
+  code={
+  \ifdefempty{\tcbtitletext}
+    {
+    \tcbset{list text={ \FirstLetterUppercase{\EnvTheoremSimplePreTitle}  }}
+    }
+    {%% \tcbtitle is the title write by the user
+    \tcbset{list text={#1}}
+    }
+  %
+  \ifdefempty{\tcbtitletext}
+    {
+        \tcbset{before upper={\addtocounter{theoremCounter}{-1}\refstepcounter{theoremCounter}%
+        \begin{minipage}{\EnvTheoremSimplePicWidth}
+        \centering\EnvTheoremSimpleImage
+        \end{minipage}% 
+        \EnvTheoremSimplePostPic%
+        \textcolor{\EnvTheoremSimpleTitleColor}{\EnvTheoremSimpleTitleFont\EnvTheoremSimplePreTitle\;\thetcbcounter:} \refstepcounter{theoremCounter}}}
+    }
+    {%% \tcbtitle is the title write by the user
+        \tcbset{before upper={\addtocounter{theoremCounter}{-1}\refstepcounter{theoremCounter}%
+        \begin{minipage}{\EnvTheoremSimplePicWidth}
+        \centering\EnvTheoremSimpleImage
+        \end{minipage}%
+        \EnvTheoremSimplePostPic%
+        \textcolor{\EnvTheoremSimpleTitleColor}{\EnvTheoremSimpleTitleFont\EnvTheoremSimplePreTitle\;\thetcbcounter\;- \tcbtitle:} \refstepcounter{theoremCounter}}}
+    }
+  },
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% List of type 
+%% Usar con:  \tcblistof[\section*]{\EnvTheoremSimpleListingExt}{Lista de frases}
+%%
+\titlecontents{\EnvTheoremSimpleListingExt}[2.00cm] %% Indentation %% left
+{\EnvTheoremSimpleTocEntryFormat} %% Spacing and font options for sections %% above code
+{\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+{} %% numberless-entry-format
+{\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format 
+[] %% separator
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\makeatletter
+%\newcommand{\ttll@\EnvTheoremSimpleListingExt}{-1000}
+%\makeatother
+%% To next warning
+%% Package titletoc Warning: Unknown TOC type EnvTheoremSimpleListingExt. I'll set it for you with(titletoc)                level -1000. on input line 1.

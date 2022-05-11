@@ -1,0 +1,150 @@
+%% source:
+%% https://github.com/trucomanx/env-theorem-pictlin
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{env-theorem-pictlin}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+\RequirePackage[explicit]{titlesec} %% sections
+\RequirePackage{titletoc} %% TOC
+\RequirePackage{xparse} %%\ExplSyntaxOn
+\RequirePackage{pgfornament}
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{env-theorem-pictlin}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Macros 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% defining variable
+\newlength{\EnvTheoremPictLinLength}
+\setlength{\EnvTheoremPictLinLength}{28pt}
+%
+\newcommand{\EnvTheoremPictLinThickness}{3pt}
+\newcommand{\EnvTheoremPictLinLeftWidth}{\EnvTheoremPictLinLength}
+\newcommand{\EnvTheoremPictLinLeftTextInit}{0.5\EnvTheoremPictLinLength}
+\newcommand{\EnvTheoremPictLinLeftGraphInit}{-0.6\EnvTheoremPictLinLength}
+
+%% Define before space
+\newcommand{\EnvTheoremPictLinBeforeSpace}{0.15\EnvTheoremPictLinLength}
+\newcommand{\SetEnvTheoremPictLinBeforeSpace}[1]{\renewcommand{\EnvTheoremPictLinBeforeSpace}{#1}}%
+
+%% Define after space
+\newcommand{\EnvTheoremPictLinAfterSpace}{0pt}
+\newcommand{\SetEnvTheoremPictLinAfterSpace}[1]{\renewcommand{\EnvTheoremPictLinAfterSpace}{#1}}%
+
+%% Define showed name of enviroment
+\newcommand{\EnvTheoremPictLinPreTitle}{THEOREM}
+\newcommand{\SetEnvTheoremPictLinPreTitle}[1]{\renewcommand{\EnvTheoremPictLinPreTitle}{#1}}%
+
+%% Define the frame color of enviroment
+\newcommand{\EnvTheoremPictLinFrameColor}{red!50!black}
+\newcommand{\SetEnvTheoremPictLinFrameColor}[1]{\renewcommand{\EnvTheoremPictLinFrameColor}{#1}}%
+
+%% Define the backaground body text color
+\newcommand{\EnvTheoremPictLinBackColor}{gray!10}
+\newcommand{\SetEnvTheoremPictLinBackColor}[1]{\renewcommand{\EnvTheoremPictLinBackColor}{#1}}%
+
+%% Define The title body color 
+\newcommand{\EnvTheoremPictLinTitleColor}{blue}
+\newcommand{\SetEnvTheoremPictLinTitleColor}[1]{\renewcommand{\EnvTheoremPictLinTitleColor}{#1}}%
+
+%% Define the tile font 
+\newcommand{\EnvTheoremPictLinTitleFont}{\bfseries\sffamily}
+\newcommand{\SetEnvTheoremPictLinTitleFont}[1]{\renewcommand{\EnvTheoremPictLinTitleFont}{#1}}%
+
+%% Define the image of pretitle
+\newcommand{\EnvTheoremPictLinImage}{\pgfornament[color=\EnvTheoremPictLinFrameColor,width=\EnvTheoremPictLinLeftWidth]{1}}
+\newcommand{\SetEnvTheoremPictLinImage}[1]{\renewcommand{\EnvTheoremPictLinImage}{#1}}%
+
+
+%% Warning: These variables dont have \Set... method
+\newcommand{\EnvTheoremPictLinListingExt}{EnvTheoremPictLinListingExt}
+\newcommand{\EnvTheoremPictLinTocEntryFormat}{}
+
+
+
+%% Crea una macro que capitaliza la primera letra
+\ExplSyntaxOn
+\NewExpandableDocumentCommand \FirstLetterUppercase { O{} m }
+  { \text_titlecase:nn {#1} {#2} }
+\ExplSyntaxOff
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Create a new counter that will follow tcolorbox's numbering
+%% Create a new counter that will follow tcolorbox's numbering
+\newcounter{theoremCounter}[section]
+\renewcommand*{\thetheoremCounter}{\noexpand\thesection.\noexpand\arabic{theoremCounter}}
+
+\newtcolorbox[list inside=\EnvTheoremPictLinListingExt,list type=\EnvTheoremPictLinListingExt,auto counter,number within=section]%
+{theorem}%
+[1][]%
+{
+  enhanced,
+  breakable,%pad at break=1mm,
+  sharp corners,
+  left=\EnvTheoremPictLinLeftTextInit,right=8pt,top=10pt,bottom=4pt,
+  toprule=-1pt, rightrule=-1pt, bottomrule=-1pt, leftrule=\EnvTheoremPictLinThickness,
+  colback=\EnvTheoremPictLinBackColor,
+  colframe=\EnvTheoremPictLinFrameColor,
+  coltitle=\EnvTheoremPictLinTitleColor,
+  fonttitle=\EnvTheoremPictLinTitleFont,
+  detach title,
+  title={#1},
+  before={\vspace{\EnvTheoremPictLinBeforeSpace}},
+  after={\vspace{\EnvTheoremPictLinAfterSpace}},
+  overlay unbroken and first ={%
+    \coordinate (X) at ([xshift=\EnvTheoremPictLinLeftGraphInit]frame.north west);
+    \node[rotate=0, minimum width=\EnvTheoremPictLinLeftWidth, right, font=\EnvTheoremPictLinTitleFont]  at (X) 
+    {%
+    \begin{minipage}{\EnvTheoremPictLinLeftWidth}
+    \centering
+    \textcolor{\EnvTheoremPictLinTitleColor}{\EnvTheoremPictLinImage}
+    \end{minipage}
+    };
+    %
+    \coordinate (Y) at ([xshift=\EnvTheoremPictLinLeftTextInit]frame.north west);
+    \node[rotate=0, minimum width=\EnvTheoremPictLinLeftWidth, right, font=\EnvTheoremPictLinTitleFont]  at (Y) 
+    {%
+    \textcolor{\EnvTheoremPictLinTitleColor}{\EnvTheoremPictLinPreTitle~\thetcbcounter~\tcbtitle}
+    };%
+  },
+  code={%
+  \ifdefempty{\tcbtitletext}
+    {
+    \tcbset{list text={ \FirstLetterUppercase{\EnvTheoremPictLinPreTitle}  }}
+    }
+    {%% \tcbtitle is the title write by the user
+    \tcbset{list text={#1}}
+    }
+  },
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% List of type 
+%% Usar con:  \tcblistof[\section*]{\EnvTheoremPictLinListingExt}{Lista de frases}
+%%
+\titlecontents{\EnvTheoremPictLinListingExt}[2.00cm] %% Indentation %% left
+{\EnvTheoremPictLinTocEntryFormat} %% Spacing and font options for sections %% above code
+{\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+{} %% numberless-entry-format
+{\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format 
+[] %% separator
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\makeatletter
+%\newcommand{\ttll@\EnvTheoremPictLinListingExt}{-1000}
+%\makeatother
+%% To next warning
+%% Package titletoc Warning: Unknown TOC type EnvTheoremPictLinListingExt. I'll set it for you with(titletoc)                level -1000. on input line 1.

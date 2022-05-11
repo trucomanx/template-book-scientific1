@@ -37,10 +37,12 @@ rm -f *.ilg
 rm -f *.backup
 
 #rm -f main.loe
+
 rm -f $filename.MisDefinicoes
 rm -f $filename.MisExample
 rm -f $filename.MisExercise
-rm -f $filename.MisTheorem
+rm -f $filename.EnvTheorem*ListingExt
+#rm -f $filename.MisTheorem
 rm -f $filename.MisNotation
 rm -f $filename.MisElaboraciones
 rm -f $filename.MisFrases
