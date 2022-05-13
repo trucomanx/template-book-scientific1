@@ -5,10 +5,24 @@
 %   text
 % \end{notebox}
 
+\usepackage{packages/env-notebox-simple}
+
+\SetEnvNoteBoxSimpleThickness{0pt}
+\SetEnvNoteBoxSimpleFrameColor{colorNote}
+\SetEnvNoteBoxSimpleBackColor{colorNote}
+\SetEnvNoteBoxSimpleBoxArc{10pt}
+\SetEnvNoteBoxSimpleLeftWidth{14mm}
+\SetEnvNoteBoxSimpleBeforeSpace{3pt}
+\SetEnvNoteBoxSimpleAfterSpace{3pt}
+\SetEnvNoteBoxSimplePadding{10pt}
+\SetEnvNoteBoxSimpleImage{\includegraphics[width=9mm]{icons/note1.png}}
+
+\begin{comment}
 \newtcolorbox{notebox}[1][]{%
     enhanced,
     before skip=4pt,after skip=4pt,%% Espacion antes y despues del box
-    boxrule=0pt,left=14mm,right=10pt,top=10pt,bottom=10pt,%% espacio interno. Padding.
+    boxrule=0pt,
+    left=14mm,right=10pt,top=10pt,bottom=10pt,%% espacio interno. Padding.
     colback=colorNote,
     colframe=colorNote,
     rounded corners,arc=10pt,
@@ -19,5 +33,5 @@
     drop fuzzy shadow,
     #1%
 }
-
+\end{comment}
 

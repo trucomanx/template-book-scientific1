@@ -1,0 +1,123 @@
+%% source:
+%% https://github.com/trucomanx/env-notebox-simple
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{env-notebox-simple}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+\RequirePackage{pgfornament}
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{env-notebox-simple}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Macros 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% defining variable
+%\newlength{\EnvNoteBoxSimpleLength}
+%\setlength{\EnvNoteBoxSimpleLength}{3mm}
+%
+\newcommand{\EnvNoteBoxSimpleThickness}{0pt}
+\newcommand{\SetEnvNoteBoxSimpleThickness}[1]{\renewcommand{\EnvNoteBoxSimpleThickness}{#1}}%
+
+%% Define before space
+\newcommand{\EnvNoteBoxSimpleBeforeSpace}{4pt}
+\newcommand{\SetEnvNoteBoxSimpleBeforeSpace}[1]{\renewcommand{\EnvNoteBoxSimpleBeforeSpace}{#1}}%
+
+%% Define after space
+\newcommand{\EnvNoteBoxSimpleAfterSpace}{4pt}
+\newcommand{\SetEnvNoteBoxSimpleAfterSpace}[1]{\renewcommand{\EnvNoteBoxSimpleAfterSpace}{#1}}%
+
+%% Define the frame color of enviroment
+\newcommand{\EnvNoteBoxSimpleFrameColor}{green!10}
+\newcommand{\SetEnvNoteBoxSimpleFrameColor}[1]{\renewcommand{\EnvNoteBoxSimpleFrameColor}{#1}}%
+
+%% Define the backaground body color
+\newcommand{\EnvNoteBoxSimpleBackColor}{green!5}
+\newcommand{\SetEnvNoteBoxSimpleBackColor}[1]{\renewcommand{\EnvNoteBoxSimpleBackColor}{#1}}%
+
+%% Define o arco
+\newcommand{\EnvNoteBoxSimpleBoxArc}{10pt}
+\newcommand{\SetEnvNoteBoxSimpleBoxArc}[1]{\renewcommand{\EnvNoteBoxSimpleBoxArc}{#1}}%
+
+%
+\newlength{\EnvNoteBoxSimpleLeftWidth}
+\setlength{\EnvNoteBoxSimpleLeftWidth}{16mm}
+\newcommand{\SetEnvNoteBoxSimpleLeftWidth}[1]%
+{%
+    \setlength{\EnvNoteBoxSimpleLeftWidth}{#1}
+}%
+
+%
+\newlength{\EnvNoteBoxSimplePadding}
+\setlength{\EnvNoteBoxSimplePadding}{10pt}
+\newcommand{\SetEnvNoteBoxSimplePadding}[1]%
+{%
+    \setlength{\EnvNoteBoxSimplePadding}{#1}
+}%
+
+%% Define the image of pretitle
+\newcommand{\EnvNoteBoxSimpleImage}{\pgfornament[color=black,width=0.8\EnvNoteBoxSimpleLeftWidth]{1}}
+\newcommand{\SetEnvNoteBoxSimpleImage}[1]{\renewcommand{\EnvNoteBoxSimpleImage}{#1}}%
+
+
+%% Define the image of pretitle
+%\newcommand{\EnvNoteBoxSimpleImage}{}
+%\newcommand{\SetEnvNoteBoxSimpleImage}[1]{\renewcommand{\EnvNoteBoxSimpleImage}{#1}}%
+
+
+
+
+
+%% Warning: These variables dont have \Set... method
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+\newtcolorbox{citationbox}
+{
+  breakable,
+  enhanced,
+  boxrule = \EnvNoteBoxSimpleThickness,
+  colback  = \EnvNoteBoxSimpleBackColor,
+  colframe = \EnvNoteBoxSimpleFrameColor,
+  arc      = \EnvNoteBoxSimpleBoxArc,
+  before   ={\vspace{\EnvNoteBoxSimpleBeforeSpace}},
+  after    ={\vspace{\EnvNoteBoxSimpleAfterSpace}},
+  left skip= \linewidth-\EnvNoteBoxSimpleWidth,
+  width    = \EnvNoteBoxSimpleWidth
+}
+\end{comment}
+
+\newtcolorbox{notebox}[1][]{%
+    enhanced,
+    before skip=\EnvNoteBoxSimpleBeforeSpace,after skip=\EnvNoteBoxSimpleAfterSpace,%% Espacion antes y despues del box
+    boxrule=\EnvNoteBoxSimpleThickness,
+    left=\EnvNoteBoxSimpleLeftWidth,right=\EnvNoteBoxSimplePadding,top=\EnvNoteBoxSimplePadding,bottom=\EnvNoteBoxSimplePadding,%% espacio interno. Padding.
+    colback=\EnvNoteBoxSimpleBackColor,
+    colframe=\EnvNoteBoxSimpleFrameColor,
+    rounded corners,arc=\EnvNoteBoxSimpleBoxArc,
+    underlay={%
+        \path[] (interior.south west) rectangle node[\EnvNoteBoxSimpleBackColor]%
+        {%
+        \begin{minipage}{\EnvNoteBoxSimpleLeftWidth}
+            \centering%
+            \EnvNoteBoxSimpleImage
+        \end{minipage}
+        } ([xshift=\EnvNoteBoxSimpleLeftWidth]interior.north west);
+    },
+    drop fuzzy shadow,
+    #1%
+}
+
+

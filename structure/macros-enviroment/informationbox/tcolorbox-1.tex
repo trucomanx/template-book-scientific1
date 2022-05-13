@@ -6,6 +6,17 @@
 %   text
 % \end{informationbox}
 %----------------------------------------------------------------------------------------
+
+\usepackage{packages/env-informationbox-round}
+
+\SetEnvInformationBoxRoundPreTitle{Informação}
+\SetEnvInformationBoxRoundFrameColor{colorInformationBox}
+\SetEnvInformationBoxRoundBackColor{colorInformationBox!5}
+\SetEnvInformationBoxRoundTitleColor{black}
+\SetEnvInformationBoxRoundTitleFont{\bfseries}
+\SetEnvInformationBoxRoundImage{\includegraphics[width=8mm]{icons/information1.eps}}
+
+\begin{comment}
 \newtcolorbox[list inside=MisInformacoes,list type=MisInformacoes,auto counter,number within=chapter]{informationbox}[1]
 {
   title={#1},
@@ -39,3 +50,4 @@
 \newcommand{\ttll@MisInformacoes}{-1000}
 \makeatother
 
+\end{comment}

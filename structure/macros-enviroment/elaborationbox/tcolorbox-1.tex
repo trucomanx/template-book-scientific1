@@ -6,6 +6,18 @@
 %   texto
 % \end{elaborationbox}
 %\newcounter{countelab}%[chapter] ,use counter=countelab
+
+\usepackage{packages/env-elaborationbox-ripple}
+
+\SetEnvElaborationBoxRipplePreTitle{Elaboração}
+\SetEnvElaborationBoxRippleFrameColor{colorElaboration}
+\SetEnvElaborationBoxRippleBackColor{colorElaboration!3}
+\SetEnvElaborationBoxRippleTitleColor{white}
+\SetEnvElaborationBoxRippleTitleBackColor{colorElaboration}
+\SetEnvElaborationBoxRippleTitleFont{\bfseries}
+\SetEnvElaborationBoxRippleShowPreTitle{false}
+
+\begin{comment}
 \newtcolorbox[list inside=MisElaboraciones,list type=MisElaboraciones,auto counter,number within=chapter]{elaborationbox}[1]{
     tile,
     colback=colorElaboration!3,
@@ -36,5 +48,5 @@
 \newcommand{\ttll@MisElaboraciones}{-1000}
 \makeatother
 
-
+\end{comment}
 

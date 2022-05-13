@@ -1,0 +1,162 @@
+%% source:
+%% https://github.com/trucomanx/env-elaborationbox-ripple
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{env-elaborationbox-ripple}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+\RequirePackage[explicit]{titlesec} %% sections
+\RequirePackage{titletoc} %% TOC
+\RequirePackage{xparse} %%\ExplSyntaxOn
+\RequirePackage{calc}%% para restar
+\RequirePackage{tikz} % Required for drawing custom shapes
+\usetikzlibrary{decorations.pathmorphing}
+
+
+\RequirePackage{etoolbox}%%\ifstrempty %%\newbool{myBool}
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{env-elaborationbox-ripple}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Macros 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% defining variable
+\newlength{\EnvElaborationBoxRippleThickness}
+\setlength{\EnvElaborationBoxRippleThickness}{1.25mm}%{0.8mm}
+
+\newbool{EnvElaborationBoxRippleShowPreTitle}
+\booltrue{EnvElaborationBoxRippleShowPreTitle}
+
+%define Show pretitle
+\newcommand{\SetEnvElaborationBoxRippleShowPreTitle}[1]{\setbool{EnvElaborationBoxRippleShowPreTitle}{#1}}%
+
+
+%% Define before space
+\newcommand{\EnvElaborationBoxRippleBeforeSpace}{0pt}
+\newcommand{\SetEnvElaborationBoxRippleBeforeSpace}[1]{\renewcommand{\EnvElaborationBoxRippleBeforeSpace}{#1}}%
+
+%% Define after space
+\newcommand{\EnvElaborationBoxRippleAfterSpace}{0pt}
+\newcommand{\SetEnvElaborationBoxRippleAfterSpace}[1]{\renewcommand{\EnvElaborationBoxRippleAfterSpace}{#1}}%
+
+%% Define showed name of enviroment
+\newcommand{\EnvElaborationBoxRipplePreTitle}{Information}
+\newcommand{\SetEnvElaborationBoxRipplePreTitle}[1]{\renewcommand{\EnvElaborationBoxRipplePreTitle}{#1}}%
+
+%% Define the frame color of enviroment
+\newcommand{\EnvElaborationBoxRippleFrameColor}{red!50!black}
+\newcommand{\SetEnvElaborationBoxRippleFrameColor}[1]{\renewcommand{\EnvElaborationBoxRippleFrameColor}{#1}}%
+
+%% Define the backaground body text color
+\newcommand{\EnvElaborationBoxRippleBackColor}{gray!10}
+\newcommand{\SetEnvElaborationBoxRippleBackColor}[1]{\renewcommand{\EnvElaborationBoxRippleBackColor}{#1}}%
+
+%% Define The title body color 
+\newcommand{\EnvElaborationBoxRippleTitleColor}{blue}
+\newcommand{\SetEnvElaborationBoxRippleTitleColor}[1]{\renewcommand{\EnvElaborationBoxRippleTitleColor}{#1}}%
+
+%% Define The title background color 
+\newcommand{\EnvElaborationBoxRippleTitleBackColor}{blue!30!white}
+\newcommand{\SetEnvElaborationBoxRippleTitleBackColor}[1]{\renewcommand{\EnvElaborationBoxRippleTitleBackColor}{#1}}%
+
+
+%% Define the tile font 
+\newcommand{\EnvElaborationBoxRippleTitleFont}{\bfseries}
+\newcommand{\SetEnvElaborationBoxRippleTitleFont}[1]{\renewcommand{\EnvElaborationBoxRippleTitleFont}{#1}}%
+
+%% Define Left width
+\newcommand{\SetEnvElaborationBoxRippleThickness}[1]%
+{
+    \setlength{\EnvElaborationBoxRippleThickness}{#1}
+}%
+
+
+%% Warning: These variables dont have \Set... method
+\newcommand{\EnvElaborationBoxRippleListingExt}{EnvElaborationBoxRippleListingExt}
+\newcommand{\EnvElaborationBoxRippleTocEntryFormat}{}
+%
+
+
+
+%% Crea una macro que capitaliza la primera letra
+\ExplSyntaxOn
+\NewExpandableDocumentCommand \ElaborationBoxRoundFirstLetterUppercase { O{} m }
+  { \text_titlecase:nn {#1} {#2} }
+\ExplSyntaxOff
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Create a new counter that will follow tcolorbox's numbering
+%% Create a new counter that will follow tcolorbox's numbering
+\newcounter{elaborationboxCounter}[section]
+\renewcommand*{\theelaborationboxCounter}{\noexpand\thesection.\noexpand\arabic{elaborationboxCounter}}
+
+
+
+\newtcolorbox[list inside=\EnvElaborationBoxRippleListingExt,list type=\EnvElaborationBoxRippleListingExt,auto counter,number within=section]%
+{elaborationbox}%
+[1][]%
+{
+  tile,
+  title={#1},
+  center title,
+  %detach title,
+  coltitle=\EnvElaborationBoxRippleTitleColor,
+  colbacktitle=\EnvElaborationBoxRippleTitleBackColor,
+  fonttitle=\EnvElaborationBoxRippleTitleFont,
+  before skip=\EnvElaborationBoxRippleBeforeSpace,
+  after skip=\EnvElaborationBoxRippleAfterSpace,
+  %breakable,%pad at break=1mm,
+  %enhanced,
+  colback=\EnvElaborationBoxRippleBackColor,
+  colframe=\EnvElaborationBoxRippleFrameColor,
+  %leftrule=\EnvElaborationBoxRippleThickness,
+  %rightrule=\EnvElaborationBoxRippleThickness,
+  toprule=\EnvElaborationBoxRippleThickness,  bottomrule=\EnvElaborationBoxRippleThickness,
+  %drop fuzzy shadow=black,
+  extras unbroken and first={borderline north={0.5mm}{0.5mm}{\EnvElaborationBoxRippleFrameColor,decoration={zigzag,amplitude=0.5mm},decorate}},
+  extras unbroken and last={borderline south={0.5mm}{0.5mm}{\EnvElaborationBoxRippleFrameColor,decoration={zigzag,amplitude=0.5mm},decorate}},
+  width=\linewidth,
+  code={
+  \ifbool{EnvElaborationBoxRippleShowPreTitle}
+  {
+    \tcbset{before title={\textcolor{\EnvElaborationBoxRippleTitleColor}{\EnvElaborationBoxRippleTitleFont\EnvElaborationBoxRipplePreTitle~\thetcbcounter: }}}
+  }{}
+  \ifstrempty{#1}%\ifdefempty{\tcbtitletext}
+    {
+    \tcbset{list text={\ElaborationBoxRoundFirstLetterUppercase{\EnvElaborationBoxRipplePreTitle}  }} %% texto en TOC
+    }
+    {%% \tcbtitle is the title write by the user
+    \tcbset{list text={#1}} %% texto en TOC
+    }
+  %
+  },
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% List of type 
+%% Usar con:  \tcblistof[\section*]{\EnvElaborationBoxRippleListingExt}{Lista de frases}
+%%
+\titlecontents{\EnvElaborationBoxRippleListingExt}[2.00cm] %% Indentation %% left
+{\EnvElaborationBoxRippleTocEntryFormat} %% Spacing and font options for sections %% above code
+{\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+{} %% numberless-entry-format
+{\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format 
+[] %% separator
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\makeatletter
+%\newcommand{\ttll@\EnvElaborationBoxRippleListingExt}{-1000}
+%\makeatother
+%% To next warning
+%% Package titletoc Warning: Unknown TOC type EnvElaborationBoxRippleListingExt. I'll set it for you with(titletoc)                level -1000. on input line 1.

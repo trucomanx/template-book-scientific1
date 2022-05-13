@@ -38,14 +38,14 @@ rm -f *.backup
 
 #rm -f main.loe
 
+rm -f $filename.EnvInformationBox*ListingExt
+rm -f $filename.EnvElaborationBox*ListingExt
 rm -f $filename.MisDefinicoes
 rm -f $filename.MisExample
 rm -f $filename.MisExercise
 rm -f $filename.EnvTheorem*ListingExt
 #rm -f $filename.MisTheorem
 rm -f $filename.MisNotation
-rm -f $filename.MisElaboraciones
 rm -f $filename.MisFrases
-rm -f $filename.MisInformacoes
 rm -f $filename.mw
 

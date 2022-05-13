@@ -10,4 +10,8 @@ curl -O https://raw.githubusercontent.com/trucomanx/env-theorem-pictlin/main/env
 curl -O https://raw.githubusercontent.com/trucomanx/env-citationbox-simple/main/env-citationbox-simple.sty
 curl -O https://raw.githubusercontent.com/trucomanx/env-equationbox-simple/main/env-equationbox-simple.sty
 curl -O https://raw.githubusercontent.com/trucomanx/env-bulletjournalround/main/env-bulletjournalround.sty
+curl -O https://raw.githubusercontent.com/trucomanx/env-notebox-simple/main/env-notebox-simple.sty
+curl -O https://raw.githubusercontent.com/trucomanx/env-informationbox-round/main/env-informationbox-round.sty
+curl -O https://raw.githubusercontent.com/trucomanx/env-elaborationbox-ripple/main/env-elaborationbox-ripple.sty
+
 
