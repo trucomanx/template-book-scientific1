@@ -1,0 +1,237 @@
+%% source:
+%% https://github.com/trucomanx/env-phrasebox-tab
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{env-phrasebox-tab}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+\RequirePackage[explicit]{titlesec} %% sections
+\RequirePackage{titletoc} %% TOC
+\RequirePackage{xparse} %%\ExplSyntaxOn
+\RequirePackage{calc}%% para restar
+
+
+\RequirePackage{etoolbox}%%\ifstrempty %%\newbool{myBool}
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{env-phrasebox-tab}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Macros 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% defining variable
+\newlength{\EnvPhraseBoxTabThickness}
+\setlength{\EnvPhraseBoxTabThickness}{2pt}%{0.8mm}
+
+\newlength{\EnvPhraseBoxTabArc}
+\setlength{\EnvPhraseBoxTabArc}{8pt}%{0.8mm}
+
+\newlength{\EnvPhraseBoxTabPaddingTab}
+\setlength{\EnvPhraseBoxTabPaddingTab}{13mm}%{0.8mm}
+
+\newlength{\EnvPhraseBoxTabPaddingTop}
+\setlength{\EnvPhraseBoxTabPaddingTop}{3mm}%{0.8mm}
+
+\newbool{EnvPhraseBoxTabShowPreTitle}
+\setbool{EnvPhraseBoxTabShowPreTitle}{true}
+
+%define Show pretitle
+\newcommand{\SetEnvPhraseBoxTabShowPreTitle}[1]{\setbool{EnvPhraseBoxTabShowPreTitle}{#1}}%
+
+
+%% Define before space
+\newcommand{\EnvPhraseBoxTabBeforeSpace}{0pt}
+\newcommand{\SetEnvPhraseBoxTabBeforeSpace}[1]{\renewcommand{\EnvPhraseBoxTabBeforeSpace}{#1}}%
+
+%% Define after space
+\newcommand{\EnvPhraseBoxTabAfterSpace}{0pt}
+\newcommand{\SetEnvPhraseBoxTabAfterSpace}[1]{\renewcommand{\EnvPhraseBoxTabAfterSpace}{#1}}%
+
+%% Define showed name of enviroment
+\newcommand{\EnvPhraseBoxTabPreTitle}{Phrase}
+\newcommand{\SetEnvPhraseBoxTabPreTitle}[1]{\renewcommand{\EnvPhraseBoxTabPreTitle}{#1}}%
+
+%% Define the frame color of enviroment
+\newcommand{\EnvPhraseBoxTabBackTitleColor}{blue!15}
+\newcommand{\SetEnvPhraseBoxTabBackTitleColor}[1]{\renewcommand{\EnvPhraseBoxTabBackTitleColor}{#1}}%
+
+%% Define the frame color of enviroment
+\newcommand{\EnvPhraseBoxTabFrameColor}{blue!20}
+\newcommand{\SetEnvPhraseBoxTabFrameColor}[1]{\renewcommand{\EnvPhraseBoxTabFrameColor}{#1}}%
+
+%% Define the padding tab
+\newcommand{\SetEnvPhraseBoxTabPaddingTab}[1]%
+{
+    \setlength{\EnvPhraseBoxTabPaddingTab}{#1}
+}%
+
+%% Define the padding top
+\newcommand{\SetEnvPhraseBoxTabPaddingTop}[1]%
+{
+    \setlength{\EnvPhraseBoxTabPaddingTop}{#1}
+}%
+
+%% Define the backaground body text color
+\newcommand{\EnvPhraseBoxTabBackColor}{white}
+\newcommand{\SetEnvPhraseBoxTabBackColor}[1]{\renewcommand{\EnvPhraseBoxTabBackColor}{#1}}%
+
+
+%% Define The title body color 
+\newcommand{\EnvPhraseBoxTabTitleColor}{black}
+\newcommand{\SetEnvPhraseBoxTabTitleColor}[1]{\renewcommand{\EnvPhraseBoxTabTitleColor}{#1}}%
+
+%% Define the title font 
+\newcommand{\EnvPhraseBoxTabTitleFont}{\bfseries}
+\newcommand{\SetEnvPhraseBoxTabTitleFont}[1]{\renewcommand{\EnvPhraseBoxTabTitleFont}{#1}}%
+
+%% Define Arc width
+\newcommand{\SetEnvPhraseBoxTabArc}[1]%
+{
+    \setlength{\EnvPhraseBoxTabArc}{#1}
+}%
+
+%% Define Thickness width
+\newcommand{\SetEnvPhraseBoxTabThickness}[1]%
+{
+    \setlength{\EnvPhraseBoxTabThickness}{#1}
+}%
+
+
+%% Warning: These variables dont have \Set... method
+\newcommand{\EnvPhraseBoxTabListingExt}{EnvPhraseBoxTabListingExt}
+\newcommand{\EnvPhraseBoxTabTocEntryFormat}{}
+%
+
+\def \MyLengthFrase{0.4\textwidth}
+\def \MyHalfLengthFrase{0.2\textwidth}
+
+
+%% Crea una macro que capitaliza la primera letra
+\ExplSyntaxOn
+\NewExpandableDocumentCommand \PhraseBoxTabFirstLetterUppercase { O{} m }
+  { \text_titlecase:nn {#1} {#2} }
+\ExplSyntaxOff
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Create a new counter that will follow tcolorbox's numbering
+%% Create a new counter that will follow tcolorbox's numbering
+\newcounter{phraseboxCounter}[section]
+\renewcommand*{\thephraseboxCounter}{\noexpand\thesection.\noexpand\arabic{phraseboxCounter}}
+
+\tcbset{%
+    StyleEnvPhraseBoxTab/.style=%
+    {%
+        enhanced,
+        title={#1},
+        colframe=\EnvPhraseBoxTabFrameColor,
+        colback=\EnvPhraseBoxTabBackColor,
+        arc=\EnvPhraseBoxTabArc,
+        top=\EnvPhraseBoxTabPaddingTop+6pt,
+        fonttitle=\EnvPhraseBoxTabTitleFont,
+        coltitle=\EnvPhraseBoxTabTitleColor,
+        colbacktitle=\EnvPhraseBoxTabFrameColor,
+        boxrule=\EnvPhraseBoxTabThickness,
+        attach boxed title to top right={xshift=-\EnvPhraseBoxTabPaddingTab},
+        boxed title style={%
+            skin=enhanced jigsaw,
+            %boxrule=\EnvPhraseBoxTabThickness,
+            %size=small,
+            %arc=8mm,
+            top=2mm,
+            bottom=-1mm,
+            frame code={ 
+                \path[rounded corners=\EnvPhraseBoxTabArc,tcb fill frame] 
+                ([xshift=-\linewidth+\EnvPhraseBoxTabPaddingTab,yshift=-\EnvPhraseBoxTabPaddingTop]frame.south east)  -- 
+                ([xshift=-\linewidth+\EnvPhraseBoxTabPaddingTab]frame.south east)  -- 
+                ([xshift=-\EnvPhraseBoxTabPaddingTab/3]frame.south west) -- 
+                (frame.north west) -- 
+                (frame.north east) -- 
+                ([xshift=\EnvPhraseBoxTabPaddingTab/3]frame.south east) -- 
+                ([xshift=\EnvPhraseBoxTabPaddingTab]frame.south east)  [sharp corners] -- 
+                ([xshift=\EnvPhraseBoxTabPaddingTab,yshift=-\EnvPhraseBoxTabPaddingTop]frame.south east) -- 
+                cycle; 
+            },
+            interior code={
+                \path[rounded corners=\EnvPhraseBoxTabArc,fill=\EnvPhraseBoxTabBackTitleColor,draw=\EnvPhraseBoxTabFrameColor,line width=\EnvPhraseBoxTabThickness] 
+                ([xshift=\EnvPhraseBoxTabThickness/2-\linewidth+\EnvPhraseBoxTabPaddingTab,yshift=-\EnvPhraseBoxTabPaddingTop]frame.south east)  -- 
+                ([xshift=\EnvPhraseBoxTabThickness/2-\linewidth+\EnvPhraseBoxTabPaddingTab]frame.south east)  -- 
+                ([xshift=-\EnvPhraseBoxTabPaddingTab/3]frame.south west) -- 
+                (frame.north west) -- 
+                (frame.north east) -- 
+                ([xshift=\EnvPhraseBoxTabPaddingTab/3]frame.south east) -- 
+                ([xshift=-\EnvPhraseBoxTabThickness/2+\EnvPhraseBoxTabPaddingTab]frame.south east)  [sharp corners] -- 
+                ([xshift=-\EnvPhraseBoxTabThickness/2+\EnvPhraseBoxTabPaddingTab,yshift=-\EnvPhraseBoxTabPaddingTop]frame.south east) -- 
+                cycle; 
+            },
+        },%
+        %colbacktitle=white,
+        %fontupper=\EnvPhraseBoxTabTitleFont,
+        %oversize=0.0cm,
+        %before upper={\addtocounter{phraseboxCounter}{-1}\refstepcounter{phraseboxCounter}},
+        %after upper={\\{  \mbox{} \hfill #2}\index{Frases e Ditados!#1}},
+        before skip=\EnvPhraseBoxTabBeforeSpace,
+        after skip=\EnvPhraseBoxTabAfterSpace,
+    }%
+}%
+
+
+
+\newtcolorbox[list inside=\EnvPhraseBoxTabListingExt,list type=\EnvPhraseBoxTabListingExt,auto counter,number within=section]%
+{phrasebox}%
+[2]%
+{
+  StyleEnvPhraseBoxTab=#1,
+  before upper={\addtocounter{phraseboxCounter}{-1}\refstepcounter{phraseboxCounter} \refstepcounter{phraseboxCounter}}, % IMPORTANTE PARA UN CORRECTO \label{lab:1} 
+  code={
+  \ifbool{EnvPhraseBoxTabShowPreTitle}
+  {
+    \tcbset{before title={\textcolor{\EnvPhraseBoxTabTitleColor}{\EnvPhraseBoxTabTitleFont\EnvPhraseBoxTabPreTitle~\thetcbcounter: }}}
+  }
+  {
+    %
+  }
+  \ifblank{#1}%\ifdefempty{\tcbtitletext}
+    {
+    \tcbset{list text={\PhraseBoxTabFirstLetterUppercase{\EnvPhraseBoxTabPreTitle}  }} %% texto en TOC
+    }
+    {%% \tcbtitle is the title write by the user
+    \tcbset{list text={#1}} %% texto en TOC
+    }
+  \ifblank{#2}%
+    {
+        %
+    }
+    {%% 
+    \tcbset{after upper={\\{  \mbox{} \hfill #2}}} %% text
+    }
+  %
+  },
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% List of type 
+%% Usar con:  \tcblistof[\section*]{\EnvPhraseBoxTabListingExt}{Lista de frases}
+%%
+\titlecontents{\EnvPhraseBoxTabListingExt}[2.00cm] %% Indentation %% left
+{\EnvPhraseBoxTabTocEntryFormat} %% Spacing and font options for sections %% above code
+{\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+{} %% numberless-entry-format
+{\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format 
+[] %% separator
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\makeatletter
+%\newcommand{\ttll@\EnvPhraseBoxTabListingExt}{-1000}
+%\makeatother
+%% To next warning
+%% Package titletoc Warning: Unknown TOC type EnvPhraseBoxTabListingExt. I'll set it for you with(titletoc)                level -1000. on input line 1.

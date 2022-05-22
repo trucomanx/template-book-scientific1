@@ -7,6 +7,22 @@
 % \end{elaborationbox}
 %\newcounter{countelab}%[chapter] ,use counter=countelab
 
+\usepackage{packages/env-elaborationbox-notehor}
+
+\SetEnvElaborationBoxNotehorPreTitle{Elaboração}
+\SetEnvElaborationBoxNotehorFrameColor{colorElaborationFrame!10}
+\SetEnvElaborationBoxNotehorBackColor{colorElaboration!4}
+\SetEnvElaborationBoxNotehorTitleColor{black}
+\SetEnvElaborationBoxNotehorTitleFont{\bfseries}
+\SetEnvElaborationBoxNotehorShowPreTitle{true}
+\SetEnvElaborationBoxNotehorBeforeSpace{0pt}
+\SetEnvElaborationBoxNotehorAfterSpace{5pt}
+
+\newcommand{\EnvElaborationBoxListingExt}{\EnvElaborationBoxNotehorListingExt}
+
+
+
+\begin{comment}
 \newtcolorbox[list inside=MisElaboraciones,list type=MisElaboraciones,auto counter,number within=chapter]{elaborationbox}[1]
 {
     detach title,
@@ -46,5 +62,6 @@
 \newcommand{\ttll@MisElaboraciones}{-1000}
 \makeatother
 
+\newcommand{\EnvElaborationBoxListingExt}{MisElaboraciones}
 
-
+\end{comment}

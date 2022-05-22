@@ -6,6 +6,23 @@
 % meu texto
 % \end{phrasebox}
 
+\usepackage{packages/env-phrasebox-tab}
+
+\SetEnvPhraseBoxTabBeforeSpace{3pt}
+\SetEnvPhraseBoxTabAfterSpace{8pt}
+\SetEnvPhraseBoxTabPreTitle{Elaboración}
+\SetEnvPhraseBoxTabFrameColor{colorPhraseBox}
+\SetEnvPhraseBoxTabBackTitleColor{colorPhraseBox!50}
+\SetEnvPhraseBoxTabTitleColor{black}
+\SetEnvPhraseBoxTabBackColor{white}
+\SetEnvPhraseBoxTabTitleFont{\bfseries}
+\SetEnvPhraseBoxTabThickness{1pt}
+\SetEnvPhraseBoxTabArc{5pt}
+\SetEnvPhraseBoxTabShowPreTitle{true}
+
+\newcommand{\EnvPhraseBoxListingExt}{\EnvPhraseBoxTabListingExt}
+
+\begin{comment}
 %% Create a new counter that will follow tcolorbox's numbering
 \newcounter{phrasebox}[chapter]
 \renewcommand*{\thephrasebox}{\noexpand\thechapter.\noexpand\arabic{phrasebox}}
@@ -66,5 +83,5 @@ after={\par\vskip 12pt}
 \newcommand{\ttll@MisFrases}{-1000}
 \makeatother
 
-
+\end{comment}
 

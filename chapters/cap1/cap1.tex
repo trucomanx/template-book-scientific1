@@ -5,7 +5,10 @@
 
 \lipsum[1][1-3] 
 
+Referencia a la Información \ref{informationbox:1} (siguiente)
+
 \begin{informationbox}[Título A]
+\label{informationbox:1}
 \lipsum[1][1-3] 
 \end{informationbox}
 
@@ -13,11 +16,17 @@
 
 \HTextRule{Text}
 
+Referencia a las Frases \ref{phrasebox:1} y \ref{phrasebox:2} 
+
 \begin{phrasebox}{Frase title A}{Autor}
+\label{phrasebox:1}
 \lipsum[1][1-3] 
 \end{phrasebox}
 
+\lipsum[1] 
+
 \begin{phrasebox}{Frase title B}{Autor}
+\label{phrasebox:2}
 \lipsum[1][1-3] 
 \end{phrasebox}
 
@@ -34,13 +43,19 @@ This statement requires citation \cite{book_key}; this one is more specific \cit
 
 \lipsum[1] % 
 
+Referencia a la Información \ref{information:2} (siguiente)
+
 \begin{informationbox}[Título B]
+\label{information:2}
 \lipsum[1][1-3]\footnote{Simple footnote example.}
 \end{informationbox}
 
 \lipsum[1] % 
 
+Referencia a la Información \ref{information:3} (siguiente)
+
 \begin{elaborationbox}[Título C]
+\label{information:3}
 \lipsum[1][1-3] 
 \end{elaborationbox}
 

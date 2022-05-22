@@ -6,6 +6,19 @@
 %   texto
 % \end{elaborationbox}
 %\newcounter{countelab}%[chapter] ,use counter=countelab
+
+\usepackage{packages/env-elaborationbox-formal}
+
+\SetEnvElaborationBoxFormalPreTitle{Elaboração}
+\SetEnvElaborationBoxFormalFrameColor{colorElaborationFrame}
+\SetEnvElaborationBoxFormalBackColor{yellow!5}
+\SetEnvElaborationBoxFormalTitleColor{white}
+\SetEnvElaborationBoxFormalTitleFont{\bfseries}
+\SetEnvElaborationBoxFormalShowPreTitle{true}
+
+\newcommand{\EnvElaborationBoxListingExt}{\EnvElaborationBoxFormalListingExt}
+
+\begin{comment}
 \newtcolorbox[list inside=MisElaboraciones,list type=MisElaboraciones,auto counter,number within=chapter]%
 {elaborationbox}[1]%
 {
@@ -46,5 +59,5 @@
 \newcommand{\ttll@MisElaboraciones}{-1000}
 \makeatother
 
-
+\end{comment}
 

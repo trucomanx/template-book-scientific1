@@ -1,0 +1,187 @@
+%% source:
+%% https://github.com/trucomanx/env-elaborationbox-formal
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{env-elaborationbox-formal}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+\RequirePackage[explicit]{titlesec} %% sections
+\RequirePackage{titletoc} %% TOC
+\RequirePackage{xparse} %%\ExplSyntaxOn
+\RequirePackage{calc}%% para restar
+
+
+\RequirePackage{etoolbox}%%\ifstrempty %%\newbool{myBool}
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{env-elaborationbox-formal}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Macros 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% defining variable
+\newlength{\EnvElaborationBoxFormalThickness}
+\setlength{\EnvElaborationBoxFormalThickness}{0.4pt}%{0.8mm}
+
+\newbool{EnvElaborationBoxFormalShowPreTitle}
+\setbool{EnvElaborationBoxFormalShowPreTitle}{true}
+
+%define Show pretitle
+\newcommand{\SetEnvElaborationBoxFormalShowPreTitle}[1]{\setbool{EnvElaborationBoxFormalShowPreTitle}{#1}}%
+
+
+%% Define before space
+\newcommand{\EnvElaborationBoxFormalBeforeSpace}{0pt}
+\newcommand{\SetEnvElaborationBoxFormalBeforeSpace}[1]{\renewcommand{\EnvElaborationBoxFormalBeforeSpace}{#1}}%
+
+%% Define after space
+\newcommand{\EnvElaborationBoxFormalAfterSpace}{0pt}
+\newcommand{\SetEnvElaborationBoxFormalAfterSpace}[1]{\renewcommand{\EnvElaborationBoxFormalAfterSpace}{#1}}%
+
+%% Define showed name of enviroment
+\newcommand{\EnvElaborationBoxFormalPreTitle}{Elaboration}
+\newcommand{\SetEnvElaborationBoxFormalPreTitle}[1]{\renewcommand{\EnvElaborationBoxFormalPreTitle}{#1}}%
+
+%% Define the frame color of enviroment
+\newcommand{\EnvElaborationBoxFormalFrameColor}{red!50!black}
+\newcommand{\SetEnvElaborationBoxFormalFrameColor}[1]{\renewcommand{\EnvElaborationBoxFormalFrameColor}{#1}}%
+
+%% Define the backaground body text color
+\newcommand{\EnvElaborationBoxFormalBackColor}{gray!10}
+\newcommand{\SetEnvElaborationBoxFormalBackColor}[1]{\renewcommand{\EnvElaborationBoxFormalBackColor}{#1}}%
+
+%% Define The title body color 
+\newcommand{\EnvElaborationBoxFormalTitleColor}{white}
+\newcommand{\SetEnvElaborationBoxFormalTitleColor}[1]{\renewcommand{\EnvElaborationBoxFormalTitleColor}{#1}}%
+
+%% Define the tile font 
+\newcommand{\EnvElaborationBoxFormalTitleFont}{\bfseries}
+\newcommand{\SetEnvElaborationBoxFormalTitleFont}[1]{\renewcommand{\EnvElaborationBoxFormalTitleFont}{#1}}%
+
+%% Define Left width
+\newcommand{\SetEnvElaborationBoxFormalThickness}[1]%
+{
+    \setlength{\EnvElaborationBoxFormalThickness}{#1}
+}%
+
+
+%% Warning: These variables dont have \Set... method
+\newcommand{\EnvElaborationBoxFormalListingExt}{EnvElaborationBoxFormalListingExt}
+\newcommand{\EnvElaborationBoxFormalTocEntryFormat}{}
+%
+
+
+
+%% Crea una macro que capitaliza la primera letra
+\ExplSyntaxOn
+\NewExpandableDocumentCommand \ElaborationBoxFormalFirstLetterUppercase { O{} m }
+  { \text_titlecase:nn {#1} {#2} }
+\ExplSyntaxOff
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Create a new counter that will follow tcolorbox's numbering
+%% Create a new counter that will follow tcolorbox's numbering
+\newcounter{elaborationboxCounter}[section]
+\renewcommand*{\theelaborationboxCounter}{\noexpand\thesection.\noexpand\arabic{elaborationboxCounter}}
+
+
+\tcbset{%
+    StyleEnvElaborationBoxFormal/.style=%
+    {%
+        %tile,
+        title={#1},
+        upperbox=visible,
+        %detach title,
+        coltitle=\EnvElaborationBoxFormalTitleColor,
+        colbacktitle=\EnvElaborationBoxFormalBackColor,
+        colframe=\EnvElaborationBoxFormalFrameColor,
+        breakable,%pad at break=1mm,
+        enhanced standard,
+        %leftrule=\EnvElaborationBoxFormalThickness, %rightrule=\EnvElaborationBoxFormalThickness,
+        %toprule=\EnvElaborationBoxFormalThickness,  %bottomrule=\EnvElaborationBoxFormalThickness,
+        boxrule=\EnvElaborationBoxFormalThickness,
+        titlerule=-0.5\EnvElaborationBoxFormalThickness,
+        drop fuzzy shadow,
+        width=\linewidth,
+        title style={top color=\EnvElaborationBoxFormalFrameColor!30,bottom color=\EnvElaborationBoxFormalBackColor},
+        fonttitle=\EnvElaborationBoxFormalTitleFont,
+        before skip=\EnvElaborationBoxFormalBeforeSpace,
+        after skip=\EnvElaborationBoxFormalAfterSpace,
+        center title,
+        toptitle=7.5\EnvElaborationBoxFormalThickness,
+        top=11pt,topsep at break=-5pt,
+        colback=\EnvElaborationBoxFormalBackColor,
+        code=%
+        {%
+          \ifblank{#1}%\ifdefempty{\tcbtitletext}
+            {%
+            }%
+            {%% 
+            \tcbset{% Este codigo dibuja \____/ 
+              overlay unbroken and first={
+                \path[fill=\EnvElaborationBoxFormalFrameColor]
+                ([xshift=5pt,yshift=-\pgflinewidth]frame.north west) to[out=0,in=180] ([xshift=20pt,yshift=-5pt]title.south west) 
+                -- 
+                ([xshift=-20pt,yshift=-5pt]title.south east) to[out=0,in=180] ([xshift=-5pt,yshift=-\pgflinewidth]frame.north east) 
+                -- cycle;
+              }
+             } 
+            }
+        }
+    }%
+}%
+
+
+
+\newtcolorbox[list inside=\EnvElaborationBoxFormalListingExt,list type=\EnvElaborationBoxFormalListingExt,auto counter,number within=section]%
+{elaborationbox}%
+[1][ ]%
+{
+  StyleEnvElaborationBoxFormal=#1,
+  before upper={\addtocounter{elaborationboxCounter}{-1}\refstepcounter{elaborationboxCounter} \refstepcounter{elaborationboxCounter}},
+  code={
+  \ifbool{EnvElaborationBoxFormalShowPreTitle}
+  {
+    \tcbset{before title={\textcolor{\EnvElaborationBoxFormalTitleColor}{\EnvElaborationBoxFormalTitleFont\EnvElaborationBoxFormalPreTitle~\thetcbcounter: }}}
+  }
+  {
+    %
+  }
+  \ifblank{#1}%\ifdefempty{\tcbtitletext}
+    {
+    \tcbset{list text={\ElaborationBoxFormalFirstLetterUppercase{\EnvElaborationBoxFormalPreTitle}  }} %% texto en TOC
+    }
+    {%% \tcbtitle is the title write by the user
+    \tcbset{list text={#1}} %% texto en TOC
+    }
+  %
+  },
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% List of type 
+%% Usar con:  \tcblistof[\section*]{\EnvElaborationBoxFormalListingExt}{Lista de frases}
+%%
+\titlecontents{\EnvElaborationBoxFormalListingExt}[2.00cm] %% Indentation %% left
+{\EnvElaborationBoxFormalTocEntryFormat} %% Spacing and font options for sections %% above code
+{\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+{} %% numberless-entry-format
+{\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format 
+[] %% separator
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\makeatletter
+%\newcommand{\ttll@\EnvElaborationBoxFormalListingExt}{-1000}
+%\makeatother
+%% To next warning
+%% Package titletoc Warning: Unknown TOC type EnvElaborationBoxFormalListingExt. I'll set it for you with(titletoc)                level -1000. on input line 1.

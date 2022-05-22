@@ -40,6 +40,7 @@ rm -f *.backup
 
 rm -f $filename.EnvInformationBox*ListingExt
 rm -f $filename.EnvElaborationBox*ListingExt
+rm -f $filename.EnvPhraseBox*ListingExt
 rm -f $filename.MisDefinicoes
 rm -f $filename.MisExample
 rm -f $filename.MisExercise

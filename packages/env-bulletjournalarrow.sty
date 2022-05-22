@@ -1,0 +1,183 @@
+%% source:
+%% https://github.com/trucomanx/env-bulletjournalarrow
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{env-bulletjournalarrow}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+\newcounter{EnvBulletJournalArrowCount}
+\usetikzlibrary{shapes.geometric}
+
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{env-bulletjournalarrow}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Macros 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% defining variable
+\newlength{\EnvBulletJournalArrowItemHeight}
+\setlength{\EnvBulletJournalArrowItemHeight}{12pt}
+
+\newlength{\EnvBulletJournalArrowItemWidth}
+\setlength{\EnvBulletJournalArrowItemWidth}{19pt}
+
+\newlength{\EnvBulletJournalArrowItemOffset}
+\setlength{\EnvBulletJournalArrowItemOffset}{4pt}
+
+\newlength{\EnvBulletJournalArrowIndent}
+\setlength{\EnvBulletJournalArrowIndent}{24pt}
+
+\newlength{\EnvBulletJournalArrowItemShadowH}
+\setlength{\EnvBulletJournalArrowItemShadowH}{2pt}
+
+%% Define before space
+%\newcommand{\EnvBulletJournalArrowBeforeSpace}{0pt}
+%\newcommand{\SetEnvBulletJournalArrowBeforeSpace}[1]{\renewcommand{\EnvBulletJournalArrowBeforeSpace}{#1}}%
+
+%% Define after space
+%\newcommand{\EnvBulletJournalArrowAfterSpace}{0pt}
+%\newcommand{\SetEnvBulletJournalArrowAfterSpace}[1]{\renewcommand{\EnvBulletJournalArrowAfterSpace}{#1}}%
+
+%% Define FrameTickness
+\newcommand{\EnvBulletJournalArrowFrameTickness}{0pt}
+\newcommand{\SetEnvBulletJournalArrowFrameTickness}[1]{\renewcommand{\EnvBulletJournalArrowFrameTickness}{#1}}%
+
+%% Define the frame color of enviroment
+\newcommand{\EnvBulletJournalArrowFrameColor}{white}
+\newcommand{\SetEnvBulletJournalArrowFrameColor}[1]{\renewcommand{\EnvBulletJournalArrowFrameColor}{#1}}%
+
+%% Define the backaground body color
+\newcommand{\EnvBulletJournalArrowBackColor}{white}
+\newcommand{\SetEnvBulletJournalArrowBackColor}[1]{\renewcommand{\EnvBulletJournalArrowBackColor}{#1}}%
+
+%% Define body Padding
+\newcommand{\EnvBulletJournalArrowPadding}{1pt}
+\newcommand{\SetEnvBulletJournalArrowPadding}[1]{\renewcommand{\EnvBulletJournalArrowPadding}{#1}}%
+
+%% Define Indent
+\newcommand{\SetEnvBulletJournalArrowIndent}[1]%
+{%
+    \setlength{\EnvBulletJournalArrowIndent}{#1}
+}%
+
+%% Define Item font
+\newcommand{\EnvBulletJournalArrowItemFont}{\bfseries\itshape}
+\newcommand{\SetEnvBulletJournalArrowItemFont}[1]{\renewcommand{\EnvBulletJournalArrowItemFont}{#1}}%
+
+%% Define the Item backaground color
+\newcommand{\EnvBulletJournalArrowItemBackColor}{black}
+\newcommand{\SetEnvBulletJournalArrowItemBackColor}[1]{\renewcommand{\EnvBulletJournalArrowItemBackColor}{#1}}%
+
+%% Define the Item shadow color
+\newcommand{\EnvBulletJournalArrowItemShadowColor}{black!10}
+\newcommand{\SetEnvBulletJournalArrowItemShadowColor}[1]{\renewcommand{\EnvBulletJournalArrowItemShadowColor}{#1}}%
+
+%% Define Indent
+\newcommand{\SetEnvBulletJournalArrowItemShadowH}[1]%
+{%
+    \setlength{\EnvBulletJournalArrowItemShadowH}{#1}
+}%
+
+
+%% Define the Item font color
+\newcommand{\EnvBulletJournalArrowItemFontColor}{white}
+\newcommand{\SetEnvBulletJournalArrowItemFontColor}[1]{\renewcommand{\EnvBulletJournalArrowItemFontColor}{#1}}%
+
+
+%% Define Item width
+\newcommand{\SetEnvBulletJournalArrowItemWidth}[1]%
+{
+    \setlength{\EnvBulletJournalArrowItemWidth}{#1}
+}%
+
+%% Define Item height
+\newcommand{\SetEnvBulletJournalArrowItemHeight}[1]%
+{%
+    \setlength{\EnvBulletJournalArrowItemHeight}{#1}
+}%
+
+%% Define Item offset
+\newcommand{\SetEnvBulletJournalArrowItemOffset}[1]%
+{%
+    \setlength{\EnvBulletJournalArrowItemOffset}{#1}
+}%
+
+%% Define Item arco
+\newcommand{\EnvBulletJournalArrowItemRound}{0pt}
+\newcommand{\SetEnvBulletJournalArrowItemRound}[1]{\renewcommand{\EnvBulletJournalArrowItemRound}{#1}}%
+
+
+
+%% Warning: These variables dont have \Set... method
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newenvironment{bulletjournalarrow}[1][\EnvBulletJournalArrowItemBackColor]{%
+\setcounter{EnvBulletJournalArrowCount}{0}
+\begin{tcbitemize}[%
+    raster columns=1,    
+    nofloat,
+    enhanced,
+    raster left skip=\EnvBulletJournalArrowIndent,%indent
+    sharp corners=all,
+    colback=\EnvBulletJournalArrowBackColor,
+    colframe=\EnvBulletJournalArrowFrameColor,%No aplica si *rule=0
+    toprule=\EnvBulletJournalArrowFrameTickness, bottomrule=\EnvBulletJournalArrowFrameTickness, leftrule=\EnvBulletJournalArrowFrameTickness, rightrule=\EnvBulletJournalArrowFrameTickness,
+    boxsep=0pt,
+    left=\EnvBulletJournalArrowPadding, right=\EnvBulletJournalArrowPadding, top=\EnvBulletJournalArrowPadding,bottom=\EnvBulletJournalArrowPadding,
+    valign=center,
+    %before   ={\vspace{\EnvBulletJournalArrowBeforeSpace}},%No aplica
+    %after    ={\vspace{\EnvBulletJournalArrowAfterSpace}}, %No aplica
+    overlay={% numero en rectangulo redondeado
+        \coordinate (X) at ([xshift=-0.5\EnvBulletJournalArrowIndent, yshift=-0.5\EnvBulletJournalArrowItemHeight]frame.north west);
+        %
+        \path[rounded corners=\EnvBulletJournalArrowItemRound,fill=gray!50] %draw=#1,line width=1pt
+        ([xshift=-\EnvBulletJournalArrowItemWidth/2+\EnvBulletJournalArrowItemOffset,yshift=-\EnvBulletJournalArrowItemShadowH]X)  --
+        ([xshift=-\EnvBulletJournalArrowItemWidth/2,yshift=\EnvBulletJournalArrowItemHeight/2-\EnvBulletJournalArrowItemShadowH]X)  -- 
+        ([xshift=\EnvBulletJournalArrowItemWidth/2-\EnvBulletJournalArrowItemOffset,yshift=\EnvBulletJournalArrowItemHeight/2-\EnvBulletJournalArrowItemShadowH]X)  -- 
+        ([xshift=\EnvBulletJournalArrowItemWidth/2,yshift=-\EnvBulletJournalArrowItemShadowH]X)  -- 
+        ([xshift=\EnvBulletJournalArrowItemWidth/2-\EnvBulletJournalArrowItemOffset,yshift=-\EnvBulletJournalArrowItemHeight/2-\EnvBulletJournalArrowItemShadowH]X)  -- 
+        ([xshift=-\EnvBulletJournalArrowItemWidth/2,yshift=-\EnvBulletJournalArrowItemHeight/2-\EnvBulletJournalArrowItemShadowH]X)  -- 
+        cycle; 
+        %
+        \path[rounded corners=\EnvBulletJournalArrowItemRound,fill=#1] %draw=#1,line width=1pt
+        ([xshift=-\EnvBulletJournalArrowItemWidth/2+\EnvBulletJournalArrowItemOffset,yshift=0pt]X)  --
+        ([xshift=-\EnvBulletJournalArrowItemWidth/2,yshift=\EnvBulletJournalArrowItemHeight/2]X)  -- 
+        ([xshift=\EnvBulletJournalArrowItemWidth/2-\EnvBulletJournalArrowItemOffset,yshift=\EnvBulletJournalArrowItemHeight/2]X)  -- 
+        ([xshift=\EnvBulletJournalArrowItemWidth/2,yshift= 0pt]X)  -- 
+        ([xshift=\EnvBulletJournalArrowItemWidth/2-\EnvBulletJournalArrowItemOffset,yshift=-\EnvBulletJournalArrowItemHeight/2]X)  -- 
+        ([xshift=-\EnvBulletJournalArrowItemWidth/2,yshift=-\EnvBulletJournalArrowItemHeight/2]X)  -- 
+        cycle; 
+        %
+        \node[%
+            %draw,
+            %ellipse,
+            %rounded corners=\EnvBulletJournalArrowItemRound,
+            %rotate=0,
+            minimum width=\EnvBulletJournalArrowItemWidth,
+            minimum height=\EnvBulletJournalArrowItemHeight,
+            inner sep=0pt,
+            %color=#1,
+            %fill=#1,
+            text=\EnvBulletJournalArrowItemFontColor,
+            font=\EnvBulletJournalArrowItemFont%\itshape\bfseries
+        ] at (X) 
+        {\refstepcounter{EnvBulletJournalArrowCount}\normalsize\arabic{EnvBulletJournalArrowCount}};
+        %
+    }
+]%
+}%
+{\end{tcbitemize}}
+
+
+
