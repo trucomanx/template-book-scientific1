@@ -8,7 +8,7 @@
 
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{xcolor}
-\newcounter{TcbItemizeFancyCount}
+\newcounter{EnvBulletJournalRoundCount}
 \usetikzlibrary{shapes.geometric}
 
 
@@ -54,7 +54,7 @@
 \newcommand{\SetEnvBulletJournalRoundBackColor}[1]{\renewcommand{\EnvBulletJournalRoundBackColor}{#1}}%
 
 %% Define body Padding
-\newcommand{\EnvBulletJournalRoundPadding}{3pt}
+\newcommand{\EnvBulletJournalRoundPadding}{1pt}
 \newcommand{\SetEnvBulletJournalRoundPadding}[1]{\renewcommand{\EnvBulletJournalRoundPadding}{#1}}%
 
 %% Define Indent
@@ -68,8 +68,16 @@
 \newcommand{\SetEnvBulletJournalRoundItemFont}[1]{\renewcommand{\EnvBulletJournalRoundItemFont}{#1}}%
 
 %% Define the Item backaground color
-\newcommand{\EnvBulletJournalRoundItemBackColor}{black}
+\newcommand{\EnvBulletJournalRoundItemBackColor}{black}%{red!50!black}
 \newcommand{\SetEnvBulletJournalRoundItemBackColor}[1]{\renewcommand{\EnvBulletJournalRoundItemBackColor}{#1}}%
+
+%% Define the Item frame color
+\newcommand{\EnvBulletJournalRoundItemFrameColor}{black}%{red!50!black}
+\newcommand{\SetEnvBulletJournalRoundItemFrameColor}[1]{\renewcommand{\EnvBulletJournalRoundItemFrameColor}{#1}}%
+
+%% Define the Item frame tickness
+\newcommand{\EnvBulletJournalRoundItemFrameTickness}{1pt}%{red!50!black}
+\newcommand{\SetEnvBulletJournalRoundItemFrameTickness}[1]{\renewcommand{\EnvBulletJournalRoundItemFrameTickness}{#1}}%
 
 %% Define the Item font color
 \newcommand{\EnvBulletJournalRoundItemFontColor}{white}
@@ -100,7 +108,7 @@
 
 
 \newenvironment{bulletjournalround}[1][\EnvBulletJournalRoundItemBackColor]{%
-\setcounter{TcbItemizeFancyCount}{0}
+\setcounter{EnvBulletJournalRoundCount}{0}
 \begin{tcbitemize}[%
     raster columns=1,    
     nofloat,
@@ -125,12 +133,13 @@
             minimum width=\EnvBulletJournalRoundItemWidth,
             minimum height=\EnvBulletJournalRoundItemHeight,
             inner sep=0pt,
-            color=#1,
+            color=\EnvBulletJournalRoundItemFrameColor,
+            line width=\EnvBulletJournalRoundItemFrameTickness,
             fill=#1,
             text=\EnvBulletJournalRoundItemFontColor,
             font=\EnvBulletJournalRoundItemFont%\itshape\bfseries
         ] at (X) 
-        {\refstepcounter{TcbItemizeFancyCount}\normalsize\arabic{TcbItemizeFancyCount}};}
+        {\refstepcounter{EnvBulletJournalRoundCount}\normalsize\arabic{EnvBulletJournalRoundCount}};}
     ]%
 }%
 {\end{tcbitemize}}

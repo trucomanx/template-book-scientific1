@@ -1,0 +1,117 @@
+%% source:
+%% https://github.com/trucomanx/env-bulletjournalitem
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{env-bulletjournalitem}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+\usetikzlibrary{shapes.geometric}
+\usepackage{pgfornament}
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{env-bulletjournalitem}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Macros 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% defining variable
+\newlength{\EnvBulletJournalItemItemHeight}
+\setlength{\EnvBulletJournalItemItemHeight}{14pt}
+
+\newlength{\EnvBulletJournalItemItemWidth}
+\setlength{\EnvBulletJournalItemItemWidth}{19pt}
+
+\newlength{\EnvBulletJournalItemIndent}
+\setlength{\EnvBulletJournalItemIndent}{24pt}
+
+%% Define before space
+%\newcommand{\EnvBulletJournalItemBeforeSpace}{0pt}
+%\newcommand{\SetEnvBulletJournalItemBeforeSpace}[1]{\renewcommand{\EnvBulletJournalItemBeforeSpace}{#1}}%
+
+%% Define after space
+%\newcommand{\EnvBulletJournalItemAfterSpace}{0pt}
+%\newcommand{\SetEnvBulletJournalItemAfterSpace}[1]{\renewcommand{\EnvBulletJournalItemAfterSpace}{#1}}%
+
+%% Define FrameTickness
+\newcommand{\EnvBulletJournalItemFrameTickness}{0pt}
+\newcommand{\SetEnvBulletJournalItemFrameTickness}[1]{\renewcommand{\EnvBulletJournalItemFrameTickness}{#1}}%
+
+%% Define the frame color of enviroment
+\newcommand{\EnvBulletJournalItemFrameColor}{white}
+\newcommand{\SetEnvBulletJournalItemFrameColor}[1]{\renewcommand{\EnvBulletJournalItemFrameColor}{#1}}%
+
+%% Define the backaground body color
+\newcommand{\EnvBulletJournalItemBackColor}{white}
+\newcommand{\SetEnvBulletJournalItemBackColor}[1]{\renewcommand{\EnvBulletJournalItemBackColor}{#1}}%
+
+%% Define body Padding
+\newcommand{\EnvBulletJournalItemPadding}{1pt}
+\newcommand{\SetEnvBulletJournalItemPadding}[1]{\renewcommand{\EnvBulletJournalItemPadding}{#1}}%
+
+%% Define Indent
+\newcommand{\SetEnvBulletJournalItemIndent}[1]%
+{%
+    \setlength{\EnvBulletJournalItemIndent}{#1}
+}%
+
+%% Define Item Picture
+\newcommand{\EnvBulletJournalItemItemPicture}{\pgfornament[width = 0.7\EnvBulletJournalItemItemWidth,color=red!30]{6}}
+\newcommand{\SetEnvBulletJournalItemItemPicture}[1]{\renewcommand{\EnvBulletJournalItemItemPicture}{#1}}%
+
+%% Define Item width
+\newcommand{\SetEnvBulletJournalItemItemWidth}[1]%
+{
+    \setlength{\EnvBulletJournalItemItemWidth}{#1}
+}%
+
+%% Define Item height
+\newcommand{\SetEnvBulletJournalItemItemHeight}[1]%
+{%
+    \setlength{\EnvBulletJournalItemItemHeight}{#1}
+}%
+
+
+%% Warning: These variables dont have \Set... method
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newenvironment{bulletjournalitem}{%
+\begin{tcbitemize}[%
+    raster columns=1,    
+    nofloat,
+    enhanced,
+    raster left skip=\EnvBulletJournalItemIndent,%indent
+    sharp corners=all,
+    colback=\EnvBulletJournalItemBackColor,
+    colframe=\EnvBulletJournalItemFrameColor,%No aplica si *rule=0
+    toprule=\EnvBulletJournalItemFrameTickness, bottomrule=\EnvBulletJournalItemFrameTickness, leftrule=\EnvBulletJournalItemFrameTickness, rightrule=\EnvBulletJournalItemFrameTickness,
+    boxsep=0pt,
+    left=\EnvBulletJournalItemPadding, right=\EnvBulletJournalItemPadding, top=\EnvBulletJournalItemPadding,bottom=\EnvBulletJournalItemPadding,
+    valign=center,
+    %before   ={\vspace{\EnvBulletJournalItemBeforeSpace}},%No aplica
+    %after    ={\vspace{\EnvBulletJournalItemAfterSpace}}, %No aplica
+    overlay={% numero en rectangulo redondeado
+        \coordinate (X) at ([xshift=-0.5\EnvBulletJournalItemIndent, yshift=-0.5\EnvBulletJournalItemItemHeight]frame.north west);
+        \node[%
+            minimum width=\EnvBulletJournalItemItemWidth,
+            minimum height=\EnvBulletJournalItemItemHeight,
+        ] at (X) 
+        {%
+        \begin{minipage}{\EnvBulletJournalItemItemWidth}\centering {\EnvBulletJournalItemItemPicture}\end{minipage}
+        };
+    }
+]%
+}%
+{\end{tcbitemize}}
+
+
+

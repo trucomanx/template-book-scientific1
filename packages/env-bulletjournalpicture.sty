@@ -1,0 +1,143 @@
+%% source:
+%% https://github.com/trucomanx/env-bulletjournalpicture
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{env-bulletjournalpicture}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+\usetikzlibrary{shapes.geometric}
+\usepackage{pgfornament}
+
+\newcounter{EnvBulletJournalPictureCounter}
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{env-bulletjournalpicture}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Macros 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% defining variable
+\newlength{\EnvBulletJournalPictureItemHeight}
+\setlength{\EnvBulletJournalPictureItemHeight}{14pt}
+
+\newlength{\EnvBulletJournalPictureItemWidth}
+\setlength{\EnvBulletJournalPictureItemWidth}{19pt}
+
+\newlength{\EnvBulletJournalPictureIndent}
+\setlength{\EnvBulletJournalPictureIndent}{24pt}
+
+%% Define before space
+%\newcommand{\EnvBulletJournalPictureBeforeSpace}{0pt}
+%\newcommand{\SetEnvBulletJournalPictureBeforeSpace}[1]{\renewcommand{\EnvBulletJournalPictureBeforeSpace}{#1}}%
+
+%% Define after space
+%\newcommand{\EnvBulletJournalPictureAfterSpace}{0pt}
+%\newcommand{\SetEnvBulletJournalPictureAfterSpace}[1]{\renewcommand{\EnvBulletJournalPictureAfterSpace}{#1}}%
+
+%% Define FrameTickness
+\newcommand{\EnvBulletJournalPictureFrameTickness}{0pt}
+\newcommand{\SetEnvBulletJournalPictureFrameTickness}[1]{\renewcommand{\EnvBulletJournalPictureFrameTickness}{#1}}%
+
+%% Define the frame color of enviroment
+\newcommand{\EnvBulletJournalPictureFrameColor}{white}
+\newcommand{\SetEnvBulletJournalPictureFrameColor}[1]{\renewcommand{\EnvBulletJournalPictureFrameColor}{#1}}%
+
+%% Define the backaground body color
+\newcommand{\EnvBulletJournalPictureBackColor}{white}
+\newcommand{\SetEnvBulletJournalPictureBackColor}[1]{\renewcommand{\EnvBulletJournalPictureBackColor}{#1}}%
+
+%% Define body Padding
+\newcommand{\EnvBulletJournalPicturePadding}{1pt}
+\newcommand{\SetEnvBulletJournalPicturePadding}[1]{\renewcommand{\EnvBulletJournalPicturePadding}{#1}}%
+
+%% Define Indent
+\newcommand{\SetEnvBulletJournalPictureIndent}[1]%
+{%
+    \setlength{\EnvBulletJournalPictureIndent}{#1}
+}%
+
+%% Define Item font
+\newcommand{\EnvBulletJournalPictureItemFont}{\bfseries}
+\newcommand{\SetEnvBulletJournalPictureItemFont}[1]{\renewcommand{\EnvBulletJournalPictureItemFont}{#1}}%
+
+%% Define Item Picture
+\newcommand{\EnvBulletJournalPictureItemPicture}{\pgfornament[width = \EnvBulletJournalPictureItemWidth,color=red!30]{1}}
+\newcommand{\SetEnvBulletJournalPictureItemPicture}[1]{\renewcommand{\EnvBulletJournalPictureItemPicture}{#1}}%
+
+%% Define the Item font color
+\newcommand{\EnvBulletJournalPictureItemFontColor}{black}
+\newcommand{\SetEnvBulletJournalPictureItemFontColor}[1]{\renewcommand{\EnvBulletJournalPictureItemFontColor}{#1}}%
+
+
+%% Define Item width
+\newcommand{\SetEnvBulletJournalPictureItemWidth}[1]%
+{
+    \setlength{\EnvBulletJournalPictureItemWidth}{#1}
+}%
+
+%% Define Item height
+\newcommand{\SetEnvBulletJournalPictureItemHeight}[1]%
+{%
+    \setlength{\EnvBulletJournalPictureItemHeight}{#1}
+}%
+
+%% Define Item arco
+\newcommand{\EnvBulletJournalPictureItemRound}{7pt}
+\newcommand{\SetEnvBulletJournalPictureItemRound}[1]{\renewcommand{\EnvBulletJournalPictureItemRound}{#1}}%
+
+
+
+%% Warning: These variables dont have \Set... method
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newenvironment{bulletjournalpicture}[1][\EnvBulletJournalPictureItemFontColor]{%
+\setcounter{EnvBulletJournalPictureCounter}{0}
+\begin{tcbitemize}[%
+    raster columns=1,    
+    nofloat,
+    enhanced,
+    raster left skip=\EnvBulletJournalPictureIndent,%indent
+    sharp corners=all,
+    colback=\EnvBulletJournalPictureBackColor,
+    colframe=\EnvBulletJournalPictureFrameColor,%No aplica si *rule=0
+    toprule=\EnvBulletJournalPictureFrameTickness, bottomrule=\EnvBulletJournalPictureFrameTickness, leftrule=\EnvBulletJournalPictureFrameTickness, rightrule=\EnvBulletJournalPictureFrameTickness,
+    boxsep=0pt,
+    left=\EnvBulletJournalPicturePadding, right=\EnvBulletJournalPicturePadding, top=\EnvBulletJournalPicturePadding,bottom=\EnvBulletJournalPicturePadding,
+    valign=center,
+    %before   ={\vspace{\EnvBulletJournalPictureBeforeSpace}},%No aplica
+    %after    ={\vspace{\EnvBulletJournalPictureAfterSpace}}, %No aplica
+    overlay={% numero en rectangulo redondeado
+        \coordinate (X) at ([xshift=-0.5\EnvBulletJournalPictureIndent, yshift=-0.5\EnvBulletJournalPictureItemHeight]frame.north west);
+        \node[%
+            minimum width=\EnvBulletJournalPictureItemWidth,
+            minimum height=\EnvBulletJournalPictureItemHeight,
+        ] at (X) 
+        {\begin{minipage}{\EnvBulletJournalPictureItemWidth}\centering\EnvBulletJournalPictureItemPicture\end{minipage}};
+        \node[%
+            %rounded corners=\EnvBulletJournalPictureItemRound,
+            %rotate=0,
+            %fill=black,
+            minimum width=\EnvBulletJournalPictureItemWidth,
+            minimum height=\EnvBulletJournalPictureItemHeight,
+            %inner sep=0pt,
+            text=#1,
+            font=\EnvBulletJournalPictureItemFont%\itshape\bfseries
+        ] at (X) 
+        {\refstepcounter{EnvBulletJournalPictureCounter}\normalsize\arabic{EnvBulletJournalPictureCounter}};
+    }
+]%
+}%
+{\end{tcbitemize}}
+
+
+
