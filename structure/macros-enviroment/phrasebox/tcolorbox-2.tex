@@ -1,0 +1,25 @@
+
+%----------------------------------------------------------------------------------------
+% ELABORACION MESSAGE BOX
+%----------------------------------------------------------------------------------------
+% \begin{phrasebox}{título}
+%   texto
+% \end{phrasebox}
+%\newcounter{countelab}%[chapter] ,use counter=countelab
+
+\usepackage{packages/env-phrasebox-ripple}
+
+\SetEnvPhraseBoxRipplePreTitle{Frase}
+\SetEnvPhraseBoxRippleFrameColor{colorPhraseBox}
+\SetEnvPhraseBoxRippleBackColor{colorPhraseBox!2}
+\SetEnvPhraseBoxRippleTitleColor{black}
+\SetEnvPhraseBoxRippleTitleBackColor{colorPhraseBox!2}
+\SetEnvPhraseBoxRippleTitleFont{\bfseries}
+\SetEnvPhraseBoxRippleShowPreTitle{true}
+\SetEnvPhraseBoxRippleBeforeSpace{1ex}
+\SetEnvPhraseBoxRippleAfterSpace{2ex}
+
+
+\newcommand{\EnvPhraseBoxListingExt}{\EnvPhraseBoxRippleListingExt}
+
+

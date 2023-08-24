@@ -5,9 +5,17 @@
 %   text
 % \end{attentionbox}
 
+%% Define before space
+\newcommand{\EnvAttentionBoxBeforeSpace}{2ex}
+\newcommand{\SetEnvAttentionBoxBeforeSpace}[1]{\renewcommand{\EnvAttentionBoxBeforeSpace}{#1}}%
+
+%% Define after space
+\newcommand{\EnvAttentionBoxAfterSpace}{2ex}
+\newcommand{\SetEnvAttentionBoxAfterSpace}[1]{\renewcommand{\EnvAttentionBoxAfterSpace}{#1}}%
+
 \newtcolorbox{attentionbox}[1][]{%
     enhanced,
-    before skip=4pt,after skip=4pt,%% Espacion antes y despues del box
+    before skip=\EnvAttentionBoxBeforeSpace,after skip=\EnvAttentionBoxAfterSpace,%% Espacion antes y despues del box
     boxrule=0pt,left=14mm,right=10pt,top=10pt,bottom=10pt,%% espacio interno. Padding.
     colback=colorAttention,
     colframe=colorAttention,

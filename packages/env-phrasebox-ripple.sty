@@ -1,0 +1,171 @@
+%% source:
+%% https://github.com/trucomanx/env-phrasebox-ripple
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{env-phrasebox-ripple}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+\RequirePackage[explicit]{titlesec} %% sections
+\RequirePackage{titletoc} %% TOC
+\RequirePackage{xparse} %%\ExplSyntaxOn
+\RequirePackage{calc}%% para restar
+\RequirePackage{tikz} % Required for drawing custom shapes
+\usetikzlibrary{decorations.pathmorphing}
+
+
+\RequirePackage{etoolbox}%%\ifstrempty %%\newbool{myBool}
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{env-phrasebox-ripple}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Macros 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% defining variable
+\newlength{\EnvPhraseBoxRippleThickness}
+\setlength{\EnvPhraseBoxRippleThickness}{1.25mm}%{0.8mm}
+
+\newbool{EnvPhraseBoxRippleShowPreTitle}
+\booltrue{EnvPhraseBoxRippleShowPreTitle}
+
+%define Show pretitle
+\newcommand{\SetEnvPhraseBoxRippleShowPreTitle}[1]{\setbool{EnvPhraseBoxRippleShowPreTitle}{#1}}%
+
+
+%% Define before space
+\newcommand{\EnvPhraseBoxRippleBeforeSpace}{0pt}
+\newcommand{\SetEnvPhraseBoxRippleBeforeSpace}[1]{\renewcommand{\EnvPhraseBoxRippleBeforeSpace}{#1}}%
+
+%% Define after space
+\newcommand{\EnvPhraseBoxRippleAfterSpace}{0pt}
+\newcommand{\SetEnvPhraseBoxRippleAfterSpace}[1]{\renewcommand{\EnvPhraseBoxRippleAfterSpace}{#1}}%
+
+%% Define showed name of enviroment
+\newcommand{\EnvPhraseBoxRipplePreTitle}{Phrase}
+\newcommand{\SetEnvPhraseBoxRipplePreTitle}[1]{\renewcommand{\EnvPhraseBoxRipplePreTitle}{#1}}%
+
+%% Define the frame color of enviroment
+\newcommand{\EnvPhraseBoxRippleFrameColor}{black}
+\newcommand{\SetEnvPhraseBoxRippleFrameColor}[1]{\renewcommand{\EnvPhraseBoxRippleFrameColor}{#1}}%
+
+%% Define the backaground body text color
+\newcommand{\EnvPhraseBoxRippleBackColor}{gray!5}
+\newcommand{\SetEnvPhraseBoxRippleBackColor}[1]{\renewcommand{\EnvPhraseBoxRippleBackColor}{#1}}%
+
+%% Define The title body color 
+\newcommand{\EnvPhraseBoxRippleTitleColor}{black}
+\newcommand{\SetEnvPhraseBoxRippleTitleColor}[1]{\renewcommand{\EnvPhraseBoxRippleTitleColor}{#1}}%
+
+%% Define The title background color 
+\newcommand{\EnvPhraseBoxRippleTitleBackColor}{gray!5}
+\newcommand{\SetEnvPhraseBoxRippleTitleBackColor}[1]{\renewcommand{\EnvPhraseBoxRippleTitleBackColor}{#1}}%
+
+
+%% Define the tile font 
+\newcommand{\EnvPhraseBoxRippleTitleFont}{\bfseries}
+\newcommand{\SetEnvPhraseBoxRippleTitleFont}[1]{\renewcommand{\EnvPhraseBoxRippleTitleFont}{#1}}%
+
+%% Define Left width
+\newcommand{\SetEnvPhraseBoxRippleThickness}[1]%
+{
+    \setlength{\EnvPhraseBoxRippleThickness}{#1}
+}%
+
+
+%% Warning: These variables dont have \Set... method
+\newcommand{\EnvPhraseBoxRippleListingExt}{EnvPhraseBoxRippleListingExt}
+\newcommand{\EnvPhraseBoxRippleTocEntryFormat}{}
+%
+
+
+
+%% Crea una macro que capitaliza la primera letra
+\ExplSyntaxOn
+\NewExpandableDocumentCommand \PhraseBoxRippleFirstLetterUppercase { O{} m }
+  { \text_titlecase:nn {#1} {#2} }
+\ExplSyntaxOff
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Create a new counter that will follow tcolorbox's numbering
+%% Create a new counter that will follow tcolorbox's numbering
+\newcounter{phraseboxCounter}[section]
+\renewcommand*{\thephraseboxCounter}{\noexpand\thesection.\noexpand\arabic{phraseboxCounter}}
+
+
+
+\newtcolorbox[list inside=\EnvPhraseBoxRippleListingExt,list type=\EnvPhraseBoxRippleListingExt,auto counter,number within=section]%
+{phrasebox}%
+[2]%
+{
+  tile,
+  title={#1},
+  center title,
+  %detach title,
+  coltitle=\EnvPhraseBoxRippleTitleColor,
+  colbacktitle=\EnvPhraseBoxRippleTitleBackColor,
+  fonttitle=\EnvPhraseBoxRippleTitleFont,
+  before skip=\EnvPhraseBoxRippleBeforeSpace,
+  after skip=\EnvPhraseBoxRippleAfterSpace,
+  %breakable,%pad at break=1mm,
+  %enhanced,
+  colback=\EnvPhraseBoxRippleBackColor,
+  colframe=\EnvPhraseBoxRippleFrameColor,
+  %leftrule=\EnvPhraseBoxRippleThickness,
+  %rightrule=\EnvPhraseBoxRippleThickness,
+  toprule=\EnvPhraseBoxRippleThickness,  bottomrule=\EnvPhraseBoxRippleThickness,
+  %drop fuzzy shadow=black,
+  extras unbroken and first={borderline north={0.5mm}{0.5mm}{\EnvPhraseBoxRippleFrameColor,decoration={zigzag,amplitude=0.5mm},decorate}},
+  extras unbroken and last={borderline south={0.5mm}{0.5mm}{\EnvPhraseBoxRippleFrameColor,decoration={zigzag,amplitude=0.5mm},decorate}},
+  width=\linewidth,
+  code={
+  \ifbool{EnvPhraseBoxRippleShowPreTitle}
+  {
+    \tcbset{before title={\textcolor{\EnvPhraseBoxRippleTitleColor}{\EnvPhraseBoxRippleTitleFont\EnvPhraseBoxRipplePreTitle~\thetcbcounter: }}}
+  }{}
+  \ifstrempty{#1}%\ifdefempty{\tcbtitletext}
+    {
+    \tcbset{list text={\PhraseBoxRippleFirstLetterUppercase{\EnvPhraseBoxRipplePreTitle}  }} %% texto en TOC
+    }
+    {%% \tcbtitle is the title write by the user
+    \tcbset{list text={#1}} %% texto en TOC
+    }
+  %
+  \ifblank{#2}%
+    {
+        %
+    }
+    {%% 
+    \tcbset{after upper={\\{  \mbox{} \hfill #2}}} %% text
+    }
+  %
+  },
+  before upper={\addtocounter{phraseboxCounter}{-1}\refstepcounter{phraseboxCounter} \refstepcounter{phraseboxCounter}},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% List of type 
+%% Usar con:  \tcblistof[\section*]{\EnvPhraseBoxRippleListingExt}{Lista de frases}
+%%
+\titlecontents{\EnvPhraseBoxRippleListingExt}[2.00cm] %% Indentation %% left
+{\EnvPhraseBoxRippleTocEntryFormat} %% Spacing and font options for sections %% above code
+{\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+{} %% numberless-entry-format
+{\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format 
+[] %% separator
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\makeatletter
+%\newcommand{\ttll@\EnvPhraseBoxRippleListingExt}{-1000}
+%\makeatother
+%% To next warning
+%% Package titletoc Warning: Unknown TOC type EnvPhraseBoxRippleListingExt. I'll set it for you with(titletoc)                level -1000. on input line 1.

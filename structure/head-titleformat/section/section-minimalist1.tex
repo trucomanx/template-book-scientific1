@@ -1,0 +1,21 @@
+
+
+
+\titleformat
+{\section}% command
+[display]%shape
+{\Large\bfseries}% format
+{}% label
+{0pt}% sep
+{\vspace{-1ex}\color{colorSectionFont}\thesection~#1 }%before code
+[\vspace{1ex}]%after code
+
+\titleformat{name=\section,numberless}% command
+[display]%shape
+{\Large\bfseries}% format
+{}% label
+{0pt}% sep
+{\vspace{-1ex}\color{colorSectionFont}#1 }%before code
+[\vspace{1ex}]%after code
+
+\titlespacing*{\section}{0pt}{0pt}{0pt}

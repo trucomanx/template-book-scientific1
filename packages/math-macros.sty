@@ -7,6 +7,7 @@
 
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
+\RequirePackage{tikz}
 
 % Options
 %\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
@@ -21,23 +22,35 @@
 
 %% Function of
 %% \FuncOf{f}{x} %% f(x)
-\newcommand{\FuncOf}[2]{#1\left(#2\right)\;}
+\newcommand{\FuncOf}[2]{#1\left(#2\right)}
 
 %% Min of function
 %% \MinOf{x}{f(x)} %% min_x f(x)
-\newcommand{\MinOf}[2]{{\operatorname*{min}_{#1} #2}\;}
+\newcommand{\MinOf}[2]{{\operatorname*{min}_{#1} #2}}
+
+%% Min of function
+%% \MaxOf{x}{f(x)} %% min_x f(x)
+\newcommand{\MaxOf}[2]{{\operatorname*{max}_{#1} #2}}
 
 %% Argumento of min
 %% \ArgMin{x}{f(x)} %% arg_x_min f(x)
-\newcommand{\ArgMin}[2]{{\operatorname{arg}_{#1}\operatorname{min} #2}\;}
+\newcommand{\ArgMin}[2]{{\operatorname{arg}_{#1}\operatorname{min} #2}}
+
+%% Argumento of min
+%% \ArgMax{x}{f(x)} %% arg_x_max f(x)
+\newcommand{\ArgMax}[2]{{\operatorname{arg}_{#1}\operatorname{max} #2}}
 
 %% Definition of argumento of min
 %% \ArgMinDef{x}{f} % 
-\newcommand{\ArgMinDef}[2]{{ \ArgMin{#1}{\FuncOf{#2}{#1}} = \left\{#1 | \FuncOf{#2}{#1} = \MinOf{#1'}{\FuncOf{#2}{#1'}}\right\} }\;}
+\newcommand{\ArgMinDef}[2]{{ \ArgMin{#1}{\FuncOf{#2}{#1}} = \left\{#1 | \FuncOf{#2}{#1} = \MinOf{#1'}{\FuncOf{#2}{#1'}}\right\} }}
+
+%% Definition of argumento of max
+%% \ArgMaxDef{x}{f} % 
+\newcommand{\ArgMaxDef}[2]{{ \ArgMax{#1}{\FuncOf{#2}{#1}} = \left\{#1 | \FuncOf{#2}{#1} = \MaxOf{#1'}{\FuncOf{#2}{#1'}}\right\} }}
 
 %% Inner product
 %% \EigenSet{A}{v}{a}
-\newcommand{\EigenSet}[3]{{\left\{#2,#3| {#1}{#2}={#3}{#2} \right\}}\;}
+\newcommand{\EigenSet}[3]{{\left\{#2,#3| {#1}{#2}={#3}{#2} \right\}}}
 
 %% Inner product
 %% \InnerProd{x}{y}
@@ -49,19 +62,19 @@
 
 %% Cardinality
 %% \Cardinality{x}
-\newcommand{\Cardinality}[1]{{\operatorname{card}\left({#1}\right)}\;}
+\newcommand{\Cardinality}[1]{{\operatorname{card}\left({#1}\right)}}
 
 %% Diagonal function
 %% \DiagFunc{x} %% diag(x)
-\newcommand{\DiagFunc}[1]{{\operatorname{diag}\left({#1}\right)}\;}
+\newcommand{\DiagFunc}[1]{{\operatorname{diag}\left({#1}\right)}}
 
 %% Reverse function
 %% \ReverseFunc{x} %% reverse(x)
-\newcommand{\ReverseFunc}[1]{{\operatorname{reverse}\left({#1}\right)}\;}
+\newcommand{\ReverseFunc}[1]{{\operatorname{reverse}\left({#1}\right)}}
 
 %% Vectorize function
 %% \VectFunc{x} %% vect(x)
-\newcommand{\VectFunc}[1]{{\operatorname{vect}\left({#1}\right)}\;}
+\newcommand{\VectFunc}[1]{{\operatorname{vec}\left({#1}\right)}}
 
 %% Vector
 %% |Vector{x} %% x
@@ -98,4 +111,19 @@
 
 %% \Ceil{}
 \newcommand{\Ceil}[1]{{\lceil #1 \rceil}}
+
+%% \MathCircled{}
+\makeatletter
+\newcommand\MathCircled[1]{%
+  \mathpalette\@MathCircled{#1}%
+}
+\newcommand\@MathCircled[2]{%
+  \tikz[baseline=(math.base)] \node[draw,circle,inner sep=1pt] (math) {$\m@th#1#2$};%
+}
+\makeatother
+
+
+%% Vectorize function
+%% \SumFunc{x} %% sum(x)
+\newcommand{\SumFunc}[1]{{\operatorname{sum}\left({#1}\right)}}
 

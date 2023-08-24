@@ -33,6 +33,10 @@
 \newlength{\EnvInformationBoxRoundLeftRule}
 \setlength{\EnvInformationBoxRoundLeftRule}{40pt}%{14mm}
 
+%% Arc box
+\newlength{\EnvInformationBoxRoundBoxArc}
+\setlength{\EnvInformationBoxRoundBoxArc}{2mm}
+
 
 %% Define before space
 \newcommand{\EnvInformationBoxRoundBeforeSpace}{0pt}
@@ -49,6 +53,10 @@
 %% Define the frame color of enviroment
 \newcommand{\EnvInformationBoxRoundFrameColor}{red!50!black}
 \newcommand{\SetEnvInformationBoxRoundFrameColor}[1]{\renewcommand{\EnvInformationBoxRoundFrameColor}{#1}}%
+
+%% Define the frame shadow color of enviroment
+\newcommand{\EnvInformationBoxRoundShadowColor}{black}
+\newcommand{\SetEnvInformationBoxRoundShadowColor}[1]{\renewcommand{\EnvInformationBoxRoundShadowColor}{#1}}%
 
 %% Define the backaground body text color
 \newcommand{\EnvInformationBoxRoundBackColor}{gray!10}
@@ -83,9 +91,14 @@
 \newcommand{\EnvInformationBoxRoundListingExt}{EnvInformationBoxRoundListingExt}
 \newcommand{\EnvInformationBoxRoundTocEntryFormat}{}
 %
-\newcommand{\EnvInformationBoxRoundBoxArc}{2mm}
 
 
+
+%% Define box arc
+\newcommand{\SetEnvInformationBoxRoundBoxArc}[1]%
+{
+    \setlength{\EnvInformationBoxRoundBoxArc}{#1}
+}%
 
 
 %% Crea una macro que capitaliza la primera letra
@@ -117,7 +130,7 @@
   colframe=\EnvInformationBoxRoundFrameColor,
   leftrule=\EnvInformationBoxRoundLeftRule+\EnvInformationBoxRoundThickness,
   toprule=\EnvInformationBoxRoundThickness, rightrule=\EnvInformationBoxRoundThickness, bottomrule=\EnvInformationBoxRoundThickness,
-  drop fuzzy shadow=black,
+  drop fuzzy shadow=\EnvInformationBoxRoundShadowColor,
   %before upper={\textbf{\tcbtitle: }},
   overlay  ={\node[anchor=north west,outer sep=0pt] 
     at (frame.north west) {%

@@ -4,10 +4,6 @@
 %-------------------------------------------------------------------------------
 \documentclass[14pt,executivepaper]{extbook} % Default font size and left-justified equations
 
-%-------------------------------------------------------------------------------
-%   Enable gray scale color theme in entire document
-%-------------------------------------------------------------------------------
-%\def\EnableGrayScale{1}
 
 %-------------------------------------------------------------------------------
 %   Widow and orphan lines
@@ -25,22 +21,10 @@
 %-------------------------------------------------------------------------------
 \input{\SourceRootPath/structure/head-macros/data-macros}
 
-%-------------------------------------------------------------------------------
-%   Color theme of book
-%-------------------------------------------------------------------------------
-\ifx\EnableGrayScale\undefined
-    %\input{\SourceRootPath/structure/color-scheme/gray1}
-    %\input{\SourceRootPath/structure/color-scheme/complete-green}
-    %\input{\SourceRootPath/structure/color-scheme/tierra4}
-    %\input{\SourceRootPath/structure/color-scheme/verde1}
-    %\input{\SourceRootPath/structure/color-scheme/manta2}
-    \input{\SourceRootPath/structure/color-scheme/toys1}
-\else
-    \input{\SourceRootPath/structure/color-scheme/gray1}
-\fi
 
 %-------------------------------------------------------------------------------
-%   All used packages: comment,lipsum, calc, morewrites, booktabs, etc.
+%   All used packages: 
+%   language/hyphenation,caption,comment,lipsum, calc, morewrites, booktabs, etc.
 %-------------------------------------------------------------------------------
 \input{\SourceRootPath/structure/head-packages} %
 
@@ -61,51 +45,11 @@
 \usepackage{packages/math-macros} %
 
 %-------------------------------------------------------------------------------
-%   Configura el paquete titlesec 
+%   Skin of template
 %-------------------------------------------------------------------------------
-\input{\SourceRootPath/structure/head-titleformat/part/config-4}    % titleformat de part [config-1 ..config-4]
-\input{\SourceRootPath/structure/head-titleformat/chapter/config-5} % titleformat de chapter [config-1 ..config-5]
-\input{\SourceRootPath/structure/head-titleformat/section/config-1} % titleformat de section [config-1 ..config-4]
-\input{\SourceRootPath/structure/head-titleformat/subsection/config-1} % titleformat de subsection [config-1]
+\input{\SourceRootPath/structure/skin/skin-minimalist} %
+%\input{\SourceRootPath/structure/skin/skin-default} %
 
-%-------------------------------------------------------------------------------
-%   Configura header and footer 
-%-------------------------------------------------------------------------------
-\input{\SourceRootPath/structure/head-titleformat/header-footer/config-1} % format [config-1]
-
-%-------------------------------------------------------------------------------
-%   Box enviroments
-%-------------------------------------------------------------------------------
-\input{\SourceRootPath/structure/macros-enviroment/informationbox/tcolorbox-1} % format [tcolorbox-1]
-\input{\SourceRootPath/structure/macros-enviroment/attentionbox/tcolorbox-3} % format [tcolorbox-1 ... tcolorbox-3]
-\input{\SourceRootPath/structure/macros-enviroment/elaborationbox/tcolorbox-3} % format [tcolorbox-1 ... tcolorbox-3]
-\input{\SourceRootPath/structure/macros-enviroment/notebox/tcolorbox-1} 
-
-%-------------------------------------------------------------------------------
-%   Theorems enviroments 
-%-------------------------------------------------------------------------------
-\input{\SourceRootPath/structure/macros-enviroment/definition/tcolorbox-1}
-\input{\SourceRootPath/structure/macros-enviroment/theorem/tcolorbox-2} % format [tcolorbox-1 tcolorbox-2]
-\input{\SourceRootPath/structure/macros-enviroment/notation/tcolorbox-2} % format [tcolorbox-1 tcolorbox-2]
-\input{\SourceRootPath/structure/macros-enviroment/example/tcolorbox-1}
-\input{\SourceRootPath/structure/macros-enviroment/exercise/tcolorbox-2}% format [tcolorbox-1 tcolorbox-2]
-\input{\SourceRootPath/structure/macros-enviroment/proofraw/newtheorem-1}
-
-%-------------------------------------------------------------------------------
-%   Others enviroments 
-%-------------------------------------------------------------------------------
-\input{\SourceRootPath/structure/macros-enviroment/bulletjournalround/tcolorbox-1}
-\input{\SourceRootPath/structure/macros-enviroment/bulletjournalarrow/tcolorbox-1}
-\input{\SourceRootPath/structure/macros-enviroment/bulletjournalpicture/tcolorbox-1}
-\input{\SourceRootPath/structure/macros-enviroment/bulletjournalitem/tcolorbox-1}
-\input{\SourceRootPath/structure/macros-enviroment/phrasebox/tcolorbox-1}
-\input{\SourceRootPath/structure/macros-enviroment/equationbox/tcolorbox-1}
-
-%-------------------------------------------------------------------------------
-%   One use enviroments 
-%-------------------------------------------------------------------------------
-\input{\SourceRootPath/structure/macros-enviroment/citationbox/tcolorbox-1}
-\usepackage{packages/catalographic-card} % \CatalographicCard 
 
 %--------------------------------------------------------------------------------
 %   Deletrear palavras

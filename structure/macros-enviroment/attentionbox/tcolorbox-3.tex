@@ -5,8 +5,18 @@
 %   text
 % \end{attentionbox}
 
+
+%% Define before space
+\newcommand{\EnvAttentionBoxBeforeSpace}{2ex}
+\newcommand{\SetEnvAttentionBoxBeforeSpace}[1]{\renewcommand{\EnvAttentionBoxBeforeSpace}{#1}}%
+
+%% Define after space
+\newcommand{\EnvAttentionBoxAfterSpace}{2ex}
+\newcommand{\SetEnvAttentionBoxAfterSpace}[1]{\renewcommand{\EnvAttentionBoxAfterSpace}{#1}}%
+
+
 \newtcolorbox{attentionbox}[1][]{enhanced,
-  before skip=2mm,after skip=3mm,
+  before skip=\EnvAttentionBoxBeforeSpace,after skip=\EnvAttentionBoxAfterSpace,
   boxrule=0.4pt,left=12mm,right=2mm,top=1mm,bottom=1mm,
   colback=colorAttention!50,
   colframe=colorAttention!20!black,

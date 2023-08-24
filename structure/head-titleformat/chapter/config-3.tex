@@ -1,32 +1,36 @@
 
-\newlength\chapnumb
-\setlength\chapnumb{4cm}
+\usepackage{pgfornament}
+%% https://ctan.math.illinois.edu/macros/latex/contrib/tkz/pgfornament/doc/ornaments.pdf
 
-\titleformat
-{\chapter}%command
-[block]%shape
-{\normalfont\sffamily}%format
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{\chapter}[display]
+{\Huge\filcenter\bfseries}%format
 {}%label
 {0pt}%sep
-{\parbox[b]{\chapnumb}{\fontsize{120}{110}\color{colorChapter}\selectfont\thechapter}%
- \parbox[b]{\dimexpr\textwidth-\chapnumb\relax}{%
-    \color{colorChapter}
-    \raggedleft%
-    \hfill{\bfseries\LARGE#1}\\
-    \rule{\dimexpr\textwidth-\chapnumb\relax}{0.4pt}}%
+{%before code
+%
+{\chaptername~\thechapter\\[-10pt]}
+\pgfornament[width = 0.618\textwidth,color = colorChapter]{89}\\[10pt]
+{#1}
+%
 }
+[\vspace{10pt}]%%afercode
 
-\titleformat
-{name=\chapter,numberless}%command
-[block]%shape
-{\normalfont\sffamily}%format
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{name=\chapter,numberless}[display]
+{\Huge\filcenter\bfseries}%format
 {}%label
 {0pt}%sep
-{\parbox[b]{\chapnumb}{\mbox{}}%
- \parbox[b]{\dimexpr\textwidth-\chapnumb\relax}{%
-    \color{colorChapter}
-    \raggedleft%
-    \hfill{\bfseries\LARGE#1}\\
-    \rule{\dimexpr\textwidth-\chapnumb\relax}{0.4pt}}%
+{%before code
+%
+\pgfornament[width = 0.618\textwidth,color = colorChapter]{89}\\[10pt]
+{\Huge\sffamily\selectfont #1}
+%
 }
+[\vspace{10pt}]%%afercode
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}%pbk
