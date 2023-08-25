@@ -1,20 +1,25 @@
 
 \usetikzlibrary{shapes.misc}
 
+\def \TitleRectangleBackColor{colorSection!21}
+\def \TitleRoundRectangleBackColor{colorSection!60}
+\def \TitleRectangleTextOffset{2.5ex}
+\def \TitleRoundRectangleTextOffset{2ex}
+
 \newcommand\titlebar{%
-\tikz[baseline,trim left=3.1cm,trim right=3cm] {
-    \fill [colorSection!41] (2.5cm,-1ex) rectangle (\textwidth+3.1cm,2.5ex);
-    \node [
-        fill=colorSection,
+\tikz[baseline,trim left=0ex,trim right=\TitleRectangleTextOffset] {
+    \fill [\TitleRectangleBackColor] (0ex,-1ex) rectangle (\textwidth,2.5ex);%%rectangle
+    \node [%%round rectangle
+        fill=\TitleRoundRectangleBackColor,
         anchor= base east,
         rounded rectangle,
-        minimum height=3.5ex] at (3cm,0) {
-        \textbf{\arabic{chapter}.\thesection.}
+        minimum height=3.5ex] at (\TitleRoundRectangleTextOffset,0) {
+        \textbf{\arabic{chapter}.\thesection}
     };
 }%
 }
 
-\titleformat{\section}{\Large\bfseries\sffamily}{\titlebar}{0.1cm}{#1}
+\titleformat{\section}{\Large\bfseries}{\titlebar}{0ex}{#1}
 \renewcommand*{\thesection}{\arabic{section}}
 
 

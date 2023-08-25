@@ -2,30 +2,61 @@
 \usetikzlibrary{shapes,shadows,calc}
 \usetikzlibrary{positioning,calc}
 
-%\setlength{\AnchoPonta}{2\textheight}
-\def \AnchoPonta{0.15\textwidth}%{0.15\textwidth}%2.5
-\def \AnchoNoPonta{0.1\textwidth}
+\newlength{\AnchoPonta}
+\setlength{\AnchoPonta}{10ex}%\def \AnchoPonta{10ex}%
+
+\newlength{\AnchoNoPonta}
+\setlength{\AnchoNoPonta}{8ex}%\def \AnchoNoPonta{8ex}%
+
+\newlength{\SectionTitleBackHeight}
+\setlength{\SectionTitleBackHeight}{5ex}%\def \SectionTitleBackHeight{3ex}
+
+\def \SectionTitleFontColor{white}
+\def \SectionTitleBackColor{colorSection}
+\def \SectionTitleBackNumberColor{colorSection!70}
 
 
 \newcommand\SecTitle[2]{%
 \begin{tikzpicture}
-\node (A) [rectangle,minimum width=\textwidth, minimum height=1cm,color=white,fill=colorSection, text width=\textwidth,align=left] {\hspace{\AnchoPonta}\parbox{\textwidth-\AnchoPonta}{\huge\textbf{\textsf{#1}}}};
+\node (A) %
+[%
+rectangle,
+minimum width=\textwidth, 
+minimum height=\SectionTitleBackHeight,
+text width=\textwidth-\AnchoPonta+\AnchoNoPonta,
+color=\SectionTitleFontColor,
+fill=\SectionTitleBackColor, 
+%line width=0pt,
+align=left%
+]{\hspace{\AnchoPonta}\parbox{\textwidth-\AnchoPonta}{\Large\textbf{#1}}};
 %
 % El rombo atras del numero
-\fill[fill=colorSection!80] (A.north west) -- ($(A.north west)+(\AnchoNoPonta,0)$) -- ($0.5*(A.north west)-0.5*(A.north west)-(0.5*\textwidth-\AnchoPonta,0)$)--($(A.south west)+(\AnchoNoPonta,0)$)--(A.south west);
+\fill[fill=\SectionTitleBackNumberColor] (A.north west) -- ($(A.north west)+(\AnchoNoPonta,0)$) -- ($0.5*(A.north west)-0.5*(A.north west)-(0.5*\textwidth-\AnchoPonta,0)$)--($(A.south west)+(\AnchoNoPonta,0)$)--(A.south west);
 %
 % Solo el numero
-\node [color=white](A.north west) at ($0.5*(A.north west)-0.5*(A.north west)-(0.5*\textwidth-0.05\textwidth,0)$) {\Huge\textbf{\textsf{#2}}};
-
+\node [color=\SectionTitleFontColor](A.north west) at ($0.5*(A.north west)-0.5*(A.north west)-(0.5*\textwidth-0.05\textwidth,0)$) {\Large\textbf{#2}};
 \end{tikzpicture}
-
 }
 
-\titleformat{\section}
-{\normalfont}{}{0em}
-{\SecTitle{#1}{\thesection}}
+\titleformat{\section}%command
+{\normalfont}%format
+{}%label
+{0em}%sep
+{\SecTitle{#1}{\thesection}}%before code
+%[\vspace{-1ex}]%after code
 
-\titleformat{name=\section,numberless}
-{\normalfont}{}{0em}
-{\SecTitle{#1}{~}}
+\titleformat{name=\section,numberless}%command
+{\normalfont}%format
+{}%label
+{0em}%sep
+{\SecTitle{#1}{~}}%before code
+%[\vspace{-1ex}]%after code
+
+
+\titlespacing*{\section}
+{0pt}%left
+{2ex}%before
+{-2ex}%after
+
+
 

@@ -3,10 +3,13 @@
 \titleformat
 {\subsection}% command
 [hang]%shape
-{\large\bfseries\sffamily}% format
+{\large\bfseries}% format %\sffamily
 {\textcolor{colorSubsection}{\thesubsection}}% label
-{15pt}% sep
-{ \color{colorSubsectionFont}#1 }
-\titlespacing*{\subsection}{0pt}{3mm}{5mm}
+{1ex}% sep
+{\color{colorSubsectionFont}#1 }
+
+
+\titlespacing*{\subsection}{0pt}{1ex}{1ex}
+\titlespacing{\subsection}{0pt}{1ex}{1ex}
 
 

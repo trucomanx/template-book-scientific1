@@ -1,13 +1,23 @@
 
+\def \TitleFormatRectangleWidth{60pt}
+\def \TitleFormatRectangleExtendAbove{2ex}
+\def \TitleFormatRectangleExtendBelow{3pt}
 
 \titleformat
 {\section}% command
 [hang]%shape
-{\large\bfseries\sffamily}% format
-{\rlap{\color{colorSection}\rule[-6pt]{\textwidth}{1.2pt}}\colorbox{colorSection}{%
-           \raisebox{0pt}[13pt][3pt]{ \makebox[60pt]{% height, width
+{\Large\bfseries}% format %\sffamily
+{\rlap{\color{colorSection}\rule[-6pt]{\textwidth}{1.2pt}}%
+    \colorbox{colorSection}%
+    {%
+           \raisebox{0pt}%
+           [\TitleFormatRectangleExtendAbove]%
+           [\TitleFormatRectangleExtendBelow]%
+           { \makebox[\TitleFormatRectangleWidth]{% height, width
                 \fontfamily{phv}\selectfont\color{white}{\thesection}}
-            }}}% label
+           }%
+    }
+}% label
 {15pt}% sep
 { \color{colorSectionFont}#1 }
 

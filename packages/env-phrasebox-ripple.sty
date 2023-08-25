@@ -126,19 +126,20 @@
   extras unbroken and last={borderline south={0.5mm}{0.5mm}{\EnvPhraseBoxRippleFrameColor,decoration={zigzag,amplitude=0.5mm},decorate}},
   width=\linewidth,
   code={
-  \ifbool{EnvPhraseBoxRippleShowPreTitle}
-  {
-    \tcbset{before title={\textcolor{\EnvPhraseBoxRippleTitleColor}{\EnvPhraseBoxRippleTitleFont\EnvPhraseBoxRipplePreTitle~\thetcbcounter: }}}
-  }{}
-  \ifstrempty{#1}%\ifdefempty{\tcbtitletext}
+    \ifbool{EnvPhraseBoxRippleShowPreTitle}
+    {
+    \tcbset{before title={\vspace{1ex}\textcolor{\EnvPhraseBoxRippleTitleColor}{\EnvPhraseBoxRippleTitleFont\EnvPhraseBoxRipplePreTitle~\thetcbcounter: }}}
+    }{\vspace{1ex}}
+    %
+    \ifstrempty{#1}%\ifdefempty{\tcbtitletext}
     {
     \tcbset{list text={\PhraseBoxRippleFirstLetterUppercase{\EnvPhraseBoxRipplePreTitle}  }} %% texto en TOC
     }
     {%% \tcbtitle is the title write by the user
     \tcbset{list text={#1}} %% texto en TOC
     }
-  %
-  \ifblank{#2}%
+    %
+    \ifblank{#2}%
     {
         %
     }

@@ -4,14 +4,16 @@
 %------------------------------------------------
 \section{Table}\index{Table}
 \lipsum[1] 
-
+\lipsum[1][1-3]
 \begin{notebox}
 \begin{verbatim}
 \begin{table}[h]
 \centering
 \begin{tabular}{l l l}
 \toprule
-\textbf{Treat.} & \textbf{Resp. 1} & \textbf{Resp. 2}\\
+\textbf{Treat.} & 
+\textbf{Resp. 1} & 
+\textbf{Resp. 2}\\
 \midrule
 Treatment 1 & 0.0003262 & 0.562 \\
 Treatment 2 & 0.0015681 & 0.910 \\
@@ -44,7 +46,9 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \begin{notebox}
 \begin{verbatim}
 \begin{figure}[h]
-\centering\includegraphics[width=0.3\textwidth]{placeholder.jpg}
+\centering
+\includegraphics[width=0.3\textwidth]
+{placeholder.jpg}
 \caption{Figure caption}
 \end{figure}
 \end{verbatim}
