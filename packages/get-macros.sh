@@ -11,6 +11,8 @@ curl https://sourceforge.net/p/latex-macros-packages/env-theorem-pictbox/ci/main
 
 curl https://sourceforge.net/p/latex-macros-packages/env-theorem-simple/ci/main/tree/env-theorem-simple.sty?format=raw -o env-theorem-simple.sty
 
+curl https://sourceforge.net/p/latex-macros-packages/env-theorem-simpleimg/ci/master/tree/env-theorem-simpleimg.sty?format=raw -o env-theorem-simpleimg.sty
+
 curl https://sourceforge.net/p/latex-macros-packages/env-theorem-pictlin/ci/main/tree/env-theorem-pictlin.sty?format=raw -o env-theorem-pictlin.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/env-citationbox-simple/ci/main/tree/env-citationbox-simple.sty?format=raw -o env-citationbox-simple.sty
