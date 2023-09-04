@@ -1,0 +1,182 @@
+%% source:
+%% https://github.com/trucomanx/env-phrasebox-simple
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{env-phrasebox-simple}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+\RequirePackage[explicit]{titlesec} %% sections
+\RequirePackage{titletoc} %% TOC
+\RequirePackage{xparse} %%\ExplSyntaxOn
+\RequirePackage{calc}%% para restar
+\RequirePackage{tikz} % Required for drawing custom shapes
+\usetikzlibrary{decorations.pathmorphing}
+
+
+\RequirePackage{etoolbox}%%\ifstrempty %%\newbool{myBool}
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{env-phrasebox-simple}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Macros 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% defining variable
+\def\EnvPhraseBoxSimpleFactorWidth{0.618}
+\newcommand{\SetEnvPhraseBoxSimpleFactorWidth}[1]{\def\EnvPhraseBoxSimpleFactorWidth{#1}}%
+
+%%
+\newlength{\EnvPhraseBoxSimpleRuleThickness}
+\setlength{\EnvPhraseBoxSimpleRuleThickness}{1pt}
+\newcommand{\SetEnvPhraseBoxSimpleRuleThickness}[1]{\setlength{\EnvPhraseBoxSimpleRuleThickness}{#1}}%
+
+%%
+\newlength{\EnvPhraseBoxSimpleBoxArc}
+\setlength{\EnvPhraseBoxSimpleBoxArc}{8pt}
+\newcommand{\SetEnvPhraseBoxSimpleBoxArc}[1]{\setlength{\EnvPhraseBoxSimpleBoxArc}{#1}}%
+
+%define Show pretitle
+\newbool{EnvPhraseBoxSimpleShowPreTitle}
+\booltrue{EnvPhraseBoxSimpleShowPreTitle}
+\newcommand{\SetEnvPhraseBoxSimpleShowPreTitle}[1]{\setbool{EnvPhraseBoxSimpleShowPreTitle}{#1}}%
+
+
+%% Define before space
+\newcommand{\EnvPhraseBoxSimpleBeforeSpace}{0pt}
+\newcommand{\SetEnvPhraseBoxSimpleBeforeSpace}[1]{\renewcommand{\EnvPhraseBoxSimpleBeforeSpace}{#1}}%
+
+%% Define after space
+\newcommand{\EnvPhraseBoxSimpleAfterSpace}{0pt}
+\newcommand{\SetEnvPhraseBoxSimpleAfterSpace}[1]{\renewcommand{\EnvPhraseBoxSimpleAfterSpace}{#1}}%
+
+%% Define showed name of enviroment
+\newcommand{\EnvPhraseBoxSimplePreTitle}{Phrase}
+\newcommand{\SetEnvPhraseBoxSimplePreTitle}[1]{\renewcommand{\EnvPhraseBoxSimplePreTitle}{#1}}%
+
+
+%% Define the backaground body text color
+\newcommand{\EnvPhraseBoxSimpleBackColor}{gray!5}
+\newcommand{\SetEnvPhraseBoxSimpleBackColor}[1]{\renewcommand{\EnvPhraseBoxSimpleBackColor}{#1}}%
+
+%% Define The title body color 
+\newcommand{\EnvPhraseBoxSimpleTitleColor}{black}
+\newcommand{\SetEnvPhraseBoxSimpleTitleColor}[1]{\renewcommand{\EnvPhraseBoxSimpleTitleColor}{#1}}%
+
+%% Define The title background color 
+\newcommand{\EnvPhraseBoxSimpleTitleBackColor}{gray!5}
+\newcommand{\SetEnvPhraseBoxSimpleTitleBackColor}[1]{\renewcommand{\EnvPhraseBoxSimpleTitleBackColor}{#1}}%
+
+
+%% Define the tile font 
+\newcommand{\EnvPhraseBoxSimpleTitleFont}{\bfseries}
+\newcommand{\SetEnvPhraseBoxSimpleTitleFont}[1]{\renewcommand{\EnvPhraseBoxSimpleTitleFont}{#1}}%
+
+
+%% Warning: These variables dont have \Set... method
+\newcommand{\EnvPhraseBoxSimpleListingExt}{EnvPhraseBoxSimpleListingExt}
+\newcommand{\EnvPhraseBoxSimpleTocEntryFormat}{}
+%
+
+
+
+%% Crea una macro que capitaliza la primera letra
+\ExplSyntaxOn
+\NewExpandableDocumentCommand \PhraseBoxSimpleFirstLetterUppercase { O{} m }
+  { \text_titlecase:nn {#1} {#2} }
+\ExplSyntaxOff
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Create a new counter that will follow tcolorbox's numbering
+%% Create a new counter that will follow tcolorbox's numbering
+\newcounter{phraseboxCounter}[section]
+\renewcommand*{\thephraseboxCounter}{\noexpand\thesection.\noexpand\arabic{phraseboxCounter}}
+
+
+
+\newtcolorbox[list inside=\EnvPhraseBoxSimpleListingExt,list type=\EnvPhraseBoxSimpleListingExt,auto counter,number within=section]%
+{phrasebox}%
+[2]%
+{
+  tile,%elimina borde, colframe
+  title={#1},
+  center title,
+  flush right,
+  rounded corners=all,
+  arc=\EnvPhraseBoxSimpleBoxArc,
+  %detach title,
+  coltitle=\EnvPhraseBoxSimpleTitleColor,
+  colbacktitle=\EnvPhraseBoxSimpleTitleBackColor,
+  fonttitle=\EnvPhraseBoxSimpleTitleFont,
+  before skip=\EnvPhraseBoxSimpleBeforeSpace,
+  after skip=\EnvPhraseBoxSimpleAfterSpace,
+  %breakable,%pad at break=1mm,
+  %enhanced,
+  colback=\EnvPhraseBoxSimpleBackColor,
+  %
+  %% colframe=red,   %% Dont work because tile option
+  %% leftrule=2pt,   %% Dont work because tile option
+  %% rightrule=2pt,  %% Dont work because tile option
+  %% toprule=2pt,    %% Dont work because tile option
+  %% bottomrule=2pt, %% Dont work because tile option
+  %
+  width=\EnvPhraseBoxSimpleFactorWidth\linewidth,
+  code={
+    \ifbool{EnvPhraseBoxSimpleShowPreTitle}
+    {
+    \tcbset{before title={\vspace{1ex}\textcolor{\EnvPhraseBoxSimpleTitleColor}{\EnvPhraseBoxSimpleTitleFont\EnvPhraseBoxSimplePreTitle~\thetcbcounter: }}}
+    }{\vspace{1ex}}
+    %
+    \ifstrempty{#1}%\ifdefempty{\tcbtitletext}
+    {
+    \tcbset{list text={\PhraseBoxSimpleFirstLetterUppercase{\EnvPhraseBoxSimplePreTitle}  }} %% texto en TOC
+    }
+    {%% \tcbtitle is the title write by the user
+    \tcbset{list text={#1}} %% texto en TOC
+    }
+    %
+    \ifblank{#2}%
+    {
+        %
+    }
+    {%% 
+    \tcbset{%
+        after upper={%
+            \vspace{-1ex}
+            \par\noindent%
+            \rule{\textwidth}{\EnvPhraseBoxSimpleRuleThickness}
+            \begin{flushright}\vspace{-2ex}#2\end{flushright}
+        }
+    } %% text
+    }
+  %
+  },
+  before upper={\addtocounter{phraseboxCounter}{-1}\refstepcounter{phraseboxCounter} \refstepcounter{phraseboxCounter}},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% List of type 
+%% Usar con:  \tcblistof[\section*]{\EnvPhraseBoxSimpleListingExt}{Lista de frases}
+%%
+\titlecontents{\EnvPhraseBoxSimpleListingExt}[2.00cm] %% Indentation %% left
+{\EnvPhraseBoxSimpleTocEntryFormat} %% Spacing and font options for sections %% above code
+{\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+{} %% numberless-entry-format
+{\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format 
+[] %% separator
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\makeatletter
+%\newcommand{\ttll@\EnvPhraseBoxSimpleListingExt}{-1000}
+%\makeatother
+%% To next warning
+%% Package titletoc Warning: Unknown TOC type EnvPhraseBoxSimpleListingExt. I'll set it for you with(titletoc)                level -1000. on input line 1.

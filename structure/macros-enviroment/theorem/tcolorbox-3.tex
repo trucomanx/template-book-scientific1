@@ -1,0 +1,35 @@
+%----------------------------------------------------------------------------------------
+% THEOREM THEOREMS
+%----------------------------------------------------------------------------------------
+% \begin{theorem}[Título]
+%   text
+% \end{theorem}
+%----------------------------------------------------------------------------------------
+
+
+\usepackage{packages/env-theorem-insidetab}
+\usepackage{pifont}
+
+
+\SetEnvTheoremInsideTabPreTitle{Teorema}
+\SetEnvTheoremInsideTabFrameColor{colorTheorem}
+\SetEnvTheoremInsideTabBackColor{colorTheorem!5!white}
+\SetEnvTheoremInsideTabLeftTabColor{colorTheorem}
+\SetEnvTheoremInsideTabRightTabColor{black}
+\SetEnvTheoremInsideTabPreTitleColor{colorTheorem}
+\SetEnvTheoremInsideTabTitleColor{\EnvTheoremInsideTabBackColor}
+\SetEnvTheoremInsideTabTitleFont{\bfseries}
+\SetEnvTheoremInsideTabThickness{1pt}
+\SetEnvTheoremInsideTabImage{{\color{colorTheorem}\ding{111}}}
+\SetEnvTheoremInsideTabPostPic{0.5ex}
+\SetEnvTheoremInsideTabBeforeSpace{1ex}
+\SetEnvTheoremInsideTabAfterSpace{0ex}
+\SetEnvTheoremInsideTabLeftPadding{1ex}
+\SetEnvTheoremInsideTabRightPadding{1ex}
+\SetEnvTheoremInsideTabTopPadding{1ex}
+\SetEnvTheoremInsideTabBottomPadding{1ex}
+
+
+\newcommand{\EnvTheoremListingExt}{\EnvTheoremInsideTabListingExt}
+
+

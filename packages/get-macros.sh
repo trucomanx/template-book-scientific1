@@ -13,7 +13,11 @@ curl https://sourceforge.net/p/latex-macros-packages/env-theorem-simple/ci/main/
 
 curl https://sourceforge.net/p/latex-macros-packages/env-theorem-simpleimg/ci/master/tree/env-theorem-simpleimg.sty?format=raw -o env-theorem-simpleimg.sty
 
+curl https://sourceforge.net/p/latex-macros-packages/env-theorem-simplebox/ci/master/tree/env-theorem-simplebox.sty?format=raw -o env-theorem-simplebox.sty
+
 curl https://sourceforge.net/p/latex-macros-packages/env-theorem-pictlin/ci/main/tree/env-theorem-pictlin.sty?format=raw -o env-theorem-pictlin.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/env-theorem-insidetab/ci/master/tree/env-theorem-insidetab.sty?format=raw -o env-theorem-insidetab.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/env-citationbox-simple/ci/main/tree/env-citationbox-simple.sty?format=raw -o env-citationbox-simple.sty
 
@@ -40,4 +44,9 @@ curl https://sourceforge.net/p/latex-macros-packages/env-elaborationbox-notehor/
 curl https://sourceforge.net/p/latex-macros-packages/env-phrasebox-tab/ci/main/tree/env-phrasebox-tab.sty?format=raw -o env-phrasebox-tab.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/env-phrasebox-ripple/ci/master/tree/env-phrasebox-ripple.sty?format=raw -o env-phrasebox-ripple.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/env-phrasebox-simple/ci/master/tree/env-phrasebox-simple.sty?format=raw -o env-phrasebox-simple.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/env-highlightbox-zigzag/ci/master/tree/env-highlightbox-zigzag.sty?format=raw -o env-highlightbox-zigzag.sty
+
 

@@ -1,0 +1,27 @@
+
+%----------------------------------------------------------------------------------------
+% ELABORACION MESSAGE BOX
+%----------------------------------------------------------------------------------------
+% \begin{phrasebox}{título}
+%   texto
+% \end{phrasebox}
+%\newcounter{countelab}%[chapter] ,use counter=countelab
+
+\usepackage{packages/env-phrasebox-simple}
+
+\SetEnvPhraseBoxSimplePreTitle{Frase}
+\SetEnvPhraseBoxSimpleBackColor{colorPhraseBox!5!white}
+\SetEnvPhraseBoxSimpleTitleColor{black}
+\SetEnvPhraseBoxSimpleTitleBackColor{colorPhraseBox!5!white}
+\SetEnvPhraseBoxSimpleTitleFont{\bfseries}
+\SetEnvPhraseBoxSimpleShowPreTitle{true}
+\SetEnvPhraseBoxSimpleRuleThickness{0.5pt}
+\SetEnvPhraseBoxSimpleAfterSpace{0pt}
+\SetEnvPhraseBoxSimpleBeforeSpace{0pt}
+\SetEnvPhraseBoxSimpleFactorWidth{0.618}
+\SetEnvPhraseBoxSimpleBoxArc{8pt}
+
+
+\newcommand{\EnvPhraseBoxListingExt}{\EnvPhraseBoxSimpleListingExt}
+
+

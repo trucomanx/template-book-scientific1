@@ -1,0 +1,72 @@
+%----------------------------------------------------------------------------------------
+% THEOREM THEOREMS
+%----------------------------------------------------------------------------------------
+% \begin{theorem}[Título]
+%   text
+% \end{theorem}
+%----------------------------------------------------------------------------------------
+
+
+\usepackage{packages/env-theorem-pictlin}
+
+\SetEnvTheoremPictLinPreTitle{Teorema}
+\SetEnvTheoremPictLinFrameColor{colorTheorem}
+\SetEnvTheoremPictLinBackColor{colorTheorem!5!white}
+\SetEnvTheoremPictLinTitleColor{colorTheorem}
+\SetEnvTheoremPictLinTitleFont{\bfseries}
+\SetEnvTheoremPictLinImage{
+\pgfornament[color=\EnvTheoremPictLinFrameColor,width=\textwidth]{1}
+}
+
+\SetEnvTheoremPictLinBeforeSpace{1ex}
+\SetEnvTheoremPictLinAfterSpace{1ex}
+
+\newcommand{\EnvTheoremListingExt}{\EnvTheoremPictLinListingExt}
+
+%\SetEnvTheoremSimpleImage{\includegraphics[width=0.9\textwidth]{pencil.png}}
+
+
+\begin{comment}
+%% Create a new counter that will follow tcolorbox's numbering
+\newcounter{theorem}[section]
+\renewcommand*{\thetheorem}{\noexpand\thesection.\noexpand\arabic{theorem}}
+
+\newtcolorbox[list inside=MisTheorem,list type=MisTheorem,auto counter,number within=section]{theorem}[1][]{
+  title={#1},
+  detach title,
+  coltitle=black,
+  before upper={\addtocounter{theorem}{-1}\refstepcounter{theorem}\textbf{Teorema~\thetcbcounter\refstepcounter{theorem}\ifdefstring{\tcbtitletext}{}{:}{~---~\tcbtitle:}}},
+  % %fonttitle=\bfseries,
+  breakable,
+  enhanced,
+  arc      =0mm,
+  top=0mm,
+  bottom=0mm,
+  colback  =black!3,
+  colframe =colorTheorem,
+  leftrule =4pt,%
+  rightrule=0mm,
+  toprule=0mm,
+  bottomrule=0mm,
+  %drop fuzzy shadow=black
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \TocEntryEnvTextFormat está definido en generic-macros.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% List of type %% para:  \tcblistof[\section*]{MisTheorem}{Lista de frases}
+\titlecontents{MisTheorem}[2.00cm] %% Indentation %% left
+{\TocEntryEnvTextFormat} %% Spacing and font options for sections %% above code
+{\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+{} %% numberless-entry-format
+{\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format {\hfill\color{black}\thecontentspage} 
+[] %% separator
+
+\makeatletter
+\newcommand{\ttll@MisTheorem}{-1000}
+\makeatother
+
+
+\end{comment}
+

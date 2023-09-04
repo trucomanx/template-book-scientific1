@@ -1,5 +1,12 @@
 \chapter{An example of chapter title with large legth}
 
+\begin{phrasebox}{}{\textit{The author name}}
+\label{phrasebox:2}
+\textit{\lipsum[1][1-3]}
+\end{phrasebox}
+
+\vspace{1ex}
+\lipsum[1][1-3] 
 %-------------------------------------------------------------------------------
 \section{An example of section title with large length}\index{Paragraphs of Text}
 
@@ -11,22 +18,15 @@ Referencia a la Información \ref{informationbox:1} (siguiente)
 \lipsum[1][1-3] 
 \end{informationbox}
 
-\lipsum[1][1-3]
+\lipsum[1]
 
 \HTextRule{Text}
-\lipsum[1][1-2]
+\lipsum[1][1-3]
 Referencia a las Frases \ref{phrasebox:1} y \ref{phrasebox:2} 
 
 \begin{phrasebox}{Frase title A}{Autor}
 \label{phrasebox:1}
-\lipsum[1][1-3] 
-\end{phrasebox}
-
-\lipsum[1] 
-
-\begin{phrasebox}{Frase title B}{Autor}
-\label{phrasebox:2}
-\lipsum[1][1-3] 
+\lipsum[1][1-2] 
 \end{phrasebox}
 
 \lipsum[1][1-3] 
@@ -36,12 +36,11 @@ Referencia a las Frases \ref{phrasebox:1} y \ref{phrasebox:2}
 \end{citationbox}
 
 %-------------------------------------------------------------------------------
-\section{Citation}\index{Citation}
+\section{Another title}\index{Index B}
 
 This statement requires citation \cite{book_key}; this one is more specific \cite[122]{article_key}.
-
-\lipsum[1] % 
-
+\lipsum[1][1-4]
+ 
 Referencia a la Información \ref{information:2} (siguiente)
 
 \begin{informationbox}[Título B]
@@ -66,6 +65,28 @@ Referencia a la Información \ref{information:3} (siguiente)
 \end{elaborationbox}
 
 \lipsum[1] %
+
+%-------------------------------------------------------------------------------
+\section{Another title with a large length}\index{Theorem  family}
+
+\lipsum[1]. See the Theorem \ref{theo:ex1:A}.
+
+\begin{theorem}[Name of the theorem]
+\label{theo:ex1:A}
+\lipsum[1][1-3]
+\begin{equation}
+x^2+e^{-\frac{x^2}{2}}=1
+\end{equation}
+\end{theorem}
+
+teste
+
+\begin{proofraw}[Relative to Teorema \ref{theo:ex1:A}]
+\lipsum[1][1-3]
+\begin{equation}
+x^2+e^{-\frac{x^2}{2}}=1
+\end{equation}
+\end{proofraw}
 %-------------------------------------------------------------------------------
 \section{Lists}\index{Lists}
 

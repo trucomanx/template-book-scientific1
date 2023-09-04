@@ -35,7 +35,9 @@ arc[start angle=180,end angle=0,radius=1mm];
 },interior engine=empty,
 },
 fonttitle=\bfseries,
-before upper={\addtocounter{exercise}{-1}\refstepcounter{exercise}\refstepcounter{exercise}{\bfseries Exerc\'icio~\thetcbcounter:}},
+before upper={%
+\addtocounter{exercise}{-1}\refstepcounter{exercise}\refstepcounter{exercise}{\bfseries Exerc\'icio~\thetcbcounter:}
+},
 title={#1}%{  #1}
 }
 

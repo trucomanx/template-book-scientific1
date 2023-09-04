@@ -1,0 +1,36 @@
+%----------------------------------------------------------------------------------------
+% THEOREM THEOREMS
+%----------------------------------------------------------------------------------------
+% \begin{theorem}[Título]
+%   text
+% \end{theorem}
+%----------------------------------------------------------------------------------------
+
+\usepackage{packages/env-theorem-simplebox}
+
+\SetEnvTheoremSimpleBoxPreTitle{Teorema}
+\SetEnvTheoremSimpleBoxFrameColor{colorTheorem}
+\SetEnvTheoremSimpleBoxBackColor{white}
+\SetEnvTheoremSimpleBoxTitleColor{colorTheorem}
+\SetEnvTheoremSimpleBoxTitleFont{\bfseries}
+\SetEnvTheoremSimpleBoxImage{
+{\color{\EnvTheoremSimpleBoxFrameColor}\ding{113}}
+}
+\SetEnvTheoremSimpleBoxTitleBackColor{white}
+\SetEnvTheoremSimpleBoxTitleFrameColor{white}
+\SetEnvTheoremSimpleBoxThickness{1pt}
+\SetEnvTheoremSimpleBoxPostPic{0.5ex}
+\SetEnvTheoremSimpleBoxFrameArc{8pt}
+\SetEnvTheoremSimpleBoxEnableSolidShadow
+
+\SetEnvTheoremSimpleBoxBeforeSpace{1ex}
+\SetEnvTheoremSimpleBoxAfterSpace{1ex}
+
+\SetEnvTheoremSimpleBoxLeftPadding{2ex}
+\SetEnvTheoremSimpleBoxRightPadding{2ex}
+\SetEnvTheoremSimpleBoxTopPadding{2ex}
+\SetEnvTheoremSimpleBoxBottomPadding{2ex}
+
+
+\newcommand{\EnvTheoremListingExt}{\EnvTheoremSimpleBoxListingExt}
+
