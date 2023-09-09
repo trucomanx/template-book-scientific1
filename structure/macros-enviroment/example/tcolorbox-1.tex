@@ -6,6 +6,31 @@
 % \end{example}
 %----------------------------------------------------------------------------------------
 %% Create a new counter that will follow tcolorbox's numbering
+
+
+\usepackage{packages/env-box-simple}
+
+
+
+\newcommand{\EnvExampleListingExt}{ExampleSimpleListingExt}
+
+\NewEnvBoxSimpleGlobal[
+PreTitleName=Example,
+CounterWith=section,
+BackColor=colorExample!4,
+FrameColor=colorExample,
+TitleColor=black,
+TitleFont=\bfseries,
+LeftRuleLength=4pt,
+BeforeSpaceLength=4pt,
+AfterSpaceLength=0pt,
+ImageObject={\color{colorExample}\ding{112}},
+ImageWidthLength=4ex,
+PostImageObject=\hspace{1pt}
+]{example}{ExampleSimpleCounter}{ExampleSimpleListingExt}
+
+
+\begin{comment}
 \newcounter{example}[section]
 \renewcommand*{\theexample}{\noexpand\thesection.\noexpand\arabic{example}}
 
@@ -44,4 +69,6 @@
 \makeatletter
 \newcommand{\ttll@MisExample}{-1000}
 \makeatother
+
+\end{comment}
 

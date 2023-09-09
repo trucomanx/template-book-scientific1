@@ -11,6 +11,8 @@
 \newcounter{exercise}[section]
 \renewcommand*{\theexercise}{\noexpand\thesection.\noexpand\arabic{exercise}}
 
+\newcommand{\EnvExerciseListingExt}{MisExercise}
+
 \newtcolorbox[list inside=MisExercise,list type=MisExercise,auto counter,number within=section]{exercise}[1][]{
 enhanced,
 before skip=2mm,

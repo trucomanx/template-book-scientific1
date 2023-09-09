@@ -6,6 +6,31 @@
 % \end{exercise}
 %----------------------------------------------------------------------------------------
 %% Create a new counter that will follow tcolorbox's numbering
+
+
+\usepackage{packages/env-box-simple}
+
+
+
+\newcommand{\EnvExerciseListingExt}{ExerciseSimpleListingExt}
+
+\NewEnvBoxSimpleGlobal[
+PreTitleName=Exercise,
+CounterWith=section,
+BackColor=colorExercise!4,
+FrameColor=colorExercise,
+TitleColor=black,
+TitleFont=\bfseries,
+LeftRuleLength=4pt,
+BeforeSpaceLength=4pt,
+AfterSpaceLength=0pt,
+ImageObject={\color{colorExercise}\ding{112}},
+ImageWidthLength=4ex,
+PostImageObject=\hspace{1pt}
+]{exercise}{ExerciseSimpleCounter}{ExerciseSimpleListingExt}
+
+
+\begin{comment}
 \newcounter{exercise}[section]
 \renewcommand*{\theexercise}{\noexpand\thesection.\noexpand\arabic{exercise}}
 
@@ -44,4 +69,5 @@
 \makeatletter
 \newcommand{\ttll@MisExercise}{-1000}
 \makeatother
+\end{comment}
 

@@ -27,8 +27,13 @@
 %% defining variable
 \newlength{\EnvTheoremPictLinLength}
 \setlength{\EnvTheoremPictLinLength}{28pt}
+\newcommand{\SetEnvTheoremPictLinLength}[1]{\setlength{\EnvTheoremPictLinLength}{#1}}%
+
 %
 \newcommand{\EnvTheoremPictLinThickness}{3pt}
+\newcommand{\SetEnvTheoremPictLinThickness}[1]{\renewcommand{\EnvTheoremPictLinThickness}{#1}}%
+
+%
 \newcommand{\EnvTheoremPictLinLeftWidth}{\EnvTheoremPictLinLength}
 \newcommand{\EnvTheoremPictLinLeftTextInit}{0.5\EnvTheoremPictLinLength}
 \newcommand{\EnvTheoremPictLinLeftGraphInit}{-0.6\EnvTheoremPictLinLength}

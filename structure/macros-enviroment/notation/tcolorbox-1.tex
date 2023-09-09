@@ -6,6 +6,31 @@
 % \end{notation}
 %----------------------------------------------------------------------------------------
 %% Create a new counter that will follow tcolorbox's numbering
+
+
+\usepackage{packages/env-box-simple}
+
+
+
+\newcommand{\EnvNotationListingExt}{NotationSimpleListingExt}
+
+\NewEnvBoxSimpleGlobal[
+PreTitleName=Notation,
+CounterWith=section,
+BackColor=colorNotation!4,
+FrameColor=colorNotation,
+TitleColor=black,
+TitleFont=\bfseries,
+LeftRuleLength=4pt,
+BeforeSpaceLength=4pt,
+AfterSpaceLength=0pt,
+ImageObject={\color{colorNotation}\ding{112}},
+ImageWidthLength=4ex,
+PostImageObject=\hspace{1pt}
+]{notation}{NotationSimpleCounter}{NotationSimpleListingExt}
+
+
+\begin{comment}
 \newcounter{notation}[section]
 \renewcommand*{\thenotation}{\noexpand\thesection.\noexpand\arabic{notation}}
 
@@ -44,4 +69,5 @@
 \makeatletter
 \newcommand{\ttll@MisNotation}{-1000}
 \makeatother
+\end{comment}
 

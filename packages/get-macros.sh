@@ -9,8 +9,6 @@ curl https://sourceforge.net/p/latex-macros-packages/math-macros/ci/main/tree/ma
 
 curl https://sourceforge.net/p/latex-macros-packages/env-theorem-pictbox/ci/main/tree/env-theorem-pictbox.sty?format=raw -o env-theorem-pictbox.sty
 
-curl https://sourceforge.net/p/latex-macros-packages/env-theorem-simple/ci/main/tree/env-theorem-simple.sty?format=raw -o env-theorem-simple.sty
-
 curl https://sourceforge.net/p/latex-macros-packages/env-theorem-simpleimg/ci/master/tree/env-theorem-simpleimg.sty?format=raw -o env-theorem-simpleimg.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/env-theorem-simplebox/ci/master/tree/env-theorem-simplebox.sty?format=raw -o env-theorem-simplebox.sty
@@ -49,4 +47,5 @@ curl https://sourceforge.net/p/latex-macros-packages/env-phrasebox-simple/ci/mas
 
 curl https://sourceforge.net/p/latex-macros-packages/env-highlightbox-zigzag/ci/master/tree/env-highlightbox-zigzag.sty?format=raw -o env-highlightbox-zigzag.sty
 
+curl https://sourceforge.net/p/latex-macros-packages/env-box-simple/ci/master/tree/env-box-simple.sty?format=raw -o env-box-simple.sty
 

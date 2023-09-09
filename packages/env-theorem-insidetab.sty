@@ -161,27 +161,17 @@ arc[start angle=180,end angle=0,radius=1mm];
 },
 fonttitle=\EnvTheoremInsideTabTitleFont,
   code={
-  \ifdefempty{\tcbtitletext}
-    {
+  \if#1\@empty\relax\relax
     \tcbset{list text={ \FirstLetterUppercase{\EnvTheoremInsideTabPreTitle}  }}
-    }
-    {%% \tcbtitle is the title write by the user
+    \else
+    %% \tcbtitle is the title write by the user
     \tcbset{list text={#1}}
-    }
+    \fi
   %
-  \ifdefempty{\tcbtitletext}
-    {
         \tcbset{before upper={\addtocounter{theoremCounter}{-1}\refstepcounter{theoremCounter}%
         \EnvTheoremInsideTabImage
         \hspace{\EnvTheoremInsideTabPostPic}%
         \textcolor{\EnvTheoremInsideTabPreTitleColor}{\EnvTheoremInsideTabTitleFont\EnvTheoremInsideTabPreTitle\;\thetcbcounter:} \refstepcounter{theoremCounter}}}
-    }
-    {%% \tcbtitle is the title write by the user
-        \tcbset{before upper={\addtocounter{theoremCounter}{-1}\refstepcounter{theoremCounter}%
-        \EnvTheoremInsideTabImage
-        \hspace{\EnvTheoremInsideTabPostPic}%
-        \textcolor{\EnvTheoremInsideTabPreTitleColor}{\EnvTheoremInsideTabTitleFont\EnvTheoremInsideTabPreTitle\;\thetcbcounter\;- \tcbtitle:} \refstepcounter{theoremCounter}}}
-    }
   },
 coltitle=\EnvTheoremInsideTabTitleColor,
 title={#1}%{  #1} 

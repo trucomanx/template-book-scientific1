@@ -1,0 +1,177 @@
+%% source:
+%% https://github.com/trucomanx/env-box-simple
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{env-box-simple}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+\RequirePackage[explicit]{titlesec} %% sections
+\RequirePackage{titletoc} %% TOC
+\RequirePackage{xparse} %%\ExplSyntaxOn
+\RequirePackage{xkeyval} %%\setkeys
+
+\RequirePackage{pifont} %% \ding{111}
+
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{env-box-simple}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Function
+%% Crea una macro que capitaliza la primera letra
+%% 
+%% \FirstLetterUppercase{Som text}
+%% 
+\ExplSyntaxOn
+\NewExpandableDocumentCommand \FirstLetterUppercase { O{} m }
+  { \text_titlecase:nn {#1} {#2} }
+\ExplSyntaxOff
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Function
+%% Establece la configuracion de las table de ..
+%% 
+%% \NewListEnvBoxSimple{New text name without spaces}{Spacing and font options}
+%% 
+\newcommand{\NewListEnvBoxSimple}[2]{
+    \titlecontents{#1}[2.00cm] %% Indentation %% left
+    {#2} %% Spacing and font options for sections %% above code
+    {\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+    {} %% numberless-entry-format
+    {\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format 
+    [] %% separator
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Function
+%% Establece un nuevo enviroment
+%% 
+%% \NewEnvBoxSimpleGlobal[PreTitleName=BoxSimplePre]{BoxSimple}{BoxSimpleCount}{BoxSimpleExt}
+%% 
+
+\makeatletter
+
+\newcommand{\DefCtxVar}[3]{%
+  \expandafter\def\csname #1@#2\endcsname{#3}
+}
+
+\newcommand{\DatCtxVar}[2]{%
+  \csname #1@#2\endcsname
+}
+
+\newcommand{\SetCounterReferenceFormat}[1]{%
+  \expandafter\def\csname the#1\endcsname{\noexpand\thesection.\noexpand\arabic{#1}}
+}
+
+\newcommand{\NewEnvBoxSimpleGlobal}[4][,]
+{
+\define@key{NewEnvBoxSimpleGlobalKeys}{CounterWith}{\DefCtxVar{#2}{CounterWithDat}{##1}}
+\define@key{NewEnvBoxSimpleGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColorDat}{##1}}
+\define@key{NewEnvBoxSimpleGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColorDat}{##1}}
+\define@key{NewEnvBoxSimpleGlobalKeys}{TitleColor}{\DefCtxVar{#2}{TitleColorDat}{##1}}
+\define@key{NewEnvBoxSimpleGlobalKeys}{TitleFont}{\DefCtxVar{#2}{TitleFontDat}{##1}}
+\define@key{NewEnvBoxSimpleGlobalKeys}{PreTitleName}{\DefCtxVar{#2}{PreTitleNameDat}{##1}}
+\define@key{NewEnvBoxSimpleGlobalKeys}{LeftRuleLength}{\DefCtxVar{#2}{LeftRuleLengthDat}{##1}}
+\define@key{NewEnvBoxSimpleGlobalKeys}{BeforeSpaceLength}{\DefCtxVar{#2}{BeforeSpaceLengthDat}{##1}}
+\define@key{NewEnvBoxSimpleGlobalKeys}{AfterSpaceLength}{\DefCtxVar{#2}{AfterSpaceLengthDat}{##1}}
+\define@key{NewEnvBoxSimpleGlobalKeys}{ImageObject}{\DefCtxVar{#2}{ImageObjectDat}{##1}}
+\define@key{NewEnvBoxSimpleGlobalKeys}{ImageWidthLength}{\DefCtxVar{#2}{ImageWidthLengthDat}{##1}}
+\define@key{NewEnvBoxSimpleGlobalKeys}{PostImageObject}{\DefCtxVar{#2}{PostImageObjectDat}{##1}}
+
+
+\setkeys{NewEnvBoxSimpleGlobalKeys}{
+PreTitleName=BoxSimple,
+CounterWith=section,
+BackColor=gray!10,
+FrameColor=red!50!black,
+TitleColor=green!50!black,
+TitleFont=\bfseries,
+LeftRuleLength=4pt,
+BeforeSpaceLength=4pt,
+AfterSpaceLength=0pt,
+ImageObject={\color{green!50!black}\ding{113}},
+ImageWidthLength=4ex,
+PostImageObject=\hspace{1pt}
+}
+
+\setkeys{NewEnvBoxSimpleGlobalKeys}{#1}%
+
+%% Cofigura la lista de enviroments
+\NewListEnvBoxSimple{#4}{}
+
+%% Create a new counter that will follow tcolorbox's numbering
+\newcounter{#3}[\DatCtxVar{#2}{CounterWithDat}]
+
+% \SetCounterReferenceFormat Set format in label reference
+\SetCounterReferenceFormat{#3} 
+
+
+\newtcolorbox[%
+list inside=#4,
+list type=#4,
+auto counter,
+number within=\DatCtxVar{#2}{CounterWithDat}
+]%
+{#2}%
+[1][]%
+{
+  title={##1},
+  detach title,
+  colback=\DatCtxVar{#2}{BackColorDat},
+  colframe=\DatCtxVar{#2}{FrameColorDat},
+  coltitle=\DatCtxVar{#2}{TitleColorDat},
+  fonttitle=\DatCtxVar{#2}{TitleFontDat},
+  leftrule=\DatCtxVar{#2}{LeftRuleLengthDat}, toprule=-0.05pt, rightrule=-0.05pt, bottomrule=-0.05pt,
+  breakable,
+  enhanced,
+  arc=0mm,
+  before={\vspace{\DatCtxVar{#2}{BeforeSpaceLengthDat}}},
+  after={\vspace{\DatCtxVar{#2}{AfterSpaceLengthDat}}},
+  code={
+  \ifdefempty{\tcbtitletext}
+    {
+    \tcbset{list text={ \FirstLetterUppercase{\DatCtxVar{#2}{PreTitleNameDat}}  }}
+    }
+    {%% \tcbtitle is the title write by the user
+    \tcbset{list text={##1}}
+    }
+  %
+  \ifdefempty{\tcbtitletext}
+    {
+        \tcbset{before upper={\addtocounter{#3}{-1}\refstepcounter{#3}%
+        \begin{minipage}{\DatCtxVar{#2}{ImageWidthLengthDat}}
+        \centering\DatCtxVar{#2}{ImageObjectDat}
+        \end{minipage}% 
+        \DatCtxVar{#2}{PostImageObjectDat}%
+        \textcolor{\DatCtxVar{#2}{TitleColorDat}}{\DatCtxVar{#2}{TitleFontDat}\DatCtxVar{#2}{PreTitleNameDat}\;\thetcbcounter:} \refstepcounter{#3}}}
+    }
+    {%% \tcbtitle is the title write by the user
+        \tcbset{before upper={\addtocounter{#3}{-1}\refstepcounter{#3}%
+        \begin{minipage}{\DatCtxVar{#2}{ImageWidthLengthDat}}
+        \centering\DatCtxVar{#2}{ImageObjectDat}
+        \end{minipage}%
+        \DatCtxVar{#2}{PostImageObjectDat}%
+        \textcolor{\DatCtxVar{#2}{TitleColorDat}}{\DatCtxVar{#2}{TitleFontDat}\DatCtxVar{#2}{PreTitleNameDat}\;\thetcbcounter\;- \tcbtitle:} \refstepcounter{#3}}}
+    }
+  },
+}
+}
+
+
+\makeatother
+
+
+

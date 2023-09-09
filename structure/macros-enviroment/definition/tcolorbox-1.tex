@@ -7,6 +7,29 @@
 % \end{definition}
 %----------------------------------------------------------------------------------------
 %% Create a new counter that will follow tcolorbox's numbering
+
+\usepackage{packages/env-box-simple}
+
+
+
+\newcommand{\EnvDefinitionListingExt}{DefinitionSimpleListingExt}
+
+\NewEnvBoxSimpleGlobal[
+PreTitleName=Definition,
+CounterWith=section,
+BackColor=colorDefinition!4,
+FrameColor=colorDefinition,
+TitleColor=black,
+TitleFont=\bfseries,
+LeftRuleLength=4pt,
+BeforeSpaceLength=4pt,
+AfterSpaceLength=0pt,
+ImageObject={\color{colorDefinition}\ding{112}},
+ImageWidthLength=4ex,
+PostImageObject=\hspace{1pt}
+]{definition}{DefinitionSimpleCounter}{DefinitionSimpleListingExt}
+
+\begin{comment}
 \newcounter{definition}[section]
 \renewcommand*{\thedefinition}{\noexpand\thesection.\noexpand\arabic{definition}}
 
@@ -46,3 +69,4 @@
 \newcommand{\ttll@MisDefinicoes}{-1000}
 \makeatother
 
+\end{comment}
