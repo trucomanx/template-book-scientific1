@@ -39,6 +39,11 @@ rm -f *.backup
 #rm -f main.loe
 
 rm -f $filename.EnvInformationBox*ListingExt
+rm -f $filename.Definition*ListingExt
+rm -f $filename.Example*ListingExt
+rm -f $filename.Exercise*ListingExt
+rm -f $filename.Notation*ListingExt
+rm -f $filename.Theorem*ListingExt
 rm -f $filename.EnvElaborationBox*ListingExt
 rm -f $filename.EnvPhraseBox*ListingExt
 rm -f $filename.MisDefinicoes

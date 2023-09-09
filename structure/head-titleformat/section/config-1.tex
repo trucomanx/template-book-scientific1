@@ -13,14 +13,14 @@
     \parbox[t]{\secnumwd}{{\bfseries\thesection}}\hspace{1em}%
     \parbox[t]{\dimexpr\textwidth+0em-\secnumwd-1em\relax}{#1}%
   }
-  [\vskip-1.5ex\hskip-0em{\color{colorSection}\titlerule[4pt]}]%% Line above
+  [{\color{colorSection}\titlerule[4pt]}\vspace{1ex}]%% Line above
 
 \titleformat{name=\section,numberless}
   {\normalfont\Large\color{colorSectionFont}\bfseries}
   {}
   {-0em}
   {#1}
-  [\vskip-1.0ex\hskip-0em{\color{colorSection}\titlerule[4pt]}]
+  [{\color{colorSection}\titlerule[4pt]}\vspace{1ex}]%% Line above
 
 \titlespacing*{\section}{0pt}{0ex}{0ex}
 \titlespacing{\section}{0pt}{0ex}{0ex}
