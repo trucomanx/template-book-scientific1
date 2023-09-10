@@ -49,3 +49,7 @@ curl https://sourceforge.net/p/latex-macros-packages/env-highlightbox-zigzag/ci/
 
 curl https://sourceforge.net/p/latex-macros-packages/env-box-simple/ci/master/tree/env-box-simple.sty?format=raw -o env-box-simple.sty
 
+curl https://sourceforge.net/p/latex-macros-packages/env-box-pictbox/ci/master/tree/env-box-pictbox.sty?format=raw -o env-box-pictbox.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/env-box-oddtab/ci/master/tree/env-box-oddtab.sty?format=raw -o env-box-oddtab.sty
+

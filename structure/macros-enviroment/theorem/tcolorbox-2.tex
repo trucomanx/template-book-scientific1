@@ -6,17 +6,24 @@
 % \end{theorem}
 %----------------------------------------------------------------------------------------
 
-\usepackage{packages/env-theorem-pictbox}
+\usepackage{packages/env-box-pictbox}
 
-\SetEnvTheoremPictBoxPreTitle{Teorema}
-\SetEnvTheoremPictBoxFrameColor{colorTheorem}
-\SetEnvTheoremPictBoxBackColor{white}
-\SetEnvTheoremPictBoxTitleColor{colorTheorem}
-\SetEnvTheoremPictBoxTitleFont{\bfseries\sffamily}
+\NewEnvBoxPictBoxGlobal[
+PreTitleName=THEOREM,
+CounterWith=section,
+BackColor=white,
+FrameColor=colorTheorem,
+TitleColor=colorTheorem,
+TitleFont=\bfseries,
+LeftRuleLength=30mm,
+ArcLength=0pt,
+ThicknessLength=1pt,
+BeforeSpaceLength=0pt,
+AfterSpaceLength=0.5ex,
+ImageObject={},
+]{theorem}{TheoremPictBoxCounter}{TheoremPictBoxListingExt}
 
-\newcommand{\EnvTheoremListingExt}{\EnvTheoremPictBoxListingExt}
-
-%\SetEnvTheoremPictBoxImage{\includegraphics[width=0.5\textwidth]{pencil.png}}
+\newcommand{\EnvTheoremListingExt}{TheoremPictBoxListingExt}
 
 
 \begin{comment}

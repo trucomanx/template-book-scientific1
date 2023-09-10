@@ -1,11 +1,33 @@
 %----------------------------------------------------------------------------------------
-% LEMMA THEOREMS
+% LEMMA LemmaS
 %----------------------------------------------------------------------------------------
 % \begin{lemma}[Título]
 %   text
 % \end{lemma}
 %----------------------------------------------------------------------------------------
 %% Create a new counter that will follow tcolorbox's numbering
+\usepackage{packages/env-box-simple}
+
+
+
+\newcommand{\EnvLemmaListingExt}{LemmaSimpleListingExt}
+
+\NewEnvBoxSimpleGlobal[
+PreTitleName=Lemma,
+CounterWith=section,
+BackColor=black!3,
+FrameColor=colorLemma,
+TitleColor=black,
+TitleFont=\bfseries,
+LeftRuleLength=4pt,
+BeforeSpaceLength=4pt,
+AfterSpaceLength=0pt,
+ImageObject={\color{colorLemma}\ding{112}},
+ImageWidthLength=4ex,
+PostImageObject=\hspace{1pt}
+]{lemma}{LemmaSimpleCounter}{LemmaSimpleListingExt}
+
+\begin{comment}
 \newcounter{lemma}[section]
 \renewcommand*{\thelemma}{\noexpand\thesection.\noexpand\arabic{lemma}}
 
@@ -44,5 +66,5 @@
 \makeatletter
 \newcommand{\ttll@MisLemma}{-1000}
 \makeatother
-
+\end{comment}
 

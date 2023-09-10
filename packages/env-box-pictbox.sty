@@ -1,9 +1,9 @@
 %% source:
-%% https://github.com/trucomanx/env-box-simple
+%% https://github.com/trucomanx/env-box-pictbox
 
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{env-box-simple}[2022/05/21 Package with macros to the math enviroment]
+\ProvidesPackage{env-box-pictbox}[2022/05/21 Package with macros to the math enviroment]
 
 
 \RequirePackage[most]{tcolorbox}
@@ -12,13 +12,14 @@
 \RequirePackage{titletoc} %% TOC
 \RequirePackage{xparse} %%\ExplSyntaxOn
 \RequirePackage{xkeyval} %%\setkeys
+\RequirePackage{ifthen}%%\ifthenelse
 
 \RequirePackage{pifont} %% \ding{111}
 
 
 % Options
 %\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
-\DeclareOption*{\PackageWarning{env-box-simple}{The option ‘\CurrentOption’ is current unknown}}
+\DeclareOption*{\PackageWarning{env-box-pictbox}{The option ‘\CurrentOption’ is current unknown}}
 \ProcessOptions\relax
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -30,10 +31,10 @@
 %% Function
 %% Crea una macro que capitaliza la primera letra
 %% 
-%% \EnvBoxSimpleFirstLetterUppercase{Som text}
+%% \EnvBoxPictBoxFirstLetterUppercase{Som text}
 %% 
 \ExplSyntaxOn
-\NewExpandableDocumentCommand \EnvBoxSimpleFirstLetterUppercase { O{} m }
+\NewExpandableDocumentCommand \EnvBoxPictBoxFirstLetterUppercase { O{} m }
   { \text_titlecase:nn {#1} {#2} }
 \ExplSyntaxOff
 
@@ -42,9 +43,9 @@
 %% Function
 %% Establece la configuracion de las table de ..
 %% 
-%% \NewListEnvBoxSimple{New text name without spaces}{Spacing and font options}
+%% \NewListEnvBoxPictBox{New text name without spaces}{Spacing and font options}
 %% 
-\newcommand{\NewListEnvBoxSimple}[2]{
+\newcommand{\NewListEnvBoxPictBox}[2]{
     \titlecontents{#1}[2.00cm] %% Indentation %% left
     {#2} %% Spacing and font options for sections %% above code
     {\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
@@ -59,7 +60,7 @@
 %% Function
 %% Establece un nuevo enviroment
 %% 
-%% \NewEnvBoxSimpleGlobal[PreTitleName=BoxSimplePre]{BoxSimple}{BoxSimpleCount}{BoxSimpleExt}
+%% \NewEnvBoxPictBoxGlobal[PreTitleName=BoxPictBoxPre]{BoxPictBox}{BoxPictBoxCount}{BoxPictBoxExt}
 %% 
 
 \makeatletter
@@ -102,41 +103,45 @@
 }
 \fi
 
-\newcommand{\NewEnvBoxSimpleGlobal}[4][,]
+\newcommand{\NewEnvBoxPictBoxGlobal}[4][,]
 {
-\define@key{NewEnvBoxSimpleGlobalKeys}{CounterWith}{\DefCtxVar{#2}{CounterWithDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColorDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColorDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{TitleColor}{\DefCtxVar{#2}{TitleColorDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{TitleFont}{\DefCtxVar{#2}{TitleFontDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{PreTitleName}{\DefCtxVar{#2}{PreTitleNameDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{LeftRuleLength}{\DefCtxVar{#2}{LeftRuleLengthDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{BeforeSpaceLength}{\DefCtxVar{#2}{BeforeSpaceLengthDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{AfterSpaceLength}{\DefCtxVar{#2}{AfterSpaceLengthDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{ImageObject}{\DefCtxVar{#2}{ImageObjectDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{ImageWidthLength}{\DefCtxVar{#2}{ImageWidthLengthDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{PostImageObject}{\DefCtxVar{#2}{PostImageObjectDat}{##1}}
+\DefLenCtxVar{#2}{LeftRuleLengthDat}
+\DefLenCtxVar{#2}{ThicknessLengthDat}
+
+\define@key{NewEnvBoxPictBoxGlobalKeys}{CounterWith}{\DefCtxVar{#2}{CounterWithDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColorDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColorDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{TitleColor}{\DefCtxVar{#2}{TitleColorDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{TitleFont}{\DefCtxVar{#2}{TitleFontDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{PreTitleName}{\DefCtxVar{#2}{PreTitleNameDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{LeftRuleLength}{\SetLenCtxVar{#2}{LeftRuleLengthDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{ThicknessLength}{\SetLenCtxVar{#2}{ThicknessLengthDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{ArcLength}{\DefCtxVar{#2}{ArcLengthDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{BeforeSpaceLength}{\DefCtxVar{#2}{BeforeSpaceLengthDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{AfterSpaceLength}{\DefCtxVar{#2}{AfterSpaceLengthDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{ImageObject}{\DefCtxVar{#2}{ImageObjectDat}{##1}}
 
 
-\setkeys{NewEnvBoxSimpleGlobalKeys}{
-PreTitleName=BoxSimple,
+
+\setkeys{NewEnvBoxPictBoxGlobalKeys}{
+PreTitleName=BoxPictBox,
 CounterWith=section,
-BackColor=gray!10,
-FrameColor=red!50!black,
-TitleColor=green!50!black,
+BackColor=gray!5,
+FrameColor=red!30!black,
+TitleColor=red!30!black,
 TitleFont=\bfseries,
-LeftRuleLength=4pt,
-BeforeSpaceLength=4pt,
+LeftRuleLength=24mm,
+ArcLength=0pt,
+ThicknessLength=1.5pt,
+BeforeSpaceLength=0pt,
 AfterSpaceLength=0pt,
-ImageObject={\color{green!50!black}\ding{113}},
-ImageWidthLength=4ex,
-PostImageObject=\hspace{1pt}
+ImageObject={}
 }
 
-\setkeys{NewEnvBoxSimpleGlobalKeys}{#1}%
+\setkeys{NewEnvBoxPictBoxGlobalKeys}{#1}%
 
 %% Cofigura la lista de enviroments
-\NewListEnvBoxSimple{#4}{}
+\NewListEnvBoxPictBox{#4}{}
 
 %% Create a new counter that will follow tcolorbox's numbering
 \newcounter{#3}[\DatCtxVar{#2}{CounterWithDat}]
@@ -157,21 +162,38 @@ number within=\DatCtxVar{#2}{CounterWithDat}
 [1][]%
 {
   title={##1},
-  detach title,
+  breakable,pad at break=1mm,
+  enhanced jigsaw,
   colback=\DatCtxVar{#2}{BackColorDat},
   colframe=\DatCtxVar{#2}{FrameColorDat},
   coltitle=\DatCtxVar{#2}{TitleColorDat},
   fonttitle=\DatCtxVar{#2}{TitleFontDat},
-  leftrule=\DatCtxVar{#2}{LeftRuleLengthDat}, toprule=-0.05pt, rightrule=-0.05pt, bottomrule=-0.05pt,
-  breakable,
-  enhanced,
-  arc=0mm,
+  detach title,
+  leftrule=\DatCtxVar{#2}{LeftRuleLengthDat},
+  toprule=\DatCtxVar{#2}{ThicknessLengthDat}, 
+  rightrule=\DatCtxVar{#2}{ThicknessLengthDat}, 
+  bottomrule=\DatCtxVar{#2}{ThicknessLengthDat},
+  %
   before={\vspace{\DatCtxVar{#2}{BeforeSpaceLengthDat}}},
   after={\vspace{\DatCtxVar{#2}{AfterSpaceLengthDat}}},
+  %
+  underlay unbroken and first={\node[below,text=white,font=\DatCtxVar{#2}{TitleFontDat},align=center]
+    at ([xshift=-0.5\DatCtxVar{#2}{LeftRuleLengthDat}+1.5\DatCtxVar{#2}{ThicknessLengthDat},yshift=-1mm]interior.north west) {%
+    \begin{minipage}{0.98\DatCtxVar{#2}{LeftRuleLengthDat}}
+    \centering
+    \DatCtxVar{#2}{PreTitleNameDat}\\
+    \thetcbcounter\\
+    \DatCtxVar{#2}{ImageObjectDat}
+    \end{minipage}
+    };},
   code={
+  \ifthenelse{\equal{\DatCtxVar{#2}{ArcLengthDat}}{0pt}}
+    { \tcbset{sharp corners} }
+    { \tcbset{arc=\DatCtxVar{#2}{ArcLengthDat}} }
+  %
   \ifdefempty{\tcbtitletext}
     {
-    \tcbset{list text={ \EnvBoxSimpleFirstLetterUppercase{\DatCtxVar{#2}{PreTitleNameDat}}  }}
+    \tcbset{list text={ \EnvBoxPictBoxFirstLetterUppercase{\DatCtxVar{#2}{PreTitleNameDat}}  }}
     }
     {%% \tcbtitle is the title write by the user
     \tcbset{list text={##1}}
@@ -179,24 +201,15 @@ number within=\DatCtxVar{#2}{CounterWithDat}
   %
   \ifdefempty{\tcbtitletext}
     {
-        \tcbset{before upper={\addtocounter{#3}{-1}\refstepcounter{#3}%
-        \begin{minipage}{\DatCtxVar{#2}{ImageWidthLengthDat}}
-        \centering\DatCtxVar{#2}{ImageObjectDat}
-        \end{minipage}% 
-        \DatCtxVar{#2}{PostImageObjectDat}%
-        \textcolor{\DatCtxVar{#2}{TitleColorDat}}{\DatCtxVar{#2}{TitleFontDat}\DatCtxVar{#2}{PreTitleNameDat}\;\thetcbcounter:} \refstepcounter{#3}}}
+    \tcbset{before upper={\addtocounter{#3}{-1}\refstepcounter{#3} \refstepcounter{#3}}}
     }
     {%% \tcbtitle is the title write by the user
-        \tcbset{before upper={\addtocounter{#3}{-1}\refstepcounter{#3}%
-        \begin{minipage}{\DatCtxVar{#2}{ImageWidthLengthDat}}
-        \centering\DatCtxVar{#2}{ImageObjectDat}
-        \end{minipage}%
-        \DatCtxVar{#2}{PostImageObjectDat}%
-        \textcolor{\DatCtxVar{#2}{TitleColorDat}}{\DatCtxVar{#2}{TitleFontDat}\DatCtxVar{#2}{PreTitleNameDat}\;\thetcbcounter\;- \tcbtitle:} \refstepcounter{#3}}}
+    \tcbset{before upper={\addtocounter{#3}{-1}\refstepcounter{#3} \tcbtitle\par\medskip\refstepcounter{#3}}}
     }
   },
 }
 }
+
 
 
 \makeatother

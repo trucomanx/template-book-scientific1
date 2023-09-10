@@ -6,30 +6,31 @@
 % \end{notation}
 %----------------------------------------------------------------------------------------
 %% Create a new counter that will follow tcolorbox's numbering
+
+\usepackage{packages/env-box-oddtab}
+
+\NewEnvBoxOddTabGlobal[
+PreTitleName=Notation,
+CounterWith=section,
+BackColor=black!3,
+FrameColor=black,
+TitleColor=white,
+PreTitleColor=black,
+BackTitleColor=colorNotation,
+TitleFont=\bfseries,
+BeforeSpaceLength=4pt,
+AfterSpaceLength=0pt,
+ImageObject={\color{black}\ding{112}},
+ImageWidthLength=4ex,
+PostImageObject=\hspace{1pt}
+]{notation}{NotationOddTabCounter}{NotationOddTabListingExt}
+
+\newcommand{\EnvNotationListingExt}{NotationOddTabListingExt}
+
+\begin{comment}
 \newcounter{notation}[section]
 \renewcommand*{\thenotation}{\noexpand\thesection.\noexpand\arabic{notation}}
 
-\begin{comment}
-\newtcolorbox[list inside=MisNotation,list type=MisNotation,auto counter,number within=section]{notation}[1][]{
-  title={#1},
-  detach title,
-  coltitle=black,
-  before upper={\addtocounter{notation}{-1}\refstepcounter{notation}\textbf{Nota\c{c}\~{a}o~\thetcbcounter\refstepcounter{notation}\ifdefstring{\tcbtitletext}{}{:}{~---~\tcbtitle:}}},
-  % %fonttitle=\bfseries,
-  breakable,
-  enhanced,
-  arc      =0mm,
-  top=0mm,
-  bottom=0mm,
-  colback  =black!3,
-  colframe =colorNotation,
-  leftrule =4pt,%
-  rightrule=0mm,
-  toprule=0mm,
-  bottomrule=0mm,
-  %drop fuzzy shadow=black
-}
-\end{comment}
 
 \newcommand{\titlepath}{
   \fill[colorNotation]
@@ -79,4 +80,6 @@ to[curve to,out=180,in=90]($(B)+(-5mm,-5mm)$)coordinate(C)
 \makeatletter
 \newcommand{\ttll@MisNotation}{-1000}
 \makeatother
+
+\end{comment}
 

@@ -1,14 +1,36 @@
 %----------------------------------------------------------------------------------------
-% LEMMA THEOREMS
+% LEMMA LEMMAS
 %----------------------------------------------------------------------------------------
 % \begin{lemma}[Título]
 %   text
 % \end{lemma}
 %----------------------------------------------------------------------------------------
 %% Create a new counter that will follow tcolorbox's numbering
+\usepackage{packages/env-box-pictbox}
+
+\NewEnvBoxPictBoxGlobal[
+PreTitleName=LEMMA,
+CounterWith=section,
+BackColor=white,
+FrameColor=colorLemma,
+TitleColor=colorLemma,
+TitleFont=\bfseries,
+LeftRuleLength=30mm,
+ArcLength=0pt,
+ThicknessLength=1pt,
+BeforeSpaceLength=0pt,
+AfterSpaceLength=0.5ex,
+ImageObject={},
+]{lemma}{LemmaPictBoxCounter}{LemmaPictBoxListingExt}
+
+\newcommand{\EnvLemmaListingExt}{LemmaPictBoxListingExt}
+
+
+\begin{comment}
 \newcounter{lemma}[section]
 \renewcommand*{\thelemma}{\noexpand\thesection.\noexpand\arabic{lemma}}
 
+\newcommand{\EnvLemmaListingExt}{MisLemma}
 \newtcolorbox[list inside=MisLemma,list type=MisLemma,auto counter,number within=section]{lemma}[1][]{
   enhanced jigsaw,
   colback=white,
@@ -48,5 +70,5 @@
 \makeatletter
 \newcommand{\ttll@MisLemma}{-1000}
 \makeatother
-
+\end{comment}
 

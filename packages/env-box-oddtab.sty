@@ -1,0 +1,254 @@
+%% source:
+%% https://github.com/trucomanx/env-box-oddtab
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{env-box-oddtab}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{tikz} % Required for drawing custom shapes
+\usetikzlibrary{calc}
+ 
+\RequirePackage{xcolor}
+\RequirePackage[explicit]{titlesec} %% sections
+\RequirePackage{titletoc} %% TOC
+\RequirePackage{xparse} %%\ExplSyntaxOn
+\RequirePackage{xkeyval} %%\setkeys
+\RequirePackage{ifthen}%%\ifthenelse
+
+\RequirePackage{pifont} %% \ding{111}
+
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{env-box-oddtab}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Function
+%% Crea una macro que capitaliza la primera letra
+%% 
+%% \EnvBoxOddTabFirstLetterUppercase{Som text}
+%% 
+\ExplSyntaxOn
+\NewExpandableDocumentCommand \EnvBoxOddTabFirstLetterUppercase { O{} m }
+  { \text_titlecase:nn {#1} {#2} }
+\ExplSyntaxOff
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Function
+%% Establece la configuracion de las table de ..
+%% 
+%% \NewListEnvBoxOddTab{New text name without spaces}{Spacing and font options}
+%% 
+\newcommand{\NewListEnvBoxOddTab}[2]{
+    \titlecontents{#1}[2.00cm] %% Indentation %% left
+    {#2} %% Spacing and font options for sections %% above code
+    {\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+    {} %% numberless-entry-format
+    {\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format 
+    [] %% separator
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Function
+%% Establece un nuevo enviroment
+%% 
+%% \NewEnvBoxOddTabGlobal[PreTitleName=BoxOddTabPre]{BoxOddTab}{BoxOddTabCount}{BoxOddTabExt}
+%% 
+
+\makeatletter
+
+\ifdefined\DefCtxVar
+\else
+\newcommand{\DefCtxVar}[3]{%
+  \expandafter\def\csname #1@#2\endcsname{#3}
+}
+\fi
+
+\ifdefined\DefLenCtxVar
+\else
+\newcommand{\DefLenCtxVar}[2]{%
+  % Usar el parámetro como nombre de la variable local
+    \expandafter\newlength\csname #1@#2\endcsname  
+    %\@latex@warning{************** \csname #1@#2\endcsname **************}
+}
+\fi
+
+\ifdefined\SetLenCtxVar
+\else
+\newcommand{\SetLenCtxVar}[3]{%
+  % Usar el parámetro como nombre de la variable local
+    \csname #1@#2\endcsname=#3
+}
+\fi
+
+\ifdefined\DatCtxVar
+\else
+\newcommand{\DatCtxVar}[2]{%
+  \csname #1@#2\endcsname
+}
+\fi
+
+\ifdefined\SetCounterReferenceFormat
+\else
+\newcommand{\SetCounterReferenceFormat}[1]{%
+  \expandafter\def\csname the#1\endcsname{\noexpand\thesection.\noexpand\arabic{#1}}
+}
+\fi
+
+\newcommand{\NewEnvBoxOddTabGlobal}[4][,]
+{
+\DefLenCtxVar{#2}{LeftRuleLengthDat}
+\DefLenCtxVar{#2}{ThicknessLengthDat}
+
+\define@key{NewEnvBoxOddTabGlobalKeys}{CounterWith}{\DefCtxVar{#2}{CounterWithDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColorDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColorDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{TitleColor}{\DefCtxVar{#2}{TitleColorDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{PreTitleColor}{\DefCtxVar{#2}{PreTitleColorDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{BackTitleColor}{\DefCtxVar{#2}{BackTitleColorDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{TitleFont}{\DefCtxVar{#2}{TitleFontDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{PreTitleName}{\DefCtxVar{#2}{PreTitleNameDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{ThicknessLength}{\SetLenCtxVar{#2}{ThicknessLengthDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{ArcLength}{\DefCtxVar{#2}{ArcLengthDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{BeforeSpaceLength}{\DefCtxVar{#2}{BeforeSpaceLengthDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{AfterSpaceLength}{\DefCtxVar{#2}{AfterSpaceLengthDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{ImageObject}{\DefCtxVar{#2}{ImageObjectDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{ImageWidthLength}{\DefCtxVar{#2}{ImageWidthLengthDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{PostImageObject}{\DefCtxVar{#2}{PostImageObjectDat}{##1}}
+
+
+\setkeys{NewEnvBoxOddTabGlobalKeys}{
+PreTitleName=BoxOddTab,
+CounterWith=section,
+BackColor=gray!5,
+FrameColor=red!30!black,
+TitleColor=white,
+PreTitleColor=red!30!black,
+BackTitleColor=red!30!black,
+TitleFont=\bfseries,
+ArcLength=4pt,
+ThicknessLength=1.5pt,
+BeforeSpaceLength=0pt,
+AfterSpaceLength=0pt,
+ImageObject={\color{red!30!black}\ding{113}},
+ImageWidthLength=4ex,
+PostImageObject=\hspace{1pt}
+}
+
+\setkeys{NewEnvBoxOddTabGlobalKeys}{#1}%
+
+%% Cofigura la lista de enviroments
+\NewListEnvBoxOddTab{#4}{}
+
+%% Create a new counter that will follow tcolorbox's numbering
+\newcounter{#3}[\DatCtxVar{#2}{CounterWithDat}]
+
+% \SetCounterReferenceFormat Set format in label reference
+\SetCounterReferenceFormat{#3} 
+
+% Eliminates warning: Unknown TOC type #1#2. I'll set it for you with\MessageBreak level -1000.
+\expandafter\newcommand\csname ttll@#4\endcsname{-1000}
+
+
+\DefCtxVar{#2}{TitlePath}{
+{
+  \fill[\DatCtxVar{#2}{BackTitleColorDat}]
+  (title.south east)
+  --(title.east)coordinate(A)
+  to[curve to,out=90,in=0]($(A)+(-5mm,5mm)$)
+      --($(title.north west)+(5mm,0mm)$)coordinate(B)
+to[curve to,out=180,in=90]($(B)+(-5mm,-5mm)$)coordinate(C)
+      --($(C)+(0mm,-5mm)$)
+      to[curve to,out=90,in=180]($(title.south west)+(+5mm,0mm)$)coordinate(F)
+      --cycle;
+      \draw[\DatCtxVar{#2}{BackTitleColorDat},ultra thick]
+      ([yshift=.5\pgflinewidth]title.south east)--
+      ([yshift=.5\pgflinewidth]title.south-|interior.east);
+}
+}
+    
+
+
+
+\newtcolorbox[%
+list inside=#4,
+list type=#4,
+auto counter,
+number within=\DatCtxVar{#2}{CounterWithDat}
+]%
+{#2}%
+[1][]%
+{
+  title={##1},
+  enhanced,
+  detach title,
+  fonttitle=\DatCtxVar{#2}{TitleFontDat},
+  breakable, %pad at break=1mm,
+  colback=\DatCtxVar{#2}{BackColorDat},
+  coltitle=\DatCtxVar{#2}{TitleColorDat},
+  colframe=\DatCtxVar{#2}{FrameColorDat},
+  attach boxed title to top left={xshift=-0mm},
+  boxed title style={empty},
+  underlay boxed title=\DatCtxVar{#2}{TitlePath},
+  %
+  before={\vspace{\DatCtxVar{#2}{BeforeSpaceLengthDat}}},
+  after={\vspace{\DatCtxVar{#2}{AfterSpaceLengthDat}}},
+  %
+  leftrule=\DatCtxVar{#2}{ThicknessLengthDat},
+  toprule=\DatCtxVar{#2}{ThicknessLengthDat}, 
+  rightrule=\DatCtxVar{#2}{ThicknessLengthDat}, 
+  bottomrule=\DatCtxVar{#2}{ThicknessLengthDat},
+  %
+  code={
+  \ifthenelse{\equal{\DatCtxVar{#2}{ArcLengthDat}}{0pt}}
+    { \tcbset{sharp corners} }
+    { \tcbset{arc=\DatCtxVar{#2}{ArcLengthDat}} }
+  %
+  \ifdefempty{\tcbtitletext}
+    {
+    \tcbset{list text={ \EnvBoxOddTabFirstLetterUppercase{\DatCtxVar{#2}{PreTitleNameDat}}  }}
+    }
+    {%% \tcbtitle is the title write by the user
+    \tcbset{list text={##1}}
+    }
+  %
+  \ifdefempty{\tcbtitletext}
+    {
+        \tcbset{before upper={\addtocounter{#3}{-1}\refstepcounter{#3}%
+        \begin{minipage}{\DatCtxVar{#2}{ImageWidthLengthDat}}
+        \centering\DatCtxVar{#2}{ImageObjectDat}
+        \end{minipage}% 
+        \DatCtxVar{#2}{PostImageObjectDat}%
+        \textcolor{\DatCtxVar{#2}{PreTitleColorDat}}{\DatCtxVar{#2}{TitleFontDat}\DatCtxVar{#2}{PreTitleNameDat}\;\thetcbcounter:} \refstepcounter{#3}}}
+    }
+    {%% \tcbtitle is the title write by the user
+        \tcbset{before upper={\addtocounter{#3}{-1}\refstepcounter{#3}%
+        \begin{minipage}{\DatCtxVar{#2}{ImageWidthLengthDat}}
+        \centering\DatCtxVar{#2}{ImageObjectDat}
+        \end{minipage}%
+        \DatCtxVar{#2}{PostImageObjectDat}%
+        \textcolor{\DatCtxVar{#2}{PreTitleColorDat}}{\DatCtxVar{#2}{TitleFontDat}\DatCtxVar{#2}{PreTitleNameDat}\;\thetcbcounter:} \refstepcounter{#3}}}
+    }
+  },
+  %
+  %
+}
+}
+
+
+
+\makeatother
+
+
+
