@@ -65,7 +65,7 @@
 }%
 
 %% Define the image of pretitle
-\newcommand{\EnvNoteBoxSimpleImage}{\pgfornament[color=black,width=0.8\EnvNoteBoxSimpleLeftWidth]{1}}
+\newcommand{\EnvNoteBoxSimpleImage}{\pgfornament[color=black,width=0.7\EnvNoteBoxSimpleLeftWidth]{1}}
 \newcommand{\SetEnvNoteBoxSimpleImage}[1]{\renewcommand{\EnvNoteBoxSimpleImage}{#1}}%
 
 
@@ -108,13 +108,15 @@
     colframe=\EnvNoteBoxSimpleFrameColor,
     rounded corners,arc=\EnvNoteBoxSimpleBoxArc,
     underlay={%
-        \path[] (interior.south west) rectangle node[\EnvNoteBoxSimpleBackColor]%
+        \path[] 
+        ([xshift=0.5\EnvNoteBoxSimpleLeftWidth]interior.north west) node[\EnvNoteBoxSimpleBackColor,anchor=north]%
         {%
-        \begin{minipage}{\EnvNoteBoxSimpleLeftWidth}
-            \centering%
-            \EnvNoteBoxSimpleImage
-        \end{minipage}
-        } ([xshift=\EnvNoteBoxSimpleLeftWidth]interior.north west);
+\begin{minipage}{\EnvNoteBoxSimpleLeftWidth}
+    \centering%
+    \vspace{\EnvNoteBoxSimplePadding}
+    \EnvNoteBoxSimpleImage
+\end{minipage}
+        } ;
     },
     drop fuzzy shadow,
     #1%

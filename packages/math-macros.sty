@@ -127,3 +127,17 @@
 %% \SumFunc{x} %% sum(x)
 \newcommand{\SumFunc}[1]{{\operatorname{sum}\left({#1}\right)}}
 
+
+%% Triad dot product
+%% \TriadDotProduct{a}{b}{c}
+\newcommand\TriadDotProduct[3]{%
+  \tikz[scale=0.07,baseline=-0.5ex]%
+  {
+  \path (-1.732,-1) node[anchor=east]      {$#1$}
+        ( 1.732,-1) node[anchor=west]      {$#2$}
+        (     0, 2) node[anchor=south]     {$#3$};
+  \draw (-1.732,-1) to (1.732,-1) to (0,2) to (-1.732,-1);
+  \filldraw  (0,0) circle (0.3);
+  }%
+} 
+

@@ -7,14 +7,6 @@ curl https://sourceforge.net/p/latex-macros-packages/separator-rule/ci/main/tree
 
 curl https://sourceforge.net/p/latex-macros-packages/math-macros/ci/main/tree/math-macros.sty?format=raw -o math-macros.sty
 
-curl https://sourceforge.net/p/latex-macros-packages/env-theorem-pictbox/ci/main/tree/env-theorem-pictbox.sty?format=raw -o env-theorem-pictbox.sty
-
-curl https://sourceforge.net/p/latex-macros-packages/env-theorem-simpleimg/ci/master/tree/env-theorem-simpleimg.sty?format=raw -o env-theorem-simpleimg.sty
-
-curl https://sourceforge.net/p/latex-macros-packages/env-theorem-simplebox/ci/master/tree/env-theorem-simplebox.sty?format=raw -o env-theorem-simplebox.sty
-
-curl https://sourceforge.net/p/latex-macros-packages/env-theorem-pictlin/ci/main/tree/env-theorem-pictlin.sty?format=raw -o env-theorem-pictlin.sty
-
 curl https://sourceforge.net/p/latex-macros-packages/env-theorem-insidetab/ci/master/tree/env-theorem-insidetab.sty?format=raw -o env-theorem-insidetab.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/env-citationbox-simple/ci/main/tree/env-citationbox-simple.sty?format=raw -o env-citationbox-simple.sty
@@ -53,3 +45,8 @@ curl https://sourceforge.net/p/latex-macros-packages/env-box-pictbox/ci/master/t
 
 curl https://sourceforge.net/p/latex-macros-packages/env-box-oddtab/ci/master/tree/env-box-oddtab.sty?format=raw -o env-box-oddtab.sty
 
+curl https://sourceforge.net/p/latex-macros-packages/env-box-pictlin/ci/master/tree/env-box-pictlin.sty?format=raw -o env-box-pictlin.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/env-box-simpleimg/ci/master/tree/env-box-simpleimg.sty?format=raw -o env-box-simpleimg.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/env-box-simplebox/ci/master/tree/env-box-simplebox.sty?format=raw -o env-box-simplebox.sty

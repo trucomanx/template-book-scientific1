@@ -108,10 +108,16 @@
 \DefLenCtxVar{#2}{LeftRuleLengthDat}
 \DefLenCtxVar{#2}{ThicknessLengthDat}
 
+\DefLenCtxVar{#2}{LeftPaddingLengthDat}
+\DefLenCtxVar{#2}{RightPaddingLengthDat}
+\DefLenCtxVar{#2}{TopPaddingLengthDat}
+\DefLenCtxVar{#2}{BottomPaddingLengthDat}
+
 \define@key{NewEnvBoxPictBoxGlobalKeys}{CounterWith}{\DefCtxVar{#2}{CounterWithDat}{##1}}
 \define@key{NewEnvBoxPictBoxGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColorDat}{##1}}
 \define@key{NewEnvBoxPictBoxGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColorDat}{##1}}
 \define@key{NewEnvBoxPictBoxGlobalKeys}{TitleColor}{\DefCtxVar{#2}{TitleColorDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{PreTitleColor}{\DefCtxVar{#2}{PreTitleColorDat}{##1}}
 \define@key{NewEnvBoxPictBoxGlobalKeys}{TitleFont}{\DefCtxVar{#2}{TitleFontDat}{##1}}
 \define@key{NewEnvBoxPictBoxGlobalKeys}{PreTitleName}{\DefCtxVar{#2}{PreTitleNameDat}{##1}}
 \define@key{NewEnvBoxPictBoxGlobalKeys}{LeftRuleLength}{\SetLenCtxVar{#2}{LeftRuleLengthDat}{##1}}
@@ -120,11 +126,17 @@
 \define@key{NewEnvBoxPictBoxGlobalKeys}{BeforeSpaceLength}{\DefCtxVar{#2}{BeforeSpaceLengthDat}{##1}}
 \define@key{NewEnvBoxPictBoxGlobalKeys}{AfterSpaceLength}{\DefCtxVar{#2}{AfterSpaceLengthDat}{##1}}
 \define@key{NewEnvBoxPictBoxGlobalKeys}{ImageObject}{\DefCtxVar{#2}{ImageObjectDat}{##1}}
+%
+\define@key{NewEnvBoxPictBoxGlobalKeys}{LeftPaddingLength}{\SetLenCtxVar{#2}{LeftPaddingLengthDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{RightPaddingLength}{\SetLenCtxVar{#2}{RightPaddingLengthDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{TopPaddingLength}{\SetLenCtxVar{#2}{TopPaddingLengthDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{BottomPaddingLength}{\SetLenCtxVar{#2}{BottomPaddingLengthDat}{##1}}
 
 
 
 \setkeys{NewEnvBoxPictBoxGlobalKeys}{
 PreTitleName=BoxPictBox,
+PreTitleColor=white,
 CounterWith=section,
 BackColor=gray!5,
 FrameColor=red!30!black,
@@ -135,7 +147,11 @@ ArcLength=0pt,
 ThicknessLength=1.5pt,
 BeforeSpaceLength=0pt,
 AfterSpaceLength=0pt,
-ImageObject={}
+ImageObject={},
+LeftPaddingLength=1ex,
+RightPaddingLength=1ex,
+TopPaddingLength=1ex,
+BottomPaddingLength=1ex
 }
 
 \setkeys{NewEnvBoxPictBoxGlobalKeys}{#1}%
@@ -174,10 +190,15 @@ number within=\DatCtxVar{#2}{CounterWithDat}
   rightrule=\DatCtxVar{#2}{ThicknessLengthDat}, 
   bottomrule=\DatCtxVar{#2}{ThicknessLengthDat},
   %
+  left=\DatCtxVar{#2}{LeftPaddingLengthDat},
+  right=\DatCtxVar{#2}{RightPaddingLengthDat},
+  top=\DatCtxVar{#2}{TopPaddingLengthDat},
+  bottom=\DatCtxVar{#2}{BottomPaddingLengthDat},
+  %
   before={\vspace{\DatCtxVar{#2}{BeforeSpaceLengthDat}}},
   after={\vspace{\DatCtxVar{#2}{AfterSpaceLengthDat}}},
   %
-  underlay unbroken and first={\node[below,text=white,font=\DatCtxVar{#2}{TitleFontDat},align=center]
+  underlay unbroken and first={\node[below,text=\DatCtxVar{#2}{PreTitleColorDat},font=\DatCtxVar{#2}{TitleFontDat},align=center]
     at ([xshift=-0.5\DatCtxVar{#2}{LeftRuleLengthDat}+1.5\DatCtxVar{#2}{ThicknessLengthDat},yshift=-1mm]interior.north west) {%
     \begin{minipage}{0.98\DatCtxVar{#2}{LeftRuleLengthDat}}
     \centering

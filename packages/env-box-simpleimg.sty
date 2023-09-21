@@ -1,9 +1,9 @@
 %% source:
-%% https://github.com/trucomanx/env-box-simple
+%% https://github.com/trucomanx/env-box-simpleimg
 
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{env-box-simple}[2022/05/21 Package with macros to the math enviroment]
+\ProvidesPackage{env-box-simpleimg}[2022/05/21 Package with macros to the math enviroment]
 
 
 \RequirePackage[most]{tcolorbox}
@@ -18,7 +18,7 @@
 
 % Options
 %\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
-\DeclareOption*{\PackageWarning{env-box-simple}{The option ‘\CurrentOption’ is current unknown}}
+\DeclareOption*{\PackageWarning{env-box-simpleimg}{The option ‘\CurrentOption’ is current unknown}}
 \ProcessOptions\relax
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -30,10 +30,10 @@
 %% Function
 %% Crea una macro que capitaliza la primera letra
 %% 
-%% \EnvBoxSimpleFirstLetterUppercase{Som text}
+%% \EnvBoxSimpleImgFirstLetterUppercase{Som text}
 %% 
 \ExplSyntaxOn
-\NewExpandableDocumentCommand \EnvBoxSimpleFirstLetterUppercase { O{} m }
+\NewExpandableDocumentCommand \EnvBoxSimpleImgFirstLetterUppercase { O{} m }
   { \text_titlecase:nn {#1} {#2} }
 \ExplSyntaxOff
 
@@ -42,9 +42,9 @@
 %% Function
 %% Establece la configuracion de las table de ..
 %% 
-%% \NewListEnvBoxSimple{New text name without spaces}{Spacing and font options}
+%% \NewListEnvBoxSimpleImg{New text name without spaces}{Spacing and font options}
 %% 
-\newcommand{\NewListEnvBoxSimple}[2]{
+\newcommand{\NewListEnvBoxSimpleImg}[2]{
     \titlecontents{#1}[2.00cm] %% Indentation %% left
     {#2} %% Spacing and font options for sections %% above code
     {\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
@@ -59,7 +59,7 @@
 %% Function
 %% Establece un nuevo enviroment
 %% 
-%% \NewEnvBoxSimpleGlobal[PreTitleName=BoxSimplePre]{BoxSimple}{BoxSimpleCount}{BoxSimpleExt}
+%% \NewEnvBoxSimpleImgGlobal[PreTitleName=BoxSimpleImgPre]{BoxSimpleImg}{BoxSimpleImgCount}{BoxSimpleImgExt}
 %% 
 
 \makeatletter
@@ -102,45 +102,46 @@
 }
 \fi
 
-\newcommand{\NewEnvBoxSimpleGlobal}[4][,]
+\newcommand{\NewEnvBoxSimpleImgGlobal}[4][,]
 {
 
 \DefLenCtxVar{#2}{LeftPaddingLengthDat}
 \DefLenCtxVar{#2}{RightPaddingLengthDat}
 \DefLenCtxVar{#2}{TopPaddingLengthDat}
 \DefLenCtxVar{#2}{BottomPaddingLengthDat}
+\DefLenCtxVar{#2}{Thickness}
 
-\define@key{NewEnvBoxSimpleGlobalKeys}{CounterWith}{\DefCtxVar{#2}{CounterWithDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColorDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColorDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{TitleColor}{\DefCtxVar{#2}{TitleColorDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{TitleFont}{\DefCtxVar{#2}{TitleFontDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{PreTitleName}{\DefCtxVar{#2}{PreTitleNameDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{LeftRuleLength}{\DefCtxVar{#2}{LeftRuleLengthDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{BeforeSpaceLength}{\DefCtxVar{#2}{BeforeSpaceLengthDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{AfterSpaceLength}{\DefCtxVar{#2}{AfterSpaceLengthDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{ImageObject}{\DefCtxVar{#2}{ImageObjectDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{ImageWidthLength}{\DefCtxVar{#2}{ImageWidthLengthDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{PostImageObject}{\DefCtxVar{#2}{PostImageObjectDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{QedSymbol}{\DefCtxVar{#2}{QedSymbolDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{CounterWith}{\DefCtxVar{#2}{CounterWithDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColorDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColorDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{TitleColor}{\DefCtxVar{#2}{TitleColorDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{TitleFont}{\DefCtxVar{#2}{TitleFontDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{PreTitleName}{\DefCtxVar{#2}{PreTitleNameDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{Thickness}{\DefCtxVar{#2}{ThicknessDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{BeforeSpaceLength}{\DefCtxVar{#2}{BeforeSpaceLengthDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{AfterSpaceLength}{\DefCtxVar{#2}{AfterSpaceLengthDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{ImageObject}{\DefCtxVar{#2}{ImageObjectDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{ImageWidthLength}{\DefCtxVar{#2}{ImageWidthLengthDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{PostImageObject}{\DefCtxVar{#2}{PostImageObjectDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{QedSymbol}{\DefCtxVar{#2}{QedSymbolDat}{##1}}
 %
-\define@key{NewEnvBoxSimpleGlobalKeys}{LeftPaddingLength}{\SetLenCtxVar{#2}{LeftPaddingLengthDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{RightPaddingLength}{\SetLenCtxVar{#2}{RightPaddingLengthDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{TopPaddingLength}{\SetLenCtxVar{#2}{TopPaddingLengthDat}{##1}}
-\define@key{NewEnvBoxSimpleGlobalKeys}{BottomPaddingLength}{\SetLenCtxVar{#2}{BottomPaddingLengthDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{LeftPaddingLength}{\SetLenCtxVar{#2}{LeftPaddingLengthDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{RightPaddingLength}{\SetLenCtxVar{#2}{RightPaddingLengthDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{TopPaddingLength}{\SetLenCtxVar{#2}{TopPaddingLengthDat}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{BottomPaddingLength}{\SetLenCtxVar{#2}{BottomPaddingLengthDat}{##1}}
 
 
-\setkeys{NewEnvBoxSimpleGlobalKeys}{
-PreTitleName=BoxSimple,
+\setkeys{NewEnvBoxSimpleImgGlobalKeys}{
+PreTitleName=BoxSimpleImg,
 CounterWith=section,
-BackColor=gray!10,
+BackColor=white,
 FrameColor=red!50!black,
-TitleColor=green!50!black,
+TitleColor=red!50!black,
 TitleFont=\bfseries,
-LeftRuleLength=4pt,
+Thickness=1pt,
 BeforeSpaceLength=4pt,
 AfterSpaceLength=0pt,
-ImageObject={\color{green!50!black}\ding{113}},
+ImageObject={\color{red!50!black}\ding{113}},
 ImageWidthLength=4ex,
 PostImageObject=\hspace{1pt},
 QedSymbol={},%% simbolo o objeto al final del enviroment {\hfill$\blacksquare$}
@@ -150,10 +151,10 @@ TopPaddingLength=1ex,
 BottomPaddingLength=1ex
 }
 
-\setkeys{NewEnvBoxSimpleGlobalKeys}{#1}%
+\setkeys{NewEnvBoxSimpleImgGlobalKeys}{#1}%
 
 %% Cofigura la lista de enviroments
-\NewListEnvBoxSimple{#4}{}
+\NewListEnvBoxSimpleImg{#4}{}
 
 %% Create a new counter that will follow tcolorbox's numbering
 \newcounter{#3}[\DatCtxVar{#2}{CounterWithDat}]
@@ -185,7 +186,11 @@ number within=\DatCtxVar{#2}{CounterWithDat}
   top=\DatCtxVar{#2}{TopPaddingLengthDat},
   bottom=\DatCtxVar{#2}{BottomPaddingLengthDat},
   %
-  leftrule=\DatCtxVar{#2}{LeftRuleLengthDat}, toprule=-0.05pt, rightrule=-0.05pt, bottomrule=-0.05pt,
+  leftrule=\DatCtxVar{#2}{ThicknessDat}, 
+  toprule=\DatCtxVar{#2}{ThicknessDat}, 
+  rightrule=\DatCtxVar{#2}{ThicknessDat}, 
+  bottomrule=\DatCtxVar{#2}{ThicknessDat},
+  %
   breakable,
   enhanced,
   arc=0mm,
@@ -195,7 +200,7 @@ number within=\DatCtxVar{#2}{CounterWithDat}
   code={
   \ifdefempty{\tcbtitletext}
     {
-    \tcbset{list text={ \EnvBoxSimpleFirstLetterUppercase{\DatCtxVar{#2}{PreTitleNameDat}}  }}
+    \tcbset{list text={ \EnvBoxSimpleImgFirstLetterUppercase{\DatCtxVar{#2}{PreTitleNameDat}}  }}
     }
     {%% \tcbtitle is the title write by the user
     \tcbset{list text={##1}}

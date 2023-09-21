@@ -110,6 +110,10 @@
 {
 \DefLenCtxVar{#2}{LeftRuleLengthDat}
 \DefLenCtxVar{#2}{ThicknessLengthDat}
+\DefLenCtxVar{#2}{LeftPaddingLengthDat}
+\DefLenCtxVar{#2}{RightPaddingLengthDat}
+\DefLenCtxVar{#2}{TopPaddingLengthDat}
+\DefLenCtxVar{#2}{BottomPaddingLengthDat}
 
 \define@key{NewEnvBoxOddTabGlobalKeys}{CounterWith}{\DefCtxVar{#2}{CounterWithDat}{##1}}
 \define@key{NewEnvBoxOddTabGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColorDat}{##1}}
@@ -126,6 +130,11 @@
 \define@key{NewEnvBoxOddTabGlobalKeys}{ImageObject}{\DefCtxVar{#2}{ImageObjectDat}{##1}}
 \define@key{NewEnvBoxOddTabGlobalKeys}{ImageWidthLength}{\DefCtxVar{#2}{ImageWidthLengthDat}{##1}}
 \define@key{NewEnvBoxOddTabGlobalKeys}{PostImageObject}{\DefCtxVar{#2}{PostImageObjectDat}{##1}}
+%
+\define@key{NewEnvBoxOddTabGlobalKeys}{LeftPaddingLength}{\SetLenCtxVar{#2}{LeftPaddingLengthDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{RightPaddingLength}{\SetLenCtxVar{#2}{RightPaddingLengthDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{TopPaddingLength}{\SetLenCtxVar{#2}{TopPaddingLengthDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{BottomPaddingLength}{\SetLenCtxVar{#2}{BottomPaddingLengthDat}{##1}}
 
 
 \setkeys{NewEnvBoxOddTabGlobalKeys}{
@@ -143,7 +152,11 @@ BeforeSpaceLength=0pt,
 AfterSpaceLength=0pt,
 ImageObject={\color{red!30!black}\ding{113}},
 ImageWidthLength=4ex,
-PostImageObject=\hspace{1pt}
+PostImageObject=\hspace{1pt},
+LeftPaddingLength=1ex,
+RightPaddingLength=1ex,
+TopPaddingLength=1ex,
+BottomPaddingLength=1ex
 }
 
 \setkeys{NewEnvBoxOddTabGlobalKeys}{#1}%
@@ -209,6 +222,11 @@ number within=\DatCtxVar{#2}{CounterWithDat}
   toprule=\DatCtxVar{#2}{ThicknessLengthDat}, 
   rightrule=\DatCtxVar{#2}{ThicknessLengthDat}, 
   bottomrule=\DatCtxVar{#2}{ThicknessLengthDat},
+  %
+  left=\DatCtxVar{#2}{LeftPaddingLengthDat}, 
+  right=\DatCtxVar{#2}{RightPaddingLengthDat}, 
+  top=\DatCtxVar{#2}{TopPaddingLengthDat}, 
+  bottom=\DatCtxVar{#2}{BottomPaddingLengthDat},
   %
   code={
   \ifthenelse{\equal{\DatCtxVar{#2}{ArcLengthDat}}{0pt}}

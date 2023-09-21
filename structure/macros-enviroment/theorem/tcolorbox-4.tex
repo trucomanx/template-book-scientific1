@@ -7,21 +7,30 @@
 %----------------------------------------------------------------------------------------
 
 
-\usepackage{packages/env-theorem-pictlin}
+\usepackage{packages/env-box-pictlin}
 
-\SetEnvTheoremPictLinPreTitle{Teorema}
-\SetEnvTheoremPictLinFrameColor{colorTheorem}
-\SetEnvTheoremPictLinBackColor{colorTheorem!5!white}
-\SetEnvTheoremPictLinTitleColor{colorTheorem}
-\SetEnvTheoremPictLinTitleFont{\bfseries}
-\SetEnvTheoremPictLinImage{
-\pgfornament[color=\EnvTheoremPictLinFrameColor,width=\textwidth]{1}
-}
+\NewEnvBoxPictLinGlobal[
+    PreTitleName=Teorema,
+    CounterWith=section,
+    BackColor=colorTheorem!5!white,
+    FrameColor=colorTheorem,
+    TitleColor=colorTheorem,
+    TitleFont=\bfseries,
+    LeftRuleLength=4pt,
+    BeforeSpaceLength=1ex,
+    AfterSpaceLength=1ex,
+    ImageObject={\pgfornament[color=colorTheorem,width=\textwidth]{1}},
+    ImageWidthLength=4ex,
+    LeftPaddingLength=8pt,
+    RightPaddingLength=8pt,
+    TopPaddingLength=8pt,
+    BottomPaddingLength=8pt,
+    PostImageObject={\hspace{1ex}}
+]{theorem}{TheoremPictLinCounter}{TheoremPictLinListingExt}
 
-\SetEnvTheoremPictLinBeforeSpace{1ex}
-\SetEnvTheoremPictLinAfterSpace{1ex}
+\newcommand{\EnvTheoremListingExt}{TheoremPictLinListingExt}
 
-\newcommand{\EnvTheoremListingExt}{\EnvTheoremPictLinListingExt}
+
 
 %\SetEnvTheoremSimpleImage{\includegraphics[width=0.9\textwidth]{pencil.png}}
 

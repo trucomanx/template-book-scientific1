@@ -6,31 +6,32 @@
 % \end{theorem}
 %----------------------------------------------------------------------------------------
 
-\usepackage{packages/env-theorem-simplebox}
-
-\SetEnvTheoremSimpleBoxPreTitle{Teorema}
-\SetEnvTheoremSimpleBoxFrameColor{colorTheorem}
-\SetEnvTheoremSimpleBoxBackColor{white}
-\SetEnvTheoremSimpleBoxTitleColor{colorTheorem}
-\SetEnvTheoremSimpleBoxTitleFont{\bfseries}
-\SetEnvTheoremSimpleBoxImage{
-{\color{\EnvTheoremSimpleBoxFrameColor}\ding{113}}
-}
-\SetEnvTheoremSimpleBoxTitleBackColor{white}
-\SetEnvTheoremSimpleBoxTitleFrameColor{white}
-\SetEnvTheoremSimpleBoxThickness{1pt}
-\SetEnvTheoremSimpleBoxPostPic{0.5ex}
-\SetEnvTheoremSimpleBoxFrameArc{8pt}
-\SetEnvTheoremSimpleBoxEnableSolidShadow
-
-\SetEnvTheoremSimpleBoxBeforeSpace{1ex}
-\SetEnvTheoremSimpleBoxAfterSpace{1ex}
-
-\SetEnvTheoremSimpleBoxLeftPadding{2ex}
-\SetEnvTheoremSimpleBoxRightPadding{2ex}
-\SetEnvTheoremSimpleBoxTopPadding{2ex}
-\SetEnvTheoremSimpleBoxBottomPadding{2ex}
+\usepackage{packages/env-box-simplebox}
 
 
-\newcommand{\EnvTheoremListingExt}{\EnvTheoremSimpleBoxListingExt}
+\NewEnvBoxSimpleBoxGlobal[
+PreTitleName=Teorema,
+CounterWith=section,
+BackColor=white,
+FrameColor=colorTheorem,
+TitleColor=colorTheorem,
+TitleFont=\bfseries,
+Thickness=1pt,
+BeforeSpaceLength=1ex,
+AfterSpaceLength=1ex,
+ImageObject={\color{colorTheorem}\ding{113}},
+PostImageObject=\hspace{0.5ex},
+QedSymbol={\hfill\;\color{colorTheorem}\ding{110}},
+TitleFrameColor=white,
+TitleBackColor=white,
+ArcLength=8pt,
+ShadowColor=colorTheorem!80!black,
+SolidShadow=true,
+LeftPaddingLength=2ex,
+RightPaddingLength=2ex,
+TopPaddingLength=2ex,
+BottomPaddingLength=2ex
+]{theorem}{TheoremSimpleBoxCounter}{TheoremSimpleBoxListingExt}
+
+\newcommand{\EnvTheoremListingExt}{TheoremSimpleBoxListingExt}
 

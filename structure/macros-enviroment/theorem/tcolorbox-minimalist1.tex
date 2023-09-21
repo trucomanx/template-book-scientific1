@@ -7,23 +7,30 @@
 %----------------------------------------------------------------------------------------
 
 
-\usepackage{packages/env-theorem-simpleimg}
+\usepackage{packages/env-box-simpleimg}
 \usepackage{pifont}
 
-\SetEnvTheoremSimpleImgPreTitle{Teorema}
-\SetEnvTheoremSimpleImgFrameColor{gray!10!white}
-\SetEnvTheoremSimpleImgBackColor{gray!10!white}
-\SetEnvTheoremSimpleImgTitleColor{colorTheorem}
-\SetEnvTheoremSimpleImgTitleFont{\bfseries}
-\SetEnvTheoremSimpleImgThickness{0pt}
-\SetEnvTheoremSimpleImgImage{{\color{colorTheorem}\ding{111}}}
-\SetEnvTheoremSimpleImgPostPic{0.5ex}
-\SetEnvTheoremSimpleImgLeftPadding{1ex}
-\SetEnvTheoremSimpleImgRightPadding{1ex}
-\SetEnvTheoremSimpleImgTopPadding{1ex}
-\SetEnvTheoremSimpleImgBottomPadding{1ex}
 
+\NewEnvBoxSimpleImgGlobal[
+PreTitleName=Teorema,
+CounterWith=section,
+BackColor=gray!10!white,
+FrameColor=gray!10!white,
+TitleColor=colorTheorem,
+TitleFont=\bfseries,
+Thickness=0pt,
+BeforeSpaceLength=4pt,
+AfterSpaceLength=0pt,
+ImageObject={\color{colorTheorem}\ding{111}},
+ImageWidthLength=4ex,
+PostImageObject=\hspace{0.5ex},
+QedSymbol={\hfill\;\color{colorTheorem}\ding{110}},
+LeftPaddingLength=1ex,
+RightPaddingLength=1ex,
+TopPaddingLength=1ex,
+BottomPaddingLength=1ex
+]{theorem}{TheoremSimpleImgCounter}{TheoremSimpleImgListingExt}
 
-\newcommand{\EnvTheoremListingExt}{\EnvTheoremSimpleImgListingExt}
+\newcommand{\EnvTheoremListingExt}{TheoremSimpleImgListingExt}
 
 
