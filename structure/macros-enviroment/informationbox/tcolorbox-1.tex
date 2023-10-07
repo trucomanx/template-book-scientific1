@@ -7,24 +7,31 @@
 % \end{informationbox}
 %----------------------------------------------------------------------------------------
 
-\usepackage{packages/env-informationbox-round}
+\usepackage{packages/env-box-pictbox}
 
-\SetEnvInformationBoxRoundBeforeSpace{4pt}
-\SetEnvInformationBoxRoundAfterSpace{4pt}
-
-\SetEnvInformationBoxRoundLeftRule{40pt}
-\SetEnvInformationBoxRoundThickness{2pt}
-
-\SetEnvInformationBoxRoundPreTitle{Informação}
-\SetEnvInformationBoxRoundFrameColor{colorInformationBox}
-\SetEnvInformationBoxRoundShadowColor{black}
-\SetEnvInformationBoxRoundBackColor{colorInformationBox!5}
-\SetEnvInformationBoxRoundTitleColor{black}
-\SetEnvInformationBoxRoundTitleFont{\bfseries}
-\SetEnvInformationBoxRoundImage{\includegraphics[width=8mm]{icons/information1.eps}}
-\SetEnvInformationBoxRoundBoxArc{2mm}
-
-\newcommand{\EnvInformationBoxListingExt}{\EnvInformationBoxRoundListingExt}
+\NewEnvBoxPictBoxGlobal[
+PreTitleName=Informação,
+CounterWith=section,
+BackColor=colorInformationBox!5,
+FrameColor=colorInformationBox,
+TitleColor=black,
+PreTitleColor=gray!10,
+PreTitleShow=false,
+TitleFont=\bfseries,
+LeftRuleLength=40pt,
+ArcLength=2mm,
+ThicknessLength=2pt,
+BeforeSpaceLength=0.5ex,
+AfterSpaceLength=0.5ex,
+ImageObject={\includegraphics[width=8mm]{icons/information1.eps}},
+LeftPaddingLength=1ex,
+RightPaddingLength=1ex,
+TopPaddingLength=1ex,
+BottomPaddingLength=1ex,
+Breakable=true
+]{informationbox}{InformationPictBoxCounter}{InformationPictBoxListingExt}
+%\SetEnvInformationBoxRoundShadowColor{black}
+\newcommand{\EnvInformationBoxListingExt}{InformationPictBoxListingExt}
 
 \begin{comment}
 \newtcolorbox[list inside=MisInformacoes,list type=MisInformacoes,auto counter,number within=chapter]{informationbox}[1]

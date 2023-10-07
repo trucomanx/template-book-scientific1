@@ -5,19 +5,21 @@
 %   text
 % \end{highlightbox}
 
-\usepackage{packages/env-highlightbox-zigzag}
+\usepackage{packages/env-highlight-simplezigzag}
 
-\SetEnvHighlightBoxZigzagThickness{1pt}
-\SetEnvHighlightBoxZigzagAmplitude{3pt}
-
-\SetEnvHighlightBoxZigzagFrameColor{gray!60}
-\SetEnvHighlightBoxZigzagBackColor{gray!10}
-
-\SetEnvHighlightBoxZigzagBeforeSpace{1ex}
-\SetEnvHighlightBoxZigzagAfterSpace{1ex}
-
-\SetEnvHighlightBoxZigzagLeftPadding{2ex}
-\SetEnvHighlightBoxZigzagRightPadding{2ex}
-\SetEnvHighlightBoxZigzagTopPadding{2ex}
-\SetEnvHighlightBoxZigzagBottomPadding{2ex}
+\NewEnvBoxSimpleZigzagGlobal[
+BackColor=gray!10,
+FrameColor=gray!60,
+ThicknessLength=1pt,
+AmplitudeLength=3pt,
+BeforeSpaceLength=1ex,
+AfterSpaceLength=1ex,
+QedSymbol={},
+ShadowColor=gray,
+LeftPaddingLength=1ex,
+RightPaddingLength=1ex,
+TopPaddingLength=1.5ex,
+BottomPaddingLength=1.5ex,
+Breakable=true
+]{highlightbox}
 

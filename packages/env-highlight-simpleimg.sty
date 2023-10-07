@@ -1,0 +1,192 @@
+%% source:
+%% https://github.com/trucomanx/env-highlight-simpleimg
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{env-highlight-simpleimg}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage[svgnames]{xcolor}
+\RequirePackage[explicit]{titlesec} %% sections
+\RequirePackage{titletoc} %% TOC
+\RequirePackage{xparse} %%\ExplSyntaxOn
+\RequirePackage{xkeyval} %%\setkeys
+\RequirePackage{xifthen}
+\RequirePackage{xstring}
+\RequirePackage{varwidth}
+\RequirePackage{tikz} % Required for drawing custom shapes
+\usetikzlibrary{decorations.pathmorphing}
+\RequirePackage{ifthen} %% ifthenelse
+
+\RequirePackage{pifont} %% \ding{111}
+
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{env-highlight-simpleimg}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Function
+%% Establece un nuevo enviroment
+%% 
+%% \NewEnvBoxSimpleImgGlobal[PreTitleName=BoxSimpleImgPre]{BoxSimpleImg}
+%% 
+
+\makeatletter
+
+\ifdefined\DefCtxVar
+\else
+\newcommand{\DefCtxVar}[3]{%
+  \expandafter\def\csname #1@#2\endcsname{#3}
+}
+\fi
+
+\ifdefined\DefLenCtxVar
+\else
+\newcommand{\DefLenCtxVar}[2]{%
+  % Usar el parámetro como nombre de la variable local
+    \expandafter\newlength\csname #1@#2\endcsname  
+    %\@latex@warning{************** \csname #1@#2\endcsname **************}
+}
+\fi
+
+\ifdefined\SetLenCtxVar
+\else
+\newcommand{\SetLenCtxVar}[3]{%
+  % Usar el parámetro como nombre de la variable local
+    \csname #1@#2\endcsname=#3
+}
+\fi
+
+\ifdefined\DatCtxVar
+\else
+\newcommand{\DatCtxVar}[2]{%
+  \csname #1@#2\endcsname
+}
+\fi
+
+\newcommand{\NewEnvBoxSimpleImgGlobal}[2][,]
+{
+\DefLenCtxVar{#2}{LeftSkipLength}
+\DefLenCtxVar{#2}{RightSkipLength}
+\DefLenCtxVar{#2}{ThicknessLength}
+\DefLenCtxVar{#2}{ArcLength}
+\DefLenCtxVar{#2}{BeforeSpaceLength}
+\DefLenCtxVar{#2}{AfterSpaceLength}
+\DefLenCtxVar{#2}{ImageWidthLength}
+
+\DefLenCtxVar{#2}{LeftPaddingLength}
+\DefLenCtxVar{#2}{RightPaddingLength}
+\DefLenCtxVar{#2}{TopPaddingLength}
+\DefLenCtxVar{#2}{BottomPaddingLength}
+
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{ImageObjectCenter}{\DefCtxVar{#2}{ImageObjectCenter}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{ImageObject}{\DefCtxVar{#2}{ImageObject}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{Breakable}{\DefCtxVar{#2}{Breakable}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColor}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColor}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{QedSymbol}{\DefCtxVar{#2}{QedSymbol}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{ShadowColor}{\DefCtxVar{#2}{ShadowColor}{##1}}
+%
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{ImageWidthLength}{\SetLenCtxVar{#2}{ImageWidthLength}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{LeftSkipLength}{\SetLenCtxVar{#2}{LeftSkipLength}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{RightSkipLength}{\SetLenCtxVar{#2}{RightSkipLength}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{ThicknessLength}{\SetLenCtxVar{#2}{ThicknessLength}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{ArcLength}{\SetLenCtxVar{#2}{ArcLength}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{BeforeSpaceLength}{\SetLenCtxVar{#2}{BeforeSpaceLength}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{AfterSpaceLength}{\SetLenCtxVar{#2}{AfterSpaceLength}{##1}}
+
+
+%
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{LeftPaddingLength}{\SetLenCtxVar{#2}{LeftPaddingLength}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{RightPaddingLength}{\SetLenCtxVar{#2}{RightPaddingLength}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{TopPaddingLength}{\SetLenCtxVar{#2}{TopPaddingLength}{##1}}
+\define@key{NewEnvBoxSimpleImgGlobalKeys}{BottomPaddingLength}{\SetLenCtxVar{#2}{BottomPaddingLength}{##1}}
+
+
+\setkeys{NewEnvBoxSimpleImgGlobalKeys}{
+BackColor=BlanchedAlmond!50!white,
+FrameColor=BlanchedAlmond!50!black,
+ThicknessLength=1pt,
+LeftSkipLength=0pt,
+RightSkipLength=0pt,
+ArcLength=3mm,
+ImageWidthLength=8mm,
+ImageObject={\textcolor{BlanchedAlmond!50!black}{\Huge\ding{118}}},
+ImageObjectCenter=true,
+BeforeSpaceLength=4pt,
+AfterSpaceLength=4pt,
+QedSymbol={},%% simbolo o objeto al final del enviroment {\hfill$\blacksquare$}
+ShadowColor=gray,
+LeftPaddingLength=0ex,
+RightPaddingLength=1ex,
+TopPaddingLength=1ex,
+BottomPaddingLength=1ex,
+Breakable=true
+}
+
+\setkeys{NewEnvBoxSimpleImgGlobalKeys}{#1}%
+
+\newtcolorbox{#2}%
+[1][]%
+{
+  %
+  before={\vspace{\DatCtxVar{#2}{BeforeSpaceLength}}},
+  after={\vspace{\DatCtxVar{#2}{AfterSpaceLength}}},
+  %
+  colback=\DatCtxVar{#2}{BackColor},
+  colframe=\DatCtxVar{#2}{FrameColor},
+  breakable=\DatCtxVar{#2}{Breakable},
+  %enhanced standard,
+  %
+  leftrule=\DatCtxVar{#2}{ThicknessLength}, 
+  toprule=\DatCtxVar{#2}{ThicknessLength}, 
+  rightrule=\DatCtxVar{#2}{ThicknessLength}, 
+  bottomrule=\DatCtxVar{#2}{ThicknessLength},
+  %boxrule = \DatCtxVar{#2}{ThicknessLength},
+  arc=\DatCtxVar{#2}{ArcLength},
+  %
+  enhanced,
+  drop fuzzy shadow=\DatCtxVar{#2}{ShadowColor},
+  %
+  %
+  left=\DatCtxVar{#2}{ImageWidthLength}+\DatCtxVar{#2}{LeftPaddingLength},
+  right=\DatCtxVar{#2}{RightPaddingLength},
+  top=\DatCtxVar{#2}{TopPaddingLength},
+  bottom=\DatCtxVar{#2}{BottomPaddingLength},
+  %
+  width    = \linewidth,
+  left skip= \DatCtxVar{#2}{LeftSkipLength},
+  right skip= \DatCtxVar{#2}{RightSkipLength},
+  %
+  underlay={%
+    \ifthenelse{\equal{\DatCtxVar{#2}{ImageObjectCenter}}{true}}
+    {
+        \path[draw=none] %anchor=south
+        (interior.south west) rectangle node[text width=\DatCtxVar{#2}{ImageWidthLength},align=center]{\DatCtxVar{#2}{ImageObject}} 
+        ([xshift=\DatCtxVar{#2}{ImageWidthLength}]interior.north west);
+    }
+    {
+        \path[draw=none,anchor=south] %
+        (interior.south west) rectangle node[text width=\DatCtxVar{#2}{ImageWidthLength},align=center]{\DatCtxVar{#2}{ImageObject}} 
+        ([xshift=\DatCtxVar{#2}{ImageWidthLength}]interior.north west);
+    }
+    },
+  %
+  after upper={\DatCtxVar{#2}{QedSymbol}},
+  ##1,
+}
+}
+
+
+\makeatother
+
+
+

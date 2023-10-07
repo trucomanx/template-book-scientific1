@@ -5,15 +5,25 @@
 %   texto
 % \end{citationbox}
 
-\usepackage{packages/env-citationbox-simple}
+\usepackage{packages/env-highlight-simpleround}
 
-\SetEnvCitationBoxSimpleThickness{1.5pt}
-\SetEnvCitationBoxSimpleFrameColor{colorCitationBox!50}
-\SetEnvCitationBoxSimpleBackColor{colorCitationBox}
-\SetEnvCitationBoxSimpleBoxArc{3mm}
-\SetEnvCitationBoxSimpleWidth{0.9\linewidth}
-\SetEnvCitationBoxSimpleBeforeSpace{3pt}
-\SetEnvCitationBoxSimpleAfterSpace{3pt}
+\NewEnvBoxSimpleRoundGlobal[
+BackColor=colorCitationBox,
+FrameColor=colorCitationBox!50,
+ThicknessLength=1.5pt,
+LeftSkipLength=0.1\linewidth,
+RightSkipLength=0cm,
+ArcLength=3mm,
+BeforeSpaceLength=3pt,
+AfterSpaceLength=3pt,
+QedSymbol={},
+ShadowColor=white,
+LeftPaddingLength=1ex,
+RightPaddingLength=1ex,
+TopPaddingLength=1.5ex,
+BottomPaddingLength=1.5ex,
+Breakable=true
+]{citationbox}
 
 \begin{comment}
 \newtcolorbox{citationbox}

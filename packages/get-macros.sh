@@ -7,12 +7,6 @@ curl https://sourceforge.net/p/latex-macros-packages/separator-rule/ci/main/tree
 
 curl https://sourceforge.net/p/latex-macros-packages/math-macros/ci/main/tree/math-macros.sty?format=raw -o math-macros.sty
 
-curl https://sourceforge.net/p/latex-macros-packages/env-theorem-insidetab/ci/master/tree/env-theorem-insidetab.sty?format=raw -o env-theorem-insidetab.sty
-
-curl https://sourceforge.net/p/latex-macros-packages/env-citationbox-simple/ci/main/tree/env-citationbox-simple.sty?format=raw -o env-citationbox-simple.sty
-
-curl https://sourceforge.net/p/latex-macros-packages/env-equationbox-simple/ci/main/tree/env-equationbox-simple.sty?format=raw -o env-equationbox-simple.sty
-
 curl https://sourceforge.net/p/latex-macros-packages/env-bulletjournalround/ci/main/tree/env-bulletjournalround.sty?format=raw -o env-bulletjournalround.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/env-bulletjournalarrow/ci/main/tree/env-bulletjournalarrow.sty?format=raw -o env-bulletjournalarrow.sty
@@ -21,23 +15,11 @@ curl https://sourceforge.net/p/latex-macros-packages/env-bulletjournalpicture/ci
 
 curl https://sourceforge.net/p/latex-macros-packages/env-bulletjournalitem/ci/main/tree/env-bulletjournalitem.sty?format=raw -o env-bulletjournalitem.sty
 
-curl https://sourceforge.net/p/latex-macros-packages/env-notebox-simple/ci/main/tree/env-notebox-simple.sty?format=raw -o env-notebox-simple.sty
-
-curl https://sourceforge.net/p/latex-macros-packages/env-informationbox-round/ci/main/tree/env-informationbox-round.sty?format=raw -o env-informationbox-round.sty
-
-curl https://sourceforge.net/p/latex-macros-packages/env-elaborationbox-ripple/ci/main/tree/env-elaborationbox-ripple.sty?format=raw -o env-elaborationbox-ripple.sty
-
-curl https://sourceforge.net/p/latex-macros-packages/env-elaborationbox-formal/ci/main/tree/env-elaborationbox-formal.sty?format=raw -o env-elaborationbox-formal.sty
-
-curl https://sourceforge.net/p/latex-macros-packages/env-elaborationbox-notehor/ci/main/tree/env-elaborationbox-notehor.sty?format=raw -o env-elaborationbox-notehor.sty
-
 curl https://sourceforge.net/p/latex-macros-packages/env-phrasebox-tab/ci/main/tree/env-phrasebox-tab.sty?format=raw -o env-phrasebox-tab.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/env-phrasebox-ripple/ci/master/tree/env-phrasebox-ripple.sty?format=raw -o env-phrasebox-ripple.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/env-phrasebox-simple/ci/master/tree/env-phrasebox-simple.sty?format=raw -o env-phrasebox-simple.sty
-
-curl https://sourceforge.net/p/latex-macros-packages/env-highlightbox-zigzag/ci/master/tree/env-highlightbox-zigzag.sty?format=raw -o env-highlightbox-zigzag.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/env-box-simple/ci/master/tree/env-box-simple.sty?format=raw -o env-box-simple.sty
 
@@ -50,3 +32,25 @@ curl https://sourceforge.net/p/latex-macros-packages/env-box-pictlin/ci/master/t
 curl https://sourceforge.net/p/latex-macros-packages/env-box-simpleimg/ci/master/tree/env-box-simpleimg.sty?format=raw -o env-box-simpleimg.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/env-box-simplebox/ci/master/tree/env-box-simplebox.sty?format=raw -o env-box-simplebox.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/env-box-insidetab/ci/master/tree/env-box-insidetab.sty?format=raw -o env-box-insidetab.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/env-box-ribontab/ci/master/tree/env-box-ribontab.sty?format=raw -o env-box-ribontab.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/env-box-formaltab/ci/master/tree/env-box-formaltab.sty?format=raw -o env-box-formaltab.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/env-box-simpleripple/ci/master/tree/env-box-simpleripple.sty?format=raw -o env-box-simpleripple.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/env-box-notehor/ci/master/tree/env-box-notehor.sty?format=raw -o env-box-notehor.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/env-highlight-simplezigzag/ci/master/tree/env-highlight-simplezigzag.sty?format=raw -o env-highlight-simplezigzag.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/env-highlight-simpleround/ci/master/tree/env-highlight-simpleround.sty?format=raw -o env-highlight-simpleround.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/env-highlight-foldedcorner/ci/master/tree/env-highlight-foldedcorner.sty?format=raw -o env-highlight-foldedcorner.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/env-highlight-simpleimg/ci/master/tree/env-highlight-simpleimg.sty?format=raw -o env-highlight-simpleimg.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/env-highlight-multipleimg/ci/master/tree/env-highlight-multipleimg.sty?format=raw -o env-highlight-multipleimg.sty
+
+

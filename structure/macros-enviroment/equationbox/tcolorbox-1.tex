@@ -5,15 +5,26 @@
 %   texto
 % \end{equationbox}
 
-\usepackage{packages/env-equationbox-simple}
+\usepackage{packages/env-highlight-simpleround}
 
-\SetEnvEquationBoxSimpleThickness{1.5pt}
-\SetEnvEquationBoxSimpleFrameColor{colorEquationBox!10}
-\SetEnvEquationBoxSimpleBackColor{colorEquationBox}
-\SetEnvEquationBoxSimpleBoxArc{3mm}
-\SetEnvEquationBoxSimpleWidth{\linewidth}
-\SetEnvEquationBoxSimpleBeforeSpace{2pt}
-\SetEnvEquationBoxSimpleAfterSpace{2pt}
+\NewEnvBoxSimpleRoundGlobal[
+BackColor=colorEquationBox,
+FrameColor=colorEquationBox!10,
+ThicknessLength=1.5pt,
+LeftSkipLength=0cm,
+RightSkipLength=0cm,
+ArcLength=3mm,
+BeforeSpaceLength=2pt,
+AfterSpaceLength=2pt,
+QedSymbol={},
+ShadowColor=white,
+LeftPaddingLength=0ex,
+RightPaddingLength=0ex,
+TopPaddingLength=0ex,
+BottomPaddingLength=0ex,
+Breakable=true
+]{equationbox}
+
 
 
 \begin{comment}

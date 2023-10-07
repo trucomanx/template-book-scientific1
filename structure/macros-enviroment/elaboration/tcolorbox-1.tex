@@ -1,0 +1,71 @@
+
+%----------------------------------------------------------------------------------------
+% ELABORACION MESSAGE BOX
+%----------------------------------------------------------------------------------------
+% \begin{elaboration}{título}
+%   texto
+% \end{elaboration}
+%\newcounter{countelab}%[chapter] ,use counter=countelab
+
+\usepackage{packages/env-box-simpleripple}
+
+\NewEnvBoxSimpleRippleGlobal[
+PreTitleName=Elaboração,
+PreTitleColor=white,
+PreTitleShow=false,
+CounterWith=section,
+BackColor=colorElaboration!3,
+FrameColor=colorElaboration,
+TitleColor=white,
+TitleBackColor=colorElaboration,
+TitleFont=\bfseries,
+ThicknessLength=1pt,
+BeforeSpaceLength=4pt,
+AfterSpaceLength=4pt,
+ImageObject={\color{white}\ding{112}},
+PostImageObject=\hspace{1ex},
+QedSymbol={\hfill\;QED},
+ShadowColor=gray,
+LeftPaddingLength=1ex,
+RightPaddingLength=1ex,
+TopPaddingLength=1.5ex,
+BottomPaddingLength=1.5ex,
+Breakable=true
+]{elaboration}{ElaborationSimpleRippleCounter}{ElaborationSimpleRippleListingExt}
+
+
+\newcommand{\EnvElaborationBoxListingExt}{ElaborationSimpleRippleListingExt}
+
+\begin{comment}
+\newtcolorbox[list inside=MisElaboraciones,list type=MisElaboraciones,auto counter,number within=chapter]{elaboration}[1]{
+    tile,
+    colback=colorElaboration!3,
+    coltitle=white,
+    colbacktitle=colorElaboration,
+    center title,
+    toprule=1.25mm,
+    bottomrule=1.25mm,
+    extras unbroken and first={borderline north={0.5mm}{0.5mm}{colorElaboration,decoration={zigzag,amplitude=0.5mm},decorate}},
+    extras unbroken and last={borderline south={0.5mm}{0.5mm}{colorElaboration,decoration={zigzag,amplitude=0.5mm},decorate}},
+    title={#1}, 
+    width=\linewidth
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \TocEntryEnvTextFormat está definido en generic-macros.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% List of type %% para:  \tcblistof[\section*]{MisXElaboraciones}{Lista de frases}
+\titlecontents{MisElaboraciones}[2.00cm] %% Indentation %% left
+{\TocEntryEnvTextFormat} %% Spacing and font options for sections %% above code
+{\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+{} %% numberless-entry-format
+{\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format {\hfill\color{black}\thecontentspage} 
+[] %% separator
+
+\makeatletter
+\newcommand{\ttll@MisElaboraciones}{-1000}
+\makeatother
+
+\end{comment}
+

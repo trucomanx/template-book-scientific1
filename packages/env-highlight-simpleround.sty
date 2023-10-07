@@ -1,0 +1,172 @@
+%% source:
+%% https://github.com/trucomanx/env-highlight-simpleround
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{env-highlight-simpleround}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+\RequirePackage[explicit]{titlesec} %% sections
+\RequirePackage{titletoc} %% TOC
+\RequirePackage{xparse} %%\ExplSyntaxOn
+\RequirePackage{xkeyval} %%\setkeys
+\RequirePackage{xifthen}
+\RequirePackage{xstring}
+\RequirePackage{varwidth}
+\RequirePackage{tikz} % Required for drawing custom shapes
+\usetikzlibrary{decorations.pathmorphing}
+
+\RequirePackage{pifont} %% \ding{111}
+
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{env-highlight-simpleround}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Function
+%% Establece un nuevo enviroment
+%% 
+%% \NewEnvBoxSimpleRoundGlobal[PreTitleName=BoxSimpleRoundPre]{BoxSimpleRound}
+%% 
+
+\makeatletter
+
+\ifdefined\DefCtxVar
+\else
+\newcommand{\DefCtxVar}[3]{%
+  \expandafter\def\csname #1@#2\endcsname{#3}
+}
+\fi
+
+\ifdefined\DefLenCtxVar
+\else
+\newcommand{\DefLenCtxVar}[2]{%
+  % Usar el parámetro como nombre de la variable local
+    \expandafter\newlength\csname #1@#2\endcsname  
+    %\@latex@warning{************** \csname #1@#2\endcsname **************}
+}
+\fi
+
+\ifdefined\SetLenCtxVar
+\else
+\newcommand{\SetLenCtxVar}[3]{%
+  % Usar el parámetro como nombre de la variable local
+    \csname #1@#2\endcsname=#3
+}
+\fi
+
+\ifdefined\DatCtxVar
+\else
+\newcommand{\DatCtxVar}[2]{%
+  \csname #1@#2\endcsname
+}
+\fi
+
+\newcommand{\NewEnvBoxSimpleRoundGlobal}[2][,]
+{
+\DefLenCtxVar{#2}{LeftSkipLength}
+\DefLenCtxVar{#2}{RightSkipLength}
+\DefLenCtxVar{#2}{ThicknessLength}
+\DefLenCtxVar{#2}{ArcLength}
+\DefLenCtxVar{#2}{BeforeSpaceLength}
+\DefLenCtxVar{#2}{AfterSpaceLength}
+
+\DefLenCtxVar{#2}{LeftPaddingLength}
+\DefLenCtxVar{#2}{RightPaddingLength}
+\DefLenCtxVar{#2}{TopPaddingLength}
+\DefLenCtxVar{#2}{BottomPaddingLength}
+
+
+\define@key{NewEnvBoxSimpleRoundGlobalKeys}{Breakable}{\DefCtxVar{#2}{Breakable}{##1}}
+\define@key{NewEnvBoxSimpleRoundGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColor}{##1}}
+\define@key{NewEnvBoxSimpleRoundGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColor}{##1}}
+\define@key{NewEnvBoxSimpleRoundGlobalKeys}{QedSymbol}{\DefCtxVar{#2}{QedSymbol}{##1}}
+\define@key{NewEnvBoxSimpleRoundGlobalKeys}{ShadowColor}{\DefCtxVar{#2}{ShadowColor}{##1}}
+%
+\define@key{NewEnvBoxSimpleRoundGlobalKeys}{LeftSkipLength}{\SetLenCtxVar{#2}{LeftSkipLength}{##1}}
+\define@key{NewEnvBoxSimpleRoundGlobalKeys}{RightSkipLength}{\SetLenCtxVar{#2}{RightSkipLength}{##1}}
+\define@key{NewEnvBoxSimpleRoundGlobalKeys}{ThicknessLength}{\SetLenCtxVar{#2}{ThicknessLength}{##1}}
+\define@key{NewEnvBoxSimpleRoundGlobalKeys}{ArcLength}{\SetLenCtxVar{#2}{ArcLength}{##1}}
+\define@key{NewEnvBoxSimpleRoundGlobalKeys}{BeforeSpaceLength}{\SetLenCtxVar{#2}{BeforeSpaceLength}{##1}}
+\define@key{NewEnvBoxSimpleRoundGlobalKeys}{AfterSpaceLength}{\SetLenCtxVar{#2}{AfterSpaceLength}{##1}}
+
+
+%
+\define@key{NewEnvBoxSimpleRoundGlobalKeys}{LeftPaddingLength}{\SetLenCtxVar{#2}{LeftPaddingLength}{##1}}
+\define@key{NewEnvBoxSimpleRoundGlobalKeys}{RightPaddingLength}{\SetLenCtxVar{#2}{RightPaddingLength}{##1}}
+\define@key{NewEnvBoxSimpleRoundGlobalKeys}{TopPaddingLength}{\SetLenCtxVar{#2}{TopPaddingLength}{##1}}
+\define@key{NewEnvBoxSimpleRoundGlobalKeys}{BottomPaddingLength}{\SetLenCtxVar{#2}{BottomPaddingLength}{##1}}
+
+
+\setkeys{NewEnvBoxSimpleRoundGlobalKeys}{
+BackColor=blue!5!white,
+FrameColor=blue!30!white,
+ThicknessLength=1pt,
+LeftSkipLength=0pt,
+RightSkipLength=0pt,
+ArcLength=4pt,
+BeforeSpaceLength=4pt,
+AfterSpaceLength=4pt,
+QedSymbol={},%% simbolo o objeto al final del enviroment {\hfill$\blacksquare$}
+ShadowColor=gray,
+LeftPaddingLength=1ex,
+RightPaddingLength=1ex,
+TopPaddingLength=1.5ex,
+BottomPaddingLength=1.5ex,
+Breakable=true
+}
+
+\setkeys{NewEnvBoxSimpleRoundGlobalKeys}{#1}%
+
+\newtcolorbox{#2}%
+[1][]%
+{
+  %
+  before={\vspace{\DatCtxVar{#2}{BeforeSpaceLength}}},
+  after={\vspace{\DatCtxVar{#2}{AfterSpaceLength}}},
+  %
+  colback=\DatCtxVar{#2}{BackColor},
+  colframe=\DatCtxVar{#2}{FrameColor},
+  breakable=\DatCtxVar{#2}{Breakable},
+  %enhanced standard,
+  %
+  %leftrule=\DatCtxVar{#2}{ThicknessLength}, 
+  %toprule=\DatCtxVar{#2}{ThicknessLength}, 
+  %rightrule=\DatCtxVar{#2}{ThicknessLength}, 
+  %bottomrule=\DatCtxVar{#2}{ThicknessLength},
+  boxrule = \DatCtxVar{#2}{ThicknessLength},
+  %
+  enhanced,
+  drop fuzzy shadow=\DatCtxVar{#2}{ShadowColor},
+  %
+  %
+  left=\DatCtxVar{#2}{LeftPaddingLength},
+  right=\DatCtxVar{#2}{RightPaddingLength},
+  top=\DatCtxVar{#2}{TopPaddingLength},
+  bottom=\DatCtxVar{#2}{BottomPaddingLength},
+  %
+  width    = \linewidth,
+  left skip= \DatCtxVar{#2}{LeftSkipLength},
+  right skip= \DatCtxVar{#2}{RightSkipLength},
+  %
+  arc=\DatCtxVar{#2}{ArcLength},
+  %
+  after upper={\DatCtxVar{#2}{QedSymbol}},
+  ##1,
+}
+}
+
+
+\makeatother
+
+
+

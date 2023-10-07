@@ -1,0 +1,84 @@
+
+%----------------------------------------------------------------------------------------
+% ELABORACION MESSAGE BOX
+%----------------------------------------------------------------------------------------
+% \begin{elaboration}{título}
+%   texto
+% \end{elaboration}
+%\newcounter{countelab}%[chapter] ,use counter=countelab
+
+\usepackage{packages/env-box-formaltab}
+
+\NewEnvBoxFormalTabGlobal[
+PreTitleName=Elaboração,
+PreTitleColor=white,
+PreTitleShow=true,
+CounterWith=section,
+BackColor=gray!5,
+FrameColor=colorElaborationFrame,
+TitleColor=white,
+TitleFont=\bfseries,
+ThicknessLength=1pt,
+BeforeSpaceLength=4pt,
+AfterSpaceLength=4pt,
+ImageObject={\color{white}\ding{112}},
+PostImageObject=\hspace{1ex},
+QedSymbol={\hfill\;QED},
+ArcLength=0pt,
+ShadowColor=gray,
+SolidShadow=true,
+LeftPaddingLength=1ex,
+RightPaddingLength=1ex,
+TopPaddingLength=2ex,
+BottomPaddingLength=1ex,
+Breakable=true
+]{elaboration}{ElaborationFormalTabCounter}{ElaborationFormalTabListingExt}
+
+
+
+\newcommand{\EnvElaborationBoxListingExt}{ElaborationFormalTabListingExt}
+
+
+\begin{comment}
+\newtcolorbox[list inside=MisElaboraciones,list type=MisElaboraciones,auto counter,number within=chapter]%
+{elaboration}[1]%
+{
+  title=#1,
+  breakable,
+  enhanced standard,
+  boxrule=0.4pt,titlerule=-0.2pt,drop fuzzy shadow,
+  width=\linewidth,
+  title style={top color=colorElaborationFrame!30,bottom color=colorElaborationFrame!0.5},
+  overlay unbroken and first={
+    \path[fill=colorElaborationFrame]
+    ([xshift=5pt,yshift=-\pgflinewidth]frame.north west) to[out=0,in=180] ([xshift=20pt,yshift=-5pt]title.south west) -- ([xshift=-20pt,yshift=-5pt]title.south east) to[out=0,in=180] ([xshift=-5pt,yshift=-\pgflinewidth]frame.north east) -- cycle;
+  },
+  fonttitle=\large\bfseries,
+  %fontupper=\sffamily,
+  %fontlower=\sffamily,
+  before=\par\medskip\noindent,
+  after=\par\medskip,
+  center title,
+  toptitle=3pt,
+  top=11pt,topsep at break=-5pt,
+  colback=white
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \TocEntryEnvTextFormat está definido en generic-macros.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% List of type %% para:  \tcblistof[\section*]{MisXElaboraciones}{Lista de frases}
+\titlecontents{MisElaboraciones}[2.00cm] %% Indentation %% left
+{\TocEntryEnvTextFormat} %% Spacing and font options for sections %% above code
+{\contentslabel[{\thecontentslabel}]{1.45cm}} %% Section number %% numbered-entry-format % {\thetcbcounter}%
+{} %% numberless-entry-format
+{\ \titlerule*[.5pc]{.}\;\color{black}\thecontentspage} %% filler-page-format {\hfill\color{black}\thecontentspage} 
+[] %% separator
+
+\makeatletter
+\newcommand{\ttll@MisElaboraciones}{-1000}
+\makeatother
+
+\end{comment}
+

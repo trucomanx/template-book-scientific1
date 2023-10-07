@@ -1,0 +1,33 @@
+%----------------------------------------------------------------------------------------
+% NOTACAO THEOREMS
+%----------------------------------------------------------------------------------------
+% \begin{theorem}[Título]
+%   text
+% \end{theorem}
+%----------------------------------------------------------------------------------------
+%% Create a new counter that will follow tcolorbox's numbering
+
+\usepackage{packages/env-box-ribontab}
+
+\NewEnvBoxRibonTabGlobal[
+PreTitleName=Theorem,
+PreTitleColor=colorTheorem,
+CounterWith=section,
+BackColor=gray!5,
+FrameColor=colorTheorem,
+TitleColor=white,
+TitleFont=\bfseries,
+LeftRuleLength=2pt,
+BeforeSpaceLength=4pt,
+AfterSpaceLength=0pt,
+ImageObject={\color{colorTheorem}\ding{112}},
+ImageWidthLength=2ex,
+PostImageObject=\hspace{1ex},
+QedSymbol={},
+LeftPaddingLength=1ex,
+RightPaddingLength=1ex,
+TopPaddingLength=1ex,
+BottomPaddingLength=1ex
+]{theorem}{TheoremRibonTabCounter}{TheoremRibonTabListingExt}
+
+\newcommand{\EnvTheoremListingExt}{TheoremRibonTabListingExt}

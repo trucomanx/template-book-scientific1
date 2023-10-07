@@ -5,17 +5,32 @@
 %   text
 % \end{notebox}
 
-\usepackage{packages/env-notebox-simple}
+\usepackage{packages/env-box-pictbox}
+\NewEnvBoxPictBoxGlobal[
+PreTitleName=PICTBOX,
+CounterWith=section,
+BackColor=colorNote,
+FrameColor=colorNote,
+TitleColor=green!30!black,
+PreTitleColor=gray!10,
+PreTitleShow=false,
+TitleFont=\bfseries,
+LeftRuleLength=14mm,
+ArcLength=10pt,
+ShadowColor=gray,
+ThicknessLength=0pt,
+BeforeSpaceLength=1ex,
+AfterSpaceLength=1ex,
+ImageObject={\hspace{3mm}\includegraphics[width=8mm]{icons/note1.png}},
+LeftPaddingLength=0ex,
+RightPaddingLength=1ex,
+TopPaddingLength=1ex,
+BottomPaddingLength=1ex,
+Breakable=true
+]{notebox}{NotePictBoxCounter}{NotePictBoxListingExt}
 
-\SetEnvNoteBoxSimpleThickness{0pt}
-\SetEnvNoteBoxSimpleFrameColor{colorNote}
-\SetEnvNoteBoxSimpleBackColor{colorNote}
-\SetEnvNoteBoxSimpleBoxArc{10pt}
-\SetEnvNoteBoxSimpleLeftWidth{14mm}
-\SetEnvNoteBoxSimpleBeforeSpace{1ex}
-\SetEnvNoteBoxSimpleAfterSpace{2ex}
-\SetEnvNoteBoxSimplePadding{10pt}
-\SetEnvNoteBoxSimpleImage{\includegraphics[width=9mm]{icons/note1.png}}
+
+
 
 \begin{comment}
 \newtcolorbox{notebox}[1][]{%

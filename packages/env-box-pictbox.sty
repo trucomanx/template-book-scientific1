@@ -105,38 +105,46 @@
 
 \newcommand{\NewEnvBoxPictBoxGlobal}[4][,]
 {
-\DefLenCtxVar{#2}{LeftRuleLengthDat}
-\DefLenCtxVar{#2}{ThicknessLengthDat}
+\DefLenCtxVar{#2}{LeftRuleLength}
+\DefLenCtxVar{#2}{ThicknessLength}
+\DefLenCtxVar{#2}{ArcLength}
+\DefLenCtxVar{#2}{BeforeSpaceLength}
+\DefLenCtxVar{#2}{AfterSpaceLength}
 
-\DefLenCtxVar{#2}{LeftPaddingLengthDat}
-\DefLenCtxVar{#2}{RightPaddingLengthDat}
-\DefLenCtxVar{#2}{TopPaddingLengthDat}
-\DefLenCtxVar{#2}{BottomPaddingLengthDat}
+\DefLenCtxVar{#2}{LeftPaddingLength}
+\DefLenCtxVar{#2}{RightPaddingLength}
+\DefLenCtxVar{#2}{TopPaddingLength}
+\DefLenCtxVar{#2}{BottomPaddingLength}
 
-\define@key{NewEnvBoxPictBoxGlobalKeys}{CounterWith}{\DefCtxVar{#2}{CounterWithDat}{##1}}
-\define@key{NewEnvBoxPictBoxGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColorDat}{##1}}
-\define@key{NewEnvBoxPictBoxGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColorDat}{##1}}
-\define@key{NewEnvBoxPictBoxGlobalKeys}{TitleColor}{\DefCtxVar{#2}{TitleColorDat}{##1}}
-\define@key{NewEnvBoxPictBoxGlobalKeys}{PreTitleColor}{\DefCtxVar{#2}{PreTitleColorDat}{##1}}
-\define@key{NewEnvBoxPictBoxGlobalKeys}{TitleFont}{\DefCtxVar{#2}{TitleFontDat}{##1}}
-\define@key{NewEnvBoxPictBoxGlobalKeys}{PreTitleName}{\DefCtxVar{#2}{PreTitleNameDat}{##1}}
-\define@key{NewEnvBoxPictBoxGlobalKeys}{LeftRuleLength}{\SetLenCtxVar{#2}{LeftRuleLengthDat}{##1}}
-\define@key{NewEnvBoxPictBoxGlobalKeys}{ThicknessLength}{\SetLenCtxVar{#2}{ThicknessLengthDat}{##1}}
-\define@key{NewEnvBoxPictBoxGlobalKeys}{ArcLength}{\DefCtxVar{#2}{ArcLengthDat}{##1}}
-\define@key{NewEnvBoxPictBoxGlobalKeys}{BeforeSpaceLength}{\DefCtxVar{#2}{BeforeSpaceLengthDat}{##1}}
-\define@key{NewEnvBoxPictBoxGlobalKeys}{AfterSpaceLength}{\DefCtxVar{#2}{AfterSpaceLengthDat}{##1}}
-\define@key{NewEnvBoxPictBoxGlobalKeys}{ImageObject}{\DefCtxVar{#2}{ImageObjectDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{ShadowColor}{\DefCtxVar{#2}{ShadowColor}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{Breakable}{\DefCtxVar{#2}{Breakable}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{CounterWith}{\DefCtxVar{#2}{CounterWith}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColor}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColor}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{TitleColor}{\DefCtxVar{#2}{TitleColor}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{TitleFont}{\DefCtxVar{#2}{TitleFont}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{PreTitleColor}{\DefCtxVar{#2}{PreTitleColor}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{PreTitleShow}{\DefCtxVar{#2}{PreTitleShow}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{PreTitleName}{\DefCtxVar{#2}{PreTitleName}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{ImageObject}{\DefCtxVar{#2}{ImageObject}{##1}}
 %
-\define@key{NewEnvBoxPictBoxGlobalKeys}{LeftPaddingLength}{\SetLenCtxVar{#2}{LeftPaddingLengthDat}{##1}}
-\define@key{NewEnvBoxPictBoxGlobalKeys}{RightPaddingLength}{\SetLenCtxVar{#2}{RightPaddingLengthDat}{##1}}
-\define@key{NewEnvBoxPictBoxGlobalKeys}{TopPaddingLength}{\SetLenCtxVar{#2}{TopPaddingLengthDat}{##1}}
-\define@key{NewEnvBoxPictBoxGlobalKeys}{BottomPaddingLength}{\SetLenCtxVar{#2}{BottomPaddingLengthDat}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{LeftRuleLength}{\SetLenCtxVar{#2}{LeftRuleLength}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{ThicknessLength}{\SetLenCtxVar{#2}{ThicknessLength}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{ArcLength}{\SetLenCtxVar{#2}{ArcLength}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{BeforeSpaceLength}{\SetLenCtxVar{#2}{BeforeSpaceLength}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{AfterSpaceLength}{\SetLenCtxVar{#2}{AfterSpaceLength}{##1}}
+%
+\define@key{NewEnvBoxPictBoxGlobalKeys}{LeftPaddingLength}{\SetLenCtxVar{#2}{LeftPaddingLength}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{RightPaddingLength}{\SetLenCtxVar{#2}{RightPaddingLength}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{TopPaddingLength}{\SetLenCtxVar{#2}{TopPaddingLength}{##1}}
+\define@key{NewEnvBoxPictBoxGlobalKeys}{BottomPaddingLength}{\SetLenCtxVar{#2}{BottomPaddingLength}{##1}}
 
 
 
 \setkeys{NewEnvBoxPictBoxGlobalKeys}{
 PreTitleName=BoxPictBox,
 PreTitleColor=white,
+PreTitleShow=true,
 CounterWith=section,
 BackColor=gray!5,
 FrameColor=red!30!black,
@@ -144,6 +152,7 @@ TitleColor=red!30!black,
 TitleFont=\bfseries,
 LeftRuleLength=24mm,
 ArcLength=0pt,
+ShadowColor=white,
 ThicknessLength=1.5pt,
 BeforeSpaceLength=0pt,
 AfterSpaceLength=0pt,
@@ -151,7 +160,8 @@ ImageObject={},
 LeftPaddingLength=1ex,
 RightPaddingLength=1ex,
 TopPaddingLength=1ex,
-BottomPaddingLength=1ex
+BottomPaddingLength=1ex,
+Breakable=true
 }
 
 \setkeys{NewEnvBoxPictBoxGlobalKeys}{#1}%
@@ -160,7 +170,7 @@ BottomPaddingLength=1ex
 \NewListEnvBoxPictBox{#4}{}
 
 %% Create a new counter that will follow tcolorbox's numbering
-\newcounter{#3}[\DatCtxVar{#2}{CounterWithDat}]
+\newcounter{#3}[\DatCtxVar{#2}{CounterWith}]
 
 % \SetCounterReferenceFormat Set format in label reference
 \SetCounterReferenceFormat{#3} 
@@ -172,49 +182,56 @@ BottomPaddingLength=1ex
 list inside=#4,
 list type=#4,
 auto counter,
-number within=\DatCtxVar{#2}{CounterWithDat}
+number within=\DatCtxVar{#2}{CounterWith}
 ]%
 {#2}%
 [1][]%
 {
   title={##1},
-  breakable,pad at break=1mm,
+  breakable=\DatCtxVar{#2}{Breakable},
+  pad at break=1mm,
   enhanced jigsaw,
-  colback=\DatCtxVar{#2}{BackColorDat},
-  colframe=\DatCtxVar{#2}{FrameColorDat},
-  coltitle=\DatCtxVar{#2}{TitleColorDat},
-  fonttitle=\DatCtxVar{#2}{TitleFontDat},
+  colback=\DatCtxVar{#2}{BackColor},
+  colframe=\DatCtxVar{#2}{FrameColor},
+  coltitle=\DatCtxVar{#2}{TitleColor},
+  fonttitle=\DatCtxVar{#2}{TitleFont},
   detach title,
-  leftrule=\DatCtxVar{#2}{LeftRuleLengthDat},
-  toprule=\DatCtxVar{#2}{ThicknessLengthDat}, 
-  rightrule=\DatCtxVar{#2}{ThicknessLengthDat}, 
-  bottomrule=\DatCtxVar{#2}{ThicknessLengthDat},
+  leftrule=\DatCtxVar{#2}{LeftRuleLength},
+  toprule=\DatCtxVar{#2}{ThicknessLength}, 
+  rightrule=\DatCtxVar{#2}{ThicknessLength}, 
+  bottomrule=\DatCtxVar{#2}{ThicknessLength},
   %
-  left=\DatCtxVar{#2}{LeftPaddingLengthDat},
-  right=\DatCtxVar{#2}{RightPaddingLengthDat},
-  top=\DatCtxVar{#2}{TopPaddingLengthDat},
-  bottom=\DatCtxVar{#2}{BottomPaddingLengthDat},
+  drop fuzzy shadow=\DatCtxVar{#2}{ShadowColor},
   %
-  before={\vspace{\DatCtxVar{#2}{BeforeSpaceLengthDat}}},
-  after={\vspace{\DatCtxVar{#2}{AfterSpaceLengthDat}}},
+  left=\DatCtxVar{#2}{LeftPaddingLength},
+  right=\DatCtxVar{#2}{RightPaddingLength},
+  top=\DatCtxVar{#2}{TopPaddingLength},
+  bottom=\DatCtxVar{#2}{BottomPaddingLength},
   %
-  underlay unbroken and first={\node[below,text=\DatCtxVar{#2}{PreTitleColorDat},font=\DatCtxVar{#2}{TitleFontDat},align=center]
-    at ([xshift=-0.5\DatCtxVar{#2}{LeftRuleLengthDat}+1.5\DatCtxVar{#2}{ThicknessLengthDat},yshift=-1mm]interior.north west) {%
-    \begin{minipage}{0.98\DatCtxVar{#2}{LeftRuleLengthDat}}
-    \centering
-    \DatCtxVar{#2}{PreTitleNameDat}\\
-    \thetcbcounter\\
-    \DatCtxVar{#2}{ImageObjectDat}
-    \end{minipage}
+  before={\vspace{\DatCtxVar{#2}{BeforeSpaceLength}}},
+  after={\vspace{\DatCtxVar{#2}{AfterSpaceLength}}},
+  %
+  underlay unbroken and first={\node[below,text=\DatCtxVar{#2}{PreTitleColor},font=\DatCtxVar{#2}{TitleFont},align=center]
+    at ([xshift=-0.5\DatCtxVar{#2}{LeftRuleLength}+1.5\DatCtxVar{#2}{ThicknessLength},yshift=-1mm]interior.north west) {%
+    \begin{minipage}{0.98\DatCtxVar{#2}{LeftRuleLength}}
+\centering
+\ifthenelse{\equal{\DatCtxVar{#2}{PreTitleShow}}{true}}
+{
+\DatCtxVar{#2}{PreTitleName}\\
+\thetcbcounter\\
+}{}
+\centering
+\DatCtxVar{#2}{ImageObject}
+\end{minipage}
     };},
   code={
-  \ifthenelse{\equal{\DatCtxVar{#2}{ArcLengthDat}}{0pt}}
+  \ifthenelse{\equal{\DatCtxVar{#2}{ArcLength}}{0pt}}
     { \tcbset{sharp corners} }
-    { \tcbset{arc=\DatCtxVar{#2}{ArcLengthDat}} }
+    { \tcbset{arc=\DatCtxVar{#2}{ArcLength}} }
   %
   \ifdefempty{\tcbtitletext}
     {
-    \tcbset{list text={ \EnvBoxPictBoxFirstLetterUppercase{\DatCtxVar{#2}{PreTitleNameDat}}  }}
+    \tcbset{list text={ \EnvBoxPictBoxFirstLetterUppercase{\DatCtxVar{#2}{PreTitleName}}  }}
     }
     {%% \tcbtitle is the title write by the user
     \tcbset{list text={##1}}

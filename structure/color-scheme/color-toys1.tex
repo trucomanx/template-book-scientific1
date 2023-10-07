@@ -1,0 +1,85 @@
+%----------------------------------------------------------------------------------------
+%   XCOLOR
+%----------------------------------------------------------------------------------------
+\RequirePackage{xcolor}
+
+%----------------------------------------------------------------------------------------
+%   Ways of define colors
+%----------------------------------------------------------------------------------------
+
+%% \colorlet{LightRubineRed}{RubineRed!70}
+%% \colorlet{Mycolor1}{green!10!orange}
+%% \definecolor{light-gray}{gray}{0.95}
+%% \definecolor{Mycolor2}{HTML}{00F9DE}
+%% \definecolor{orange}{rgb}{1,0.5,0}
+%% \definecolor{DarkRed}{RGB}{98,32,6}
+%% \definecolor{orange}{cmyk}{0,0.5,1,0}
+
+%----------------------------------------------------------------------------------------
+%   INTERNAL, OF THIS FILE, COLOR NAMES -- PALETE OF COLORS 
+%
+%   Not use this variables in book content
+%----------------------------------------------------------------------------------------
+
+% Color theme
+\definecolor{ColorSchemeBlue}{RGB}{74,84,174}%azul
+\definecolor{ColorSchemeGreen}{RGB}{21,146,129}%verde
+\definecolor{ColorSchemeYellow}{RGB}{249,247,211}%amarelo
+\definecolor{ColorSchemeRed}{RGB}{190,59,47}%rojo
+\definecolor{ColorSchemeGreenLow}{RGB}{186,213,133}%verde low
+\definecolor{ColorSchemeBlueLow}{RGB}{95,125,182}%azul low
+
+\DefineBookColorScheme
+{ColorSchemeBlue}
+{ColorSchemeGreen}
+{ColorSchemeYellow}
+{ColorSchemeRed}
+{ColorSchemeGreenLow}
+{ColorSchemeBlueLow}
+%----------------------------------------------------------------------------------------
+%   All the next color names are OBLIGATORY.
+%----------------------------------------------------------------------------------------
+
+% Default
+\colorlet{colorDefault}{ColorSchemeBlueLow} % Define the color used for highlighting throughout the book
+
+% Part-chapter-title
+\colorlet{colorTitlePage}{ColorSchemeRed}
+\colorlet{colorPartPageBackground}{ColorSchemeGreenLow!50!black}
+\colorlet{colorPartText}{colorDefault}
+\colorlet{colorChapter}{colorDefault}
+\colorlet{colorSection}{colorDefault}
+\colorlet{colorSectionFont}{colorDefault}
+\colorlet{colorSubsection}{ColorSchemeRed}
+\colorlet{colorSubsectionFont}{ColorSchemeRed}
+
+% Boxs
+\colorlet{colorAttention}{ColorSchemeYellow}
+\colorlet{colorAttentionFrame}{colorDefault}
+\colorlet{colorEquationBox}{ColorSchemeBlueLow!20}
+\colorlet{colorCitationBox}{ColorSchemeBlueLow!20}
+\colorlet{colorDefinition}{ColorSchemeRed}
+\colorlet{colorElaboration}{ColorSchemeRed}
+\colorlet{colorElaborationFrame}{colorDefault}
+\colorlet{colorExample}{ColorSchemeGreen}
+\colorlet{colorExercise}{ColorSchemeBlueLow}
+\colorlet{colorPhraseBox}{ColorSchemeBlueLow}
+\colorlet{colorInformationBox}{ColorSchemeRed}
+\colorlet{colorLemma}{ColorSchemeRed}
+\colorlet{colorNotation}{ColorSchemeBlueLow}
+\colorlet{colorTheorem}{colorDefault}
+\colorlet{colorNote}{ColorSchemeRed!10}
+
+% Otros
+\colorlet{colorLink}{ColorSchemeRed}
+\colorlet{colorIndex}{colorDefault}
+
+% Init pages
+\colorlet{colorPatrocinio}{ColorSchemeYellow}
+
+
+%----------------------------------------------------------------------------------------
+%   COLOR
+%----------------------------------------------------------------------------------------
+\RequirePackage{color}
+

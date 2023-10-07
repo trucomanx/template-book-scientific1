@@ -9,6 +9,7 @@
 
 \RequirePackage{graphicx} %% needed for \resizebox
 
+
 % Options
 %\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
 \DeclareOption*{\PackageWarning{separator-rule}{The option ‘\CurrentOption’ is current unknown}}
@@ -34,13 +35,27 @@
 %   \HTextRule{Text}
 %-------------------------------------------------------------------------------
 \newlength{\HTRLength}
-\newcommand*\HTextRule[1]{%
-\settowidth{\HTRLength}{#1}\advance\HTRLength by -\textwidth\divide\HTRLength by -2%
-\noindent\makebox[\the\HTRLength]{\resizebox{\the\HTRLength}{1pt}{$\blacktriangleleft$}}%
-\raisebox{-.5ex}{\textbf{#1}}%
-\makebox[\the\HTRLength]{\resizebox{\the\HTRLength}{1pt}{$\blacktriangleright$}}%
+\newcommand*\HTextRule[2][3pt]{%
+\settowidth{\HTRLength}{#2}\advance\HTRLength by -\textwidth\divide\HTRLength by -2%
+\noindent\makebox[\the\HTRLength]{\resizebox{\the\HTRLength}{#1}{$\blacktriangleleft$}}%
+\raisebox{-.5ex}{\textbf{#2}}%
+\makebox[\the\HTRLength]{\resizebox{\the\HTRLength}{#1}{$\blacktriangleright$}}%
 \smallskip
 }
 
+%-------------------------------------------------------------------------------
+%	Horizontal separator line with text
+%-------------------------------------------------------------------------------
+%   \HObjectTextRule[4pt]{$\blacktriangleleft$}{Text}{$\blacktriangleright$}
+%   \HObjectTextRule[4pt]{\pgfornament[width=1cm]{88}}{Text}{\pgfornament[width=1cm]{88}}
+%-------------------------------------------------------------------------------
+\newcommand{\HObjectTextRule}[4][3pt]%
+{%
+\makebox[\linewidth][c]{
+{#2}%
+\hspace{#1}\raisebox{-.5ex}{\textbf{#3}}\hspace{#1}%
+{#4}%
+}
+}
 
 

@@ -16,6 +16,7 @@
 \RequirePackage{xparse} %%\ExplSyntaxOn
 \RequirePackage{xkeyval} %%\setkeys
 \RequirePackage{ifthen}%%\ifthenelse
+\RequirePackage{varwidth}
 
 \RequirePackage{pifont} %% \ding{111}
 
@@ -108,33 +109,40 @@
 
 \newcommand{\NewEnvBoxOddTabGlobal}[4][,]
 {
-\DefLenCtxVar{#2}{LeftRuleLengthDat}
-\DefLenCtxVar{#2}{ThicknessLengthDat}
-\DefLenCtxVar{#2}{LeftPaddingLengthDat}
-\DefLenCtxVar{#2}{RightPaddingLengthDat}
-\DefLenCtxVar{#2}{TopPaddingLengthDat}
-\DefLenCtxVar{#2}{BottomPaddingLengthDat}
+\DefLenCtxVar{#2}{ThicknessLength}
+\DefLenCtxVar{#2}{ArcLength}
+\DefLenCtxVar{#2}{BeforeSpaceLength}
+\DefLenCtxVar{#2}{AfterSpaceLength}
+\DefLenCtxVar{#2}{ImageWidthLength}
 
-\define@key{NewEnvBoxOddTabGlobalKeys}{CounterWith}{\DefCtxVar{#2}{CounterWithDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColorDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColorDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{TitleColor}{\DefCtxVar{#2}{TitleColorDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{PreTitleColor}{\DefCtxVar{#2}{PreTitleColorDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{BackTitleColor}{\DefCtxVar{#2}{BackTitleColorDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{TitleFont}{\DefCtxVar{#2}{TitleFontDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{PreTitleName}{\DefCtxVar{#2}{PreTitleNameDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{ThicknessLength}{\SetLenCtxVar{#2}{ThicknessLengthDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{ArcLength}{\DefCtxVar{#2}{ArcLengthDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{BeforeSpaceLength}{\DefCtxVar{#2}{BeforeSpaceLengthDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{AfterSpaceLength}{\DefCtxVar{#2}{AfterSpaceLengthDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{ImageObject}{\DefCtxVar{#2}{ImageObjectDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{ImageWidthLength}{\DefCtxVar{#2}{ImageWidthLengthDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{PostImageObject}{\DefCtxVar{#2}{PostImageObjectDat}{##1}}
+\DefLenCtxVar{#2}{LeftPaddingLength}
+\DefLenCtxVar{#2}{RightPaddingLength}
+\DefLenCtxVar{#2}{TopPaddingLength}
+\DefLenCtxVar{#2}{BottomPaddingLength}
+
+\define@key{NewEnvBoxOddTabGlobalKeys}{Breakable}{\DefCtxVar{#2}{Breakable}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{CounterWith}{\DefCtxVar{#2}{CounterWith}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColor}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColor}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{TitleColor}{\DefCtxVar{#2}{TitleColor}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{PreTitleColor}{\DefCtxVar{#2}{PreTitleColor}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{BackTitleColor}{\DefCtxVar{#2}{BackTitleColor}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{TitleFont}{\DefCtxVar{#2}{TitleFont}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{PreTitleName}{\DefCtxVar{#2}{PreTitleName}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{PostImageObject}{\DefCtxVar{#2}{PostImageObject}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{ImageObject}{\DefCtxVar{#2}{ImageObject}{##1}}
 %
-\define@key{NewEnvBoxOddTabGlobalKeys}{LeftPaddingLength}{\SetLenCtxVar{#2}{LeftPaddingLengthDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{RightPaddingLength}{\SetLenCtxVar{#2}{RightPaddingLengthDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{TopPaddingLength}{\SetLenCtxVar{#2}{TopPaddingLengthDat}{##1}}
-\define@key{NewEnvBoxOddTabGlobalKeys}{BottomPaddingLength}{\SetLenCtxVar{#2}{BottomPaddingLengthDat}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{ThicknessLength}{\SetLenCtxVar{#2}{ThicknessLength}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{ArcLength}{\SetLenCtxVar{#2}{ArcLength}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{BeforeSpaceLength}{\SetLenCtxVar{#2}{BeforeSpaceLength}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{AfterSpaceLength}{\SetLenCtxVar{#2}{AfterSpaceLength}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{ImageWidthLength}{\SetLenCtxVar{#2}{ImageWidthLength}{##1}}
+
+%
+\define@key{NewEnvBoxOddTabGlobalKeys}{LeftPaddingLength}{\SetLenCtxVar{#2}{LeftPaddingLength}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{RightPaddingLength}{\SetLenCtxVar{#2}{RightPaddingLength}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{TopPaddingLength}{\SetLenCtxVar{#2}{TopPaddingLength}{##1}}
+\define@key{NewEnvBoxOddTabGlobalKeys}{BottomPaddingLength}{\SetLenCtxVar{#2}{BottomPaddingLength}{##1}}
 
 
 \setkeys{NewEnvBoxOddTabGlobalKeys}{
@@ -144,19 +152,20 @@ BackColor=gray!5,
 FrameColor=red!30!black,
 TitleColor=white,
 PreTitleColor=red!30!black,
-BackTitleColor=red!30!black,
+BackTitleColor=green!30!black,
 TitleFont=\bfseries,
-ArcLength=4pt,
-ThicknessLength=1.5pt,
+ArcLength=8pt,
+ThicknessLength=3pt,
 BeforeSpaceLength=0pt,
 AfterSpaceLength=0pt,
 ImageObject={\color{red!30!black}\ding{113}},
-ImageWidthLength=4ex,
-PostImageObject=\hspace{1pt},
+ImageWidthLength=2ex,
+PostImageObject=\hspace{1ex},
 LeftPaddingLength=1ex,
 RightPaddingLength=1ex,
 TopPaddingLength=1ex,
-BottomPaddingLength=1ex
+BottomPaddingLength=1ex,
+Breakable=true
 }
 
 \setkeys{NewEnvBoxOddTabGlobalKeys}{#1}%
@@ -165,7 +174,7 @@ BottomPaddingLength=1ex
 \NewListEnvBoxOddTab{#4}{}
 
 %% Create a new counter that will follow tcolorbox's numbering
-\newcounter{#3}[\DatCtxVar{#2}{CounterWithDat}]
+\newcounter{#3}[\DatCtxVar{#2}{CounterWith}]
 
 % \SetCounterReferenceFormat Set format in label reference
 \SetCounterReferenceFormat{#3} 
@@ -176,18 +185,16 @@ BottomPaddingLength=1ex
 
 \DefCtxVar{#2}{TitlePath}{
 {
-  \fill[\DatCtxVar{#2}{BackTitleColorDat}]
+  \fill[\DatCtxVar{#2}{BackTitleColor},line width=\DatCtxVar{#2}{ThicknessLength}]
   (title.south east)
-  --(title.east)coordinate(A)
-  to[curve to,out=90,in=0]($(A)+(-5mm,5mm)$)
-      --($(title.north west)+(5mm,0mm)$)coordinate(B)
-to[curve to,out=180,in=90]($(B)+(-5mm,-5mm)$)coordinate(C)
-      --($(C)+(0mm,-5mm)$)
-      to[curve to,out=90,in=180]($(title.south west)+(+5mm,0mm)$)coordinate(F)
+      --($(title.north east)+(0mm,-1.75ex)$)coordinate(A) to[curve to,out=90,in=0]($(A)+(-5mm,5mm)$)
+      --($(title.north west)+(5mm, 0mm)$)coordinate(B) to[curve to,out=180,in=90]($(B)+(-5mm,-5mm)$)coordinate(C)
+      --($(title.south west)+(0mm,-\DatCtxVar{#2}{ArcLength}-\DatCtxVar{#2}{ThicknessLength})$) 
+      to[curve to,out=90,in=180]($(title.south west)-(-\DatCtxVar{#2}{ArcLength}-\DatCtxVar{#2}{ThicknessLength},0mm)$)coordinate(F)
       --cycle;
-      \draw[\DatCtxVar{#2}{BackTitleColorDat},ultra thick]
-      ([yshift=.5\pgflinewidth]title.south east)--
-      ([yshift=.5\pgflinewidth]title.south-|interior.east);
+      %\draw[\DatCtxVar{#2}{BackTitleColor},ultra thick]
+      %([yshift=.5\pgflinewidth]title.south east)--
+      %([yshift=.5\pgflinewidth,xshift=-\DatCtxVar{#2}{ArcLength}]title.south-|interior.east);
 }
 }
     
@@ -198,7 +205,7 @@ to[curve to,out=180,in=90]($(B)+(-5mm,-5mm)$)coordinate(C)
 list inside=#4,
 list type=#4,
 auto counter,
-number within=\DatCtxVar{#2}{CounterWithDat}
+number within=\DatCtxVar{#2}{CounterWith}
 ]%
 {#2}%
 [1][]%
@@ -206,36 +213,37 @@ number within=\DatCtxVar{#2}{CounterWithDat}
   title={##1},
   enhanced,
   detach title,
-  fonttitle=\DatCtxVar{#2}{TitleFontDat},
-  breakable, %pad at break=1mm,
-  colback=\DatCtxVar{#2}{BackColorDat},
-  coltitle=\DatCtxVar{#2}{TitleColorDat},
-  colframe=\DatCtxVar{#2}{FrameColorDat},
+  fonttitle=\DatCtxVar{#2}{TitleFont},
+  breakable=\DatCtxVar{#2}{Breakable}, %pad at break=1mm,
+  colback=\DatCtxVar{#2}{BackColor},
+  coltitle=\DatCtxVar{#2}{TitleColor},
+  colframe=\DatCtxVar{#2}{FrameColor},
   attach boxed title to top left={xshift=-0mm},
+  varwidth boxed title=\linewidth-30pt,
   boxed title style={empty},
   underlay boxed title=\DatCtxVar{#2}{TitlePath},
   %
-  before={\vspace{\DatCtxVar{#2}{BeforeSpaceLengthDat}}},
-  after={\vspace{\DatCtxVar{#2}{AfterSpaceLengthDat}}},
+  before={\vspace{\DatCtxVar{#2}{BeforeSpaceLength}}},
+  after={\vspace{\DatCtxVar{#2}{AfterSpaceLength}}},
   %
-  leftrule=\DatCtxVar{#2}{ThicknessLengthDat},
-  toprule=\DatCtxVar{#2}{ThicknessLengthDat}, 
-  rightrule=\DatCtxVar{#2}{ThicknessLengthDat}, 
-  bottomrule=\DatCtxVar{#2}{ThicknessLengthDat},
+  leftrule=\DatCtxVar{#2}{ThicknessLength},
+  toprule=\DatCtxVar{#2}{ThicknessLength}, 
+  rightrule=\DatCtxVar{#2}{ThicknessLength}, 
+  bottomrule=\DatCtxVar{#2}{ThicknessLength},
   %
-  left=\DatCtxVar{#2}{LeftPaddingLengthDat}, 
-  right=\DatCtxVar{#2}{RightPaddingLengthDat}, 
-  top=\DatCtxVar{#2}{TopPaddingLengthDat}, 
-  bottom=\DatCtxVar{#2}{BottomPaddingLengthDat},
+  left=\DatCtxVar{#2}{LeftPaddingLength}, 
+  right=\DatCtxVar{#2}{RightPaddingLength}, 
+  top=\DatCtxVar{#2}{TopPaddingLength}, 
+  bottom=\DatCtxVar{#2}{BottomPaddingLength},
   %
   code={
-  \ifthenelse{\equal{\DatCtxVar{#2}{ArcLengthDat}}{0pt}}
+  \ifthenelse{\equal{\DatCtxVar{#2}{ArcLength}}{0pt}}
     { \tcbset{sharp corners} }
-    { \tcbset{arc=\DatCtxVar{#2}{ArcLengthDat}} }
+    { \tcbset{arc=\DatCtxVar{#2}{ArcLength}} }
   %
   \ifdefempty{\tcbtitletext}
     {
-    \tcbset{list text={ \EnvBoxOddTabFirstLetterUppercase{\DatCtxVar{#2}{PreTitleNameDat}}  }}
+    \tcbset{list text={ \EnvBoxOddTabFirstLetterUppercase{\DatCtxVar{#2}{PreTitleName}}  }}
     }
     {%% \tcbtitle is the title write by the user
     \tcbset{list text={##1}}
@@ -244,19 +252,19 @@ number within=\DatCtxVar{#2}{CounterWithDat}
   \ifdefempty{\tcbtitletext}
     {
         \tcbset{before upper={\addtocounter{#3}{-1}\refstepcounter{#3}%
-        \begin{minipage}{\DatCtxVar{#2}{ImageWidthLengthDat}}
-        \centering\DatCtxVar{#2}{ImageObjectDat}
-        \end{minipage}% 
-        \DatCtxVar{#2}{PostImageObjectDat}%
-        \textcolor{\DatCtxVar{#2}{PreTitleColorDat}}{\DatCtxVar{#2}{TitleFontDat}\DatCtxVar{#2}{PreTitleNameDat}\;\thetcbcounter:} \refstepcounter{#3}}}
+\begin{minipage}{\DatCtxVar{#2}{ImageWidthLength}}
+\centering\DatCtxVar{#2}{ImageObject}
+\end{minipage}% 
+\DatCtxVar{#2}{PostImageObject}%
+\textcolor{\DatCtxVar{#2}{PreTitleColor}}{\DatCtxVar{#2}{TitleFont}\DatCtxVar{#2}{PreTitleName}\;\thetcbcounter:} \refstepcounter{#3}}}
     }
     {%% \tcbtitle is the title write by the user
         \tcbset{before upper={\addtocounter{#3}{-1}\refstepcounter{#3}%
-        \begin{minipage}{\DatCtxVar{#2}{ImageWidthLengthDat}}
-        \centering\DatCtxVar{#2}{ImageObjectDat}
-        \end{minipage}%
-        \DatCtxVar{#2}{PostImageObjectDat}%
-        \textcolor{\DatCtxVar{#2}{PreTitleColorDat}}{\DatCtxVar{#2}{TitleFontDat}\DatCtxVar{#2}{PreTitleNameDat}\;\thetcbcounter:} \refstepcounter{#3}}}
+\begin{minipage}{\DatCtxVar{#2}{ImageWidthLength}}
+\centering\DatCtxVar{#2}{ImageObject}
+\end{minipage}%
+\DatCtxVar{#2}{PostImageObject}%
+\textcolor{\DatCtxVar{#2}{PreTitleColor}}{\DatCtxVar{#2}{TitleFont}\DatCtxVar{#2}{PreTitleName}\;\thetcbcounter:} \refstepcounter{#3}}}
     }
   },
   %

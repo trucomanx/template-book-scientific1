@@ -239,14 +239,14 @@ label-align=left,
 	pagebackref=true,
 	hyperindex=true,
 	colorlinks=true,
-    citecolor=colormylink,    % color of citations
+    citecolor=colorLink,    % color of citations
 	linkcolor=black,          % color of internal links (change box color with linkbordercolor)
 	%pdftoolbar=true,         % show Acrobat’s toolbar?
 	%pdfmenubar=true,         % show Acrobat’s menu?
 	%pdffitwindow=false,      % window fit to page when opened
 	%pdfstartview={FitH},     % fits the width of the page to the window
 	breaklinks=true,
-	urlcolor= colormylink,
+	urlcolor= colorLink,
 	bookmarks=true,
 	bookmarksopen=false,
 	pdftitle={\mytitle - \mysubtitle},
@@ -268,7 +268,7 @@ addtohook={%
 \bookmarksetup{bold}%
 \fi
 \ifnum\bookmarkget{level}=-1 % part
-\bookmarksetup{color=colormylink,bold}%
+\bookmarksetup{color=colorLink,bold}%
 \fi
 }
 }

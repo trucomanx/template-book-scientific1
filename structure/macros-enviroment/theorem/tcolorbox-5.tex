@@ -1,0 +1,28 @@
+%----------------------------------------------------------------------------------------
+% NOTACAO THEOREMS
+%----------------------------------------------------------------------------------------
+% \begin{theorem}[Título]
+%   text
+% \end{theorem}
+%----------------------------------------------------------------------------------------
+%% Create a new counter that will follow tcolorbox's numbering
+
+\usepackage{packages/env-box-oddtab}
+
+\NewEnvBoxOddTabGlobal[
+PreTitleName=Theorem,
+CounterWith=section,
+BackColor=black!3,
+FrameColor=black,
+TitleColor=white,
+PreTitleColor=black,
+BackTitleColor=colorTheorem,
+TitleFont=\bfseries,
+BeforeSpaceLength=4pt,
+AfterSpaceLength=0pt,
+ImageObject={\color{black}\ding{112}},
+ImageWidthLength=4ex,
+PostImageObject=\hspace{1pt}
+]{theorem}{TheoremOddTabCounter}{TheoremOddTabListingExt}
+
+\newcommand{\EnvTheoremListingExt}{TheoremOddTabListingExt}

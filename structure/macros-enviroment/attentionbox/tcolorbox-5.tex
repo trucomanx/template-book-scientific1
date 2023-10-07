@@ -1,0 +1,80 @@
+%----------------------------------------------------------------------------------------
+% ATTENTION MESSAGE BOX
+%----------------------------------------------------------------------------------------
+% \begin{attentionbox}
+%   text
+% \end{attentionbox}
+
+\usepackage{packages/env-highlight-multipleimg}
+
+\NewEnvBoxMultipleImgGlobal[
+BackColor=colorAttention,
+FrameColor=colorAttention,
+ThicknessLength=0pt,
+LeftSkipLength=0cm,
+RightSkipLength=0cm,
+ArcLength=5pt,
+GradeColor=gray!20,
+GradeLength=5mm,
+ImageObjectSouthWest={\includegraphics[width=4ex,height=9.0ex]{icons/AbstractFlower29.png}},
+ImageObjectSouthWestXLength=+1mm,
+ImageObjectSouthWestYLength=+1mm,
+ImageObjectNorthWest={},
+ImageObjectNorthWestXLength=0mm,
+ImageObjectNorthWestYLength=0mm,
+ImageObjectSouthEast={},
+ImageObjectSouthEastXLength=0mm,
+ImageObjectSouthEastYLength=0mm,
+ImageObjectNorthEast={},
+ImageObjectNorthEastXLength=0pt,
+ImageObjectNorthEastYLength=0pt,
+ImageObjectSouth={},
+ImageObjectSouthXLength=0pt,
+ImageObjectSouthYLength=0pt,
+ImageObjectNorth={\includegraphics[width=40mm,height=8mm]{icons/desenho2.png}},
+ImageObjectNorthXLength=0pt,
+ImageObjectNorthYLength=3mm,
+ImageObjectEast={},
+ImageObjectEastXLength=0pt,
+ImageObjectEastYLength=0pt,
+ImageObjectWest={},
+ImageObjectWestXLength=0pt,
+ImageObjectWestYLength=0pt,
+BeforeSpaceLength=4pt,
+AfterSpaceLength=4pt,
+QedSymbol={},
+ShadowColor=gray,
+LeftPaddingLength=4.5ex,
+RightPaddingLength=3ex,
+TopPaddingLength=3ex,
+BottomPaddingLength=2ex,
+Breakable=true
+]{attentionbox}
+
+
+
+\begin{comment}
+%% Define before space
+\newcommand{\EnvAttentionBoxBeforeSpace}{2ex}
+\newcommand{\SetEnvAttentionBoxBeforeSpace}[1]{\renewcommand{\EnvAttentionBoxBeforeSpace}{#1}}%
+
+%% Define after space
+\newcommand{\EnvAttentionBoxAfterSpace}{2ex}
+\newcommand{\SetEnvAttentionBoxAfterSpace}[1]{\renewcommand{\EnvAttentionBoxAfterSpace}{#1}}%
+
+\newtcolorbox{attentionbox}[1][]{%
+    enhanced,
+    before skip=\EnvAttentionBoxBeforeSpace,after skip=\EnvAttentionBoxAfterSpace,%% Espacion antes y despues del box
+    boxrule=0pt,left=14mm,right=10pt,top=10pt,bottom=10pt,%% espacio interno. Padding.
+    colback=colorAttention,
+    colframe=colorAttention,
+    rounded corners,arc=10pt,
+    underlay={%
+        \path[] (interior.south west) rectangle node[white]%
+        {\includegraphics[width=9mm]{icons/important1.eps}} ([xshift=16mm]interior.north west);
+    },
+    drop fuzzy shadow,
+    #1%
+}
+\end{comment}
+

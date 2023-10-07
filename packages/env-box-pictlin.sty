@@ -12,6 +12,7 @@
 \RequirePackage{titletoc} %% TOC
 \RequirePackage{xparse} %%\ExplSyntaxOn
 \RequirePackage{xkeyval} %%\setkeys
+\RequirePackage{varwidth}
 
 \RequirePackage{pgfornament}
 \RequirePackage{pifont} %% \ding{111}
@@ -106,30 +107,41 @@
 \newcommand{\NewEnvBoxPictLinGlobal}[4][,]
 {
 
-\DefLenCtxVar{#2}{ImageWidthLengthDat}
-\DefLenCtxVar{#2}{LeftRuleLengthDat}
-\DefLenCtxVar{#2}{LeftPaddingLengthDat}
-\DefLenCtxVar{#2}{RightPaddingLengthDat}
-\DefLenCtxVar{#2}{TopPaddingLengthDat}
-\DefLenCtxVar{#2}{BottomPaddingLengthDat}
+\DefLenCtxVar{#2}{ImageWidthLength}
+\DefLenCtxVar{#2}{LeftRuleLength}
+\DefLenCtxVar{#2}{TitleExtraLength}
+\DefLenCtxVar{#2}{BeforeSpaceLength}
+\DefLenCtxVar{#2}{AfterSpaceLength}
+\DefLenCtxVar{#2}{LeftSpaceLength}
+\DefLenCtxVar{#2}{RightSpaceLength}
 
-\define@key{NewEnvBoxPictLinGlobalKeys}{CounterWith}{\DefCtxVar{#2}{CounterWithDat}{##1}}
-\define@key{NewEnvBoxPictLinGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColorDat}{##1}}
-\define@key{NewEnvBoxPictLinGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColorDat}{##1}}
-\define@key{NewEnvBoxPictLinGlobalKeys}{TitleColor}{\DefCtxVar{#2}{TitleColorDat}{##1}}
-\define@key{NewEnvBoxPictLinGlobalKeys}{TitleFont}{\DefCtxVar{#2}{TitleFontDat}{##1}}
-\define@key{NewEnvBoxPictLinGlobalKeys}{PreTitleName}{\DefCtxVar{#2}{PreTitleNameDat}{##1}}
-\define@key{NewEnvBoxPictLinGlobalKeys}{LeftRuleLength}{\SetLenCtxVar{#2}{LeftRuleLengthDat}{##1}}
-\define@key{NewEnvBoxPictLinGlobalKeys}{BeforeSpaceLength}{\DefCtxVar{#2}{BeforeSpaceLengthDat}{##1}}
-\define@key{NewEnvBoxPictLinGlobalKeys}{AfterSpaceLength}{\DefCtxVar{#2}{AfterSpaceLengthDat}{##1}}
-\define@key{NewEnvBoxPictLinGlobalKeys}{ImageObject}{\DefCtxVar{#2}{ImageObjectDat}{##1}}
-\define@key{NewEnvBoxPictLinGlobalKeys}{ImageWidthLength}{\SetLenCtxVar{#2}{ImageWidthLengthDat}{##1}}
-\define@key{NewEnvBoxPictLinGlobalKeys}{PostImageObject}{\DefCtxVar{#2}{PostImageObjectDat}{##1}}
+\DefLenCtxVar{#2}{LeftPaddingLength}
+\DefLenCtxVar{#2}{RightPaddingLength}
+\DefLenCtxVar{#2}{TopPaddingLength}
+\DefLenCtxVar{#2}{BottomPaddingLength}
+
+\define@key{NewEnvBoxPictLinGlobalKeys}{Breakable}{\DefCtxVar{#2}{Breakable}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{CounterWith}{\DefCtxVar{#2}{CounterWith}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColor}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColor}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{TitleColor}{\DefCtxVar{#2}{TitleColor}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{TitleFont}{\DefCtxVar{#2}{TitleFont}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{PreTitleName}{\DefCtxVar{#2}{PreTitleName}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{ImageObject}{\DefCtxVar{#2}{ImageObject}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{PostImageObject}{\DefCtxVar{#2}{PostImageObject}{##1}}
 %
-\define@key{NewEnvBoxPictLinGlobalKeys}{LeftPaddingLength}{\SetLenCtxVar{#2}{LeftPaddingLengthDat}{##1}}
-\define@key{NewEnvBoxPictLinGlobalKeys}{RightPaddingLength}{\SetLenCtxVar{#2}{RightPaddingLengthDat}{##1}}
-\define@key{NewEnvBoxPictLinGlobalKeys}{TopPaddingLength}{\SetLenCtxVar{#2}{TopPaddingLengthDat}{##1}}
-\define@key{NewEnvBoxPictLinGlobalKeys}{BottomPaddingLength}{\SetLenCtxVar{#2}{BottomPaddingLengthDat}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{TitleExtraLength}{\SetLenCtxVar{#2}{TitleExtraLength}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{BeforeSpaceLength}{\SetLenCtxVar{#2}{BeforeSpaceLength}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{AfterSpaceLength}{\SetLenCtxVar{#2}{AfterSpaceLength}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{LeftRuleLength}{\SetLenCtxVar{#2}{LeftRuleLength}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{LeftSpaceLength}{\SetLenCtxVar{#2}{LeftSpaceLength}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{RightSpaceLength}{\SetLenCtxVar{#2}{RightSpaceLength}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{ImageWidthLength}{\SetLenCtxVar{#2}{ImageWidthLength}{##1}}
+%
+\define@key{NewEnvBoxPictLinGlobalKeys}{LeftPaddingLength}{\SetLenCtxVar{#2}{LeftPaddingLength}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{RightPaddingLength}{\SetLenCtxVar{#2}{RightPaddingLength}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{TopPaddingLength}{\SetLenCtxVar{#2}{TopPaddingLength}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{BottomPaddingLength}{\SetLenCtxVar{#2}{BottomPaddingLength}{##1}}
 
 
 \setkeys{NewEnvBoxPictLinGlobalKeys}{
@@ -139,16 +151,20 @@ BackColor=gray!10,
 FrameColor=red!50!black,
 TitleColor=green!50!black,
 TitleFont=\bfseries,
+TitleExtraLength=0pt,
 LeftRuleLength=4pt,
 BeforeSpaceLength=4pt,
 AfterSpaceLength=0pt,
+LeftSpaceLength=0pt,
+RightSpaceLength=0pt,
 ImageObject={\pgfornament[color=red!50!black,width=4ex]{1}},
 ImageWidthLength=4ex,
-LeftPaddingLength=8pt,
-RightPaddingLength=8pt,
-TopPaddingLength=8pt,
-BottomPaddingLength=8pt,
-PostImageObject={}
+LeftPaddingLength=4pt,
+RightPaddingLength=4pt,
+TopPaddingLength=4pt,
+BottomPaddingLength=4pt,
+PostImageObject={},
+Breakable=true
 }
 
 \setkeys{NewEnvBoxPictLinGlobalKeys}{#1}%
@@ -157,7 +173,7 @@ PostImageObject={}
 \NewListEnvBoxPictLin{#4}{}
 
 %% Create a new counter that will follow tcolorbox's numbering
-\newcounter{#3}[\DatCtxVar{#2}{CounterWithDat}]
+\newcounter{#3}[\DatCtxVar{#2}{CounterWith}]
 
 % \SetCounterReferenceFormat Set format in label reference
 \SetCounterReferenceFormat{#3} 
@@ -169,59 +185,61 @@ PostImageObject={}
 list inside=#4,
 list type=#4,
 auto counter,
-number within=\DatCtxVar{#2}{CounterWithDat}
+number within=\DatCtxVar{#2}{CounterWith}
 ]%
 {#2}%
 [1][]%
 {
   title={##1},
   detach title,
-  colback=\DatCtxVar{#2}{BackColorDat},
-  colframe=\DatCtxVar{#2}{FrameColorDat},
-  coltitle=\DatCtxVar{#2}{TitleColorDat},
-  fonttitle=\DatCtxVar{#2}{TitleFontDat},
-  leftrule=\DatCtxVar{#2}{LeftRuleLengthDat}, toprule=-0.05pt, rightrule=-0.05pt, bottomrule=-0.05pt,
-  breakable,
+  colback=\DatCtxVar{#2}{BackColor},
+  colframe=\DatCtxVar{#2}{FrameColor},
+  coltitle=\DatCtxVar{#2}{TitleColor},
+  fonttitle=\DatCtxVar{#2}{TitleFont},
+  leftrule=\DatCtxVar{#2}{LeftRuleLength}, toprule=-0.0pt, rightrule=-0.0pt, bottomrule=-0.0pt,
+  breakable=\DatCtxVar{#2}{Breakable},
   enhanced,
   sharp corners,
-  before={\vspace{\DatCtxVar{#2}{BeforeSpaceLengthDat}}},
-  after={\vspace{\DatCtxVar{#2}{AfterSpaceLengthDat}}},
-  left=\DatCtxVar{#2}{LeftPaddingLengthDat}, 
-  right=\DatCtxVar{#2}{RightPaddingLengthDat},%8pt, 
-  top=\DatCtxVar{#2}{TopPaddingLengthDat},%10pt, 
-  bottom=\DatCtxVar{#2}{BottomPaddingLengthDat},%4pt,
+  left skip=\DatCtxVar{#2}{LeftSpaceLength},
+  right skip=\DatCtxVar{#2}{RightSpaceLength},
+  before={\vspace{\DatCtxVar{#2}{BeforeSpaceLength}}},
+  after={\vspace{\DatCtxVar{#2}{AfterSpaceLength}}},
+  left=\DatCtxVar{#2}{LeftPaddingLength}, 
+  right=\DatCtxVar{#2}{RightPaddingLength},%8pt, 
+  top=\DatCtxVar{#2}{TopPaddingLength},%10pt, 
+  bottom=\DatCtxVar{#2}{BottomPaddingLength},%4pt,
   before upper={\addtocounter{#3}{-1}\refstepcounter{#3} \refstepcounter{#3}},
   code={
   \ifdefempty{\tcbtitletext}
     {
-    \tcbset{list text={ \EnvBoxPictLinFirstLetterUppercase{\DatCtxVar{#2}{PreTitleNameDat}}  }}
+    \tcbset{list text={ \EnvBoxPictLinFirstLetterUppercase{\DatCtxVar{#2}{PreTitleName}}  }}
     }
     {%% \tcbtitle is the title write by the user
     \tcbset{list text={##1}}
     }
+  \ifdefempty{\tcbtitletext}
+    {
+        \tcbset{before upper={\addtocounter{#3}{-1}\refstepcounter{#3}%
+        \DatCtxVar{#2}{PostImageObject}%
+        \textcolor{\DatCtxVar{#2}{TitleColor}}{\DatCtxVar{#2}{TitleFont}\DatCtxVar{#2}{PreTitleName}\;\thetcbcounter} \refstepcounter{#3}\par\medskip}}
+    }
+    {%% \tcbtitle is the title write by the user
+        \tcbset{before upper={\addtocounter{#3}{-1}\refstepcounter{#3}%
+        \DatCtxVar{#2}{PostImageObject}%
+        \textcolor{\DatCtxVar{#2}{TitleColor}}{\DatCtxVar{#2}{TitleFont}\DatCtxVar{#2}{PreTitleName}\;\thetcbcounter\;--\;\tcbtitle}\refstepcounter{#3}\par\medskip}}
+    }
   },
   %
   overlay unbroken and first ={%
-    \coordinate (X) at ([xshift=-0.5\DatCtxVar{#2}{ImageWidthLengthDat}]frame.north west);
-    \node[rotate=0, minimum width=\DatCtxVar{#2}{ImageWidthLengthDat}, right, font=\DatCtxVar{#2}{TitleFontDat}]  at (X) 
+    \coordinate (X) at ([xshift=0.5\DatCtxVar{#2}{LeftRuleLength}]frame.north west);
+    \node[rotate=0,inner sep=0,outer sep=0,minimum width=\DatCtxVar{#2}{ImageWidthLength},below, font=\DatCtxVar{#2}{TitleFont}]  at (X) 
     {%
-    \begin{minipage}{\DatCtxVar{#2}{ImageWidthLengthDat}}
-    \centering
-    \DatCtxVar{#2}{ImageObjectDat}
-    \end{minipage}
+\begin{minipage}{\DatCtxVar{#2}{ImageWidthLength}}
+\centering
+\DatCtxVar{#2}{ImageObject}
+\end{minipage}
     };
     %
-    %\coordinate (Y) at ([xshift=0.5\DatCtxVar{#2}{ImageWidthLengthDat}]frame.north west);
-    \coordinate (Y) at ([xshift=\DatCtxVar{#2}{LeftRuleLengthDat}-4pt]frame.north west);
-    \node[rotate=0, minimum width=\DatCtxVar{#2}{ImageWidthLengthDat}, right, font=\DatCtxVar{#2}{TitleFontDat}]  at (Y) 
-    {%
-    \hspace{\DatCtxVar{#2}{LeftPaddingLengthDat}}
-    \if##1\@empty\relax\relax
-    \textcolor{\DatCtxVar{#2}{TitleColorDat}}{\DatCtxVar{#2}{PostImageObjectDat}\DatCtxVar{#2}{PreTitleNameDat}\;\thetcbcounter\;:}
-    \else
-    \textcolor{\DatCtxVar{#2}{TitleColorDat}}{\DatCtxVar{#2}{PostImageObjectDat}\DatCtxVar{#2}{PreTitleNameDat}\;\thetcbcounter\;--\;\tcbtitle\;:}
-    \fi
-    };%
   },
   %
   %

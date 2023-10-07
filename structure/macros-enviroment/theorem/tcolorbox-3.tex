@@ -7,29 +7,37 @@
 %----------------------------------------------------------------------------------------
 
 
-\usepackage{packages/env-theorem-insidetab}
+\usepackage{packages/env-box-insidetab}
 \usepackage{pifont}
 
 
-\SetEnvTheoremInsideTabPreTitle{Teorema}
-\SetEnvTheoremInsideTabFrameColor{colorTheorem}
-\SetEnvTheoremInsideTabBackColor{colorTheorem!5!white}
-\SetEnvTheoremInsideTabLeftTabColor{colorTheorem}
-\SetEnvTheoremInsideTabRightTabColor{black}
-\SetEnvTheoremInsideTabPreTitleColor{colorTheorem}
-\SetEnvTheoremInsideTabTitleColor{\EnvTheoremInsideTabBackColor}
-\SetEnvTheoremInsideTabTitleFont{\bfseries}
-\SetEnvTheoremInsideTabThickness{1pt}
-\SetEnvTheoremInsideTabImage{{\color{colorTheorem}\ding{111}}}
-\SetEnvTheoremInsideTabPostPic{0.5ex}
-\SetEnvTheoremInsideTabBeforeSpace{1ex}
-\SetEnvTheoremInsideTabAfterSpace{0ex}
-\SetEnvTheoremInsideTabLeftPadding{1ex}
-\SetEnvTheoremInsideTabRightPadding{1ex}
-\SetEnvTheoremInsideTabTopPadding{1ex}
-\SetEnvTheoremInsideTabBottomPadding{1ex}
+\NewEnvBoxInsideTabGlobal[
+PreTitleName=Teorema,
+PreTitleColor=colorTheorem,
+CounterWith=section,
+BackColor=colorTheorem!5!white,
+FrameColor=colorTheorem,
+TitleColor=colorTheorem!5!white,
+TitleFont=\bfseries,
+ThicknessLength=1pt,
+BeforeSpaceLength=1ex,
+AfterSpaceLength=1ex,
+ImageObject={\color{colorTheorem}\ding{111}},
+PostImageObject=\hspace{1ex},
+QedSymbol={},
+RightTabColor=black,
+LeftTabColor=colorTheorem,
+ArcLength=0pt,
+ShadowColor=white,
+SolidShadow=false,
+LeftPaddingLength=1ex,
+RightPaddingLength=1ex,
+TopPaddingLength=1ex,
+BottomPaddingLength=1ex
+]{theorem}{TheoremInsideTabCounter}{TheoremInsideTabListingExt}
 
 
-\newcommand{\EnvTheoremListingExt}{\EnvTheoremInsideTabListingExt}
+
+\newcommand{\EnvTheoremListingExt}{TheoremInsideTabListingExt}
 
 

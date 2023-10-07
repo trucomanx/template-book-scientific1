@@ -5,6 +5,30 @@
 %   text
 % \end{attentionbox}
 
+\usepackage{packages/env-highlight-simpleimg}
+
+\NewEnvBoxSimpleImgGlobal[
+BackColor=colorAttention,
+FrameColor=colorAttention,
+ThicknessLength=1pt,
+LeftSkipLength=0cm,
+RightSkipLength=0cm,
+ArcLength=10pt,
+ImageWidthLength=16mm,
+ImageObject={\includegraphics[width=9mm]{icons/important1.eps}},
+ImageObjectCenter=false,
+BeforeSpaceLength=4pt,
+AfterSpaceLength=4pt,
+QedSymbol={},
+ShadowColor=gray,
+LeftPaddingLength=0ex,
+RightPaddingLength=1ex,
+TopPaddingLength=1.5ex,
+BottomPaddingLength=1.5ex,
+Breakable=true
+]{attentionbox}
+
+\begin{comment}
 %% Define before space
 \newcommand{\EnvAttentionBoxBeforeSpace}{2ex}
 \newcommand{\SetEnvAttentionBoxBeforeSpace}[1]{\renewcommand{\EnvAttentionBoxBeforeSpace}{#1}}%
@@ -27,5 +51,5 @@
     drop fuzzy shadow,
     #1%
 }
-
+\end{comment}
 
