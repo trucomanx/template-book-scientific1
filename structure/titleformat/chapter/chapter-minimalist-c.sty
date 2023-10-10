@@ -1,0 +1,111 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{chapter-minimalist-c}[2014/10/23 Title chapter package]
+
+
+\RequirePackage{xcolor}
+\RequirePackage{kvoptions} % Carga la biblioteca kvoptions
+\RequirePackage{titlesec} % necesario para titleformat
+\RequirePackage{tikzpagenodes}
+
+% Define las opciones de paquete Width y TextColor
+\SetupKeyvalOptions{
+  family=ChapterMinimalistC,
+  prefix=ChapterMinimalistC@
+}
+
+\DeclareStringOption[black]{TitleColor}
+\DeclareStringOption[black]{TitleFontSize}
+\DeclareStringOption[black]{PreTitleColor}
+\DeclareStringOption[black]{PreTitleFontSize}
+\DeclareStringOption[black]{BarTopColor}
+\DeclareStringOption[black]{BarBottomColor}
+\DeclareStringOption[white]{BarTextColor}
+\DeclareStringOption[white]{BarTextFontSize}
+\DeclareStringOption[2cm]{BarWidth}
+\DeclareStringOption[1cm]{BarTextOffset}
+
+% Procesa las opciones del paquete
+\ProcessKeyvalOptions*
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title with number
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{\chapter}[display]%shape
+{\normalfont\huge}% format
+{}% label
+{20pt}% sep
+{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[top color=\ChapterMinimalistC@BarTopColor, bottom color=\ChapterMinimalistC@BarBottomColor] 
+    ([xshift=-\ChapterMinimalistC@BarWidth]current page.south east) rectangle (current page.north east);%% (corner init) rec (corner opost) % rect verde
+  \node[
+    anchor= east,
+    xshift=-4.0cm,%% Inicio de texto
+    text width=0.9\textwidth] 
+    at ([yshift=5pt]titlerect.east) {\fontsize{\ChapterMinimalistC@TitleFontSize}{0}\bfseries\selectfont\textcolor{\ChapterMinimalistC@TitleColor}{#1}};%% title horizontal
+  \node[
+    anchor= east,
+    inner xsep=3cm,
+    outer sep=0pt,
+    ]%,
+    at ([xshift=0.0cm,yshift=.5cm]current page.east|-titlerect.east)
+     {\fontsize{\ChapterMinimalistC@PreTitleFontSize}{0}\bfseries\textcolor{\ChapterMinimalistC@PreTitleColor}{\thechapter}};%% chapter number
+  \node[
+    rectangle,
+    align=center,
+    text width=2cm] 
+    at ([xshift=-\ChapterMinimalistC@BarTextOffset]current page.east) {\fontsize{\ChapterMinimalistC@BarTextFontSize}{0}\scshape\selectfont\rotatebox{90}{\color{\ChapterMinimalistC@BarTextColor}#1}};%% title vert
+  \end{tikzpicture}%
+  \vspace{1ex}
+}%before code
+%[]%after code
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title without number
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{name=\chapter,numberless}[display]% shape
+{\normalfont\huge}% format
+{}% label
+{20pt}% sep
+{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[top color=\ChapterMinimalistC@BarTopColor, bottom color=\ChapterMinimalistC@BarBottomColor] 
+    ([xshift=-\ChapterMinimalistC@BarWidth]current page.south east) rectangle (current page.north east);%% (corner init) rec (corner opost) % rect verde
+  \node[
+   anchor=west,
+    rectangle,
+    minimum height=4cm,
+    text width=\paperwidth,
+    xshift=-\the\dimexpr\oddsidemargin+1in\relax,
+    outer sep=0pt] (titlerect) {};
+  \node[
+    anchor=south west,
+    xshift=2cm,%% Inicio de texto
+        yshift=2cm,
+    text width=\textwidth] 
+   at (titlerect.south west) {\fontsize{\ChapterMinimalistC@TitleFontSize}{0}\bfseries\selectfont\textcolor{\ChapterMinimalistC@TitleColor}{#1}};%% texto
+  \node[
+    rectangle,
+    align=center,
+    text width=2cm] 
+    at ([xshift=-\ChapterMinimalistC@BarTextOffset]current page.east) {\fontsize{\ChapterMinimalistC@BarTextFontSize}{0}\scshape\selectfont\rotatebox{90}{\color{\ChapterMinimalistC@BarTextColor}#1}};%% title vert
+  \end{tikzpicture}%
+  \vspace{1ex}
+}%before code
+%[]%after code
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% spacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing*{\chapter}
+{0pt}% left spacing
+{0pt}% before spacing
+{0pt}% after spacing
+%[right]
+

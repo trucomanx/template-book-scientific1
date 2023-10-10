@@ -1,0 +1,62 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\TikCodeWithoutNumberPart}[1]{%
+\begin{tikzpicture}[remember picture,overlay]%
+\node at (current page.north west){\begin{tikzpicture}[remember picture,overlay]%	
+\fill[colorPartPageBackground!20](0cm,0cm) rectangle (\paperwidth,-\paperheight);
+\node[anchor=north east] at (\paperwidth-1.5cm,-3.25cm){\parbox[t][][t]{15cm}{\strut\raggedleft\color{white}\fontsize{30}{30}\sffamily\bfseries#1}};
+\end{tikzpicture}};
+\end{tikzpicture}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\CmdOfPrintContents}{%
+\normalfont
+\normalsize
+\startcontents[parts]%
+\printcontents[parts]{}{0}{}%
+}
+
+
+\newcommand{\TikCodeWithNumberPart}[1]{%
+\begin{tikzpicture}[remember picture,overlay]%
+\node at (current page.north west){\begin{tikzpicture}[remember picture,overlay]%	
+\fill[colorPartPageBackground!20](0cm,0cm) rectangle (\paperwidth,-\paperheight);
+\node[anchor=north]      at (4cm,-3.25cm){\color{colorPartPageBackground!40}\fontsize{220}{100}\sffamily\bfseries\thepart}; 
+%\node[anchor=south east] at (\paperwidth-1cm,-\paperheight+1cm){\parbox[t][][t]{8.5cm}{\printcontents{l}{0}{\setcounter{tocdepth}{1}}}};
+\node[anchor=south east] at (\paperwidth-1cm,-\paperheight+1cm){\parbox[t][][t]{8.5cm}{\CmdOfPrintContents}};
+\node[anchor=north east] at (\paperwidth-1.5cm,-3.25cm){\parbox[t][][t]{15cm}{\strut\raggedleft\color{white}\fontsize{30}{30}\sffamily\bfseries#1}};
+\end{tikzpicture}};
+\end{tikzpicture}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing*{\part}{-10pt}{120pt}{-80pt}%pbk
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{\part}[display]%
+{\centering\bfseries\fontsize{30pt}{0pt}\selectfont}%formato
+{}%etiqueta % {\parttitlename\ Number \thepart}
+{30pt}%separacion
+{%
+\thispagestyle{empty}%
+\TikCodeWithNumberPart{#1}%
+}% codigo anterior
+[]%codigo posterior
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{name=\part,numberless}[display]%
+{\centering\bfseries\fontsize{30pt}{0pt}\selectfont}%formato
+{}%etiqueta
+{30pt}%separacion
+{%
+\thispagestyle{empty}%
+\TikCodeWithoutNumberPart{#1}%
+}% codigo anterior
+[]%codigo posterior
+
+
+
+
+
+
+

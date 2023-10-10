@@ -1,0 +1,82 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{chapter-minimalist-d}[2014/10/23 Title chapter package]
+
+
+\RequirePackage{xcolor}
+\RequirePackage{kvoptions} % Carga la biblioteca kvoptions
+\RequirePackage{titlesec} % necesario para titleformat
+\RequirePackage{tabularx} 
+
+
+% Define las opciones de paquete Width y TextColor
+\SetupKeyvalOptions{
+  family=ChapterMinimalistD,
+  prefix=ChapterMinimalistD@
+}
+
+\DeclareStringOption[1.5pt]{RuleTickness}
+\DeclareStringOption[black]{TitleColor}
+\DeclareStringOption[25]{TitleFontSize}
+\DeclareStringOption[black]{PreTitleColor}
+\DeclareStringOption[30]{PreTitleFontSize}
+\DeclareStringOption[70]{PreTitleNumberFontSize}
+\DeclareStringOption[black]{RuleColor}
+
+% Procesa las opciones del paquete
+\ProcessKeyvalOptions*
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title with number
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{\chapter}[display]
+{\bfseries\Huge} %format
+{%%label
+\begin{tabularx}{\textwidth}{@{}Xl@{}}
+\raisebox{3ex}{\color{\ChapterMinimalistD@RuleColor}\rule[-1.8ex]{\linewidth}{\ChapterMinimalistD@RuleTickness}}%\vspace{1.5ex}%
+& 
+\textsuperscript{\fontsize{\ChapterMinimalistD@PreTitleFontSize}{0}\color{\ChapterMinimalistD@PreTitleColor}\selectfont{\chaptername}~}%
+{\fontsize{\ChapterMinimalistD@PreTitleNumberFontSize}{0}\color{\ChapterMinimalistD@PreTitleColor}\selectfont\thechapter}
+\end{tabularx}
+\begin{tabular}{p{\textwidth}} 
+\textcolor{\ChapterMinimalistD@TitleColor}{#1}
+\end{tabular}
+} %
+{-10pt}%sep
+{\bfseries\fontsize{\ChapterMinimalistD@TitleFontSize}{0}\selectfont}%before code
+[\vspace{-35pt}]%%aftercode
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title without number
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{name=\chapter,numberless}[display]
+{\bfseries\Huge} %format
+{%%label
+\begin{tabularx}{\textwidth}{@{}Xl@{}}
+\raisebox{3ex}{\color{\ChapterMinimalistD@RuleColor}\rule[-1.8ex]{\linewidth}{\ChapterMinimalistD@RuleTickness}}%\vspace{1.5ex}%
+& 
+\end{tabularx}
+\begin{tabular}{p{\textwidth}} 
+\textcolor{\ChapterMinimalistD@TitleColor}{#1}
+\end{tabular}
+} %
+{0pt}%sep
+{\bfseries\fontsize{\ChapterMinimalistD@TitleFontSize}{0}\selectfont}%before code
+[\vspace{-35pt}]%%afercode
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% spacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing*{\chapter}
+{0pt}% left spacing
+{0pt}% before spacing
+{0pt}% after spacing
+%[right]
+

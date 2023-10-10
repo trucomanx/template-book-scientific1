@@ -1,0 +1,29 @@
+
+
+
+\titleformat
+{\section}% command
+[display]%shape
+{\Large\bfseries}% format
+{}% label
+{0pt}% sep
+{\parbox{\textwidth}{\color{colorSectionFont}\thesection~#1} }%before code
+[]%after code
+
+\titleformat{name=\section,numberless}% command
+[display]%shape
+{\Large\bfseries}% format
+{}% label
+{0pt}% sep
+{\parbox{\textwidth}{\color{colorSectionFont}#1} }%before code
+[]%after code
+
+\titlespacing{\section}
+{0pt}%left
+{-3.5ex}%before
+{-2.5ex}%after
+
+\titlespacing*{\section}
+{0pt}%left
+{-3.5ex}%before
+{-2.5ex}%after

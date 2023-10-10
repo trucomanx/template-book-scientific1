@@ -1,0 +1,42 @@
+
+\usepackage[
+RuleTickness=1.5pt,
+TitleColor=colorChapter,
+PreTitleColor=colorChapter,
+PreTitleWidth=4cm,
+RuleColor=colorChapter
+]
+{structure/titleformat/chapter/chapter-minimalist-b}
+
+\begin{comment}
+\newlength\chapnumb
+\setlength\chapnumb{4cm}
+
+\titleformat
+{\chapter}%command
+[block]%shape
+{\normalfont\sffamily}%format
+{}%label
+{0pt}%sep
+{\parbox[b]{\chapnumb}{\fontsize{120}{110}\color{colorChapter}\selectfont\thechapter}%
+ \parbox[b]{\dimexpr\textwidth-\chapnumb\relax}{%
+    \color{colorChapter}
+    \raggedleft%
+    \hfill{\bfseries\LARGE#1}\\
+    \rule{\dimexpr\textwidth-\chapnumb\relax}{0.4pt}}%
+}
+
+\titleformat
+{name=\chapter,numberless}%command
+[block]%shape
+{\normalfont\sffamily}%format
+{}%label
+{0pt}%sep
+{\parbox[b]{\chapnumb}{\mbox{}}%
+ \parbox[b]{\dimexpr\textwidth-\chapnumb\relax}{%
+    \color{colorChapter}
+    \raggedleft%
+    \hfill{\bfseries\LARGE#1}\\
+    \rule{\dimexpr\textwidth-\chapnumb\relax}{0.4pt}}%
+}
+\end{comment}

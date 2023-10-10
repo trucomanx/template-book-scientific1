@@ -1,0 +1,70 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{chapter-minimalist-a}[2014/10/23 Title chapter package]
+
+
+\RequirePackage{xcolor}
+\RequirePackage{kvoptions} % Carga la biblioteca kvoptions
+\RequirePackage{titlesec} % necesario para titleformat
+
+% Define las opciones de paquete Width y TextColor
+\SetupKeyvalOptions{
+  family=ChapterMinimalistA,
+  prefix=ChapterMinimalistA@
+}
+
+\DeclareStringOption[1.5pt]{RuleTickness}
+\DeclareStringOption[black]{TitleColor}
+\DeclareStringOption[black]{PreTitleColor}
+\DeclareStringOption[black]{RuleColor}
+
+% Procesa las opciones del paquete
+\ProcessKeyvalOptions*
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title with number
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{\chapter}% command
+[display]%shape
+{\bfseries\huge}% format
+{%
+\Large\filright%
+\textcolor{\ChapterMinimalistA@PreTitleColor}{\MakeUppercase{\chaptertitlename}} % \chaptertitlename = "Chapter"
+\Huge\textcolor{\ChapterMinimalistA@PreTitleColor}{\thechapter}\vspace{-1.5ex}%
+}% label
+{0ex}% sep
+{\textcolor{\ChapterMinimalistA@RuleColor}{\rule{\linewidth}{\ChapterMinimalistA@RuleTickness}}\\[0ex]
+\filleft\textcolor{\ChapterMinimalistA@TitleColor}{#1}\vspace{-1ex}%
+}%before code
+[\textcolor{\ChapterMinimalistA@RuleColor}{\rule{\linewidth}{\ChapterMinimalistA@RuleTickness}}\vspace{1ex}]%after code
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title without number
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{name=\chapter,numberless}% command
+[display]%shape
+{\bfseries\huge}% format
+{}% label
+{0ex}% sep
+{%
+\textcolor{\ChapterMinimalistA@RuleColor}{\rule{\linewidth}{\ChapterMinimalistA@RuleTickness}}\\[0ex]
+\filleft\textcolor{\ChapterMinimalistA@TitleColor}{#1}\vspace{-1ex}%
+}%before code
+[\textcolor{\ChapterMinimalistA@RuleColor}{\rule{\linewidth}{\ChapterMinimalistA@RuleTickness}}\vspace{1ex}]%after code
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% spacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing*{\chapter}
+{0pt}% left spacing
+{0pt}% before spacing
+{0pt}% after spacing
+%[right]
+

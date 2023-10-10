@@ -1,0 +1,74 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{chapter-minimalist-b}[2014/10/23 Title chapter package]
+
+
+\RequirePackage{xcolor}
+\RequirePackage{kvoptions} % Carga la biblioteca kvoptions
+\RequirePackage{titlesec} % necesario para titleformat
+
+% Define las opciones de paquete Width y TextColor
+\SetupKeyvalOptions{
+  family=ChapterMinimalistB,
+  prefix=ChapterMinimalistB@
+}
+
+\DeclareStringOption[1.5pt]{RuleTickness}
+\DeclareStringOption[black]{TitleColor}
+\DeclareStringOption[black]{PreTitleColor}
+\DeclareStringOption[4cm]{PreTitleWidth}
+\DeclareStringOption[black]{RuleColor}
+
+% Procesa las opciones del paquete
+\ProcessKeyvalOptions*
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title with number
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\titleformat
+{\chapter}%command
+[block]%shape
+{\normalfont\sffamily}%format
+{}%label
+{0pt}%sep
+{\parbox[b]{\ChapterMinimalistB@PreTitleWidth}{\fontsize{120}{110}\color{\ChapterMinimalistB@PreTitleColor}\selectfont\thechapter}%
+ \parbox[b]{\dimexpr\textwidth-\ChapterMinimalistB@PreTitleWidth\relax}{%
+    \color{\ChapterMinimalistB@TitleColor}
+    \raggedleft%
+    \hfill{\bfseries\LARGE#1}\\
+    \rule{\dimexpr\textwidth-\ChapterMinimalistB@PreTitleWidth\relax}{\ChapterMinimalistB@RuleTickness}}%
+    \vspace{-0.5ex}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title without number
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat
+{name=\chapter,numberless}%command
+[block]%shape
+{\normalfont\sffamily}%format
+{}%label
+{0pt}%sep
+{\parbox[b]{\ChapterMinimalistB@PreTitleWidth}{\mbox{}}%
+ \parbox[b]{\dimexpr\textwidth-\ChapterMinimalistB@PreTitleWidth\relax}{%
+    \color{\ChapterMinimalistB@TitleColor}
+    \raggedleft%
+    \hfill{\bfseries\LARGE#1}\\
+    \rule{\dimexpr\textwidth-\ChapterMinimalistB@PreTitleWidth\relax}{\ChapterMinimalistB@RuleTickness}}%
+    \vspace{-0.5ex}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% spacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing*{\chapter}
+{0pt}% left spacing
+{0pt}% before spacing
+{0pt}% after spacing
+%[right]
+
