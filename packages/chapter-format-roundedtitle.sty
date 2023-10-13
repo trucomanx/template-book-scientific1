@@ -1,0 +1,132 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{chapter-format-roundedtitle}[2014/10/23 Title chapter package]
+
+
+\RequirePackage{xcolor}
+\RequirePackage{kvoptions} % Carga la biblioteca kvoptions
+\RequirePackage[explicit]{titlesec} % necesario para titleformat. [explicit] habilita usar #1
+\RequirePackage{tikz}
+\RequirePackage{lmodern}% The lmodern package was used just to have access to a 80pt font size.
+\RequirePackage[most]{tcolorbox}
+
+% Define las opciones de paquete Width y TextColor
+\SetupKeyvalOptions{
+  family=ChapterFormatRoundedTitle,
+  prefix=ChapterFormatRoundedTitle@
+}
+
+
+\DeclareStringOption[black]{TitleColor}
+\DeclareStringOption[24]{TitleFontSize}
+\DeclareStringOption[3mm]{TitleBoxArc}
+\DeclareStringOption[gray]{TitleBoxShadowColor}
+\DeclareStringOption[black]{PreTitleColor}
+\DeclareStringOption[20]{PreTitleFontsize}
+\DeclareStringOption[black]{PreTitleNumberBackgroundColor}
+\DeclareStringOption[13mm]{PreTitleNumberWidth}
+\DeclareStringOption[16mm]{PreTitleNumberHeight}
+\DeclareStringOption[30]{PreTitleNumberFontsize}
+\DeclareStringOption[white]{PreTitleNumberColor}
+
+
+
+
+
+
+% Procesa las opciones del paquete
+\ProcessKeyvalOptions*
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title with number
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}
+  {}
+  {20pt}
+  {%
+    \begin{tcolorbox}[
+      enhanced,
+      rounded corners,
+      shadow={1mm}{-1mm}{-2.2mm}{\ChapterFormatRoundedTitle@TitleBoxShadowColor},
+      colback=white,
+      boxrule=0mm,
+      arc=\ChapterFormatRoundedTitle@TitleBoxArc, 
+      leftrule=0pt,
+      rightrule=0pt,
+      fontupper=\color{\ChapterFormatRoundedTitle@TitleColor}\bfseries\fontsize{\ChapterFormatRoundedTitle@TitleFontSize}{24pt}\selectfont,%\huge,
+      width=\textwidth-3.2mm,  % account for shadow width.
+      top=0.6cm, 
+      bottom=0.6cm,
+      after skip=-1ex,
+      overlay={
+        \node[
+          fill=\ChapterFormatRoundedTitle@PreTitleNumberBackgroundColor,
+          line width=0cm,
+          inner sep=0pt,
+          text width=\ChapterFormatRoundedTitle@PreTitleNumberWidth,
+          minimum height=\ChapterFormatRoundedTitle@PreTitleNumberHeight,
+          align=center,
+          anchor=south east,
+          xshift=2.2mm, yshift=9mm,
+          font=\color{\ChapterFormatRoundedTitle@PreTitleNumberColor}\sffamily\bfseries\fontsize{\ChapterFormatRoundedTitle@PreTitleNumberFontsize}{0}\selectfont
+        ] 
+        (chapname) at (frame.north east) {\thechapter};%el numero
+        \node[
+            color=\ChapterFormatRoundedTitle@PreTitleColor,
+            font=\fontsize{\ChapterFormatRoundedTitle@PreTitleFontsize}{0pt}\selectfont,
+            anchor=base east,
+            inner sep=1mm
+        ] at (chapname.base west)
+        {\chaptertitlename};%% El texto capitulo  
+      }
+    ]
+    \MakeUppercase{#1}
+    \end{tcolorbox}%
+  }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title without number
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\huge\bfseries}
+  {}
+  {20pt}
+  {%
+    \begin{tcolorbox}[
+      enhanced,
+      rounded corners,
+      shadow={1mm}{-1mm}{-2.2mm}{\ChapterFormatRoundedTitle@TitleBoxShadowColor},
+      colback=white,
+      boxrule=0mm,
+      arc=\ChapterFormatRoundedTitle@TitleBoxArc,
+      leftrule=0pt,
+      rightrule=0pt,
+      fontupper=\color{\ChapterFormatRoundedTitle@TitleColor}\bfseries\fontsize{\ChapterFormatRoundedTitle@TitleFontSize}{24pt}\selectfont,%\huge,
+      width=\textwidth-3.2mm,  % account for shadow width.
+      top=0.6cm, 
+      bottom=0.6cm,
+      after skip=-1ex
+    ]
+    \MakeUppercase{#1}
+    \end{tcolorbox}%
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% spacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing*{\chapter}
+{0pt}% left spacing
+{0pt}% before spacing
+{0pt}% after spacing
+%[right]
+
+

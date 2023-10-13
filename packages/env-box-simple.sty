@@ -116,6 +116,7 @@
 \DefLenCtxVar{#2}{ImageWidthLength}
 
 
+\define@key{NewEnvBoxSimpleGlobalKeys}{PostTitleObject}{\DefCtxVar{#2}{PostTitleObject}{##1}}
 \define@key{NewEnvBoxSimpleGlobalKeys}{Breakable}{\DefCtxVar{#2}{Breakable}{##1}}
 \define@key{NewEnvBoxSimpleGlobalKeys}{CounterWith}{\DefCtxVar{#2}{CounterWith}{##1}}
 \define@key{NewEnvBoxSimpleGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColor}{##1}}
@@ -147,6 +148,7 @@ FrameColor=red!50!black,
 TitleColor=green!50!black,
 TitleFont=\bfseries,
 PreTitleShow=true,
+PostTitleObject=:,
 Breakable=true,
 LeftRuleLength=4pt,
 BeforeSpaceLength=4pt,
@@ -221,7 +223,7 @@ number within=\DatCtxVar{#2}{CounterWith}
 \centering\DatCtxVar{#2}{ImageObject}
 \end{minipage}% 
 \DatCtxVar{#2}{PostImageObject}%
-\textcolor{\DatCtxVar{#2}{TitleColor}}{\DatCtxVar{#2}{TitleFont}\DatCtxVar{#2}{PreTitleName}\;\thetcbcounter:} \refstepcounter{#3}}}
+\textcolor{\DatCtxVar{#2}{TitleColor}}{\DatCtxVar{#2}{TitleFont}\DatCtxVar{#2}{PreTitleName}\;\thetcbcounter\DatCtxVar{#2}{PostTitleObject}} \refstepcounter{#3}}}
         }
         {
 \tcbset{before upper={\addtocounter{#3}{-1}\refstepcounter{#3}%
@@ -240,7 +242,7 @@ number within=\DatCtxVar{#2}{CounterWith}
 \centering\DatCtxVar{#2}{ImageObject}
 \end{minipage}%
 \DatCtxVar{#2}{PostImageObject}%
-\textcolor{\DatCtxVar{#2}{TitleColor}}{\DatCtxVar{#2}{TitleFont}\DatCtxVar{#2}{PreTitleName}\;\thetcbcounter\;--\;\tcbtitle:} \refstepcounter{#3}}}
+\textcolor{\DatCtxVar{#2}{TitleColor}}{\DatCtxVar{#2}{TitleFont}\DatCtxVar{#2}{PreTitleName}\;\thetcbcounter\;--\;\tcbtitle\DatCtxVar{#2}{PostTitleObject}} \refstepcounter{#3}}}
         }
         {
 \tcbset{before upper={\addtocounter{#3}{-1}\refstepcounter{#3}%
@@ -248,7 +250,7 @@ number within=\DatCtxVar{#2}{CounterWith}
 \centering\DatCtxVar{#2}{ImageObject}
 \end{minipage}%
 \DatCtxVar{#2}{PostImageObject}%
-\textcolor{\DatCtxVar{#2}{TitleColor}}{\DatCtxVar{#2}{TitleFont}\tcbtitle:} \refstepcounter{#3}}}
+\textcolor{\DatCtxVar{#2}{TitleColor}}{\DatCtxVar{#2}{TitleFont}\tcbtitle\DatCtxVar{#2}{PostTitleObject}} \refstepcounter{#3}}}
         }
     }
   },

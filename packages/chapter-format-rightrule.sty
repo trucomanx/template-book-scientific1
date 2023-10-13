@@ -1,20 +1,22 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{chapter-minimalist-b}[2014/10/23 Title chapter package]
+\ProvidesPackage{chapter-format-rightrule}[2014/10/23 Title chapter package]
 
 
 \RequirePackage{xcolor}
 \RequirePackage{kvoptions} % Carga la biblioteca kvoptions
-\RequirePackage{titlesec} % necesario para titleformat
+\RequirePackage[explicit]{titlesec} % necesario para titleformat. [explicit] habilita usar #1
+\RequirePackage{lmodern}  % The lmodern package was used just to have access to a 80pt font size.
 
 % Define las opciones de paquete Width y TextColor
 \SetupKeyvalOptions{
-  family=ChapterMinimalistB,
-  prefix=ChapterMinimalistB@
+  family=ChapterFormatRightRule,
+  prefix=ChapterFormatRightRule@
 }
 
 \DeclareStringOption[1.5pt]{RuleTickness}
 \DeclareStringOption[black]{TitleColor}
 \DeclareStringOption[black]{PreTitleColor}
+\DeclareStringOption[120]{PreTitleFontsize}
 \DeclareStringOption[4cm]{PreTitleWidth}
 \DeclareStringOption[black]{RuleColor}
 
@@ -33,15 +35,15 @@
 \titleformat
 {\chapter}%command
 [block]%shape
-{\normalfont\sffamily}%format
+{\normalfont}%format
 {}%label
 {0pt}%sep
-{\parbox[b]{\ChapterMinimalistB@PreTitleWidth}{\fontsize{120}{110}\color{\ChapterMinimalistB@PreTitleColor}\selectfont\thechapter}%
- \parbox[b]{\dimexpr\textwidth-\ChapterMinimalistB@PreTitleWidth\relax}{%
-    \color{\ChapterMinimalistB@TitleColor}
+{\parbox[b]{\ChapterFormatRightRule@PreTitleWidth}{\fontsize{\ChapterFormatRightRule@PreTitleFontsize}{0}\color{\ChapterFormatRightRule@PreTitleColor}\selectfont\thechapter}%
+ \parbox[b]{\dimexpr\textwidth-\ChapterFormatRightRule@PreTitleWidth\relax}{%
+    \color{\ChapterFormatRightRule@TitleColor}
     \raggedleft%
     \hfill{\bfseries\LARGE#1}\\
-    \rule{\dimexpr\textwidth-\ChapterMinimalistB@PreTitleWidth\relax}{\ChapterMinimalistB@RuleTickness}}%
+    \textcolor{\ChapterFormatRightRule@RuleColor}{\rule{\dimexpr\textwidth-\ChapterFormatRightRule@PreTitleWidth\relax}{\ChapterFormatRightRule@RuleTickness}}}%
     \vspace{-0.5ex}
 }
 
@@ -51,15 +53,15 @@
 \titleformat
 {name=\chapter,numberless}%command
 [block]%shape
-{\normalfont\sffamily}%format
+{\normalfont}%format
 {}%label
 {0pt}%sep
-{\parbox[b]{\ChapterMinimalistB@PreTitleWidth}{\mbox{}}%
- \parbox[b]{\dimexpr\textwidth-\ChapterMinimalistB@PreTitleWidth\relax}{%
-    \color{\ChapterMinimalistB@TitleColor}
+{\parbox[b]{\ChapterFormatRightRule@PreTitleWidth}{\mbox{}}%
+ \parbox[b]{\dimexpr\textwidth-\ChapterFormatRightRule@PreTitleWidth\relax}{%
+    \color{\ChapterFormatRightRule@TitleColor}
     \raggedleft%
     \hfill{\bfseries\LARGE#1}\\
-    \rule{\dimexpr\textwidth-\ChapterMinimalistB@PreTitleWidth\relax}{\ChapterMinimalistB@RuleTickness}}%
+    \textcolor{\ChapterFormatRightRule@RuleColor}{\rule{\dimexpr\textwidth-\ChapterFormatRightRule@PreTitleWidth\relax}{\ChapterFormatRightRule@RuleTickness}}}%
     \vspace{-0.5ex}
 }
 

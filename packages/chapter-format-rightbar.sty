@@ -1,0 +1,121 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{chapter-format-rightbar}[2014/10/23 Title chapter package]
+
+
+\RequirePackage{xcolor}
+\RequirePackage{kvoptions} % Carga la biblioteca kvoptions
+\RequirePackage[explicit]{titlesec} % necesario para titleformat. [explicit] habilita usar #1
+\RequirePackage{lmodern}  % The lmodern package was used just to have access to a 80pt font size.
+\RequirePackage{tikzpagenodes}
+
+% Define las opciones de paquete Width y TextColor
+\SetupKeyvalOptions{
+  family=ChapterFormatRightBar,
+  prefix=ChapterFormatRightBar@
+}
+
+\DeclareStringOption[black]{TitleColor}
+\DeclareStringOption[30]{TitleFontSize}
+\DeclareStringOption[black]{PreTitleColor}
+\DeclareStringOption[80]{PreTitleFontSize}
+\DeclareStringOption[black]{BarTopColor}
+\DeclareStringOption[black]{BarBottomColor}
+\DeclareStringOption[white]{BarTextColor}
+\DeclareStringOption[30pt]{BarTextFontSize}
+\DeclareStringOption[2cm]{BarWidth}
+\DeclareStringOption[1cm]{BarTextOffset}
+
+% Procesa las opciones del paquete
+\ProcessKeyvalOptions*
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title with number
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{\chapter}[display]%shape
+{\normalfont\huge}% format
+{}% label
+{0pt}% sep
+{%
+  \begin{tikzpicture}[remember picture,overlay]
+  \fill[
+    draw=white,
+    line width=0pt,
+    top color=\ChapterFormatRightBar@BarTopColor, 
+    bottom color=\ChapterFormatRightBar@BarBottomColor
+    ] 
+    ([xshift=-\ChapterFormatRightBar@BarWidth]current page.south east) rectangle 
+    (current page.north east);%% (corner init) rec (corner opost) % rect verde
+  \node[
+    anchor= west,
+    inner xsep=0pt,
+    text width=0.8\textwidth] 
+    at ([xshift=\dimexpr \oddsidemargin + 1in + \hoffset\relax,yshift=0pt]titlerect.north west) 
+    {\fontsize{\ChapterFormatRightBar@TitleFontSize}{0}\bfseries\selectfont\textcolor{\ChapterFormatRightBar@TitleColor}{#1}};%% title horizontal
+  \node[
+    anchor= east,
+    inner xsep=2cm,
+    outer sep=0pt,
+    ]%,
+    at ([xshift=0.0cm,yshift=0cm]titlerect.north east)
+     {\fontsize{\ChapterFormatRightBar@PreTitleFontSize}{0}\bfseries\textcolor{\ChapterFormatRightBar@PreTitleColor}{\thechapter}};%% chapter number
+  \node[
+    rectangle,
+    align=center,
+    text width=2cm] 
+    at ([xshift=-\ChapterFormatRightBar@BarTextOffset]current page.east) 
+    {\fontsize{\ChapterFormatRightBar@BarTextFontSize}{0}\scshape\selectfont\rotatebox{90}{\color{\ChapterFormatRightBar@BarTextColor}#1}};%% title vert
+  \end{tikzpicture}%
+  \vspace{-2ex}
+}%before code
+%[]%after code
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title without number
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{name=\chapter,numberless}[display]% shape
+{\normalfont\huge}% format
+{}% label
+{0pt}% sep
+{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[top color=\ChapterFormatRightBar@BarTopColor, bottom color=\ChapterFormatRightBar@BarBottomColor] 
+    ([xshift=-\ChapterFormatRightBar@BarWidth]current page.south east) rectangle (current page.north east);%% (corner init) rec (corner opost) % rect verde
+  \node[
+   anchor=west,
+    rectangle,
+    minimum height=4cm,
+    text width=\paperwidth,
+    xshift=-\the\dimexpr\oddsidemargin+1in\relax,
+    outer sep=0pt] (titlerect) {};
+  \node[
+    anchor= west,
+    inner xsep=0pt,
+    text width=0.8\textwidth] 
+    at ([xshift=\dimexpr \oddsidemargin + 1in + \hoffset\relax,yshift=0pt]titlerect.north west) 
+    {\fontsize{\ChapterFormatRightBar@TitleFontSize}{0}\bfseries\selectfont\textcolor{\ChapterFormatRightBar@TitleColor}{#1}};%% title horizontal
+  \node[
+    rectangle,
+    align=center,
+    text width=2cm] 
+    at ([xshift=-\ChapterFormatRightBar@BarTextOffset]current page.east) 
+    {\fontsize{\ChapterFormatRightBar@BarTextFontSize}{0}\scshape\selectfont\rotatebox{90}{\color{\ChapterFormatRightBar@BarTextColor}#1}};%% title vert
+  \end{tikzpicture}%
+  \vspace{-2ex}
+}%before code
+%[]%after code
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% spacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing*{\chapter}
+{0pt}% left spacing
+{0pt}% before spacing
+{0pt}% after spacing
+%[right]
+

@@ -1,15 +1,15 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{chapter-minimalist-a}[2014/10/23 Title chapter package]
+\ProvidesPackage{chapter-format-tworules}[2014/10/23 Title chapter package]
 
 
 \RequirePackage{xcolor}
 \RequirePackage{kvoptions} % Carga la biblioteca kvoptions
-\RequirePackage{titlesec} % necesario para titleformat
+\RequirePackage[explicit]{titlesec} % necesario para titleformat. [explicit] habilita usar #1
 
 % Define las opciones de paquete Width y TextColor
 \SetupKeyvalOptions{
-  family=ChapterMinimalistA,
-  prefix=ChapterMinimalistA@
+  family=ChapterFormatTwoRules,
+  prefix=ChapterFormatTwoRules@
 }
 
 \DeclareStringOption[1.5pt]{RuleTickness}
@@ -34,14 +34,14 @@
 {\bfseries\huge}% format
 {%
 \Large\filright%
-\textcolor{\ChapterMinimalistA@PreTitleColor}{\MakeUppercase{\chaptertitlename}} % \chaptertitlename = "Chapter"
-\Huge\textcolor{\ChapterMinimalistA@PreTitleColor}{\thechapter}\vspace{-1.5ex}%
+\textcolor{\ChapterFormatTwoRules@PreTitleColor}{\MakeUppercase{\chaptertitlename}} % \chaptertitlename = "Chapter"
+\Huge\textcolor{\ChapterFormatTwoRules@PreTitleColor}{\thechapter}\vspace{-1.5ex}%
 }% label
 {0ex}% sep
-{\textcolor{\ChapterMinimalistA@RuleColor}{\rule{\linewidth}{\ChapterMinimalistA@RuleTickness}}\\[0ex]
-\filleft\textcolor{\ChapterMinimalistA@TitleColor}{#1}\vspace{-1ex}%
+{\textcolor{\ChapterFormatTwoRules@RuleColor}{\rule{\linewidth}{\ChapterFormatTwoRules@RuleTickness}}\\[0ex]
+\filleft\textcolor{\ChapterFormatTwoRules@TitleColor}{#1}\vspace{-1ex}%
 }%before code
-[\textcolor{\ChapterMinimalistA@RuleColor}{\rule{\linewidth}{\ChapterMinimalistA@RuleTickness}}\vspace{1ex}]%after code
+[\textcolor{\ChapterFormatTwoRules@RuleColor}{\rule{\linewidth}{\ChapterFormatTwoRules@RuleTickness}}\vspace{1ex}]%after code
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -53,10 +53,10 @@
 {}% label
 {0ex}% sep
 {%
-\textcolor{\ChapterMinimalistA@RuleColor}{\rule{\linewidth}{\ChapterMinimalistA@RuleTickness}}\\[0ex]
-\filleft\textcolor{\ChapterMinimalistA@TitleColor}{#1}\vspace{-1ex}%
+\textcolor{\ChapterFormatTwoRules@RuleColor}{\rule{\linewidth}{\ChapterFormatTwoRules@RuleTickness}}\\[0ex]
+\filleft\textcolor{\ChapterFormatTwoRules@TitleColor}{#1}\vspace{-1ex}%
 }%before code
-[\textcolor{\ChapterMinimalistA@RuleColor}{\rule{\linewidth}{\ChapterMinimalistA@RuleTickness}}\vspace{1ex}]%after code
+[\textcolor{\ChapterFormatTwoRules@RuleColor}{\rule{\linewidth}{\ChapterFormatTwoRules@RuleTickness}}\vspace{1ex}]%after code
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

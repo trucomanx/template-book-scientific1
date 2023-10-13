@@ -53,4 +53,22 @@ curl https://sourceforge.net/p/latex-macros-packages/env-highlight-simpleimg/ci/
 
 curl https://sourceforge.net/p/latex-macros-packages/env-highlight-multipleimg/ci/master/tree/env-highlight-multipleimg.sty?format=raw -o env-highlight-multipleimg.sty
 
+curl https://sourceforge.net/p/latex-macros-packages/chapter-format-tworules/ci/master/tree/chapter-format-tworules.sty?format=raw -o chapter-format-tworules.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/chapter-format-rightrule/ci/master/tree/chapter-format-rightrule.sty?format=raw -o chapter-format-rightrule.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/chapter-format-rightbar/ci/master/tree/chapter-format-rightbar.sty?format=raw -o chapter-format-rightbar.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/chapter-format-leftrule/ci/master/tree/chapter-format-leftrule.sty?format=raw -o chapter-format-leftrule.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/chapter-format-upperbanner/ci/master/tree/chapter-format-upperbanner.sty?format=raw -o chapter-format-upperbanner.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/chapter-format-formaltitle/ci/master/tree/chapter-format-formaltitle.sty?format=raw -o chapter-format-formaltitle.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/chapter-format-roundedtitle/ci/master/tree/chapter-format-roundedtitle.sty?format=raw -o chapter-format-roundedtitle.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/chapter-format-middlerule/ci/master/tree/chapter-format-middlerule.sty?format=raw -o chapter-format-middlerule.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/chapter-format-formalbar/ci/master/tree/chapter-format-formalbar.sty?format=raw -o chapter-format-formalbar.sty
+
 

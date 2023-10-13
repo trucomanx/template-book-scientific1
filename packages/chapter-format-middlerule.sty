@@ -1,0 +1,81 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{chapter-format-middlerule}[2014/10/23 Title chapter package]
+
+
+\RequirePackage{xcolor}
+\RequirePackage{kvoptions} % Carga la biblioteca kvoptions
+\RequirePackage[explicit]{titlesec} % necesario para titleformat. [explicit] habilita usar #1
+\RequirePackage{pgfornament}
+%% https://ctan.math.illinois.edu/macros/latex/contrib/tkz/pgfornament/doc/ornaments.pdf
+
+% Define las opciones de paquete Width y TextColor
+\SetupKeyvalOptions{
+  family=ChapterFormatMiddleRule,
+  prefix=ChapterFormatMiddleRule@
+}
+
+\DeclareStringOption[black]{TitleColor}
+\DeclareStringOption[10pt]{TitleBeforeSkip}
+\DeclareStringOption[10pt]{TitleAfterSkip}
+\DeclareStringOption[black]{PreTitleColor}
+\DeclareStringOption[-10pt]{PreTitleAfterSkip}
+
+% Procesa las opciones del paquete
+\ProcessKeyvalOptions*
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\ChapterFormatMiddleRuleRuleObject}{\pgfornament[width = 0.618\textwidth,color = black]{89}}
+
+\newcommand{\SetChapterFormatMiddleRuleRuleObject}[1]
+{
+\renewcommand{\ChapterFormatMiddleRuleRuleObject}{#1}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title with number
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{\chapter}[display]
+{\Huge\filcenter\bfseries}%format
+{}%label
+{0pt}%sep
+{%before code
+%
+\textcolor{\ChapterFormatMiddleRule@PreTitleColor}{\chaptername~\thechapter}\\[\ChapterFormatMiddleRule@PreTitleAfterSkip]
+\ChapterFormatMiddleRuleRuleObject\\[\ChapterFormatMiddleRule@TitleBeforeSkip]
+\textcolor{\ChapterFormatMiddleRule@TitleColor}{#1}
+%
+}
+[\vspace{\ChapterFormatMiddleRule@TitleAfterSkip}]%%afercode
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title without number
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{name=\chapter,numberless}[display]
+{\Huge\filcenter\bfseries}%format
+{}%label
+{0pt}%sep
+{%before code
+%
+\ChapterFormatMiddleRuleRuleObject\\[\ChapterFormatMiddleRule@TitleBeforeSkip]
+\textcolor{\ChapterFormatMiddleRule@TitleColor}{#1}
+%
+}
+[\vspace{\ChapterFormatMiddleRule@TitleAfterSkip}]%%afercode
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% spacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing*{\chapter}
+{0pt}% left spacing
+{0pt}% before spacing
+{0pt}% after spacing
+%[right]
+

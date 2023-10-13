@@ -1,21 +1,23 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{chapter-minimalist-d}[2014/10/23 Title chapter package]
+\ProvidesPackage{chapter-format-leftrule}[2014/10/23 Title chapter package]
 
 
 \RequirePackage{xcolor}
 \RequirePackage{kvoptions} % Carga la biblioteca kvoptions
-\RequirePackage{titlesec} % necesario para titleformat
+\RequirePackage[explicit]{titlesec} % necesario para titleformat. [explicit] habilita usar #1
+\RequirePackage{lmodern}  % The lmodern package was used just to have access to a 80pt font size.
 \RequirePackage{tabularx} 
 
 
 % Define las opciones de paquete Width y TextColor
 \SetupKeyvalOptions{
-  family=ChapterMinimalistD,
-  prefix=ChapterMinimalistD@
+  family=ChapterFormatLeftRule,
+  prefix=ChapterFormatLeftRule@
 }
 
 \DeclareStringOption[1.5pt]{RuleTickness}
 \DeclareStringOption[black]{TitleColor}
+\DeclareStringOption[-2.5ex]{TitleAfterSkip}
 \DeclareStringOption[25]{TitleFontSize}
 \DeclareStringOption[black]{PreTitleColor}
 \DeclareStringOption[30]{PreTitleFontSize}
@@ -38,18 +40,18 @@
 {\bfseries\Huge} %format
 {%%label
 \begin{tabularx}{\textwidth}{@{}Xl@{}}
-\raisebox{3ex}{\color{\ChapterMinimalistD@RuleColor}\rule[-1.8ex]{\linewidth}{\ChapterMinimalistD@RuleTickness}}%\vspace{1.5ex}%
+\raisebox{3ex}{\color{\ChapterFormatLeftRule@RuleColor}\rule[-1.8ex]{\linewidth}{\ChapterFormatLeftRule@RuleTickness}}%\vspace{1.5ex}%
 & 
-\textsuperscript{\fontsize{\ChapterMinimalistD@PreTitleFontSize}{0}\color{\ChapterMinimalistD@PreTitleColor}\selectfont{\chaptername}~}%
-{\fontsize{\ChapterMinimalistD@PreTitleNumberFontSize}{0}\color{\ChapterMinimalistD@PreTitleColor}\selectfont\thechapter}
+\textsuperscript{\fontsize{\ChapterFormatLeftRule@PreTitleFontSize}{0}\color{\ChapterFormatLeftRule@PreTitleColor}\selectfont{\chaptername}~}%
+{\fontsize{\ChapterFormatLeftRule@PreTitleNumberFontSize}{0}\color{\ChapterFormatLeftRule@PreTitleColor}\selectfont\thechapter}
 \end{tabularx}
 \begin{tabular}{p{\textwidth}} 
-\textcolor{\ChapterMinimalistD@TitleColor}{#1}
+\textcolor{\ChapterFormatLeftRule@TitleColor}{#1}
 \end{tabular}
 } %
-{-10pt}%sep
-{\bfseries\fontsize{\ChapterMinimalistD@TitleFontSize}{0}\selectfont}%before code
-[\vspace{-35pt}]%%aftercode
+{0ex}%sep
+{\bfseries\fontsize{\ChapterFormatLeftRule@TitleFontSize}{0}\selectfont}%before code
+[\vspace{\ChapterFormatLeftRule@TitleAfterSkip}]%%aftercode
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -59,16 +61,16 @@
 {\bfseries\Huge} %format
 {%%label
 \begin{tabularx}{\textwidth}{@{}Xl@{}}
-\raisebox{3ex}{\color{\ChapterMinimalistD@RuleColor}\rule[-1.8ex]{\linewidth}{\ChapterMinimalistD@RuleTickness}}%\vspace{1.5ex}%
+\raisebox{3ex}{\color{\ChapterFormatLeftRule@RuleColor}\rule[-1.8ex]{\linewidth}{\ChapterFormatLeftRule@RuleTickness}}%\vspace{1.5ex}%
 & 
 \end{tabularx}
 \begin{tabular}{p{\textwidth}} 
-\textcolor{\ChapterMinimalistD@TitleColor}{#1}
+\textcolor{\ChapterFormatLeftRule@TitleColor}{#1}
 \end{tabular}
 } %
 {0pt}%sep
-{\bfseries\fontsize{\ChapterMinimalistD@TitleFontSize}{0}\selectfont}%before code
-[\vspace{-35pt}]%%afercode
+{\bfseries\fontsize{\ChapterFormatLeftRule@TitleFontSize}{0}\selectfont}%before code
+[\vspace{\ChapterFormatLeftRule@TitleAfterSkip}]%%afercode
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

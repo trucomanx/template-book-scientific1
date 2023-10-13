@@ -1,11 +1,26 @@
-% \usepackage{titlesec}% The titlesec package was used to easily change the formatting for chapter headings.
-% \usepackage{microtype}% The microtype package was used to use \textls to space out the letters in "Chapter".
-% \usepackage{lmodern}% The lmodern package was used just to have access to a 80pt font size.
-% \usepackage{TikZ}% I used TikZ in the first solution to quickly place some of the elements; the second option is a TikZ-free solution.
 
 
 
-%\begin{comment}
+
+
+\usepackage[
+RuleTickness=4pt,
+RuleColor=colorChapter,
+TitleColor=colorChapter,
+TitleFontsize=24,
+PreTitleColor=colorChapter,
+PreTitleFontsize=20,
+PreTitleNumberFontsize=80,
+PreTitleNumberColor=white,
+PreTitleNumberBackgroundColor=colorChapter,
+PreTitleNumberWidth=2.5cm,
+PreTitleNumberHeight=3.0cm,
+]
+{packages/chapter-format-formaltitle}
+
+
+
+\begin{comment}
 \titleformat{\chapter}[display]%tipo
   {\normalfont\bfseries\color{colorChapter}}%formato
   {\filleft%
@@ -29,5 +44,5 @@
   {\titlerule[2.5pt]\vskip3pt\titlerule\vskip4pt\LARGE\sffamily#1}%Codigo anterior al texto
   %[]%Codigo posterior al texto
 
-%\end{comment}
+\end{comment}
 

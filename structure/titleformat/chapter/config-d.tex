@@ -1,4 +1,15 @@
+\usepackage[
+TitleColor=colorChapter,
+TitleBeforeSkip=10pt,
+TitleAfterSkip=10pt,
+PreTitleColor=colorChapter,
+PreTitleAfterSkip=-10pt,
+]
+{packages/chapter-format-middlerule}
 
+\SetChapterFormatMiddleRuleRuleObject{\pgfornament[width = 0.618\textwidth,color = colorChapter]{89}}
+
+\begin{comment}
 \usepackage{pgfornament}
 %% https://ctan.math.illinois.edu/macros/latex/contrib/tkz/pgfornament/doc/ornaments.pdf
 
@@ -34,3 +45,5 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \titlespacing*{\chapter}{0pt}{0pt}{0pt}%pbk
+\end{comment}
+

@@ -1,3 +1,5 @@
+
+
 %-------------------------------------------------------------------------------
 %	CHAPTER HEADINGS
 %-------------------------------------------------------------------------------
@@ -6,6 +8,29 @@
 % This command can be repeat many times in the entire document!!!! 
 %-------------------------------------------------------------------------------
 
+
+
+
+\usepackage[
+RuleRadius=15pt,
+RuleTickness=4pt,
+RuleYPosition=-9.0cm,
+TitleColor=colorChapter,
+TitleFontSize=30,
+TitleXOffset=1cm,
+TitleYOffset=-0.25cm,
+PreTitleColor=colorChapter,
+RuleFrameColor=colorChapter,
+RuleBackgroundColor=white,
+RuleBackgroundOpacity=0.75,
+RuleInnerSep=29pt,
+TheChapterImage=chapter_head/chapter_letras.pdf
+]
+{packages/chapter-format-upperbanner}
+
+
+
+\begin{comment}
 \makeatletter
 
 \newcommand{\thechapterimage}{}%
@@ -58,4 +83,4 @@
 % This command can be repeat many times in the entire document!!!! 
 %-------------------------------------------------------------------------------
 \chapterimage{chapter_head/chapter_letras.pdf} %
-
+\end{comment}
