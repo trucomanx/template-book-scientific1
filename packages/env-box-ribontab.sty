@@ -99,8 +99,8 @@
 
 \ifdefined\SetCounterReferenceFormat
 \else
-\newcommand{\SetCounterReferenceFormat}[1]{%
-  \expandafter\def\csname the#1\endcsname{\noexpand\thesection.\noexpand\arabic{#1}}
+\newcommand{\SetCounterReferenceFormat}[2]{%
+  \expandafter\def\csname the#1\endcsname{\noexpand\csname the#2\endcsname.\noexpand\arabic{#1}}
 }
 \fi
 
@@ -181,7 +181,7 @@ Breakable=true
 \newcounter{#3}[\DatCtxVar{#2}{CounterWith}]
 
 % \SetCounterReferenceFormat Set format in label reference
-\SetCounterReferenceFormat{#3} 
+\SetCounterReferenceFormat{#3}{\DatCtxVar{#2}{CounterWith}} 
 
 % Eliminates warning: Unknown TOC type #1#2. I'll set it for you with\MessageBreak level -1000.
 \expandafter\newcommand\csname ttll@#4\endcsname{-1000}

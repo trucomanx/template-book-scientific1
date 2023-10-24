@@ -1,0 +1,18 @@
+%-------------------------------------------------------------------------------
+%   Rules macros: \HRule{2pt}, \HTextRule{Text}
+%-------------------------------------------------------------------------------
+\usepackage{packages/separator-rule} %
+
+
+\newcommand{\SeparatorTextRule}[1]
+{%
+\HPgfoTextRule[
+Separator=3pt,
+OrnamentWidth=4cm,
+OrnamentColor=colorDefault,
+TextFormat=\bfseries,
+TextColor=colorDefault,
+BeforeSpace=0pt,
+AfterSpace=5pt,
+]{87}{#1}%
+}

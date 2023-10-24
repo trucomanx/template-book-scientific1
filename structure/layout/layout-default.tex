@@ -12,10 +12,11 @@
 
 
 
+
 %-------------------------------------------------------------------------------
 %   Configura el paquete titlesec 
 %-------------------------------------------------------------------------------
-\input{\SourceRootPath/structure/titleformat/part/part-minimalist1}    % titleformat de part [config-1 ..config-4]
+\input{\SourceRootPath/structure/titleformat/part/config-2}    % titleformat de part [config-1 ..config-4]
 \input{\SourceRootPath/structure/titleformat/chapter/chapter-minimalist-3} % titleformat de chapter [config-1 ..config-4]
 \input{\SourceRootPath/structure/titleformat/section/config-4} % titleformat de section [config-1 ..config-4]
 \input{\SourceRootPath/structure/titleformat/subsection/config-1} % titleformat de subsection [config-1]
@@ -24,6 +25,11 @@
 %   Configura header and footer 
 %-------------------------------------------------------------------------------
 \input{\SourceRootPath/structure/titleformat/header-footer/config-1} % format [config-1]
+
+%-------------------------------------------------------------------------------
+%   Rules macros:
+%-------------------------------------------------------------------------------
+\input{\SourceRootPath/structure/separator/separator-text-rule/separator-2} % format [separator-1]
 
 %-------------------------------------------------------------------------------
 %   Box environments
@@ -59,11 +65,21 @@
 \input{\SourceRootPath/structure/environment/phrasebox/tcolorbox-1}
 \input{\SourceRootPath/structure/environment/equationbox/tcolorbox-1}
 
+
 %-------------------------------------------------------------------------------
 %   One use environments 
 %-------------------------------------------------------------------------------
 \input{\SourceRootPath/structure/environment/citationbox/tcolorbox-1}
 \usepackage{packages/catalographic-card} % \CatalographicCard 
 
+%-------------------------------------------------------------------------------
+%   Configura el paquete titlesec 
+%-------------------------------------------------------------------------------
+\input{\SourceRootPath/structure/titlecontents/part/config-0}
+\input{\SourceRootPath/structure/titlecontents/chapter/config-0}
+\input{\SourceRootPath/structure/titlecontents/section/config-0}
+\input{\SourceRootPath/structure/titlecontents/subsection/config-0}
+\input{\SourceRootPath/structure/titlecontents/table/config-0}
+\input{\SourceRootPath/structure/titlecontents/figure/config-0}
 
 
