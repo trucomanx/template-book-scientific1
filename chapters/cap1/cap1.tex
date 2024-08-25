@@ -57,19 +57,61 @@ Referencia a la Información \ref{information:2} (siguiente)
 
 \lipsum[1] % 
 
-Referencia a la Información \ref{information:3} (siguiente)
+Referencia a la Información \ref{elaboration:3} (siguiente)
 
 \begin{elaboration}[Título C]
-\label{information:3}
+\label{elaboration:3}
 \lipsum[1][1-3] 
 \end{elaboration}
 
-\lipsum[1] %
+\lipsum[1][1-3] %
+
+
+Referencia a la Notacion \ref{notation:0} (siguiente)
+
+\begin{notation}[Título C]
+\label{notation:0}
+\lipsum[1][1-2]
+\begin{itemize}
+\item \lipsum[1][1-2]
+\item \lipsum[1][1-2]
+\begin{itemize}
+\item \lipsum[1][1-2]
+\item \lipsum[1][1-2]
+\end{itemize}
+\end{itemize}
+\end{notation}
+
+\lipsum[1][1-3] %
+
+Referencia a la Notacion \ref{notation:1} (siguiente)
+
+\begin{notation}[Título C]
+\label{notation:1}
+\lipsum[1][1-2]
+\begin{enumerate}
+\item \lipsum[1][1-2]
+\item \lipsum[1][1-2]
+\begin{enumerate}
+\item \lipsum[1][1-2]
+\item \lipsum[1][1-2]
+\end{enumerate}
+\end{enumerate}
+\end{notation}
 
 %-------------------------------------------------------------------------------
 \section{Another title with a large length}\index{Theorem  family}
 
-\lipsum[1]. See the Theorem \ref{theo:ex1:A}.
+\lipsum[1][1-3].
+\begin{enumerate}
+\item \lipsum[1][1-2]
+\item \lipsum[1][1-2]
+\begin{enumerate}
+\item \lipsum[1][1-2]
+\item \lipsum[1][1-2]
+\end{enumerate}
+\end{enumerate}
+\lipsum[1][1-3]. See the Theorem \ref{theo:ex1:A}.
 
 \begin{theorem}[Name of the theorem]
 \label{theo:ex1:A}

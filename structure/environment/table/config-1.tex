@@ -1,0 +1,28 @@
+
+\RequirePackage[table]{xcolor} % Pacote para cores em tabelas
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% cambiar background
+\let\oldtabular\tabular
+%\renewcommand{\tabular}{\rowcolors{2}{white}{colorTableBackground}\oldtabular}
+\renewcommand{\tabular}%
+{%
+\rowcolors{1}{colorTableBackground}{colorTableBackground}%
+\oldtabular%
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configuração para alterar as cores das linhas das tabelas
+
+\makeatletter
+\def\CT@arc@{\color{colorTableLine}} % Altera a cor das linhas horizontais
+\def\CT@arc{\color{colorTableLine}} % Altera a cor das linhas verticais
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configuração para alterar a espessura das linhas nas tabelas
+\setlength{\arrayrulewidth}{2pt} % Espessura das linhas
+
+

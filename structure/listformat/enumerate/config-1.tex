@@ -1,0 +1,25 @@
+\RequirePackage{enumitem}
+
+\RequirePackage[most]{tcolorbox}
+
+\newtcbox{\TmpEnumerateBox}{
+on line, 
+colback=colorEnumerateBackground, 
+colframe=colorEnumerateBackground, 
+coltext=colorEnumerateFont, 
+boxrule=0pt, 
+arc=6pt, 
+boxsep=0pt, 
+left=5pt, 
+right=5pt, 
+top=3pt, 
+bottom=3pt 
+}
+
+\setlist[enumerate]{left=3pt, labelsep=4pt}
+
+  \renewcommand{\labelenumi}{\TmpEnumerateBox{\textbf{\textit{\arabic{enumi}}}}}
+ \renewcommand{\labelenumii}{\TmpEnumerateBox{\textbf{\textit{\alph{enumii}}}}}
+\renewcommand{\labelenumiii}{\TmpEnumerateBox{\textbf{\textit{\roman{enumiii}}}}}
+ \renewcommand{\labelenumiv}{\TmpEnumerateBox{\textbf{\textit{\arabic{enumiV}}}}}
+

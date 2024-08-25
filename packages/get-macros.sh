@@ -7,7 +7,6 @@ curl https://sourceforge.net/p/latex-macros-packages/separator-rule/ci/main/tree
 
 curl https://sourceforge.net/p/latex-macros-packages/math-macros/ci/main/tree/math-macros.sty?format=raw -o math-macros.sty
 
-curl https://sourceforge.net/p/latex-macros-packages/env-bulletjournalround/ci/main/tree/env-bulletjournalround.sty?format=raw -o env-bulletjournalround.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/env-bulletjournalarrow/ci/main/tree/env-bulletjournalarrow.sty?format=raw -o env-bulletjournalarrow.sty
 
