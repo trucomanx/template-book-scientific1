@@ -6,11 +6,46 @@
 
 #for VARIABLE in 1 # 2 ##habilitar para corregir paginas glosario
 #do
+    echo ""
+    echo "###################################"
+    echo "pdflatex -shell-escape main"
+    echo "###################################"
+    echo ""
 	pdflatex -shell-escape main
+	
+    echo ""
+    echo "###################################"
+    echo "makeindex main.idx -s StyleInd.ist"
+    echo "###################################"
+    echo ""
 	makeindex main.idx -s StyleInd.ist
+	
+    echo ""
+    echo "###################################"
+    echo "biber main"
+    echo "###################################"
+    echo ""
 	biber main
+	
+    echo ""
+    echo "###################################"
+    echo "pdflatex -shell-escape main"
+    echo "###################################"
+    echo ""
 	pdflatex -shell-escape main
+	
+    echo ""
+    echo "###################################"
+    echo "makeindex main.idx -s StyleInd.ist"
+    echo "###################################"
+    echo ""
 	makeindex main.idx -s StyleInd.ist
+	
+    echo ""
+    echo "###################################"
+    echo "pdflatex -shell-escape main x 2"
+    echo "###################################"
+    echo ""
 	pdflatex -shell-escape main x 2
 #done
 
