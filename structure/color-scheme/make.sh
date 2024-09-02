@@ -115,7 +115,8 @@ for archivo_tex in *.tex; do
   {
     \extractcolorspecs{\DatCtxVar{BookColorScheme}{\x}}{\modelo}{\format}
     \convertcolorspec{\modelo}{\format}{RGB}\tmp
-    \texttt{'}ColorScheme\x\texttt{'}:[\tmp],\\\\
+    \texttt{'}ColorScheme\x\texttt{'}:[\tmp]%
+    \ifnum\x<6 ,\fi\\\\
   }
 \}\\\\
 

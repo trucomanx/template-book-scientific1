@@ -1,5 +1,6 @@
 #!/bin/bash
 
+curl https://sourceforge.net/p/latex-macros-packages/wrapper-variable/ci/master/tree/wrapper-variable.sty?format=raw -o wrapper-variable.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/catalographic-card/ci/main/tree/catalographic-card.sty?format=raw -o catalographic-card.sty
 

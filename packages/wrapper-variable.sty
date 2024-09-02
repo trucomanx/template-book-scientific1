@@ -1,0 +1,183 @@
+%% source:
+%% https://github.com/trucomanx/wrapper-variable
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{wrapper-variable}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage{tikz} % Required for drawing
+\usetikzlibrary{shapes.misc,shapes.geometric,shadows}% rounded
+\RequirePackage{xcolor}
+\RequirePackage{xkeyval} %%\setkeys
+
+
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{wrapper-variable}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+
+\ifdefined\DefCtxVar
+\else
+\newcommand{\DefCtxVar}[3]{%
+  \expandafter\def\csname #1@#2\endcsname{#3}
+}
+\fi
+
+\ifdefined\DefLenCtxVar
+\else
+\newcommand{\DefLenCtxVar}[2]{%
+  % Usar el parámetro como nombre de la variable local
+    \expandafter\newlength\csname #1@#2\endcsname  
+    %\@latex@warning{************** \csname #1@#2\endcsname **************}
+}
+\fi
+
+\ifdefined\SetLenCtxVar
+\else
+\newcommand{\SetLenCtxVar}[3]{%
+  % Usar el parámetro como nombre de la variable local
+    \csname #1@#2\endcsname=#3
+}
+\fi
+
+\ifdefined\DatCtxVar
+\else
+\newcommand{\DatCtxVar}[2]{%
+  \csname #1@#2\endcsname
+}
+\fi
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\newcommand{\NewWrapperVariableBoxRound}[2][,]{%
+%
+\DefLenCtxVar{#2}{HPaddingLength}
+\DefLenCtxVar{#2}{VPaddingLength}
+\DefLenCtxVar{#2}{MinWidthLength}
+\DefLenCtxVar{#2}{BaseLineLength}
+\DefLenCtxVar{#2}{ArcLength}
+
+\define@key{WrapperBoxRoundGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColor}{##1}}
+\define@key{WrapperBoxRoundGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColor}{##1}}
+\define@key{WrapperBoxRoundGlobalKeys}{TextFont}{\DefCtxVar{#2}{TextFont}{##1}}
+\define@key{WrapperBoxRoundGlobalKeys}{TextColor}{\DefCtxVar{#2}{TextColor}{##1}}
+\define@key{WrapperBoxRoundGlobalKeys}{ShadowColor}{\DefCtxVar{#2}{ShadowColor}{##1}}
+%
+\define@key{WrapperBoxRoundGlobalKeys}{HPaddingLength}{\SetLenCtxVar{#2}{HPaddingLength}{##1}}
+\define@key{WrapperBoxRoundGlobalKeys}{VPaddingLength}{\SetLenCtxVar{#2}{VPaddingLength}{##1}}
+\define@key{WrapperBoxRoundGlobalKeys}{MinWidthLength}{\SetLenCtxVar{#2}{MinWidthLength}{##1}}
+\define@key{WrapperBoxRoundGlobalKeys}{BaseLineLength}{\SetLenCtxVar{#2}{BaseLineLength}{##1}}
+\define@key{WrapperBoxRoundGlobalKeys}{ArcLength}{\SetLenCtxVar{#2}{ArcLength}{##1}}
+%
+\setkeys{WrapperBoxRoundGlobalKeys}{%
+BackColor=black,%
+FrameColor=black,%
+TextFont=\normalfont\bfseries\itshape,
+TextColor=white,
+ShadowColor=gray,
+HPaddingLength=5pt,
+VPaddingLength=4pt,
+MinWidthLength=0pt,
+BaseLineLength=-0.5ex,
+ArcLength=4pt
+}%
+\setkeys{WrapperBoxRoundGlobalKeys}{#1}%
+%
+\expandafter\newcommand\csname #2\endcsname[1]{%
+\tikz[baseline=\DatCtxVar{#2}{BaseLineLength}]%
+\node[%
+%minimum height=0em,
+inner xsep=\DatCtxVar{#2}{HPaddingLength},
+inner ysep=\DatCtxVar{#2}{VPaddingLength},
+outer sep=0pt,
+drop shadow=\DatCtxVar{#2}{ShadowColor},
+%rounded rectangle,
+rounded corners=\DatCtxVar{#2}{ArcLength},
+minimum width=\DatCtxVar{#2}{MinWidthLength},
+draw=\DatCtxVar{#2}{FrameColor},
+fill=\DatCtxVar{#2}{BackColor}]%
+{\DatCtxVar{#2}{TextFont}\textcolor{\DatCtxVar{#2}{TextColor}}{\hspace{-1pt}##1}};%
+}%
+}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\newcommand{\NewWrapperVariableSimpleDiamond}[2][,]{%
+%
+\DefLenCtxVar{#2}{HPaddingLength}
+\DefLenCtxVar{#2}{VPaddingLength}
+\DefLenCtxVar{#2}{MinWidthLength}
+\DefLenCtxVar{#2}{BaseLineLength}
+\DefLenCtxVar{#2}{ArcLength}
+
+\define@key{WrapperSimpleDiamondGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColor}{##1}}
+\define@key{WrapperSimpleDiamondGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColor}{##1}}
+\define@key{WrapperSimpleDiamondGlobalKeys}{TextFont}{\DefCtxVar{#2}{TextFont}{##1}}
+\define@key{WrapperSimpleDiamondGlobalKeys}{TextColor}{\DefCtxVar{#2}{TextColor}{##1}}
+\define@key{WrapperSimpleDiamondGlobalKeys}{ShadowColor}{\DefCtxVar{#2}{ShadowColor}{##1}}
+\define@key{WrapperSimpleDiamondGlobalKeys}{Aspect}{\DefCtxVar{#2}{Aspect}{##1}}
+%
+\define@key{WrapperSimpleDiamondGlobalKeys}{HPaddingLength}{\SetLenCtxVar{#2}{HPaddingLength}{##1}}
+\define@key{WrapperSimpleDiamondGlobalKeys}{VPaddingLength}{\SetLenCtxVar{#2}{VPaddingLength}{##1}}
+\define@key{WrapperSimpleDiamondGlobalKeys}{MinWidthLength}{\SetLenCtxVar{#2}{MinWidthLength}{##1}}
+\define@key{WrapperSimpleDiamondGlobalKeys}{BaseLineLength}{\SetLenCtxVar{#2}{BaseLineLength}{##1}}
+\define@key{WrapperSimpleDiamondGlobalKeys}{ArcLength}{\SetLenCtxVar{#2}{ArcLength}{##1}}
+%
+\setkeys{WrapperSimpleDiamondGlobalKeys}{%
+BackColor=black,
+FrameColor=black,
+TextFont=\normalfont\bfseries\itshape,
+TextColor=white,
+ShadowColor=gray,
+HPaddingLength=2pt,
+VPaddingLength=2pt,
+MinWidthLength=0pt,
+BaseLineLength=-0.5ex,
+ArcLength=2pt,
+Aspect=2
+}%
+\setkeys{WrapperSimpleDiamondGlobalKeys}{#1}%
+%
+\expandafter\newcommand\csname #2\endcsname[1]{%
+\tikz[baseline=\DatCtxVar{#2}{BaseLineLength}]%
+\node[%
+diamond,
+inner xsep=\DatCtxVar{#2}{HPaddingLength},
+inner ysep=\DatCtxVar{#2}{VPaddingLength},
+outer sep=0pt,
+drop shadow=\DatCtxVar{#2}{ShadowColor},
+rounded corners=\DatCtxVar{#2}{ArcLength},
+minimum width=\DatCtxVar{#2}{MinWidthLength},
+shape aspect=\DatCtxVar{#2}{Aspect},
+draw=\DatCtxVar{#2}{FrameColor},
+fill=\DatCtxVar{#2}{BackColor}]%
+{\DatCtxVar{#2}{TextFont}\textcolor{\DatCtxVar{#2}{TextColor}}{\hspace{-1pt}##1}};%
+}%
+}
+\makeatother
+
+
+
