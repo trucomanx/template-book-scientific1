@@ -13,6 +13,7 @@
 \RequirePackage{xparse} %%\ExplSyntaxOn
 \RequirePackage{xkeyval} %%\setkeys
 \RequirePackage{varwidth}
+\RequirePackage{ifthen}
 
 \RequirePackage{pgfornament}
 \RequirePackage{pifont} %% \ding{111}
@@ -127,6 +128,7 @@
 \define@key{NewEnvBoxPictLinGlobalKeys}{TitleColor}{\DefCtxVar{#2}{TitleColor}{##1}}
 \define@key{NewEnvBoxPictLinGlobalKeys}{TitleFont}{\DefCtxVar{#2}{TitleFont}{##1}}
 \define@key{NewEnvBoxPictLinGlobalKeys}{PreTitleName}{\DefCtxVar{#2}{PreTitleName}{##1}}
+\define@key{NewEnvBoxPictLinGlobalKeys}{ShowCounter}{\DefCtxVar{#2}{ShowCounter}{##1}}
 \define@key{NewEnvBoxPictLinGlobalKeys}{ImageObject}{\DefCtxVar{#2}{ImageObject}{##1}}
 \define@key{NewEnvBoxPictLinGlobalKeys}{PostImageObject}{\DefCtxVar{#2}{PostImageObject}{##1}}
 %
@@ -146,6 +148,7 @@
 
 \setkeys{NewEnvBoxPictLinGlobalKeys}{
 PreTitleName=BoxPictLin,
+ShowCounter=true,
 CounterWith=section,
 BackColor=gray!10,
 FrameColor=red!50!black,
@@ -193,10 +196,10 @@ number within=\DatCtxVar{#2}{CounterWith}
   title={##1},
   detach title,
   colback=\DatCtxVar{#2}{BackColor},
-  colframe=\DatCtxVar{#2}{FrameColor},
+  colframe=white,%\DatCtxVar{#2}{FrameColor},
   coltitle=\DatCtxVar{#2}{TitleColor},
   fonttitle=\DatCtxVar{#2}{TitleFont},
-  leftrule=\DatCtxVar{#2}{LeftRuleLength}, toprule=-0.0pt, rightrule=-0.0pt, bottomrule=-0.0pt,
+  leftrule=0pt, toprule=0pt, rightrule=0pt, bottomrule=0pt,
   breakable=\DatCtxVar{#2}{Breakable},
   enhanced,
   sharp corners,
@@ -221,17 +224,18 @@ number within=\DatCtxVar{#2}{CounterWith}
     {
         \tcbset{before upper={\addtocounter{#3}{-1}\refstepcounter{#3}%
         \DatCtxVar{#2}{PostImageObject}%
-        \textcolor{\DatCtxVar{#2}{TitleColor}}{\DatCtxVar{#2}{TitleFont}\DatCtxVar{#2}{PreTitleName}\;\thetcbcounter} \refstepcounter{#3}\par\medskip}}
+        \textcolor{\DatCtxVar{#2}{TitleColor}}{\DatCtxVar{#2}{TitleFont}\DatCtxVar{#2}{PreTitleName}\ifthenelse{\equal{\DatCtxVar{#2}{ShowCounter}}{true}}{\;\thetcbcounter}{}} \refstepcounter{#3}\par\medskip}}
     }
     {%% \tcbtitle is the title write by the user
         \tcbset{before upper={\addtocounter{#3}{-1}\refstepcounter{#3}%
         \DatCtxVar{#2}{PostImageObject}%
-        \textcolor{\DatCtxVar{#2}{TitleColor}}{\DatCtxVar{#2}{TitleFont}\DatCtxVar{#2}{PreTitleName}\;\thetcbcounter\;--\;\tcbtitle}\refstepcounter{#3}\par\medskip}}
+        \textcolor{\DatCtxVar{#2}{TitleColor}}{\DatCtxVar{#2}{TitleFont}\DatCtxVar{#2}{PreTitleName}\ifthenelse{\equal{\DatCtxVar{#2}{ShowCounter}}{true}}{\;\thetcbcounter}{}\;--\;\tcbtitle}\refstepcounter{#3}\par\medskip}}
     }
   },
   %
   overlay unbroken and first ={%
     \coordinate (X) at ([xshift=0.5\DatCtxVar{#2}{LeftRuleLength}]frame.north west);
+    \draw[line width=\DatCtxVar{#2}{LeftRuleLength}, color=\DatCtxVar{#2}{FrameColor}] (frame.west |- frame.north) -- (frame.west |- frame.south);    
     \node[rotate=0,inner sep=0,outer sep=0,minimum width=\DatCtxVar{#2}{ImageWidthLength},below, font=\DatCtxVar{#2}{TitleFont}]  at (X) 
     {%
 \begin{minipage}{\DatCtxVar{#2}{ImageWidthLength}}

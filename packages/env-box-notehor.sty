@@ -109,6 +109,7 @@
 
 \newcommand{\NewEnvBoxNoteHorGlobal}[4][,]
 {
+\DefLenCtxVar{#2}{ArcLength}
 \DefLenCtxVar{#2}{ThicknessLength}
 \DefLenCtxVar{#2}{BeforeSpaceLength}
 \DefLenCtxVar{#2}{AfterSpaceLength}
@@ -126,7 +127,7 @@
 \define@key{NewEnvBoxNoteHorGlobalKeys}{CounterWith}{\DefCtxVar{#2}{CounterWith}{##1}}
 \define@key{NewEnvBoxNoteHorGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColor}{##1}}
 \define@key{NewEnvBoxNoteHorGlobalKeys}{FrameColor}{\DefCtxVar{#2}{FrameColor}{##1}}
-\define@key{NewEnvBoxNoteHorGlobalKeys}{TitleBackColor}{\DefCtxVar{#2}{TitleBackColor}{##1}}
+%\define@key{NewEnvBoxNoteHorGlobalKeys}{TitleBackColor}{\DefCtxVar{#2}{TitleBackColor}{##1}}
 \define@key{NewEnvBoxNoteHorGlobalKeys}{TitleColor}{\DefCtxVar{#2}{TitleColor}{##1}}
 \define@key{NewEnvBoxNoteHorGlobalKeys}{TitleFont}{\DefCtxVar{#2}{TitleFont}{##1}}
 \define@key{NewEnvBoxNoteHorGlobalKeys}{PreTitleShow}{\DefCtxVar{#2}{PreTitleShow}{##1}}
@@ -137,6 +138,7 @@
 \define@key{NewEnvBoxNoteHorGlobalKeys}{QedSymbol}{\DefCtxVar{#2}{QedSymbol}{##1}}
 \define@key{NewEnvBoxNoteHorGlobalKeys}{ShadowColor}{\DefCtxVar{#2}{ShadowColor}{##1}}
 %
+\define@key{NewEnvBoxNoteHorGlobalKeys}{ArcLength}{\SetLenCtxVar{#2}{ArcLength}{##1}}
 \define@key{NewEnvBoxNoteHorGlobalKeys}{ThicknessLength}{\SetLenCtxVar{#2}{ThicknessLength}{##1}}
 \define@key{NewEnvBoxNoteHorGlobalKeys}{BeforeSpaceLength}{\SetLenCtxVar{#2}{BeforeSpaceLength}{##1}}
 \define@key{NewEnvBoxNoteHorGlobalKeys}{AfterSpaceLength}{\SetLenCtxVar{#2}{AfterSpaceLength}{##1}}
@@ -157,7 +159,7 @@ CounterWith=section,
 BackColor=red!2,
 FrameColor=gray!20,
 TitleColor=black,
-TitleBackColor=blue!30!white,
+%TitleBackColor=blue!30!white,
 TitleFont=\bfseries,
 GradeColor=gray!25,
 HoleColor=gray!60,
@@ -166,6 +168,7 @@ SpiralNumber=10,
 ThicknessLength=1.5pt,
 BeforeSpaceLength=-2ex,
 AfterSpaceLength=1ex,
+ArcLength=4pt,
 ImageObject={\color{black}\ding{113}},
 PostImageObject=\hspace{1ex},
 QedSymbol={},%% simbolo o objeto al final del enviroment {\hfill$\blacksquare$}
@@ -204,7 +207,7 @@ number within=\DatCtxVar{#2}{CounterWith}
   detach title,
   enhanced,
   coltitle=\DatCtxVar{#2}{TitleColor},
-  colbacktitle=\DatCtxVar{#2}{TitleBackColor},
+  %colbacktitle=\DatCtxVar{#2}{TitleBackColor},
   fonttitle=\DatCtxVar{#2}{TitleFont},
   %
   before={\vspace{\DatCtxVar{#2}{BeforeSpaceLength}}},
@@ -224,6 +227,8 @@ number within=\DatCtxVar{#2}{CounterWith}
   %
   %titlerule=-0.5\DatCtxVar{#2}{ThicknessLength},
   drop fuzzy shadow=\DatCtxVar{#2}{ShadowColor},
+  %
+  arc=\DatCtxVar{#2}{ArcLength},
   %
   underlay={%
     \begin{tcbclipinterior}%
