@@ -5,16 +5,16 @@
 % Chapter text styling
 \titlecontents{lchapter}[0em] % Indenting
 {\addvspace{15pt}\large\bfseries} % Spacing and font options for chapters
-{\color{colorDefault}\contentslabel[\Large\thecontentslabel]{1.25cm}\color{colorDefault}} % Chapter number
+{\color{colorDefault}\contentslabel[\large\thecontentslabel]{1.25cm}\color{colorDefault}} % Chapter number
 {}  
 {\color{colorDefault}\normalsize\bfseries\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number
 
 % Section text styling
 \titlecontents{lsection}[0em] % Indenting
 {\small} % Spacing and font options for sections
-{\contentslabel[\thecontentslabel]{1.25cm}} % Section number
+{\color{black}\contentslabel[\small\thecontentslabel]{1.25cm}\color{black}} % Section number
 {}
-{}
+{\color{black}\small\sffamily\bfseries\,} % Page number % I know, this does nothing, but it does not remove because otherwise the fontsize does not change.
 
 % Subsection text styling
 \titlecontents{lsubsection}[.5em] % Indentation
