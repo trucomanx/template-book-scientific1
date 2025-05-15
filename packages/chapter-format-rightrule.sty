@@ -7,6 +7,8 @@
 \RequirePackage[explicit]{titlesec} % necesario para titleformat. [explicit] habilita usar #1
 \RequirePackage{lmodern}  % The lmodern package was used just to have access to a 80pt font size.
 
+\makeatletter
+
 % Define las opciones de paquete Width y TextColor
 \SetupKeyvalOptions{
   family=ChapterFormatRightRule,
@@ -64,6 +66,8 @@
     \textcolor{\ChapterFormatRightRule@RuleColor}{\rule{\dimexpr\textwidth-\ChapterFormatRightRule@PreTitleWidth\relax}{\ChapterFormatRightRule@RuleTickness}}}%
     \vspace{-0.5ex}
 }
+
+\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % spacing

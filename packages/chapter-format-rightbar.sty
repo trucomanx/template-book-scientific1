@@ -8,6 +8,8 @@
 \RequirePackage{lmodern}  % The lmodern package was used just to have access to a 80pt font size.
 \RequirePackage{tikzpagenodes}
 
+\makeatletter
+
 % Define las opciones de paquete Width y TextColor
 \SetupKeyvalOptions{
   family=ChapterFormatRightBar,
@@ -109,7 +111,9 @@
   \vspace{-2ex}
 }%before code
 %[]%after code
-  
+
+\makeatother
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % spacing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

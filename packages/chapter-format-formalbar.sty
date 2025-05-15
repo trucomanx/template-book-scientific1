@@ -9,6 +9,9 @@
 \RequirePackage{tikz}
 \RequirePackage{lmodern}% The lmodern package was used just to have access to a 80pt font size.
 
+
+\makeatletter
+
 % Define las opciones de paquete Width y TextColor
 \SetupKeyvalOptions{
   family=ChapterFormatFormalBar,
@@ -127,7 +130,9 @@
     \end{tcolorbox}%
   }
   [\vspace{-25pt}]
-  
+
+\makeatother
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % spacing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

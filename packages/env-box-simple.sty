@@ -202,8 +202,8 @@ number within=\DatCtxVar{#2}{CounterWith}
   breakable=\DatCtxVar{#2}{Breakable},
   enhanced,
   arc=0mm,
-  before={\vspace{\DatCtxVar{#2}{BeforeSpaceLength}}},
-  after={\vspace{\DatCtxVar{#2}{AfterSpaceLength}}},
+  before skip=\DatCtxVar{#2}{BeforeSpaceLength},
+  after skip=\DatCtxVar{#2}{AfterSpaceLength},
   after upper={\DatCtxVar{#2}{QedSymbol}},
   code={
   \ifdefempty{\tcbtitletext}
