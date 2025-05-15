@@ -59,6 +59,8 @@ curl https://sourceforge.net/p/latex-macros-packages/chapter-format-rightrule/ci
 
 curl https://sourceforge.net/p/latex-macros-packages/chapter-format-rightbar/ci/master/tree/chapter-format-rightbar.sty?format=raw -o chapter-format-rightbar.sty
 
+curl https://sourceforge.net/p/latex-macros-packages/chapter-format-rightbar-text/ci/master/tree/chapter-format-rightbar-text.sty?format=raw -o chapter-format-rightbar-text.sty
+
 curl https://sourceforge.net/p/latex-macros-packages/chapter-format-leftrule/ci/master/tree/chapter-format-leftrule.sty?format=raw -o chapter-format-leftrule.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/chapter-format-upperbanner/ci/master/tree/chapter-format-upperbanner.sty?format=raw -o chapter-format-upperbanner.sty
