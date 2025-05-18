@@ -2,61 +2,70 @@
 %----------------------------------------------------------------------------------------
 %	DATOS PRINCIPALES DEL LIBRO
 %----------------------------------------------------------------------------------------
-\newcommand{\mytitle}[0]{T\'itulo do livro}
-\newcommand{\mysubtitle}[0]{Subt\'itulo do livro}
-\newcommand{\myauthor}[0]{Fernando Pujaico Rivera}
-\newcommand{\ImprimirEdition}[0]{Primeira edi\c{c}\~{a}o}
+\newcommand{\BookTitle}[0]{T\'itulo do livro}
+\newcommand{\BookSubTitle}[0]{Subt\'itulo do livro}
+\newcommand{\BookAuthor}[0]{Fernando Pujaico Rivera}
+\newcommand{\BookEdition}[0]{Primeira edi\c{c}\~{a}o}
 %----------------------------------------------------------------------------------------
 
 
 %----------------------------------------------------------------------------------------
 %	DATOS PATROCINIO
 %----------------------------------------------------------------------------------------
-\newcommand{\ImprimirLinkHomePageLivro}[0]{\url{http://XXXXXXXXXXX.com}}
-\newcommand{\ImprimirLinkVerificarLivro}[0]{\url{https://trucomanx.github.io/XXXXXXXXXXX/verificar.html}}
-\newcommand{\ImprimirLinkCompraLivroImpresso}[0]{\url{http://XXXXXXXXXXX.com/comprarfisico/}}
-\newcommand{\ImprimirLinkCompraLivroDigital}[0]{\url{http://XXXXXXXXXXX.com/comprardigital/}}
-\newcommand{\ImprimirLinkMetodoPagoA}[0]{\includegraphics[width=5cm]{QR/canvas01.png}}
+\newcommand{\BookLinkHomePage}[0]{\url{http://XXXXXXXXXXX.com}}
+\newcommand{\BookLinkBuy}[0]{\url{http://XXXXXXXXXXX.com/comprardigital/}}
+\newcommand{\BookLinkQrPaymentMethod}[0]{\includegraphics[width=5cm]{QR/canvas01.png}}
+\newcommand{\BookLinkEmail}[0]{\href{mailto:fernando.pujaico.rivera@gmail.com}{fernando.pujaico.rivera@gmail.com}}
 %----------------------------------------------------------------------------------------
-\newcommand{\ImprimirEmail}[0]{\href{mailto:fernando.pujaico.rivera@gmail.com}{fernando.pujaico.rivera@gmail.com}}
 
-\def \PaperSizeToGeometry{a4paper}
-% a0paper, a1paper, a2paper, a3paper, a4paper, a5paper,
-% b0paper, b1paper, b2paper, b3paper, b4paper, b5paper, 
-% c0paper, c1paper, c2paper, c3paper, c4paper, c5paper, 
-% b0j, b1j, b2j, b3j, b4j, b5j, 
-% ansiapaper, ansibpaper, ansicpaper, ansidpaper, ansiepaper, 
-% letterpaper, executivepaper, legalpaper 
-\def \MarginShortGeometry{2.5cm}
-\def \MarginLongGeometry{2.5cm}
-\newcommand{\imprimirpagewidthcm}{21.0}  %% A4 
-\newcommand{\imprimirpageheightcm}{29.7} %% A4
 
+%----------------------------------------------------------------------------------------
+%	Habilita bleed
+% Habilita para sangria
+%----------------------------------------------------------------------------------------
+
+%\newcommand{\EnableBleed}{}
+
+\ifx\EnableBleed\undefined
+    %% A4 Sem sangria
+    \def\BookPaperWidth{210.00mm}
+    \def\BookPaperHeight{297.00mm}
+    \def\BookMarginTop{2.5cm}
+    \def\BookMarginBottom{2.5cm}
+    \def\BookMarginLeft{2.5cm}
+    \def\BookMarginRight{2.5cm}
+\else
+    %% A4 Com sangria
+    \def\BookPaperWidth{213.00mm}
+    \def\BookPaperHeight{303.00mm}
+    \def\BookMarginTop{2.8cm}
+    \def\BookMarginBottom{2.8cm}
+    \def\BookMarginLeft{2.8cm}
+    \def\BookMarginRight{2.5cm}
+\fi
+
+\newcommand{\BookPaperSizeString}[0]{\BookPaperWidth $\times$ \BookPaperHeight} %21x30cm}
 
 %----------------------------------------------------------------------------------------
 %   DADOS ficha catalográfica
 %----------------------------------------------------------------------------------------
-\def \myauthorname{Fernando}
-\def \myauthorlastname{Pujaico Rivera}%nome do autor
-\def \myauthorborn{1982}% data de nascimento
-\def \imprimirlocal{Lavras/MG}%cidade obrigatorio
-\def \imprimiryear{2020}%ano da edição do livro
-\newcommand{\imprimirdata}[0]{\textcolor{red}{XXXXXXXXXXX} \imprimiryear}
-\def \imprimirtipotrabalho{Inclui Bibliografia}
-\def \imprimircuttersanborn{P979m} %% https://www.cuttersonline.com/app/generator/?q=Pujaico&ref=sanborn&add=
-\newcommand{\imprimirpapersize}[0]{\imprimirpagewidthcm{x}\imprimirpageheightcm} %21x30cm}
-\def \imprimirCDD{792.62}   %% http://www.isbn.bn.br/website/tabela-de-assuntos
-\def \imprimirCDU{793.3} %% Dança %% https://www.ipleiria.pt/sdoc/wp-content/uploads/sites/10/2016/05/cdu-atualizada.pdf 
-\newcommand{\imprimirisbn}[0]{\textcolor{red}{XXXXXXXXXXX}}%%numero de ISBN
-\def \imprimireditora{Edi\c{c}\~{a}o Independente}
-\def \palavraschavea{Dan\c{c}a}
-\def \palavraschaveb{Samba}
-\def \palavraschavec{Samba de gafieira}
-\def \palavraschavesInglesa{Dance}
-\def \palavraschavesInglesb{Samba}
-\def \palavraschavesInglesc{Samba de gafieira}
+\def \BookAuthorName{Fernando}
+\def \BookAuthorLastName{Pujaico Rivera}%nome do autor
+\def \BookAuthorBorn{1982}% data de nascimento
+\def \BookEditionLocal{Lavras/MG}%cidade obrigatorio
+\def \BookEditionYear{2020}%ano da edição do livro
+\def \BookEditionDate{\textcolor{red}{maio} de \BookEditionYear}
+\def \BookHasBibliography{Inclui Bibliografia}
+\def \BookCDD{792.62}   %% http://www.isbn.bn.br/website/tabela-de-assuntos
+\def \BookCDU{793.3} %% Dança %% https://www.ipleiria.pt/sdoc/wp-content/uploads/sites/10/2016/05/cdu-atualizada.pdf 
+\def \BookISBN{\textcolor{red}{XXXXXXXXXXX}}%%numero de ISBN
+\def \BookPublisher{Edi\c{c}\~{a}o Independente}
+\def \BookKeyWordA{Dan\c{c}a}
+\def \BookKeyWordB{Samba}
+\def \BookKeyWordC{Samba de gafieira}
+
 %----------------------------------------------------------------------------------------
 
-\newcommand{\AnoLivro}[0]{\imprimiryear}%% Ano da primeira edição, usado para ser trocado por: ATUALMENTE
+\newcommand{\AnoLivro}[0]{\BookEditionYear}%% Ano da primeira edição, usado para ser trocado por: ATUALMENTE
 
 

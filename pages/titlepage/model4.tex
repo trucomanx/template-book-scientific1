@@ -1,7 +1,7 @@
 \newpage
 
-\def \TextAtTopOfPage{\ImprimirEdition}
-\def \TextAtBottomOfPage{\imprimiryear}%% {Gerado no dia \today}
+\def \TextAtTopOfPage{\BookEdition}
+\def \TextAtBottomOfPage{\BookEditionYear}%% {Gerado no dia \today}
 
 \begingroup
 \begin{titlepage}
@@ -20,13 +20,13 @@
 %
 \noindent\begin{minipage}{\textwidth}
 \centering%
-{\fontsize{0.06\textheight}{0}\selectfont \mytitle\\[0.02\textheight]}%
-{\fontsize{0.05\textheight}{0}\selectfont \mysubtitle}%
+{\fontsize{0.06\textheight}{0}\selectfont \BookTitle\\[0.02\textheight]}%
+{\fontsize{0.05\textheight}{0}\selectfont \BookSubTitle}%
 \end{minipage}
 \vspace{0.14\textheight}
 \begin{center}
-    {\fontsize{0.032\textheight}{0pt}\selectfont \myauthor}\\[1\baselineskip]
-    {\fontsize{0.032\textheight}{0pt}\selectfont \imprimirlocal}\\[1\baselineskip]
+    {\fontsize{0.032\textheight}{0pt}\selectfont \BookAuthor}\\[1\baselineskip]
+    {\fontsize{0.032\textheight}{0pt}\selectfont \BookEditionLocal}\\[1\baselineskip]
     {\fontsize{0.032\textheight}{0pt}\selectfont \TextAtBottomOfPage}
 \end{center}
 %

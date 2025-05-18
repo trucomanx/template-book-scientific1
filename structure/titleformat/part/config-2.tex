@@ -4,10 +4,10 @@
 
 % Chapter text styling
 \titlecontents{lchapter}[0em] % Indenting
-{\addvspace{15pt}\large\bfseries} % Spacing and font options for chapters
-{\color{colorDefault}\contentslabel[\large\thecontentslabel]{1.25cm}\color{colorDefault}} % Chapter number
-{}  
-{\color{colorDefault}\normalsize\bfseries\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number
+{\addvspace{15pt}\large\bfseries\color{colorDefault}} % Spacing and font options for chapters % Acima do título
+{\color{colorDefault}\contentslabel[\large\thecontentslabel]{1.25cm}\color{colorDefault}} % Chapter number % Antes do título
+{\color{colorDefault}}  % Sem número (título puro) 
+{\color{colorDefault}\normalsize\bfseries\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number % Depois do título
 
 % Section text styling
 \titlecontents{lsection}[0em] % Indenting
@@ -38,10 +38,10 @@
 \begin{tikzpicture}[remember picture,overlay]%
 \node at (current page.north west){\begin{tikzpicture}[remember picture,overlay]%	
 \fill[colorPartPageBackground!20](0cm,0cm) rectangle (\paperwidth,-\paperheight);
-\node[anchor=north]      at (4cm,-3.25cm){\color{colorPartPageBackground!40}\fontsize{220}{100}\bfseries\thepart}; 
+\node[anchor=north west] at (2cm,-3.25cm){\color{colorPartPageBackground!40}\fontsize{220}{100}\bfseries\thepart}; % number
 %\node[anchor=south east] at (\paperwidth-1cm,-\paperheight+1cm){\parbox[t][][t]{8.5cm}{\printcontents{l}{0}{\setcounter{tocdepth}{1}}}};
-\node[anchor=south east] at (\paperwidth-1cm,-\paperheight+1cm){\parbox[t][][t]{8.5cm}{\CmdOfPrintContents}};
-\node[anchor=north east] at (\paperwidth-1.5cm,-3.25cm){\parbox[t][][t]{15cm}{\strut\raggedleft\color{white}\fontsize{30}{30}\bfseries#1}};
+\node[anchor=south east] at (\paperwidth-1cm,-\paperheight+1cm){\parbox[t][][t]{8.5cm}{\CmdOfPrintContents}}; % contents
+\node[anchor=north east] at (\paperwidth-1.5cm,-3.25cm){\parbox[t][][t]{15cm}{\strut\raggedleft\color{colorDefault}\fontsize{30}{30}\bfseries#1}}; % title text
 \end{tikzpicture}};
 \end{tikzpicture}%
 }

@@ -3,7 +3,7 @@
 \newpage
 \thispagestyle{empty}
 
-\noindent Copyright \copyright\ \imprimiryear\ \myauthor % Copyright notice
+\noindent Copyright \copyright\ \BookEditionYear\ \BookAuthor % Copyright notice
 
 \begin{wrapfigure}{l}{0.3\textwidth}
 \vspace{-10pt}
@@ -23,40 +23,43 @@ esta edição deve ser proporcionada sem nenhuma modificação e
 se distribui gratuitamente com a esperança de que seja útil, 
 porém sem nenhuma garantia expressa ou implícita em relação à exatidão ou completitude do conteúdo.
 
-\noindent Garanta o ``download'' gratuito da versão digital do livro em \ImprimirLinkHomePageLivro.
-Para verificar a integridade do arquivo na versão digital do livro,
-pode-se seguir as indicações publicadas no endereço eletrônico do projeto:
-\ImprimirLinkVerificarLivro \\
+~
 
-\noindent \textbf{Impresso no Brasil -- ISBN:} \imprimirisbn\\ % Publisher
-\noindent \textbf{Publicado:} \imprimireditora\\ % Publisher
-%\noindent \textbf{Primeira impressão:}  \imprimirdata\\ % Printing/edition date
-\noindent \textbf{Diagramação:} \myauthor\\ % Printing/edition date
-\noindent \textbf{Revisão de texto:} \myauthor\\ % Printing/edition date
-\noindent \textbf{Capa:} \myauthor % Printing/edition date
+\noindent Garanta o ``download'' da versão digital do livro em \BookLinkHomePage.
+
+~
+
+\noindent \textbf{Impresso no Brasil -- ISBN:} \BookISBN\\ % Publisher
+\noindent \textbf{Publicado:} \BookPublisher\\ % Publisher
+%\noindent \textbf{Primeira impressão:}  2024\\ % Printing/edition date
+\noindent \textbf{Diagramação:} \BookAuthor\\ % Printing/edition date
+\noindent \textbf{Revisão de texto:} \BookAuthor\\ % Printing/edition date
+\noindent \textbf{Capa:} \BookAuthor % Printing/edition date
+
+~
 
 
 \SetCardColorFrame{white}
-\SetBookAuthorLastName{\myauthorlastname}
-\SetBookAuthorName{\myauthorname}
-\SetBookAuthorYearBorn{\myauthorborn}
-\SetBookTitle{\mytitle}
-\SetBookSubTitle{\mysubtitle}
-\SetBookPublishingPlace{\imprimirlocal}
-\SetBookPublishingEditor{\imprimireditora}
-\SetBookPublishingYear{\imprimiryear}
-\SetBookPaperSize{\imprimirpapersize}
-\SetBookHasBibliography{\imprimirtipotrabalho}
-\SetBookISBN{\imprimirisbn}
-\SetBookKeyWordA{\palavraschavea}
-\SetBookKeyWordB{\palavraschaveb}
-\SetBookKeyWordC{\palavraschavec}
+\SetBookAuthorLastName{\BookAuthorLastName}
+\SetBookAuthorName{\BookAuthorName}
+\SetBookAuthorYearBorn{\BookAuthorBorn}
+\SetBookTitle{\BookTitle}
+\SetBookSubTitle{\BookSubTitle}
+\SetBookPublishingPlace{\BookEditionLocal}
+\SetBookPublishingEditor{\BookPublisher}
+\SetBookPublishingYear{\BookEditionYear}
+\SetBookPaperSize{\BookPaperSizeString}
+\SetBookHasBibliography{\BookHasBibliography}
+\SetBookISBN{\BookISBN}
+\SetBookKeyWordA{\BookKeyWordA}
+\SetBookKeyWordB{\BookKeyWordB}
+\SetBookKeyWordC{\BookKeyWordC}
 \SetBookSearchBy{Título}
-\SetBookCDD{\imprimirCDD}
-\SetBookCDU{\imprimirCDU}
-\begin{figure}[!hb]
+\SetBookCDD{\BookCDD}
+\SetBookCDU{\BookCDU}
+{
 \centering
 \CatalographicCard{12.5cm}
-\end{figure}
+}
 
 
