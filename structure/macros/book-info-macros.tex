@@ -2,26 +2,27 @@
 %----------------------------------------------------------------------------------------
 %	DATOS PRINCIPALES DEL LIBRO
 %----------------------------------------------------------------------------------------
-\newcommand{\BookTitle}[0]{T\'itulo do livro}
-\newcommand{\BookSubTitle}[0]{Subt\'itulo do livro}
-\newcommand{\BookAuthor}[0]{Fernando Pujaico Rivera}
-\newcommand{\BookEdition}[0]{Primeira edi\c{c}\~{a}o}
+\def \BookTitle{T\'itulo do livro}
+\def \BookSubTitle{Subt\'itulo do livro}
+\def \BookAuthor{Fernando Pujaico Rivera}
+\def \BookEdition{Primeira edi\c{c}\~{a}o}
 %----------------------------------------------------------------------------------------
 
 
 %----------------------------------------------------------------------------------------
 %	DATOS PATROCINIO
 %----------------------------------------------------------------------------------------
-\newcommand{\BookLinkHomePage}[0]{\url{http://XXXXXXXXXXX.com}}
-\newcommand{\BookLinkBuy}[0]{\url{http://XXXXXXXXXXX.com/comprardigital/}}
-\newcommand{\BookLinkQrPaymentMethod}[0]{\includegraphics[width=5cm]{QR/canvas01.png}}
-\newcommand{\BookLinkEmail}[0]{\href{mailto:fernando.pujaico.rivera@gmail.com}{fernando.pujaico.rivera@gmail.com}}
+\def \BookLinkHomePage{\url{http://XXXXXXXXXXX.com}}
+\def \BookLinkBuy{\url{http://XXXXXXXXXXX.com/comprardigital/}}
+\def \BookLinkQrPaymentMethod{\includegraphics[width=5cm]{QR/canvas01.png}}
+\def \BookLinkEmail{\href{mailto:fernando.pujaico.rivera@gmail.com}{fernando.pujaico.rivera@gmail.com}}
 %----------------------------------------------------------------------------------------
 
 
 %----------------------------------------------------------------------------------------
-%	Habilita bleed
+% Habilita bleed
 % Habilita para sangria
+% https://kdp.amazon.com/en_US/help/topic/GVBQ3CMEQW3W2VL6#trimsize
 %----------------------------------------------------------------------------------------
 
 %\newcommand{\EnableBleed}{}
@@ -44,7 +45,7 @@
     \def\BookMarginRight{2.5cm}
 \fi
 
-\newcommand{\BookPaperSizeString}[0]{\BookPaperWidth $\times$ \BookPaperHeight} %21x30cm}
+\def \BookPaperSizeString{\BookPaperWidth $\times$ \BookPaperHeight} %21x30cm}
 
 %----------------------------------------------------------------------------------------
 %   DADOS ficha catalográfica
@@ -63,9 +64,5 @@
 \def \BookKeyWordA{Dan\c{c}a}
 \def \BookKeyWordB{Samba}
 \def \BookKeyWordC{Samba de gafieira}
-
-%----------------------------------------------------------------------------------------
-
-\newcommand{\AnoLivro}[0]{\BookEditionYear}%% Ano da primeira edição, usado para ser trocado por: ATUALMENTE
 
 
