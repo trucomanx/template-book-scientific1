@@ -1,24 +1,26 @@
+%\usepackage{ragged2e} % "forçar" um ambiente com justificação nas table contents
+
 %----------------------------------------------------------------------------------------
 %	MINI TABLE OF CONTENTS IN PART HEADS
 %----------------------------------------------------------------------------------------
 
 % Chapter text styling
 \titlecontents{lchapter}[0em] % Indenting
-{\addvspace{15pt}\large\bfseries\color{colorDefault}} % Spacing and font options for chapters % Acima do título
-{\color{colorDefault}\contentslabel[\large\thecontentslabel]{1.25cm}\color{colorDefault}} % Chapter number % Antes do título
+{\addvspace{15pt}\normalsize\bfseries\color{colorDefault}\sloppy} % Spacing and font options for chapters % Acima do título
+{\color{colorDefault}\contentslabel[\normalsize\thecontentslabel]{1.25cm}\color{colorDefault}} % Chapter number % Antes do título
 {\color{colorDefault}}  % Sem número (título puro) 
 {\color{colorDefault}\normalsize\bfseries\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number % Depois do título
 
 % Section text styling
 \titlecontents{lsection}[0em] % Indenting
-{\small} % Spacing and font options for sections
+{\small\sloppy} % Spacing and font options for sections
 {\color{black}\contentslabel[\small\thecontentslabel]{1.25cm}\color{black}} % Section number
 {}
 {\color{black}\small\sffamily\bfseries\,} % Page number % I know, this does nothing, but it does not remove because otherwise the fontsize does not change.
 
 % Subsection text styling
 \titlecontents{lsubsection}[.5em] % Indentation
-{\normalfont\footnotesize} % Font settings
+{\normalfont\footnotesize\sloppy} % Font settings
 {}
 {}
 {}

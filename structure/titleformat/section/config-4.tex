@@ -14,14 +14,14 @@
            [\TitleFormatRectangleExtendAbove]%
            [\TitleFormatRectangleExtendBelow]%
            { \makebox[\TitleFormatRectangleWidth]{% height, width
-                \fontfamily{phv}\selectfont\color{white}{\thesection}}
+\color{white}{\thesection}}
            }%
     }
 }% label
-{15pt}% sep
-{ \color{colorSectionFont}#1 }
+{0pt}% sep
+{\color{colorSectionFont}#1}
 
-
+%%\titlespacing*{⟨comando⟩}{⟨esquerda indentação⟩}{⟨antes vertical⟩}{⟨depois vertical⟩}
 \titlespacing*{\section}{0pt}{3mm}{5mm}
 
 

@@ -1,5 +1,3 @@
-
-
 \usepackage[
 RuleTickness=1.5pt,
 TitleColor=colorChapter,
@@ -8,23 +6,3 @@ RuleColor=colorChapter
 ]
 {chapter-format-tworules}
 
-\begin{comment}
-\titleformat{\chapter}% command
-[display]%shape
-{\bfseries\huge}% format
-{\Large\filright\textcolor{colorChapter}{\MakeUppercase{\chaptertitlename}} \Huge\textcolor{colorChapter}{\thechapter}}% label
-{0ex}% sep
-{\titlerule\vspace{1ex}\filleft\textcolor{colorChapter}{#1}}%before code
-[\vspace{1ex}\titlerule\vspace{1.5ex}]%after code
-
-
-\titleformat{name=\chapter,numberless}% command
-[display]%shape
-{\bfseries\huge}% format
-{}% label
-{0ex}% sep
-{\titlerule\vspace{1ex}\filleft\textcolor{colorChapter}{#1}}%before code
-[\vspace{1ex}\titlerule\vspace{1.5ex}]%after code
-
-\titlespacing*{\chapter}{0pt}{0pt}{0pt}
-\end{comment}

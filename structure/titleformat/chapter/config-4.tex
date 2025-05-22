@@ -7,43 +7,5 @@ PreTitleAfterSkip=-10pt,
 ]
 {chapter-format-middlerule}
 
-\SetChapterFormatMiddleRuleRuleObject{\pgfornament[width = 0.618\textwidth,color = colorChapter]{89}}
-
-\begin{comment}
-\usepackage{pgfornament}
-%% https://ctan.math.illinois.edu/macros/latex/contrib/tkz/pgfornament/doc/ornaments.pdf
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\titleformat{\chapter}[display]
-{\Huge\filcenter\bfseries}%format
-{}%label
-{0pt}%sep
-{%before code
-%
-{\chaptername~\thechapter\\[-10pt]}
-\pgfornament[width = 0.618\textwidth,color = colorChapter]{89}\\[10pt]
-{#1}
-%
-}
-[\vspace{10pt}]%%afercode
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\titleformat{name=\chapter,numberless}[display]
-{\Huge\filcenter\bfseries}%format
-{}%label
-{0pt}%sep
-{%before code
-%
-\pgfornament[width = 0.618\textwidth,color = colorChapter]{89}\\[10pt]
-{\Huge\sffamily\selectfont #1}
-%
-}
-[\vspace{10pt}]%%afercode
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\titlespacing*{\chapter}{0pt}{0pt}{0pt}%pbk
-\end{comment}
+\SetChapterFormatMiddleRuleObject{\pgfornament[width = 0.618\textwidth,color = colorChapter]{89}}
 
