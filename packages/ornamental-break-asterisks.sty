@@ -1,0 +1,44 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ornamental-break-asterisks}[2025/05/22 Ornamental break with configurable asterisks]
+
+\RequirePackage{kvoptions} % Para definir opções configuráveis
+\RequirePackage{xcolor}    % Caso queira usar cores no futuro (opcional)
+
+\makeatletter
+
+% Define as opções do pacote
+\SetupKeyvalOptions{
+  family=OrnamentalBreakAsterisks,
+  prefix=OrnamentalBreakAsterisks@
+}
+
+\DeclareStringOption[5]{AsteriskCount}
+\DeclareStringOption[*]{Symbol}
+\DeclareStringOption[0pt]{BeforeSpace}
+\DeclareStringOption[0pt]{AfterSpace}
+
+% Processa as opções
+\ProcessKeyvalOptions*
+
+% Comando interno para repetir o símbolo
+\newcommand{\OrnamentalBreakAsterisksInternal@Ornament}{%
+  \begingroup
+  \count0=0
+  \count1=\OrnamentalBreakAsterisks@AsteriskCount\relax
+  \loop
+    \advance\count0 by 1
+    \OrnamentalBreakAsterisks@Symbol\ 
+  \ifnum\count0<\count1
+  \repeat
+  \endgroup
+}
+
+% Comando principal (com \centering em vez de center)
+\newcommand{\OrnamentalBreak}{%
+\vspace{\OrnamentalBreakAsterisks@BeforeSpace}%
+{\centering \OrnamentalBreakAsterisksInternal@Ornament \par}%
+\vspace{\OrnamentalBreakAsterisks@AfterSpace}%
+}
+
+\makeatother
+

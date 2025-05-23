@@ -1,0 +1,18 @@
+%-------------------------------------------------------------------------------
+%   Rules macros: \HRule{2pt}, \HTextRule{Text}
+%-------------------------------------------------------------------------------
+\usepackage{separator-rule} %
+
+
+\newcommand{\ThematicBreak}[1]
+{%
+\HPgfoTextRule[
+Separator=3pt,
+OrnamentWidth=4cm,
+OrnamentColor=colorDefault,
+TextFormat=\bfseries,
+TextColor=colorDefault,
+BeforeSpace=0pt,
+AfterSpace=0pt,
+]{87}{#1}%
+}

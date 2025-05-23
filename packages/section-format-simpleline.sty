@@ -1,0 +1,92 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{section-format-simpleline}[2025/05/23 Title section package]
+
+
+\RequirePackage{xcolor}
+\RequirePackage{kvoptions} % Carga la biblioteca kvoptions
+\RequirePackage[explicit]{titlesec} % necesario para titleformat. [explicit] habilita usar #1
+
+\makeatletter
+
+% Define las opciones de paquete Width y TextColor
+\SetupKeyvalOptions{
+  family=SectionFormatSimpleLine,
+  prefix=SectionFormatSimpleLine@
+}
+
+\DeclareStringOption[black]{TitleColor}
+\DeclareStringOption[black]{RuleColor}
+\DeclareStringOption[1em]{AfterPretitleSpace}
+\DeclareStringOption[0pt]{BeforeRuleSpace}
+
+% Procesa las opciones del paquete
+\ProcessKeyvalOptions*
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title with number
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newsavebox\SectionFormatSimpleLineBox
+\newlength\SectionFormatSimpleLineWidth
+
+\titleformat{\section}
+{\normalfont\Large\color{\SectionFormatSimpleLine@TitleColor}\bfseries}% format %\sffamily
+{}% label
+{0em}% sep
+{%
+\savebox\SectionFormatSimpleLineBox{\normalfont\Large\color{\SectionFormatSimpleLine@TitleColor}\bfseries\thesection}%
+\settowidth\SectionFormatSimpleLineWidth{\usebox\SectionFormatSimpleLineBox}%    
+\parbox[t]{\SectionFormatSimpleLineWidth}{{\bfseries\thesection}}%
+\hspace{\SectionFormatSimpleLine@AfterPretitleSpace}%
+\parbox[t]{\dimexpr\textwidth+0em-\SectionFormatSimpleLineWidth-\SectionFormatSimpleLine@AfterPretitleSpace\relax}{#1}%
+\vspace*{-1ex}% %
+\vspace*{\SectionFormatSimpleLine@BeforeRuleSpace}%
+\newline%
+{\color{\SectionFormatSimpleLine@RuleColor}\titlerule[4pt]}%
+}
+%[\vspace{0ex}]%% after
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title without number
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{name=\section,numberless}
+{\normalfont\Large\color{\SectionFormatSimpleLine@TitleColor}\bfseries}
+{}
+{0em}
+{%
+#1%
+\vspace*{-1ex}% %
+\vspace*{\SectionFormatSimpleLine@BeforeRuleSpace}%
+\newline%
+{\color{\SectionFormatSimpleLine@RuleColor}\titlerule[4pt]}
+}
+%[\vspace{0ex}]%% after
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% spacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing{\section}
+{0pt}% left spacing
+{0pt}% before spacing
+{0pt}% after spacing
+%[right]
+
+\titlespacing*{\section}
+{0pt}% left spacing
+{0pt}% before spacing
+{0pt}% after spacing
+%[right]
+
