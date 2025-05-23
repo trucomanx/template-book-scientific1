@@ -31,7 +31,7 @@
 \DeclareStringOption[1.7cm]{PreTitleNumberWidth}
 \DeclareStringOption[1.7cm]{PreTitleNumberHeight}
 \DeclareStringOption[0.4cm]{PreTitleNumberYOffset}
-
+\DeclareStringOption[-25pt]{AfterSpace}
 
 
 
@@ -97,7 +97,7 @@
     #1
     \end{tcolorbox}%
   }
-  [\vspace{-25pt}]
+  [\vspace{\ChapterFormatFormalBar@AfterSpace}]%<after-code>
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Title without number
@@ -129,13 +129,19 @@
     #1
     \end{tcolorbox}%
   }
-  [\vspace{-25pt}]
+  [\vspace{\ChapterFormatFormalBar@AfterSpace}]%<after-code>
 
 \makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % spacing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing{\chapter}
+{0pt}% left spacing
+{0pt}% before spacing
+{0pt}% after spacing
+%[right]
+
 \titlespacing*{\chapter}
 {0pt}% left spacing
 {0pt}% before spacing

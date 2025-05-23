@@ -26,6 +26,7 @@
 \DeclareStringOption[30pt]{BarTextFontSize}
 \DeclareStringOption[2cm]{BarWidth}
 \DeclareStringOption[1cm]{BarTextOffset}
+\DeclareStringOption[-1ex]{AfterSpace}
 
 % Procesa las opciones del paquete
 \ProcessKeyvalOptions*
@@ -73,7 +74,7 @@
     at ([xshift=-\ChapterFormatRightBar@BarTextOffset]current page.east) 
     {\fontsize{\ChapterFormatRightBar@BarTextFontSize}{0}\scshape\selectfont\rotatebox{90}{\color{\ChapterFormatRightBar@BarTextColor}#1}};%% title vert
   \end{tikzpicture}%
-  \vspace{-2ex}
+\vspace{\ChapterFormatRightBar@AfterSpace}
 }%before code
 %[]%after code
 
@@ -108,7 +109,7 @@
 %    at ([xshift=-\ChapterFormatRightBar@BarTextOffset]current page.east) 
 %    {\fontsize{\ChapterFormatRightBar@BarTextFontSize}{0}\scshape\selectfont\rotatebox{90}{\color{\ChapterFormatRightBar@BarTextColor}#1}};%% title vert
   \end{tikzpicture}%
-  \vspace{-2ex}
+\vspace{\ChapterFormatRightBar@AfterSpace}
 }%before code
 %[]%after code
 
@@ -117,6 +118,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % spacing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing{\chapter}
+{0pt}% left spacing
+{0pt}% before spacing
+{0pt}% after spacing
+%[right]
+
 \titlespacing*{\chapter}
 {0pt}% left spacing
 {0pt}% before spacing

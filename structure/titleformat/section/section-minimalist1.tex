@@ -1,29 +1,17 @@
-
-
-
-\titleformat
-{\section}% command
-[display]%shape
-{\Large\bfseries}% format
-{}% label
-{0pt}% sep
-{\parbox{\textwidth}{\color{colorSectionFont}\thesection~#1} }%before code
-[]%after code
-
-\titleformat{name=\section,numberless}% command
-[display]%shape
-{\Large\bfseries}% format
-{}% label
-{0pt}% sep
-{\parbox{\textwidth}{\color{colorSectionFont}#1} }%before code
-[]%after code
+\usepackage[
+TitleColor=colorSectionFont,
+AfterPretitleSpace=10pt
+]
+{section-format-simplecolor}
 
 \titlespacing{\section}
-{0pt}%left
-{-3.5ex}%before
-{-2.5ex}%after
+{0pt}% left spacing
+{10pt}% before spacing
+{10pt}% after spacing
+%[right]
 
 \titlespacing*{\section}
-{0pt}%left
-{-3.5ex}%before
-{-2.5ex}%after
+{0pt}% left spacing
+{10pt}% before spacing
+{10pt}% after spacing
+%[right]

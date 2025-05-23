@@ -10,34 +10,7 @@ PreTitleNumberColor=white,
 PreTitleNumberBackgroundColor=colorChapter,
 PreTitleNumberWidth=2.5cm,
 PreTitleNumberHeight=3.0cm,
+AfterSpace=0.75ex
 ]
 {chapter-format-formaltitle}
-
-
-
-\begin{comment}
-\titleformat{\chapter}[display]%tipo
-  {\normalfont\bfseries\color{colorChapter}}%formato
-  {\filleft%
-    \begin{tikzpicture}
-    \node[
-      outer sep=0pt,
-      text width=2.5cm,
-      minimum height=3cm,
-      fill=colorChapter,
-      font=\color{white}\fontsize{80}{90}\selectfont,
-      align=center
-      ] (num) {\thechapter};
-    \node[
-      rotate=90,
-      anchor=south,
-      font=\color{black}\Large\normalfont
-      ] at ([xshift=-5pt]num.west) {\textls[180]{\textsc{\chaptertitlename}}};  
-    \end{tikzpicture}%
-  }% Etiqueta %numero do cap
-  {10pt}% Separacion
-  {\titlerule[2.5pt]\vskip3pt\titlerule\vskip4pt\LARGE\sffamily#1}%Codigo anterior al texto
-  %[]%Codigo posterior al texto
-
-\end{comment}
 

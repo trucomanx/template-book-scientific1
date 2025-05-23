@@ -29,6 +29,7 @@
 \DeclareStringOption[30pt]{BarTextFontSize}
 \DeclareStringOption[2cm]{BarWidth}
 \DeclareStringOption[1cm]{BarTextOffset}
+\DeclareStringOption[0em]{AfterSpace}
 \DeclareStringOption[]{BarText}
 
 % Procesa las opciones del paquete
@@ -81,7 +82,7 @@
     at ([xshift=-\ChapterFormatRightBarText@BarTextOffset]current page.east) 
     {\fontsize{\ChapterFormatRightBarText@BarTextFontSize}{0}\scshape\selectfont\rotatebox{90}{\color{\ChapterFormatRightBarText@BarTextColor}\ChapterFormatRightBarText@BarText}};%% title vert
   \end{tikzpicture}%
-  \vspace{-2ex}
+\vspace{\ChapterFormatRightBarText@AfterSpace}
 }%before code
 %[]%after code
 
@@ -93,7 +94,7 @@
 {}% label
 {0pt}% sep
 {%
-  \begin{tikzpicture}[remember picture,overlay]
+\begin{tikzpicture}[remember picture,overlay]
   \fill[
     draw=white,
     line width=0pt,
@@ -121,8 +122,8 @@
     text width=2cm] 
     at ([xshift=-\ChapterFormatRightBarText@BarTextOffset]current page.east) 
     {\fontsize{\ChapterFormatRightBarText@BarTextFontSize}{0}\scshape\selectfont\rotatebox{90}{\color{\ChapterFormatRightBarText@BarTextColor}\ChapterFormatRightBarText@BarText}};%% title vert
-  \end{tikzpicture}%
-  \vspace{-2ex}
+\end{tikzpicture}%
+\vspace{\ChapterFormatRightBarText@AfterSpace}
 }%before code
 %[]%after code
 
@@ -133,6 +134,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % spacing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\titlespacing{\chapter}
+{0pt}%left
+{0pt}%before
+{0pt}%after
+%[right]
+
 \titlespacing*{\chapter}
 {0pt}% left spacing
 {0pt}% before spacing

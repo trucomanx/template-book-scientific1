@@ -27,7 +27,7 @@
 \DeclareStringOption[black]{PreTitleNumberBackgroundColor}
 \DeclareStringOption[2.5cm]{PreTitleNumberWidth}
 \DeclareStringOption[3.0cm]{PreTitleNumberHeight}
-
+\DeclareStringOption[0.75ex]{AfterSpace}
 
 
 
@@ -65,7 +65,7 @@
   }% Etiqueta %numero do cap
   {10pt}% Separacion
   {\titlerule[\ChapterFormatFormalTitle@RuleTickness]\vskip3pt\titlerule\vskip4pt\fontsize{\ChapterFormatFormalTitle@TitleFontsize}{0}\selectfont\textcolor{\ChapterFormatFormalTitle@TitleColor}{#1}}%Codigo anterior al texto
-  [\vspace{0.75ex}]%Codigo posterior al texto
+  [\vspace{\ChapterFormatFormalTitle@AfterSpace}]%Codigo posterior al texto
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Title without number
@@ -76,7 +76,7 @@
   }% %%label format
   {0pt}% Separation label-title
   {\titlerule[\ChapterFormatFormalTitle@RuleTickness]\vskip3pt\titlerule\vskip4pt\fontsize{\ChapterFormatFormalTitle@TitleFontsize}{0}\selectfont\textcolor{\ChapterFormatFormalTitle@TitleColor}{#1}}%Title
-  [\vspace{0.75ex}]%Codigo posterior al texto
+  [\vspace{\ChapterFormatFormalTitle@AfterSpace}]%Codigo posterior al texto
 
 
 \makeatother
@@ -84,6 +84,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % spacing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing{\chapter}
+{0pt}% left spacing
+{0pt}% before spacing
+{0pt}% after spacing
+%[right]
+
 \titlespacing*{\chapter}
 {0pt}% left spacing
 {0pt}% before spacing

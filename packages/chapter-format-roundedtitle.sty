@@ -31,10 +31,6 @@
 \DeclareStringOption[white]{PreTitleNumberColor}
 
 
-
-
-
-
 % Procesa las opciones del paquete
 \ProcessKeyvalOptions*
 
@@ -51,7 +47,7 @@
 \titleformat{\chapter}[display]
   {\normalfont\huge\bfseries}
   {}
-  {20pt}
+  {0pt}
   {%
     \begin{tcolorbox}[
       enhanced,
@@ -92,6 +88,7 @@
     \MakeUppercase{#1}
     \end{tcolorbox}%
   }
+  %[] % after code
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -101,7 +98,7 @@
 \titleformat{name=\chapter,numberless}[display]
   {\normalfont\huge\bfseries}
   {}
-  {20pt}
+  {0pt}
   {%
     \begin{tcolorbox}[
       enhanced,
@@ -121,12 +118,19 @@
     \MakeUppercase{#1}
     \end{tcolorbox}%
   }
-
+  %[] % after code
+  
 \makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % spacing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing{\chapter}
+{0pt}% left spacing
+{0pt}% before spacing
+{0pt}% after spacing
+%[right]
+
 \titlespacing*{\chapter}
 {0pt}% left spacing
 {0pt}% before spacing

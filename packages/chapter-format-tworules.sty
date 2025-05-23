@@ -18,6 +18,7 @@
 \DeclareStringOption[black]{TitleColor}
 \DeclareStringOption[black]{PreTitleColor}
 \DeclareStringOption[black]{RuleColor}
+\DeclareStringOption[0ex]{AfterSpace}
 
 % Procesa las opciones del paquete
 \ProcessKeyvalOptions*
@@ -40,10 +41,12 @@
 \Huge\textcolor{\ChapterFormatTwoRules@PreTitleColor}{\thechapter}\vspace{-1.5ex}%
 }% label
 {0ex}% sep
-{\textcolor{\ChapterFormatTwoRules@RuleColor}{\rule{\linewidth}{\ChapterFormatTwoRules@RuleTickness}}\\[0ex]
-\filleft\textcolor{\ChapterFormatTwoRules@TitleColor}{#1}\vspace{-1ex}%
+{%
+\textcolor{\ChapterFormatTwoRules@RuleColor}{\rule{\linewidth}{\ChapterFormatTwoRules@RuleTickness}}\\[0ex]
+\filleft\textcolor{\ChapterFormatTwoRules@TitleColor}{#1}\\[-1ex]%\vspace{-1ex}%
+\textcolor{\ChapterFormatTwoRules@RuleColor}{\rule{\linewidth}{\ChapterFormatTwoRules@RuleTickness}}
 }%before code
-[\textcolor{\ChapterFormatTwoRules@RuleColor}{\rule{\linewidth}{\ChapterFormatTwoRules@RuleTickness}}\vspace{1ex}]%after code
+[\vspace{\ChapterFormatTwoRules@AfterSpace}]%after code
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -56,15 +59,22 @@
 {0ex}% sep
 {%
 \textcolor{\ChapterFormatTwoRules@RuleColor}{\rule{\linewidth}{\ChapterFormatTwoRules@RuleTickness}}\\[0ex]
-\filleft\textcolor{\ChapterFormatTwoRules@TitleColor}{#1}\vspace{-1ex}%
+\filleft\textcolor{\ChapterFormatTwoRules@TitleColor}{#1}\\[-1ex]%\vspace{-1ex}%
+\textcolor{\ChapterFormatTwoRules@RuleColor}{\rule{\linewidth}{\ChapterFormatTwoRules@RuleTickness}}
 }%before code
-[\textcolor{\ChapterFormatTwoRules@RuleColor}{\rule{\linewidth}{\ChapterFormatTwoRules@RuleTickness}}\vspace{1ex}]%after code
+[\vspace{\ChapterFormatTwoRules@AfterSpace}]%after code
 
 \makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % spacing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing{\chapter}
+{0pt}% left spacing
+{0pt}% before spacing
+{0pt}% after spacing
+%[right]
+
 \titlespacing*{\chapter}
 {0pt}% left spacing
 {0pt}% before spacing

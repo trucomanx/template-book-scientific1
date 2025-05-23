@@ -1,13 +1,22 @@
 #!/bin/bash
 
+# wrapper
+
 curl https://sourceforge.net/p/latex-macros-packages/wrapper-variable/ci/master/tree/wrapper-variable.sty?format=raw -o wrapper-variable.sty
+
+# catalographic
 
 curl https://sourceforge.net/p/latex-macros-packages/catalographic-card/ci/main/tree/catalographic-card.sty?format=raw -o catalographic-card.sty
 
+# separator
+
 curl https://sourceforge.net/p/latex-macros-packages/separator-rule/ci/main/tree/separator-rule.sty?format=raw -o separator-rule.sty
+
+# math
 
 curl https://sourceforge.net/p/latex-macros-packages/math-macros/ci/main/tree/math-macros.sty?format=raw -o math-macros.sty
 
+# env-bulletjournal
 
 curl https://sourceforge.net/p/latex-macros-packages/env-bulletjournalarrow/ci/main/tree/env-bulletjournalarrow.sty?format=raw -o env-bulletjournalarrow.sty
 
@@ -15,11 +24,15 @@ curl https://sourceforge.net/p/latex-macros-packages/env-bulletjournalpicture/ci
 
 curl https://sourceforge.net/p/latex-macros-packages/env-bulletjournalitem/ci/main/tree/env-bulletjournalitem.sty?format=raw -o env-bulletjournalitem.sty
 
+# env-phrasebox
+
 curl https://sourceforge.net/p/latex-macros-packages/env-phrasebox-tab/ci/main/tree/env-phrasebox-tab.sty?format=raw -o env-phrasebox-tab.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/env-phrasebox-ripple/ci/master/tree/env-phrasebox-ripple.sty?format=raw -o env-phrasebox-ripple.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/env-phrasebox-simple/ci/master/tree/env-phrasebox-simple.sty?format=raw -o env-phrasebox-simple.sty
+
+# env-box
 
 curl https://sourceforge.net/p/latex-macros-packages/env-box-simple/ci/master/tree/env-box-simple.sty?format=raw -o env-box-simple.sty
 
@@ -43,6 +56,8 @@ curl https://sourceforge.net/p/latex-macros-packages/env-box-simpleripple/ci/mas
 
 curl https://sourceforge.net/p/latex-macros-packages/env-box-notehor/ci/master/tree/env-box-notehor.sty?format=raw -o env-box-notehor.sty
 
+# highlight
+
 curl https://sourceforge.net/p/latex-macros-packages/env-highlight-simplezigzag/ci/master/tree/env-highlight-simplezigzag.sty?format=raw -o env-highlight-simplezigzag.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/env-highlight-simpleround/ci/master/tree/env-highlight-simpleround.sty?format=raw -o env-highlight-simpleround.sty
@@ -52,6 +67,8 @@ curl https://sourceforge.net/p/latex-macros-packages/env-highlight-foldedcorner/
 curl https://sourceforge.net/p/latex-macros-packages/env-highlight-simpleimg/ci/master/tree/env-highlight-simpleimg.sty?format=raw -o env-highlight-simpleimg.sty
 
 curl https://sourceforge.net/p/latex-macros-packages/env-highlight-multipleimg/ci/master/tree/env-highlight-multipleimg.sty?format=raw -o env-highlight-multipleimg.sty
+
+# \chapter
 
 curl https://sourceforge.net/p/latex-macros-packages/chapter-format-tworules/ci/master/tree/chapter-format-tworules.sty?format=raw -o chapter-format-tworules.sty
 
@@ -73,4 +90,13 @@ curl https://sourceforge.net/p/latex-macros-packages/chapter-format-middlerule/c
 
 curl https://sourceforge.net/p/latex-macros-packages/chapter-format-formalbar/ci/master/tree/chapter-format-formalbar.sty?format=raw -o chapter-format-formalbar.sty
 
+# \section
+
+curl https://sourceforge.net/p/latex-macros-packages/section-format-simplecolor/ci/master/tree/section-format-simplecolor.sty?format=raw -o section-format-simplecolor.sty
+
+curl https://sourceforge.net/p/latex-macros-packages/section-format-simpleline/ci/master/tree/section-format-simpleline.sty?format=raw -o section-format-simpleline.sty
+
+# \OrnamentalBreak
+
+curl https://sourceforge.net/p/latex-macros-packages/ornamental-break-asterisks/ci/master/tree/ornamental-break-asterisks.sty?format=raw -o ornamental-break-asterisks.sty
 
