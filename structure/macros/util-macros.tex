@@ -1,11 +1,29 @@
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
+\usepackage{wrapper-breakable}
+
+\NewWrapperBoxBreakableSimple[%
+BackColor=green!15!white, %black,
+TextFont=\normalfont\ttfamily,
+TextColor=black, %white,
+ArcLength=4pt,
+LeftPaddingLength=0.5ex,
+RightPaddingLength=0.5ex
+]{HighlightBox}
+
+%% \HighlightBox{gedit some/path/to/filename.txt}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 \usepackage{wrapper-variable}
 
 \NewWrapperVariableBoxRound[%
-BackColor=black,
-FrameColor=black,
+BackColor=black!15!white,
+FrameColor=black!15!white,
 TextFont=\normalfont\ttfamily,
-TextColor=white,
-ShadowColor=black!50!white,
+TextColor=black,
+ShadowColor=white,
 HPaddingLength=4pt,
 VPaddingLength=2pt,
 MinWidthLength=0pt,
@@ -14,7 +32,6 @@ ArcLength=4pt
 ]{CommandBox}
 
 %% \CommandBox{gedit some/path/to/filename.txt}
-
 
 %-------------------------------------------------------------------------------
 % Font information
