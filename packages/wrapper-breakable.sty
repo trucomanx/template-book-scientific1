@@ -1,0 +1,165 @@
+%% source:
+%% https://github.com/trucomanx/wrapper-breakable
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{wrapper-breakable}[2022/05/21 Package with macros to the math enviroment]
+
+
+\RequirePackage{tikz} % Required for drawing
+\usetikzlibrary{shapes.misc,shapes.geometric,shadows}% rounded
+\RequirePackage{xcolor}
+\RequirePackage{xkeyval} %%\setkeys
+
+
+\RequirePackage{xstring}   %\stringlen
+\RequirePackage{pgffor}    %\foreach 
+\RequirePackage{tcolorbox} %\newtcbox
+\tcbuselibrary{listings}
+
+
+% Options
+%\DeclareOption{red}{\renewcommand{\wordcolour}{sharelatexcolour}}
+\DeclareOption*{\PackageWarning{wrapper-breakable}{The option ‘\CurrentOption’ is current unknown}}
+\ProcessOptions\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+
+\ifdefined\DefCtxVar
+\else
+\newcommand{\DefCtxVar}[3]{%
+  \expandafter\def\csname #1@#2\endcsname{#3}
+}
+\fi
+
+\ifdefined\DefLenCtxVar
+\else
+\newcommand{\DefLenCtxVar}[2]{%
+  % Usar el parámetro como nombre de la variable local
+    \expandafter\newlength\csname #1@#2\endcsname  
+    %\@latex@warning{************** \csname #1@#2\endcsname **************}
+}
+\fi
+
+\ifdefined\SetLenCtxVar
+\else
+\newcommand{\SetLenCtxVar}[3]{%
+  % Usar el parámetro como nombre de la variable local
+    \csname #1@#2\endcsname=#3
+}
+\fi
+
+\ifdefined\DatCtxVar
+\else
+\newcommand{\DatCtxVar}[2]{%
+  \csname #1@#2\endcsname
+}
+\fi
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Define o charbox com altura fixa usando \phantom
+\newtcbox{\WrapperBoxBreakableSimpleAux}[1][]{nobeforeafter, on line,
+  fontupper=\ttfamily,
+  colframe=blue!20,
+  colback=blue!20, 
+  coltext=black,
+  arc=0ex,
+%
+  boxrule=0ex,
+  boxsep=0ex, 
+  left=0ex, right=0ex, top=0ex, bottom=0ex,
+  tcbox raise base,
+  before upper={\strut\phantom{Xg}\hspace{-2.5ex}}, % força altura constante
+  halign=center,
+  #1               % opções adicionais
+}
+
+\makeatletter
+\newcommand{\NewWrapperBoxBreakableSimple}[2][,]{%
+%
+\DefLenCtxVar{#2}{LeftPaddingLength}
+\DefLenCtxVar{#2}{RightPaddingLength}
+\DefLenCtxVar{#2}{ArcLength}
+
+\define@key{WrapperBoxBreakableSimpleGlobalKeys}{BackColor}{\DefCtxVar{#2}{BackColor}{##1}}
+\define@key{WrapperBoxBreakableSimpleGlobalKeys}{TextFont}{\DefCtxVar{#2}{TextFont}{##1}}
+\define@key{WrapperBoxBreakableSimpleGlobalKeys}{TextColor}{\DefCtxVar{#2}{TextColor}{##1}}
+%
+\define@key{WrapperBoxBreakableSimpleGlobalKeys}{LeftPaddingLength}{\SetLenCtxVar{#2}{LeftPaddingLength}{##1}}
+\define@key{WrapperBoxBreakableSimpleGlobalKeys}{RightPaddingLength}{\SetLenCtxVar{#2}{RightPaddingLength}{##1}}
+\define@key{WrapperBoxBreakableSimpleGlobalKeys}{ArcLength}{\SetLenCtxVar{#2}{ArcLength}{##1}}
+%
+\setkeys{WrapperBoxBreakableSimpleGlobalKeys}{%
+LeftPaddingLength=1ex,
+RightPaddingLength=1ex,
+ArcLength=3pt,
+BackColor=black,
+TextColor=white,
+TextFont=\ttfamily
+}%
+\setkeys{WrapperBoxBreakableSimpleGlobalKeys}{#1}%
+%
+%
+%
+\expandafter\newcommand\csname #2\endcsname[1]{%
+\StrLen{##1}[\stringlen]%
+\WrapperBoxBreakableSimpleAux[%
+arc=\DatCtxVar{#2}{ArcLength},% 
+colback=\DatCtxVar{#2}{BackColor},%
+colframe=\DatCtxVar{#2}{BackColor},%
+coltext=\DatCtxVar{#2}{TextColor},%
+fontupper=\DatCtxVar{#2}{TextFont},%
+sharp corners=east%
+]{\hspace*{\DatCtxVar{#2}{LeftPaddingLength}}}%
+\foreach \i in {1,...,\stringlen} {%
+\StrChar{\detokenize{##1}}{\i}[\char]%
+\IfStrEq{\char}{ }%
+{%
+\WrapperBoxBreakableSimpleAux[%
+arc=0pt,%
+colback=\DatCtxVar{#2}{BackColor},%
+colframe=\DatCtxVar{#2}{BackColor},%
+coltext=\DatCtxVar{#2}{TextColor},%
+fontupper=\DatCtxVar{#2}{TextFont}%
+]{\hspace*{1ex}}\hspace{0ex}%
+}% se for espaço, coloca \hspace{}
+{%
+\WrapperBoxBreakableSimpleAux[%
+arc=0pt,%
+colback=\DatCtxVar{#2}{BackColor},%
+colframe=\DatCtxVar{#2}{BackColor},%
+coltext=\DatCtxVar{#2}{TextColor},%
+fontupper=\DatCtxVar{#2}{TextFont}%
+]{\char}\hspace{0ex}%
+}% senão, coloca o caractere mesmo
+}%
+\WrapperBoxBreakableSimpleAux[%
+arc=\DatCtxVar{#2}{ArcLength},%
+colback=\DatCtxVar{#2}{BackColor},%
+colframe=\DatCtxVar{#2}{BackColor},%
+coltext=\DatCtxVar{#2}{TextColor},%
+fontupper=\DatCtxVar{#2}{TextFont},%
+sharp corners=west%
+]{\hspace*{\DatCtxVar{#2}{RightPaddingLength}}}%
+}
+}
+%
+%
+%
+\makeatother
+
+
+
+
+

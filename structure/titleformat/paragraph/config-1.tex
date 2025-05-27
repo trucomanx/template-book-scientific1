@@ -1,0 +1,28 @@
+\titleformat{\paragraph}% command
+%[hang]%shape
+{\normalsize\bfseries}% format %\sffamily
+{\textcolor{black}{\theparagraph}}% label
+{0ex}% sep
+{\color{black}#1}
+
+\titleformat{name=\paragraph,numberless}
+%[hang]%shape
+{\normalsize\bfseries}% format %\sffamily
+{}% label
+{0ex}% sep
+{\color{black}#1}
+
+\titlespacing*{\paragraph}
+{0pt}% left spacing
+{0pt}% before spacing
+{0pt}% after spacing
+%[] % right
+
+\titlespacing{\paragraph}
+{0pt}% left spacing
+{0pt}% before spacing
+{0pt}% after spacing
+%[] % right
+
+
+
