@@ -30,8 +30,8 @@
 %----------------------------------------------------------------------------------------
 \usepackage{avant} % Use the Avantgarde font for headings
 %\usepackage{times} % Use the Times font for headings
-\usepackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Sym­bol, Chancery and Com­puter Modern fonts
-\usepackage{microtype}% The microtype package was used to use \textls to space out the letters in "Chapter". % Slightly tweak font spacing for aesthetics
+%\usepackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Sym­bol, Chancery and Com­puter Modern fonts
+%\usepackage{microtype}% The microtype package was used to use \textls to space out the letters in "Chapter". % Slightly tweak font spacing for aesthetics
 
 
 
@@ -64,8 +64,10 @@ paperwidth=\BookPaperWidth,
 paperheight=\BookPaperHeight, 
 top=\BookMarginTop,%
 bottom=\BookMarginBottom,%
-left=\BookMarginLeft,%
-right=\BookMarginRight,%
+%left=\BookMarginLeft,%
+%right=\BookMarginRight,%
+inner=\BookMarginLeft,  % margem interna (esquerda em ímpares, direita em pares)
+outer=\BookMarginRight,    % margem externa (direita em ímpares, esquerda em pares)
 headsep=10pt]{geometry} % Page margins
 
 %----------------------------------------------------------------------------------------

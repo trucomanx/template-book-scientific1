@@ -103,13 +103,24 @@ width=\HGraphicFillKeys@Width
 %-------------------------------------------------------------------------------
 %   \HTextRule{Text}
 %-------------------------------------------------------------------------------
+
 \newlength{\HTRLength}
 \newcommand*\HTextRule[2][3pt]{%
-\settowidth{\HTRLength}{#2}\advance\HTRLength by -\textwidth\divide\HTRLength by -2%
-\noindent\makebox[\the\HTRLength]{\resizebox{\the\HTRLength}{#1}{$\blacktriangleleft$}}%
-\raisebox{-.5ex}{\textbf{#2}}%
-\makebox[\the\HTRLength]{\resizebox{\the\HTRLength}{#1}{$\blacktriangleright$}}%
-\smallskip
+  \noindent
+  % mede o texto central
+  \sbox0{\textbf{#2}}%
+  \setlength{\HTRLength}{\dimexpr(\textwidth - \wd0)/2\relax}%
+  % triângulo esquerdo
+  \makebox[\HTRLength][r]{%
+    \resizebox{\HTRLength}{#1}{$\blacktriangleleft$}%
+  }%
+  % texto central
+  \textbf{#2}%
+  % triângulo direito
+  \makebox[\HTRLength][l]{%
+    \resizebox{\HTRLength}{#1}{$\blacktriangleright$}%
+  }%
+  \par\smallskip
 }
 
 %-------------------------------------------------------------------------------

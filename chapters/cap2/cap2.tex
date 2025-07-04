@@ -257,7 +257,11 @@ x^2+e^{-\frac{x^2}{2}}=1
 %-------------------------------------------------------------------------------
 \subsection{Notations}\index{Notations}
 
-Notations \ref{not:A} and \ref{not:B}
+In this section, we demonstrate how to use custom environments to define mathematical notations in a clear and structured way.  
+The environments `notation` and `highlightbox` help in providing both formatted display and source code for easy reference and reproducibility.
+
+Notations \ref{not:A} and \ref{not:B} are two examples showing how to document mathematical expressions with supporting explanations.
+
 \begin{highlightbox}
 \begin{verbatim}
 \begin{notation}[Notation name title very large]
@@ -269,6 +273,7 @@ x^2+e^{-\frac{x^2}{2}}=1
 \end{notation}
 \end{verbatim}
 \end{highlightbox}
+The `highlightbox` above displays the exact code used to produce the notation block, allowing the reader to understand both the output and how to replicate it in their own documents.
 \begin{notation}[Notation name title very large]
 \label{not:A}
 \lipsum[1][1-3]
@@ -277,8 +282,7 @@ x^2+e^{-\frac{x^2}{2}}=1
 \end{equation}
 \end{notation}
 
-\lipsum[1][1-3]
-
+Some users might prefer omitting the optional title of the notation environment. Below is how it renders:
 \begin{highlightbox}
 \begin{verbatim}
 \begin{notation}
@@ -290,8 +294,7 @@ x^2+e^{-\frac{x^2}{2}}=1
 \end{notation}
 \end{verbatim}
 \end{highlightbox}
-
-\lipsum[1][1-3]
+The `highlightbox` above displays the exact code used to produce the notation block, allowing the reader to understand both the output and how to replicate it in their own documents.
 
 \begin{notation}
 \label{not:B}
@@ -300,7 +303,6 @@ x^2+e^{-\frac{x^2}{2}}=1
 x^2+e^{-\frac{x^2}{2}}=1
 \end{equation}
 \end{notation}
-
 
 
 

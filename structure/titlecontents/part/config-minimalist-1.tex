@@ -1,0 +1,21 @@
+\usepackage{titletoc} % Required for manipulating the table of contents
+
+
+\newtcolorbox{tocpartbox}{
+colback=colorDefault!10,
+colframe=colorDefault!10,
+boxrule=0pt,
+boxsep=0pt,
+outer arc=0pt
+}
+
+%----------------------------------------------------------------------------------------
+% Part text styling
+\titlecontents{part}%
+[0pt] % espacio izquierdo
+{\begin{tocpartbox}\Large\bfseries\centering} % above code
+{}% numbered
+{} % numbered less
+{} % filler
+[\end{tocpartbox}]
+
